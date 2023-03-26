@@ -105,3 +105,19 @@ a {
     color-scheme: dark;
   }
 }
+
+.section {
+  padding: 4em 25%;
+}
+
+@media (max-width: 1200px) {
+  .section {
+      padding: 4em 10%;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+      padding: 4em 2em;
+  }
+}
