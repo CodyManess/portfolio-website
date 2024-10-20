@@ -1,29 +1,38 @@
-import Image from "next/image";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import Intro from './components/Intro/intro';
+import PortfolioAppBar from './components/AppBar/appbar';
+import { Container } from '@mui/material';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      {/* Navigation */}
+    <>
+      <PortfolioAppBar />
+      
+      <main>
+        <Intro />
 
-      {/* Header */}
+        <Container
+          sx={{
+            background: 'white',
+            boxShadow: '0px 5px 5px black',
+          }}
+        >
+          {/* School */}
 
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        {/* School */}
+          {/* Work Experience */}
 
-        {/* Work Experience */}
+          {/* Projects */}
 
-        {/* Projects */}
-
-        {/* Skills */}
+          {/* Skills */}
+        </Container>
       </main>
 
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+      <footer>
         Thank you for viewing my website!
       </footer>
-    </div>
+    </>
   );
 }
