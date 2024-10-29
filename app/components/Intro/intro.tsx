@@ -1,15 +1,15 @@
 "use client";
 import { Avatar, Container, Paper, Typography } from '@mui/material';
 import * as React from 'react';
-import { animate, motion, useMotionTemplate, useSpring, useTime, useTransform} from 'framer-motion';
+import { motion, useSpring, useTransform} from 'framer-motion';
 import { GitHub, LinkedIn, Email, Article } from '@mui/icons-material';
-import './intro.css';
+import styles from './intro.module.css';
 
 const Intro = () => {
 
     const pulse = useSpring(0, { damping: 0, mass: 5, stiffness: 10 })
     const pulsingBg = useTransform(pulse, (r) => {
-        return `0px 0px 30px ${r}px blue`
+        return `0px 0px 30px ${r}px #1976d2`
     })
 
     React.useEffect(() => {
@@ -17,14 +17,15 @@ const Intro = () => {
     }, [])
 
     return (
-            <Container sx={{ 
+            <div style={{ 
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                height: "95vh"
+                height: "95vh",
+                background: "#202020"
             }}>
                 <motion.div style={{
-                    borderRadius: '5%',
+                    borderRadius: '4px',
                     boxShadow: pulsingBg
                 }}>
                     <Paper sx={{
@@ -37,23 +38,21 @@ const Intro = () => {
                         flexFlow: "column wrap"
                     }} elevation={3}>
                         <Avatar sx={{
-                                margin: "1em auto", 
-                                width: 150, 
-                                height: 150
-                            }}
+                            margin: "1em auto", 
+                            width: 150, 
+                            height: 150
+                        }}
                         >
                             CM
                         </Avatar>
                         <Typography 
                             variant="h2" 
-                            sx={{
-                                textAlign: "center"
-                            }}
+                            sx={{ textAlign: "center" }}
                         >
                             Cody Maness
                         </Typography>
                         <Container 
-                            className="intro-links"
+                            className={ styles.introLink }
                             sx={{
                                 display: 'flex',
                                 justifyContent: 'space-around',
@@ -67,7 +66,7 @@ const Intro = () => {
                         </Container>
                     </Paper>
                 </motion.div>
-            </Container>
+            </div>
     );
 };
 

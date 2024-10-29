@@ -4,7 +4,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Intro from './components/Intro/intro';
 import PortfolioAppBar from './components/AppBar/appbar';
-import { Container } from '@mui/material';
+import Experience from './components/Experience/experience';
 
 export default function Home() {
   return (
@@ -14,20 +14,21 @@ export default function Home() {
       <main>
         <Intro />
 
-        <Container
-          sx={{
+        <div
+          style={{
             background: 'white',
-            boxShadow: '0px 5px 5px black',
+            boxShadow: '0px -12px 20px black',
+            padding: '4em 0'
           }}
         >
           {/* School */}
 
-          {/* Work Experience */}
+          <Experience />
 
           {/* Projects */}
 
           {/* Skills */}
-        </Container>
+        </div>
       </main>
 
       <footer>
