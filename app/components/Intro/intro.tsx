@@ -26,7 +26,7 @@ const Intro = () => {
             }}>
                 <motion.div style={{
                     borderRadius: '4px',
-                    boxShadow: pulsingBg
+                    //boxShadow: pulsingBg
                 }}>
                     <Paper sx={{
                         display: "flex",
@@ -34,13 +34,13 @@ const Intro = () => {
                         maxWidth: 650,
                         justifyContent: "center",
                         alignSelf: "center",
-                        padding: "2em",
+                        padding: "1rem",
                         flexFlow: "column wrap"
                     }} elevation={3}>
                         <Avatar sx={{
-                            margin: "1em auto", 
-                            width: 150, 
-                            height: 150
+                            margin: "1rem auto", 
+                            width: '8rem', 
+                            height: '8rem'
                         }}
                         >
                             CM

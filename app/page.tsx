@@ -5,6 +5,7 @@ import '@fontsource/roboto/700.css';
 import Intro from './components/Intro/intro';
 import PortfolioAppBar from './components/AppBar/appbar';
 import Experience from './components/Experience/experience';
+import Education from './components/Education/education';
 
 export default function Home() {
   return (
@@ -14,16 +15,10 @@ export default function Home() {
       <main>
         <Intro />
 
-        <div
-          style={{
-            background: 'white',
-            boxShadow: '0px -12px 20px black',
-            padding: '4em 0'
-          }}
-        >
-          {/* School */}
-
+        <div>
           <Experience />
+
+          <Education />
 
           {/* Projects */}
 
