@@ -14,16 +14,19 @@ const Intro = () => {
 
     React.useEffect(() => {
         pulse.set(20);
-    }, [])
+    }, [pulse])
 
     return (
-            <div style={{ 
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "95vh",
-                background: "#202020"
-            }}>
+            <div
+                id="intro" 
+                style={{ 
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100vh",
+                    background: "#202020"
+                }}
+            >
                 <motion.div style={{
                     borderRadius: '4px',
                     //boxShadow: pulsingBg
@@ -39,8 +42,7 @@ const Intro = () => {
                     }} elevation={3}>
                         <Avatar sx={{
                             margin: "1rem auto", 
-                            width: '8rem', 
-                            height: '8rem'
+                            width: '8rem', height: '8rem'
                         }}
                         >
                             CM

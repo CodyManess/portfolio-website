@@ -1,6 +1,7 @@
 import { TimelineOppositeContent, TimelineItem, TimelineContent, TimelineConnector, TimelineDot, TimelineSeparator } from "@mui/lab"
 import { Paper, Typography } from "@mui/material"
 import React, { useEffect, useState } from "react"
+import Image from 'next/image'
 import Role from "./role"
 
 export default function RoleItem({date, title, companyName, companyLogo, description}: Role) {
@@ -53,14 +54,12 @@ export default function RoleItem({date, title, companyName, companyLogo, descrip
                     variant="outlined"
                     color="primary"
                 >
-                    <img 
-                        style={{
-                            margin: "auto",
-                            width: "90%"
-                        }}
+                    <Image
+                        style={{ margin: "auto" }}
+                        width={60} height={30}
                         src={companyLogo}
                         alt={`${companyName} Logo`}
-                    />
+                     />
                 </TimelineDot>
                 <TimelineConnector />
             </TimelineSeparator>
