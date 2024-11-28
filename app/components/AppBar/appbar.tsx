@@ -20,11 +20,15 @@ const PortfolioAppBar = () => {
     return (
         <HideOnScroll>
             <AppBar>
-                <Toolbar sx={{ justifyContent: "center", display: { sm: 'flex' } }}>
+                <Toolbar sx={{ 
+                    justifyContent: "center", 
+                    display: { sm: 'flex' },
+                    background: 'var(--surface-color)'
+                }}>
                     {links.map((page) => (
                     <Link
                         key={ page }
-                        sx={{ my: 4, mx: 2, color: 'white', display: 'block' }}
+                        sx={{ my: 4, mx: 2, display: 'block' }}
                         href={`#${page.toLowerCase()}`}
                     >
                         { page }

@@ -1,14 +1,25 @@
-
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --white: #ffffff;
+  --grey: #403C3C;
+  --dark-grey: #282828;
+  --black: #171717;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --primary-color: #2196f3;
+  --primary-dark: #1769aa;
+  --primary-light: #4dabf5;
+
+  --background: var(--white);
+  --foreground: var(--black);
+
+  --section-background: var(--primary-color);
+  --surface-background: var(--white);
+
+  @media (prefers-color-scheme: dark) {
+    --background: var(--black);
+    --foreground: var(--white);
+
+    --section-background: var(--dark-grey);
+    --surface-background: var(--grey);
   }
 }
 
@@ -22,5 +33,39 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+.MuiPaper-root .MuiTypography-root {
+  color: var(--foreground);
+}
+
+.MuiPaper-root {
+  background-color: var(--surface-background);
+}
+
+.MuiToolbar-root {
+  background-color: var(--section-background);
+  .MuiTypography-root {
+    color: var(--white);
+  }
+}
+
+section {
+  display: flex;
+  justify-content: center;
+}
+
+.section {
+  padding: 4em 0;
+}
+
+.section:nth-child(even) {
+  background-color: var(--section-background);
+  .MuiPaper-root {
+    background-color: var(--background);
+  }
+  div h2 {
+    color: var(--white);
   }
 }

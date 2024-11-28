@@ -1,20 +1,19 @@
 import { Container, Typography } from '@mui/material';
-import * as React from 'react';
+import React from 'react';
 
-const Projects = () => {
-
+const Skills: React.FC = () => {
     return (
-        <section id="projects" className="section">
+        <section id="skills" className="section">
             <Container>
                 <Typography variant="h2">
-                    Projects
+                        Skills
                 </Typography>
                 {
                     
                 }
             </Container>
         </section>
-    )
-}
+    );
+};
 
-export default Projects;
+export default Skills;

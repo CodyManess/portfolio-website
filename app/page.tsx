@@ -7,6 +7,8 @@ import PortfolioAppBar from './components/AppBar/appbar';
 import Experience from './components/Experience/experience';
 import Education from './components/Education/education';
 import Projects from './components/Projects/projects';
+import Skills from './components/Skills/skills';
+import Footer from './components/Footer/footer';
 
 export default function Home() {
   return (
@@ -16,20 +18,16 @@ export default function Home() {
       <main>
         <Intro />
 
-        <div>
-          <Experience />
+        <Experience />
 
-          <Education />
+        <Education />
 
-          <Projects />
+        <Projects />
 
-          {/* Skills */}
-        </div>
+        <Skills />
       </main>
 
-      <footer>
-        Thank you for viewing my website!
-      </footer>
+      <Footer />
     </>
   );
 }

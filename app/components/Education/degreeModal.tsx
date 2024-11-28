@@ -35,7 +35,11 @@ const DegreeModal = ({degree, open, handleClose}: Props) => {
                             {
                                 awards.map((award) => {
                                     return (
-                                        <ListItem key={award}>{award}</ListItem>
+                                        <ListItem key={award}>
+                                            <Typography>
+                                                {award}
+                                            </Typography>
+                                        </ListItem>
                                     )
                                 })
                             }
@@ -65,7 +69,9 @@ const DegreeModal = ({degree, open, handleClose}: Props) => {
                                     filteredCourses.map(val => {
                                         return (
                                             <ListItem key={val.title}>
-                                                {val.courseNum} - {val.title}
+                                                <Typography>
+                                                    {val.courseNum} - {val.title}
+                                                </Typography>
                                             </ListItem>
                                         )
                                     })

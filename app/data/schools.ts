@@ -1,6 +1,6 @@
-import mtsuPhoto from "../assets/mtsucampus.jpg";
-import mtsuPhoto2 from "../assets/mtsucampus2.jpg"
-import lsusPhoto from "../assets/lsuscampus.jpg";
+import mtsuPhoto from "../assets/education/mtsucampus.jpg";
+import mtsuPhoto2 from "../assets/education/mtsucampus2.jpg"
+import lsusPhoto from "../assets/education/lsuscampus.jpg";
 import { Degree, CourseType } from "../components/Education/school";
 
 export const schools: Degree[] = [

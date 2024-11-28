@@ -2,28 +2,18 @@
 import { Timeline } from "@mui/lab/";
 import { Container, Typography } from "@mui/material";
 import * as React from 'react';
-import './experience.module.css'
 import RoleItem from "./roleItem";
 import { roles } from '../../data/experience'
 
 const Experience = () => {
 
     return (
-        <div
-            id="experience"
-            style={{
-                display: 'flex',
-                background: 'white',
-                boxShadow: '0px -12px 20px black',
-                padding: '4em 0',
-                justifyContent: 'center',
-            }}
+        <section
+            id="experience" className="section"
+            style={{ boxShadow: '0px -12px 20px black' }}
         >
             <Container>
-                <Typography 
-                    variant="h2"
-                    sx={{ color: "black" }}
-                >
+                <Typography variant="h2">
                     Experience
                 </Typography>
 
@@ -41,7 +31,7 @@ const Experience = () => {
                 }
                 </Timeline>
             </Container>
-        </div>
+        </section>
     );
 }
 

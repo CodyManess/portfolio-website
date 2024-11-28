@@ -6,10 +6,11 @@ import Role from "./role"
 
 export default function RoleItem({date, title, companyName, companyLogo, description}: Role) {
 
-    const [width, setWidth] = useState(1000);
+    const [width, setWidth] = useState<undefined | number>(undefined);
 
     useEffect(() => {
         const handleResize = () => setWidth(window.innerWidth);
+        handleResize();
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
@@ -18,11 +19,11 @@ export default function RoleItem({date, title, companyName, companyLogo, descrip
         <TimelineItem>
             <TimelineOppositeContent sx={{ padding: 0, flex: 0 }}>
                 {
-                    width > 620 &&
+                    (width ?? 0) > 620 &&
                     <Typography 
                         variant="h6" 
                         component="p"
-                        color="primary"
+                        color="white"
                         sx={{
                             padding: "1em",
                             textWrap: "nowrap",
@@ -36,11 +37,11 @@ export default function RoleItem({date, title, companyName, companyLogo, descrip
             </TimelineOppositeContent>
             <TimelineSeparator>
                 {
-                    width <= 620 &&
+                    (width ?? 0) <= 620 &&
                     <Typography 
                         variant="h6" 
                         component="p"
-                        color="primary"
+                        color="white"
                         sx={{
                             textWrap: "nowrap",
                             paddingTop: "0.5rem",
@@ -50,7 +51,12 @@ export default function RoleItem({date, title, companyName, companyLogo, descrip
                     </Typography>
                 }
                 <TimelineDot 
-                    style={{ margin: "0.5rem auto", width: "4em", height: "4em" }} 
+                    style={{ 
+                        margin: "0.5rem auto", 
+                        width: "4em", 
+                        height: "4em",
+                        backgroundColor: "white"
+                    }} 
                     variant="outlined"
                     color="primary"
                 >
@@ -66,13 +72,12 @@ export default function RoleItem({date, title, companyName, companyLogo, descrip
             <TimelineContent>
                 <Paper 
                     elevation={3} 
-                    sx={{ padding: "1em" }}
+                    style={{ padding: "1em" }}
                 >
-                    <Typography variant="h6" component="h2">{title}</Typography>
+                    <Typography variant="h6" component="h3">{title}</Typography>
                     <Typography variant="subtitle1" component="p">{companyName}</Typography>
-                    <Typography 
-                        variant="body1" 
-                        style={{whiteSpace: "pre-line"}}
+                    <Typography
+                        style={{ whiteSpace: "pre-line" }}
                     >
                         {description}
                     </Typography>

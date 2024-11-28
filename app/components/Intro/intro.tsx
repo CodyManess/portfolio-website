@@ -17,14 +17,12 @@ const Intro = () => {
     }, [pulse])
 
     return (
-            <div
+            <section
                 id="intro" 
                 style={{ 
-                    display: "flex",
-                    justifyContent: "center",
                     alignItems: "center",
                     height: "100vh",
-                    background: "#202020"
+                    backgroundColor: "var(--black)"
                 }}
             >
                 <motion.div style={{
@@ -37,7 +35,7 @@ const Intro = () => {
                         maxWidth: 650,
                         justifyContent: "center",
                         alignSelf: "center",
-                        padding: "1rem",
+                        padding: "1.5rem",
                         flexFlow: "column wrap"
                     }} elevation={3}>
                         <Avatar sx={{
@@ -48,7 +46,8 @@ const Intro = () => {
                             CM
                         </Avatar>
                         <Typography 
-                            variant="h2" 
+                            variant="h3"
+                            component="h1"
                             sx={{ textAlign: "center" }}
                         >
                             Cody Maness
@@ -68,7 +67,7 @@ const Intro = () => {
                         </Container>
                     </Paper>
                 </motion.div>
-            </div>
+            </section>
     );
 };
 
