@@ -23,7 +23,6 @@ export default function RoleItem({date, title, companyName, companyLogo, descrip
                     <Typography 
                         variant="h6" 
                         component="p"
-                        color="white"
                         sx={{
                             padding: "1em",
                             textWrap: "nowrap",
@@ -41,7 +40,6 @@ export default function RoleItem({date, title, companyName, companyLogo, descrip
                     <Typography 
                         variant="h6" 
                         component="p"
-                        color="white"
                         sx={{
                             textWrap: "nowrap",
                             paddingTop: "0.5rem",
