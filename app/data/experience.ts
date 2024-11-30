@@ -1,6 +1,6 @@
 import Role from "../components/Experience/role"
 import cignaLogo from "../assets/work-icons/cigna.webp"
-import mtsuLogo from "../assets/work-icons/mtsu.png"
+import mtsuLogo from "../assets/work-icons/mtsu.webp"
 
 export const roles: Array<Role> = [
     {

@@ -4,7 +4,7 @@ import * as React from 'react';
 import { motion, useSpring, useTransform} from 'framer-motion';
 import styles from './intro.module.css';
 import ContactMe from '../Shared/ContactMe/contactme';
-import profilePicture from '../../assets/intro/portfolio-picture.jpg';
+import profilePicture from '../../assets/intro/portfolio-picture.webp';
 
 const Intro = () => {
 
