@@ -20,10 +20,12 @@ const DegreeModal = ({degree, open, handleClose}: Props) => {
                 '& .MuiDialog-paper': {
                     maxWidth: 800,
                     margin: '8px',
+                    padding: '1em'
                 }
             }}
+            aria-labelledby="dialog-title"
         >
-            <DialogTitle id="scroll-dialog-title">{title} Details</DialogTitle>
+            <DialogTitle id="dialog-title">{title} Details</DialogTitle>
             <DialogContent style={{ display: 'flex', flexWrap: 'wrap' }}>
                 { 
                     awards.length !== 0 && 

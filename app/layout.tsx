@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@mui/material";
-import theme from "./theme";
 
 export const metadata: Metadata = {
   title: "Resume - Cody Maness",
@@ -20,9 +18,7 @@ export default function RootLayout({
       </head>
 
       <body>
-        <ThemeProvider theme={theme}>
-          { children }
-        </ThemeProvider>
+        { children }
       </body>
     </html>
   );

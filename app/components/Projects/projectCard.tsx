@@ -1,27 +1,53 @@
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
+"use client"
+import { Card, CardActionArea, CardContent, Chip, Typography } from '@mui/material';
 import * as React from 'react';
 import Project from './project';
+import ProjectModal from './projectModal';
+import Image from "next/image";
 
 const ProjectCard = (project: Project) => {
 
-    return (
-        <Card>
-            <CardMedia
-                sx={{ height: 140 }}
-                image="/static/images/cards/contemplative-reptile.jpg"
-                title="green iguana"
-            />
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                Lizard
-                </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
-                </Typography>
-            </CardContent>
-        </Card>
+    return (
+        <>
+            <Card 
+                elevation={3}
+                style={{ 
+                    margin: "8px", 
+                    flex: 1, 
+                    minWidth: "320px" 
+            }}>
+                <CardActionArea 
+                    style={{ height: '100%' }} 
+                    onClick={ handleOpen }
+                >
+                    <CardContent style={{ height: '100%'}}>
+                        <Typography gutterBottom variant="h5" component="h3">
+                            { project.title }
+                        </Typography>
+                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                            { project.description }
+                        </Typography>
+                        {
+                            project.tools.map(tool => {
+                                return (
+                                    <Chip
+                                        key={tool.title} 
+                                        icon={<Image src={tool.icon} alt={tool.title}/>}
+                                        label={tool.title}
+                                    />
+                                )
+                            })
+                        }
+                    </CardContent>
+                </CardActionArea>
+            </Card>
+
+            <ProjectModal project={project} open={open} handleClose={handleClose} />
+        </>
     )
 }
 

@@ -1,6 +1,3 @@
-.introLink svg {
-    padding: 0.5em;
-    width: 2em;
-    height: 2em;
+.intro svg {
     color: var(--primary-color);
 }

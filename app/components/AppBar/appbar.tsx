@@ -28,7 +28,11 @@ const PortfolioAppBar = () => {
                     {links.map((page) => (
                     <Link
                         key={ page }
-                        sx={{ my: 4, mx: 2, display: 'block' }}
+                        variant="h6"
+                        style={{ 
+                            display: 'block', 
+                            margin: '2em 1em' 
+                        }}
                         href={`#${page.toLowerCase()}`}
                     >
                         { page }

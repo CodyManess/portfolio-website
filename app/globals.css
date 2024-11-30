@@ -4,8 +4,8 @@
   --dark-grey: #282828;
   --black: #171717;
 
-  --primary-color: #2196f3;
-  --primary-dark: #1769aa;
+  --primary-color: #007AB8;
+  --primary-dark: #196db2;
   --primary-light: #4dabf5;
 
   --background: var(--white);
@@ -49,6 +49,10 @@ body {
   .MuiTypography-root {
     color: var(--white);
   }
+}
+
+.MuiChip-root {
+  margin: 0 4px;
 }
 
 section {

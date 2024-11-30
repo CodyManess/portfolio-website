@@ -1,5 +1,7 @@
-import { Container, Typography } from '@mui/material';
+import projects from '@/app/data/projects';
+import { Container, Stack, Typography } from '@mui/material';
 import * as React from 'react';
+import ProjectCard from './projectCard';
 
 const Projects = () => {
 
@@ -9,9 +11,15 @@ const Projects = () => {
                 <Typography variant="h2">
                     Projects
                 </Typography>
+                <Stack direction="row" sx={{ margin: "1em 0", flexWrap: "wrap" }}>
                 {
-                    
+                    projects.map((project) => {
+                        return (
+                            <ProjectCard key={project.title} { ...project } />
+                        )
+                    })
                 }
+                </Stack>
             </Container>
         </section>
     )

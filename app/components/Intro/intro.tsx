@@ -1,9 +1,9 @@
 "use client";
-import { Avatar, Container, Paper, Typography } from '@mui/material';
+import { Avatar, Paper, Typography } from '@mui/material';
 import * as React from 'react';
 import { motion, useSpring, useTransform} from 'framer-motion';
-import { GitHub, LinkedIn, Email, Article } from '@mui/icons-material';
 import styles from './intro.module.css';
+import ContactMe from '../Shared/ContactMe/contactme';
 
 const Intro = () => {
 
@@ -24,6 +24,7 @@ const Intro = () => {
                     height: "100vh",
                     backgroundColor: "var(--black)"
                 }}
+                className={styles.intro}
             >
                 <motion.div style={{
                     borderRadius: '4px',
@@ -52,19 +53,14 @@ const Intro = () => {
                         >
                             Cody Maness
                         </Typography>
-                        <Container 
-                            className={ styles.introLink }
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'space-around',
-                                flexWrap: 'wrap'
-                            }}   
+                        <Typography 
+                            variant="h5"
+                            component="h2"
+                            sx={{ textAlign: "center" }}
                         >
-                            <GitHub />
-                            <LinkedIn />
-                            <Email />
-                            <Article />
-                        </Container>
+                            Web & Mobile Developer
+                        </Typography>
+                        <ContactMe />
                     </Paper>
                 </motion.div>
             </section>
