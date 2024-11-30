@@ -13,6 +13,7 @@ const ProjectModal = ({project, open, handleClose}: Props) => {
             onClose={handleClose}
             keepMounted
             TransitionComponent={Slide}
+            closeAfterTransition={false}
             sx={{
                 '& .MuiDialog-paper': {
                     maxWidth: 800,
