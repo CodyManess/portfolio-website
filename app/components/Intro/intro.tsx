@@ -1,10 +1,11 @@
 "use client";
-import { Avatar, Paper, Typography } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 import * as React from 'react';
 import { motion, useSpring, useTransform} from 'framer-motion';
 import styles from './intro.module.css';
 import ContactMe from '../Shared/ContactMe/contactme';
 import profilePicture from '../../assets/intro/portfolio-picture.webp';
+import Image from 'next/image';
 
 const Intro = () => {
 
@@ -41,11 +42,15 @@ const Intro = () => {
                         padding: "1.5rem",
                         flexFlow: "column wrap"
                     }} elevation={3}>
-                        <Avatar sx={{
-                            margin: "1rem auto", 
-                            width: '9rem', height: '9rem'
-                        }}
-                            src={profilePicture.src}
+                        <Image 
+                            src={profilePicture} 
+                            alt="Cody Maness" 
+                            style={{ 
+                                margin: "1rem auto",
+                                width: '9rem', height: '9rem',
+                                borderRadius: '50%'
+                            }}
+                            priority
                         />
 
                         <Typography 

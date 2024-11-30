@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
+import { Roboto } from 'next/font/google'
 import "./globals.css";
+
+const roboto = Roboto({
+  weight: ['300', '400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: "Resume - Cody Maness",
@@ -12,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={roboto.className}>
       <head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </head>
