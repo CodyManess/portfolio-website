@@ -1,6 +1,7 @@
 'use client'
 import * as React from 'react';
 import { AppBar, Link, Slide, Toolbar, useScrollTrigger } from '@mui/material';
+import { navLinks } from '../../data/links';
 
 function HideOnScroll({ children }: {children?: React.ReactElement<unknown>}) {
     const trigger = useScrollTrigger();
@@ -15,27 +16,25 @@ function HideOnScroll({ children }: {children?: React.ReactElement<unknown>}) {
 
 const PortfolioAppBar = () => {
 
-    const links = ['Intro', 'Education', 'Experience', 'Projects']
-
     return (
         <HideOnScroll>
             <AppBar>
                 <Toolbar sx={{ 
                     justifyContent: "center", 
-                    display: { sm: 'flex' },
+                    display: { xs: 'none', sm: 'flex' },
                     background: 'var(--surface-color)'
                 }}>
-                    {links.map((page) => (
+                    {navLinks.map((page) => (
                     <Link
-                        key={ page }
+                        key={ page.title }
                         variant="h6"
                         style={{ 
                             display: 'block', 
                             margin: '2em 1em' 
                         }}
-                        href={`#${page.toLowerCase()}`}
+                        href={`#${page.title.toLowerCase()}`}
                     >
-                        { page }
+                        { page.title }
                     </Link>
                     ))}
                 </Toolbar>

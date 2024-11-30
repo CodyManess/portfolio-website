@@ -4,6 +4,7 @@ import Experience from './components/Experience/experience';
 import Education from './components/Education/education';
 import Projects from './components/Projects/projects';
 import Footer from './components/Footer/footer';
+import BottomNav from './components/BottomNav/bottomNav';
 
 export default function Home() {
   return (
@@ -21,6 +22,8 @@ export default function Home() {
       </main>
 
       <Footer />
+
+      <BottomNav />
     </>
   );
 }
