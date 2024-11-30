@@ -67,13 +67,13 @@ export default function RoleItem({date, title, companyName, companyLogo, descrip
                 </TimelineDot>
                 <TimelineConnector />
             </TimelineSeparator>
-            <TimelineContent>
+            <TimelineContent style={{ paddingRight: '0'}}>
                 <Paper 
                     elevation={3} 
                     style={{ padding: "1em" }}
                 >
                     <Typography variant="h6" component="h3">{title}</Typography>
-                    <Typography variant="subtitle1" component="p">{companyName}</Typography>
+                    <Typography variant="subtitle2">{companyName}</Typography>
                     <Typography
                         style={{ whiteSpace: "pre-line" }}
                     >

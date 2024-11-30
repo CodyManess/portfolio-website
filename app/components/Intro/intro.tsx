@@ -4,6 +4,7 @@ import * as React from 'react';
 import { motion, useSpring, useTransform} from 'framer-motion';
 import styles from './intro.module.css';
 import ContactMe from '../Shared/ContactMe/contactme';
+import profilePicture from '../../assets/intro/portfolio-picture.jpg';
 
 const Intro = () => {
 
@@ -22,13 +23,14 @@ const Intro = () => {
                 style={{ 
                     alignItems: "center",
                     height: "100vh",
-                    backgroundColor: "var(--black)"
+                    backgroundColor: "var(--black)",
+                    padding: "8px"
                 }}
                 className={styles.intro}
             >
                 <motion.div style={{
                     borderRadius: '4px',
-                    //boxShadow: pulsingBg
+                    boxShadow: pulsingBg
                 }}>
                     <Paper sx={{
                         display: "flex",
@@ -41,24 +43,25 @@ const Intro = () => {
                     }} elevation={3}>
                         <Avatar sx={{
                             margin: "1rem auto", 
-                            width: '8rem', height: '8rem'
+                            width: '9rem', height: '9rem'
                         }}
-                        >
-                            CM
-                        </Avatar>
+                            src={profilePicture.src}
+                        />
+
                         <Typography 
                             variant="h3"
                             component="h1"
-                            sx={{ textAlign: "center" }}
                         >
                             Cody Maness
                         </Typography>
                         <Typography 
                             variant="h5"
                             component="h2"
-                            sx={{ textAlign: "center" }}
                         >
                             Web & Mobile Developer
+                        </Typography>
+                        <Typography style={{ maxWidth: "400px", margin: "1em"}}>
+                        Mobile and Web Developer with a love for creating engaging, accessible, and user-friendly applications.
                         </Typography>
                         <ContactMe />
                     </Paper>
