@@ -22,6 +22,9 @@ export default function RootLayout({
     <html lang="en" className={roboto.className}>
       <head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="./assets/intro/portfolio-picture.webp" />
       </head>
 
       <body>
