@@ -1,12 +1,17 @@
 'use client'
 import * as React from 'react';
-import { BottomNavigation, BottomNavigationAction, Box, Link } from '@mui/material';
+import { BottomNavigation, BottomNavigationAction, Link, Paper } from '@mui/material';
 import { navLinks } from '@/app/data/links';
 
 const BottomNav = () => {
     const [value, setValue] = React.useState(navLinks[0].title.toLowerCase());
+
+    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+        setValue(newValue);
+      };
+
     return (
-        <Box 
+        <Paper 
             sx={{ 
                 display: { sm: 'none' },
                 position: 'fixed', bottom: 0, left: 0, right: 0 
@@ -16,14 +21,13 @@ const BottomNav = () => {
             <BottomNavigation
                 showLabels
                 value={value}
-                onChange={(event, newValue) => {
-                setValue(newValue);
-                }}
+                onChange={handleChange}
             >
                 {
                     navLinks.map((page) => (
-                        <BottomNavigationAction 
-                            key={page.title}
+                        <BottomNavigationAction
+                            style={{ color: 'var(--primary-color)' }}
+                            key={page.title.toLowerCase()}
                             component={Link} 
                             href={`#${page.title.toLowerCase()}`} 
                             label={page.title} 
@@ -33,7 +37,7 @@ const BottomNav = () => {
                     ))
                 }
             </BottomNavigation>
-        </Box>
+        </Paper>
     );
 }
 
