@@ -1,11 +1,11 @@
 "use client"
-import { Button, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 import * as React from 'react';
 import { Degree } from './school';
 import DegreeModal from './degreeModal';
 
 const SchoolCard = (degree : Degree) => {
-    const { schoolName, schoolPhoto, title, subtitle, courses } = degree
+    const { schoolName, schoolPhoto, title, subtitle } = degree
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);

@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react';
-import { AppBar, Box, Button, Link, Slide, Toolbar, useScrollTrigger } from '@mui/material';
+import { AppBar, Link, Slide, Toolbar, useScrollTrigger } from '@mui/material';
 
 function HideOnScroll({ children }: {children?: React.ReactElement<unknown>}) {
     const trigger = useScrollTrigger();

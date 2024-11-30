@@ -1,4 +1,4 @@
-import { Chip, Dialog, DialogContent, DialogTitle, Slide, SvgIcon, Typography } from "@mui/material";
+import { Chip, Dialog, DialogContent, DialogTitle, Slide, Typography } from "@mui/material";
 import Project from "./project"
 import Image from "next/image";
 
