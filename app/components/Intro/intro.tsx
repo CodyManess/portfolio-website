@@ -4,7 +4,6 @@ import * as React from 'react';
 import { motion, useSpring, useTransform} from 'framer-motion';
 import styles from './intro.module.css';
 import ContactMe from '../Shared/ContactMe/contactme';
-import profilePicture from '../../assets/intro/portfolio-picture.webp';
 import Image from 'next/image';
 
 const Intro = () => {
@@ -43,11 +42,12 @@ const Intro = () => {
                         flexFlow: "column wrap"
                     }} elevation={3}>
                         <Image 
-                            src={profilePicture} 
+                            src="/portfolio-picture.webp"
                             alt="Cody Maness" 
+                            width='144'
+                            height='144'
                             style={{ 
                                 margin: "1rem auto",
-                                width: '9rem', height: '9rem',
                                 borderRadius: '50%'
                             }}
                             priority
