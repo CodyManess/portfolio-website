@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
                 <Typography variant="h3" style={{ marginBottom: '1em' }}>
                     Thank you for visiting my website!
                 </Typography>
-                <Typography variant="h6">
+                <Typography component="p" variant="h6">
                     This was built with the help of some wonderful technologies including Next.js, Material-UI, and TypeScript.<br />
                     If you would like to see the source code for this website, please visit my GitHub page. <br/>
                     If you have any feedback, feel free to add an issue to the repo or reach out to me directly.  I would love to hear from you!

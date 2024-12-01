@@ -1,6 +1,8 @@
+import { StaticImageData } from "next/image"
+
 export interface Degree {
     schoolName: string,
-    schoolPhoto: string,
+    schoolPhoto: StaticImageData,
     title: string,
     subtitle: string,
     awards: string[],

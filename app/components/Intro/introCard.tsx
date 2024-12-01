@@ -2,14 +2,14 @@
 import React from 'react';
 import styles from './intro.module.css';
 import ContactMe from '../Shared/ContactMe/contactme';
+import profilePic from '@/assets/intro/portfolio-picture.webp'
+import Image from 'next/image';
 
 interface IntroCardProps {
-    imageData?: ArrayBuffer | null;
+    imageData?: ArrayBuffer;
 }
 
 const IntroCard: React.FC<IntroCardProps> = ({imageData}: IntroCardProps) => {
-
-    const introImage = imageData ? imageData : "https://codymaness.com/opengraph-image.jpg";
     
     return (
         <div className={ styles.intro } 
@@ -20,16 +20,31 @@ const IntroCard: React.FC<IntroCardProps> = ({imageData}: IntroCardProps) => {
                 backgroundColor: imageData ? "white" : "var(--surface-background)",
                 borderRadius: "4px",
         }}>
-            <img 
-                src={introImage as string}
-                alt="Cody Maness" 
-                width='144'
-                height='144'
-                style={{ 
-                    margin: "1rem auto",
-                    borderRadius: '50%'
-                }}
-            />
+            { 
+                imageData && <img 
+                    src={imageData as unknown as string}
+                    alt="Cody Maness"
+                    width="743px" height="743px"
+                    style={{
+                        margin: "1em auto",
+                        width: '180px', height: '180px',
+                        borderRadius: '50%'
+                    }}
+                />
+            }
+            {
+                !imageData && <Image 
+                    priority
+                    src={profilePic} 
+                    width={500} height={500}
+                    alt="Cody Maness"
+                    style={{
+                        margin: "1em auto",
+                        width: '180px', height: 'auto',
+                        borderRadius: '50%'
+                    }}
+                />
+            }
 
             <h1 style={{ margin: "0.5rem auto", fontSize: "3rem" }}>
                 Cody Maness

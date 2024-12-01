@@ -3,6 +3,7 @@ import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/m
 import * as React from 'react';
 import { Degree } from '../../models/school';
 import DegreeModal from './degreeModal';
+import Image from 'next/image';
 
 const SchoolCard = (degree : Degree) => {
     const { schoolName, schoolPhoto, title, subtitle } = degree
@@ -20,11 +21,14 @@ const SchoolCard = (degree : Degree) => {
                 <CardActionArea 
                     onClick={ handleOpen }
                 >
-                    <CardMedia
-                        component="img"
-                        sx={{ height: 180 }}
-                        src={ schoolPhoto }
-                    />
+                    <CardMedia style={{ height: "180px" }}>
+                        <Image 
+                            src={ schoolPhoto }
+                            width={schoolPhoto.width} height={schoolPhoto.height}
+                            alt={ schoolName } 
+                            style={{ objectFit: "cover", height: "180px", width: "100%" }}
+                        />
+                    </CardMedia>
                     <CardContent>
                         <Typography 
                             gutterBottom 
@@ -40,7 +44,7 @@ const SchoolCard = (degree : Degree) => {
                             {title}
                         </Typography>
                         {
-                            subtitle && <Typography variant="subtitle2">
+                            subtitle && <Typography variant="subtitle2" component="h5">
                                 {subtitle}
                             </Typography>
                         }

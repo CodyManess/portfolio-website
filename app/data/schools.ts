@@ -6,7 +6,7 @@ import { Degree, CourseType } from "../models/school";
 export const schools: Degree[] = [
     {
         schoolName: "Middle Tennessee State University",
-        schoolPhoto: mtsuPhoto.src,
+        schoolPhoto: mtsuPhoto,
         title: "Bachelor of Science in Computer Science",
         subtitle: "Minoring in Communications and Mathematics",
         awards: [
@@ -129,7 +129,7 @@ export const schools: Degree[] = [
     },
     {
         schoolName: "Middle Tennessee State University",
-        schoolPhoto: mtsuPhoto2.src,
+        schoolPhoto: mtsuPhoto2,
         title: "Master of Science in Computer Science",
         subtitle: "",
         awards: ["Accelerated Bachelors to Masters Program"],
@@ -193,7 +193,7 @@ export const schools: Degree[] = [
     },
     {
         schoolName: "Louisiana State University - Shreveport",
-        schoolPhoto: lsusPhoto.src,
+        schoolPhoto: lsusPhoto,
         title: "Master of Business Administration",
         subtitle: "Concentrating in Finance",
         awards: [],

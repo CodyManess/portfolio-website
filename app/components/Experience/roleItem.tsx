@@ -59,9 +59,13 @@ export default function RoleItem({date, title, companyName, companyLogo, descrip
                     color="primary"
                 >
                     <Image
-                        style={{ margin: "auto" }}
-                        width={60} height={30}
+                        style={{ 
+                            margin: "auto", 
+                            maxWidth: "100%", 
+                            height: "auto"
+                        }}
                         src={companyLogo}
+                        width={companyLogo.width} height={companyLogo.height}
                         alt={`${companyName} Logo`}
                      />
                 </TimelineDot>
@@ -73,7 +77,7 @@ export default function RoleItem({date, title, companyName, companyLogo, descrip
                     style={{ padding: "1em" }}
                 >
                     <Typography variant="h6" component="h3">{title}</Typography>
-                    <Typography variant="subtitle2">{companyName}</Typography>
+                    <Typography variant="subtitle2" component="h4">{companyName}</Typography>
                     <Typography
                         style={{ whiteSpace: "pre-line" }}
                     >
