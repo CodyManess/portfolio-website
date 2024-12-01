@@ -11,6 +11,11 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Resume - Cody Maness",
   description: "Resume website for Cody Maness, a Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.",
+  openGraph: {
+    title: "Resume - Cody Maness",
+    description: "Resume website for Cody Maness",
+    images: "https://portfolio-website--plucky-portal-443303-i2.us-central1.hosted.app/portfolio-picture.webp",
+  }
 };
 
 export default function RootLayout({
@@ -22,9 +27,6 @@ export default function RootLayout({
     <html lang="en" className={roboto.className}>
       <head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="/portfolio-picture.webp" />
       </head>
 
       <body>
