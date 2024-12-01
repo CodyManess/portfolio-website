@@ -2,6 +2,8 @@
 import * as React from 'react';
 import { motion, useSpring, useTransform} from 'framer-motion';
 import IntroCard from './introCard';
+import { ExpandMore } from '@mui/icons-material';
+import styles from './intro.module.css';
 
 const Intro = () => {
 
@@ -21,7 +23,8 @@ const Intro = () => {
                     alignItems: "center",
                     height: "100vh",
                     backgroundColor: "var(--black)",
-                    padding: "8px"
+                    padding: "8px",
+                    flexDirection: "column"
                 }}
             >
                 <motion.div style={{
@@ -30,6 +33,7 @@ const Intro = () => {
                 }}>
                     <IntroCard />
                 </motion.div>
+                <ExpandMore className={styles.arrowPulseDown}/>
             </section>
     );
 };
