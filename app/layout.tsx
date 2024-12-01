@@ -9,11 +9,15 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://portfolio-website--plucky-portal-443303-i2.us-central1.hosted.app'),
   title: "Resume - Cody Maness",
   description: "Resume website for Cody Maness, a Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.",
   openGraph: {
     title: "Resume - Cody Maness",
-    description: "Resume website for Cody Maness"
+    description: "Resume website for Cody Maness",
+    siteName: 'Resume - Cody Maness',
+    locale: 'en_US',
+    type: 'website',
   }
 };
 
