@@ -1,34 +1,30 @@
 import { GitHub, LinkedIn, Email } from "@mui/icons-material"
-import { Container } from "@mui/material"
 import styles from "./contactme.module.css";
 import { socialLinks } from '../../../data/links';
-import Link from "next/link";
-
 
 const ContactMe: React.FC = () => {
     return (
-        <Container 
+        <div 
             className={ styles.contactMe }
-            sx={{
+            style={{
                 display: 'flex',
                 justifyContent: 'space-around',
                 flexWrap: 'wrap',
-                maxWidth: 500
             }}
         >
-            <Link href={socialLinks.GitHub} aria-label="GitHub">
+            <a href={socialLinks.GitHub} aria-label="GitHub">
                 <GitHub />
-            </Link>
-            <Link href={socialLinks.LinkedIn} aria-label="LinkedIn">
+            </a>
+            <a href={socialLinks.LinkedIn} aria-label="LinkedIn">
                 <LinkedIn />
-            </Link>
-            <Link href={socialLinks.Email} aria-label="Email">
+            </a>
+            <a href={socialLinks.Email} aria-label="Email">
                 <Email />
-            </Link>
+            </a>
             {/* <Link href={Links.GitHub} aria-label="Article">
                 <Article />
             </Link> */}
-        </Container>
+        </div>
     )
 }
 
