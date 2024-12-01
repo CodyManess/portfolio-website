@@ -13,8 +13,7 @@ export const metadata: Metadata = {
   description: "Resume website for Cody Maness, a Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.",
   openGraph: {
     title: "Resume - Cody Maness",
-    description: "Resume website for Cody Maness",
-    images: "https://portfolio-website--plucky-portal-443303-i2.us-central1.hosted.app/portfolio-picture.webp",
+    description: "Resume website for Cody Maness"
   }
 };
 
