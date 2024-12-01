@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react';
 import { BottomNavigation, BottomNavigationAction, Link, Paper } from '@mui/material';
-import { navLinks } from '@/app/data/links';
+import { navLinks } from '@/data/links';
 
 const BottomNav = () => {
     const [value, setValue] = React.useState(navLinks[0].title.toLowerCase());
