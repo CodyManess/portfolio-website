@@ -4,7 +4,7 @@ import javaIcon from "../assets/tool-icons/language-java.svg";
 import nodejsIcon from "../assets/tool-icons/nodejs.svg";
 import kotlinIcon from "../assets/tool-icons/language-kotlin.svg";
 import angularIcon from "../assets/tool-icons/angular.svg";
-import { Tool } from "../components/Projects/project";
+import { Tool } from "../models/project";
 
 const Tools: {[key: string]: Tool} = {
     React: {

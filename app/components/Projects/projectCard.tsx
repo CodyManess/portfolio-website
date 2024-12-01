@@ -1,7 +1,7 @@
 "use client"
 import { Card, CardActionArea, CardContent, Chip, Typography } from '@mui/material';
 import * as React from 'react';
-import Project from './project';
+import Project from '../../models/project';
 import ProjectModal from './projectModal';
 import Image from "next/image";
 

@@ -1,5 +1,5 @@
 import { Chip, Dialog, DialogContent, DialogTitle, Slide, Typography } from "@mui/material";
-import Project from "./project"
+import Project from "../../models/project"
 import Image from "next/image";
 
 interface Props {

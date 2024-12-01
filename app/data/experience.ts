@@ -1,4 +1,4 @@
-import Role from "../components/Experience/role"
+import Role from "../models/role"
 import cignaLogo from "../assets/work-icons/cigna.webp"
 import mtsuLogo from "../assets/work-icons/mtsu.webp"
 

@@ -1,6 +1,6 @@
 "use client"
 import * as React from 'react';
-import { CourseType, Degree } from './school';
+import { CourseType, Degree } from '../../models/school';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, List, ListItem, Slide, Typography } from '@mui/material';
 
 interface Props {

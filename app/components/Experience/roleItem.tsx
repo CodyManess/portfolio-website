@@ -2,7 +2,7 @@ import { TimelineOppositeContent, TimelineItem, TimelineContent, TimelineConnect
 import { Paper, Typography } from "@mui/material"
 import React, { useEffect, useState } from "react"
 import Image from 'next/image'
-import Role from "./role"
+import Role from "../../models/role"
 
 export default function RoleItem({date, title, companyName, companyLogo, description}: Role) {
 

@@ -1,7 +1,7 @@
 "use client"
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 import * as React from 'react';
-import { Degree } from './school';
+import { Degree } from '../../models/school';
 import DegreeModal from './degreeModal';
 
 const SchoolCard = (degree : Degree) => {

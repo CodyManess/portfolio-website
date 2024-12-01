@@ -20,16 +20,22 @@ export default async function Image() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: "var(--dark-grey)",
+                backgroundColor: "#171717",
                 width: "100%",
                 height: "100%"
         }}>
-            <IntroCard imageData={ await image } />
+            <div style={{
+                display: "flex",
+                borderRadius: "4px",
+                boxShadow: "0 0 30px 30px #007AB8"
+            }}>
+                <IntroCard imageData={ await image } />
+            </div>
         </div>
     ),
     {
         width: 800,
-        height: 500
+        height: 600
     }
   )
 }

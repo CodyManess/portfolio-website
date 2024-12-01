@@ -20,7 +20,7 @@ const Intro = () => {
                 style={{ 
                     alignItems: "center",
                     height: "100vh",
-                    backgroundColor: "var(--dark-grey)",
+                    backgroundColor: "var(--black)",
                     padding: "8px"
                 }}
             >

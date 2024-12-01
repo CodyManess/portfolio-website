@@ -1,7 +1,7 @@
 import mtsuPhoto from "../assets/education/mtsucampus.webp";
 import mtsuPhoto2 from "../assets/education/mtsucampus2.webp";
 import lsusPhoto from "../assets/education/lsuscampus.webp";
-import { Degree, CourseType } from "../components/Education/school";
+import { Degree, CourseType } from "../models/school";
 
 export const schools: Degree[] = [
     {

@@ -1,4 +1,4 @@
-import Project from "../components/Projects/project";
+import Project from "../models/project";
 import Tools from "./tools";
 
 const projects: Project[] = [
