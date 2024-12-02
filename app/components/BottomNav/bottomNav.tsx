@@ -22,11 +22,12 @@ const BottomNav = () => {
                 showLabels
                 value={value}
                 onChange={handleChange}
+                style={{ backgroundColor: 'var(--surface-color)' }}
             >
                 {
                     navLinks.map((page) => (
                         <BottomNavigationAction
-                            style={{ color: 'var(--primary-color)' }}
+                            style={{ color: 'var(--primary-light)' }}
                             key={page.title.toLowerCase()}
                             component={Link} 
                             href={`#${page.title.toLowerCase()}`} 

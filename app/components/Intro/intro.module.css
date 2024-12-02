@@ -30,6 +30,6 @@
     position: absolute;
 	margin: 0 auto;
 	left: 0; right: 0;
-	font-size: 100px;
-	animation: arrow-pulse-down 2000ms linear infinite;
+	font-size: 6em;
+	animation: arrow-pulse-down 2500ms linear infinite;
 }
