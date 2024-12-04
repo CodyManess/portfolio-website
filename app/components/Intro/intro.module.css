@@ -1,22 +1,35 @@
-.intro svg {
+.intro {
+    height: calc(100vh - 56px);
+    background-color: var(--black);
+    padding: 8px;
+    align-items: center;
+    position: relative;
+    z-index: -1;
+
+    @media only screen and (min-width: 600px) {
+        height: 100vh;
+    }
+}
+
+.introCard svg {
     color: var(--primary-color);
 }
 
-.intro h1 {
+.introCard h1 {
     text-align: center;
 }
 
-.intro h2 {
+.introCard h2 {
     text-align: center;
 }
 
-.intro p {
+.introCard p {
     text-align: center;
 }
 
 @keyframes arrow-pulse-down {
     0% {
-        bottom: 50px;
+        bottom: 30px;
         opacity: 0;
     }
     100% {

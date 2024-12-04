@@ -71,7 +71,7 @@ export default function RoleItem({date, title, companyName, companyLogo, descrip
                 </TimelineDot>
                 <TimelineConnector />
             </TimelineSeparator>
-            <TimelineContent style={{ paddingRight: '0'}}>
+            <TimelineContent style={{ padding: '6px 0 6px 0.5em'}}>
                 <Paper 
                     elevation={3} 
                     style={{ padding: "1em" }}

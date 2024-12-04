@@ -12,7 +12,7 @@ interface IntroCardProps {
 const IntroCard: React.FC<IntroCardProps> = ({imageData}: IntroCardProps) => {
     
     return (
-        <div className={ styles.intro } 
+        <div className={ styles.introCard } 
             style={{
                 display: "flex",
                 padding: "1rem 1.5rem",

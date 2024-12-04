@@ -19,17 +19,12 @@ const Intro = () => {
     return (
             <section
                 id="intro" 
-                style={{ 
-                    alignItems: "center",
-                    height: "100vh",
-                    backgroundColor: "var(--black)",
-                    padding: "8px",
-                    flexDirection: "column"
-                }}
+                className={styles.intro}
             >
                 <motion.div style={{
                     borderRadius: '4px',
-                    boxShadow: pulsingBg
+                    boxShadow: pulsingBg,
+                    height: 'fit-content',
                 }}>
                     <IntroCard />
                 </motion.div>

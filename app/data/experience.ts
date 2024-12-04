@@ -8,7 +8,7 @@ export const roles: Array<Role> = [
         title: "Software Engineering Advisor",
         companyName: "The Cigna Group",
         companyLogo: cignaLogo,
-        description: "I work as an iOS Developer"
+        description: "I work as a Full-Stack Developer on the myCigna Coverages team."
     },
     {
         date: "June 2023",

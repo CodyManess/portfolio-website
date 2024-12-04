@@ -6,129 +6,6 @@ import { Degree, CourseType } from "../models/school";
 export const schools: Degree[] = [
     {
         schoolName: "Middle Tennessee State University",
-        schoolPhoto: mtsuPhoto,
-        title: "Bachelor of Science in Computer Science",
-        subtitle: "Minoring in Communications and Mathematics",
-        awards: [
-            "Summa Cum Laude", 
-            "University Honors with Distinction",
-            "Accelerated Bachelors to Masters (ABM) Program"
-        ],
-        courses: [
-            // Core Courses
-            {
-                courseType: CourseType.Core,
-                courseNum: "CSCI 1010",
-                title: "Computer Science Colloquium"
-            },
-            {
-                courseType: CourseType.Core,
-                courseNum: "CSCI 2170",
-                title: "Computer Science I"
-            },
-            {
-                courseType: CourseType.Core,
-                courseNum: "CSCI 2170",
-                title: "Computer Science II"
-            },
-            {
-                courseType: CourseType.Core,
-                courseNum: "CSCI 3080",
-                title: "Discrete Structures"
-            },
-            {
-                courseType: CourseType.Core,
-                courseNum: "CSCI 3110",
-                title: "Algorithms and Data Structures"
-            },
-            {
-                courseType: CourseType.Core,
-                courseNum: "CSCI 3130",
-                title: "Assembly and Computer Organization"
-            },
-            {
-                courseType: CourseType.Core,
-                courseNum: "CSCI 3240",
-                title: "Introduction to Computer Systems"
-            },
-            {
-                courseType: CourseType.Core,
-                courseNum: "CSCI 4700",
-                title: "Software Engineering"
-            },
-
-            // Concentration Courses
-            {
-                courseType: CourseType.Concentration,
-                courseNum: "CSCI 3210",
-                title: "Theory of Programming Languages"
-            },
-            {
-                courseType: CourseType.Concentration,
-                courseNum: "CSCI 4160",
-                title: "Computer Design and Software Development"
-            },
-            {
-                courseType: CourseType.Concentration,
-                courseNum: "CSCI 3033",
-                title: "Computer Languages Java"
-            },
-            {
-                courseType: CourseType.Concentration,
-                courseNum: "CSCI 5350",
-                title: "Intro to Artificial Intelligence"
-            },
-            {
-                courseType: CourseType.Concentration,
-                courseNum: "CSCI 5410",
-                title: "Web Technologies"
-            },
-            {
-                courseType: CourseType.Concentration,
-                courseNum: "CSCI 5560",
-                title: "Database Management Systems"
-            },
-            {
-                courseType: CourseType.Concentration,
-                courseNum: "CSCI 5700",
-                title: "Software Engineering"
-            },
-
-            // Supporting Courses
-            {
-                courseType: CourseType.SupportCourses,
-                courseNum: "MATH 1910",
-                title: "Calculus I"
-            },
-            {
-                courseType: CourseType.SupportCourses,
-                courseNum: "MATH 1920",
-                title: "Calculus II"
-            },
-            {
-                courseType: CourseType.SupportCourses,
-                courseNum: "MATH 1930",
-                title: "Calculus III"
-            },
-            {
-                courseType: CourseType.SupportCourses,
-                courseNum: "MATH 1920",
-                title: "Probability and Statistics"
-            },
-            {
-                courseType: CourseType.SupportCourses,
-                courseNum: "MATH 3460",
-                title: "Foundation of Higher Mathematics"
-            },
-            {
-                courseType: CourseType.SupportCourses,
-                courseNum: "PHIL 3170",
-                title: "Ethics and Computer Technology"
-            },
-        ]
-    },
-    {
-        schoolName: "Middle Tennessee State University",
         schoolPhoto: mtsuPhoto2,
         title: "Master of Science in Computer Science",
         subtitle: "",
@@ -255,6 +132,129 @@ export const schools: Degree[] = [
                 courseType: CourseType.Concentration,
                 courseNum: "MBA 728",
                 title: "Financial Analytics"
+            },
+        ]
+    },
+    {
+        schoolName: "Middle Tennessee State University",
+        schoolPhoto: mtsuPhoto,
+        title: "Bachelor of Science in Computer Science",
+        subtitle: "Minoring in Communications and Mathematics",
+        awards: [
+            "Summa Cum Laude", 
+            "University Honors with Distinction",
+            "Accelerated Bachelors to Masters (ABM) Program"
+        ],
+        courses: [
+            // Core Courses
+            {
+                courseType: CourseType.Core,
+                courseNum: "CSCI 1010",
+                title: "Computer Science Colloquium"
+            },
+            {
+                courseType: CourseType.Core,
+                courseNum: "CSCI 2170",
+                title: "Computer Science I"
+            },
+            {
+                courseType: CourseType.Core,
+                courseNum: "CSCI 2170",
+                title: "Computer Science II"
+            },
+            {
+                courseType: CourseType.Core,
+                courseNum: "CSCI 3080",
+                title: "Discrete Structures"
+            },
+            {
+                courseType: CourseType.Core,
+                courseNum: "CSCI 3110",
+                title: "Algorithms and Data Structures"
+            },
+            {
+                courseType: CourseType.Core,
+                courseNum: "CSCI 3130",
+                title: "Assembly and Computer Organization"
+            },
+            {
+                courseType: CourseType.Core,
+                courseNum: "CSCI 3240",
+                title: "Introduction to Computer Systems"
+            },
+            {
+                courseType: CourseType.Core,
+                courseNum: "CSCI 4700",
+                title: "Software Engineering"
+            },
+
+            // Concentration Courses
+            {
+                courseType: CourseType.Concentration,
+                courseNum: "CSCI 3210",
+                title: "Theory of Programming Languages"
+            },
+            {
+                courseType: CourseType.Concentration,
+                courseNum: "CSCI 4160",
+                title: "Computer Design and Software Development"
+            },
+            {
+                courseType: CourseType.Concentration,
+                courseNum: "CSCI 3033",
+                title: "Computer Languages Java"
+            },
+            {
+                courseType: CourseType.Concentration,
+                courseNum: "CSCI 5350",
+                title: "Intro to Artificial Intelligence"
+            },
+            {
+                courseType: CourseType.Concentration,
+                courseNum: "CSCI 5410",
+                title: "Web Technologies"
+            },
+            {
+                courseType: CourseType.Concentration,
+                courseNum: "CSCI 5560",
+                title: "Database Management Systems"
+            },
+            {
+                courseType: CourseType.Concentration,
+                courseNum: "CSCI 5700",
+                title: "Software Engineering"
+            },
+
+            // Supporting Courses
+            {
+                courseType: CourseType.SupportCourses,
+                courseNum: "MATH 1910",
+                title: "Calculus I"
+            },
+            {
+                courseType: CourseType.SupportCourses,
+                courseNum: "MATH 1920",
+                title: "Calculus II"
+            },
+            {
+                courseType: CourseType.SupportCourses,
+                courseNum: "MATH 1930",
+                title: "Calculus III"
+            },
+            {
+                courseType: CourseType.SupportCourses,
+                courseNum: "MATH 1920",
+                title: "Probability and Statistics"
+            },
+            {
+                courseType: CourseType.SupportCourses,
+                courseNum: "MATH 3460",
+                title: "Foundation of Higher Mathematics"
+            },
+            {
+                courseType: CourseType.SupportCourses,
+                courseNum: "PHIL 3170",
+                title: "Ethics and Computer Technology"
             },
         ]
     },
