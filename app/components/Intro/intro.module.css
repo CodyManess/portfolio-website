@@ -1,4 +1,4 @@
-div.intro {
+section.intro {
     height: calc(100vh - 56px);
     background-color: var(--black);
     padding: 8px;
