@@ -1,4 +1,4 @@
-import { Container, Divider, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import React from 'react';
 import ContactMe from '../Shared/ContactMe/contactme';
 import styles from './footer.module.css';
