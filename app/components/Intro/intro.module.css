@@ -1,4 +1,4 @@
-.intro {
+div.intro {
     height: calc(100vh - 56px);
     background-color: var(--black);
     padding: 8px;
@@ -38,7 +38,7 @@
     }
 }
 
-.arrowPulseDown {
+svg.arrowPulseDown {
     color: var(--white);
     position: absolute;
 	margin: 0 auto;
