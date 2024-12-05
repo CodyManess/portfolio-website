@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
                 <hr style={{ margin: "3em 0"}} />
 
                 <Typography component="p">
-                    This website would not be possible without some wonderful open-source technologies including Next.js, Material-UI, and Motion for React.<br />
+                    This website would not be possible without some wonderful open-source technologies including Next.js, Material-UI, and Typescript.<br />
                     Please consider supporting these projects if you can. ♡ <br />
                     If you would like to see the source code for this website, please visit my GitHub page. <br/>
                 </Typography>
