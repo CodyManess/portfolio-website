@@ -19,7 +19,7 @@ export const navLinks = [
         icon: WorkIcon,
     },
     {
-        title: "Education",
+        title: "Credentials",
         icon: SchoolIcon,
     },
     {

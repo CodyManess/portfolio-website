@@ -7,6 +7,7 @@ export const schools: Degree[] = [
     {
         schoolName: "Middle Tennessee State University",
         schoolPhoto: mtsuPhoto2,
+        schoolLink: "https://www.mtsu.edu/program/computer-science-m-s/",
         title: "Master of Science in Computer Science",
         subtitle: "",
         awards: ["Accelerated Bachelors to Masters Program"],
@@ -71,6 +72,7 @@ export const schools: Degree[] = [
     {
         schoolName: "Louisiana State University - Shreveport",
         schoolPhoto: lsusPhoto,
+        schoolLink: "https://www.lsus.edu/academics/graduate-studies/master-of-business-administration",
         title: "Master of Business Administration",
         subtitle: "Concentrating in Finance",
         awards: [],
@@ -138,6 +140,7 @@ export const schools: Degree[] = [
     {
         schoolName: "Middle Tennessee State University",
         schoolPhoto: mtsuPhoto,
+        schoolLink: "https://www.mtsu.edu/program/computer-science-professional-computer-science-concentration-b-s/",
         title: "Bachelor of Science in Computer Science",
         subtitle: "Minoring in Communications and Mathematics",
         awards: [
