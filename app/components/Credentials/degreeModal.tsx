@@ -44,7 +44,7 @@ const DegreeModal = ({degree, open, handleClose}: Props) => {
                             color: 'var(--primary-color)', 
                             marginBottom: '1em'
                     }}>
-                        Program Link <OpenInNewIcon fontSize="sm" />
+                        Program Link <OpenInNewIcon fontSize="small" />
                     </Link>
                     {
                         awards.length !== 0 && <>
