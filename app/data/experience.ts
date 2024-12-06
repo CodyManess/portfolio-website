@@ -1,6 +1,16 @@
-import Role from "../models/role"
-import cignaLogo from "../assets/work-icons/cigna.webp"
-import mtsuLogo from "../assets/work-icons/mtsu.webp"
+import Role from "../models/role";
+
+const cignaLogo = {
+    src: "/work-icons/cigna.webp",
+    height: 284,
+    width: 154
+}
+const mtsuLogo = {
+    src: "/work-icons/mtsu.webp",
+    height: 300,
+    width: 157
+}
+
 
 export const roles: Array<Role> = [
     {

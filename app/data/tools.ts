@@ -1,35 +1,29 @@
-import reactIcon from "../assets/tool-icons/react.svg";
-import swiftIcon from "../assets/tool-icons/language-swift.svg";
-import javaIcon from "../assets/tool-icons/language-java.svg";
-import nodejsIcon from "../assets/tool-icons/nodejs.svg";
-import kotlinIcon from "../assets/tool-icons/language-kotlin.svg";
-import angularIcon from "../assets/tool-icons/angular.svg";
-import { Tool } from "../models/project";
+import { Tool } from "@/models/project";
 
 const Tools: {[key: string]: Tool} = {
     React: {
         title: "React",
-        icon: reactIcon
+        icon: "/tool-icons/react.svg"
     },
     Swift: {
         title: "Swift",
-        icon: swiftIcon
+        icon: "/tool-icons/language-swift.svg"
     },
     Java: {
         title: "Java",
-        icon: javaIcon
+        icon: "/tool-icons/language-java.svg"
     },
     NodeJS: {
         title: "NodeJS",
-        icon: nodejsIcon
+        icon: "/tool-icons/nodejs.svg"
     },
     Angular: {
         title: "Angular",
-        icon: angularIcon
+        icon: "/tool-icons/angular.svg"
     },
     Kotlin: {
         title: "Kotlin",
-        icon: kotlinIcon
+        icon: "/tool-icons/language-kotlin.svg"
     }
 }
 

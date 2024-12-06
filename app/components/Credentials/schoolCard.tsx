@@ -21,12 +21,12 @@ const SchoolCard = (degree : Degree) => {
                 <CardActionArea 
                     onClick={ handleOpen }
                 >
-                    <CardMedia style={{ height: "180px" }}>
-                        <Image 
+                    <CardMedia style={{ height: "180px", width: "100%", position: 'relative' }}>
+                        <Image fill
                             src={ schoolPhoto }
-                            width={schoolPhoto.width} height={schoolPhoto.height}
                             alt={ schoolName } 
-                            style={{ objectFit: "cover", height: "180px", width: "100%" }}
+                            sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            style={{ objectFit: "cover" }}
                         />
                     </CardMedia>
                     <CardContent>

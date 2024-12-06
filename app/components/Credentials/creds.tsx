@@ -27,7 +27,7 @@ const Creds = () => {
                 }}>
                 {
                     certs.map((cert) => (
-                        <Image 
+                        <Image
                             src={cert.icon} 
                             alt={cert.alt} 
                             width={150} height={150}

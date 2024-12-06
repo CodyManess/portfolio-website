@@ -2,7 +2,6 @@
 import React from 'react';
 import styles from './intro.module.css';
 import ContactMe from '../Shared/ContactMe/contactme';
-import profilePic from '@/assets/intro/portfolio-picture.webp'
 import Image from 'next/image';
 
 interface IntroCardProps {
@@ -20,32 +19,30 @@ const IntroCard: React.FC<IntroCardProps> = ({imageData}: IntroCardProps) => {
                 backgroundColor: imageData ? "white" : "var(--surface-background)",
                 borderRadius: "4px",
         }}>
+        <div style={{
+            margin: "1em auto",
+            width: '180px', height: '180px',
+            position: 'relative',
+            borderRadius: '50%',
+            overflow: 'hidden',
+        }}>
             { 
                 imageData && <img 
                     src={imageData as unknown as string}
                     alt="Cody Maness"
                     width="743px" height="743px"
-                    style={{
-                        margin: "1em auto",
-                        width: '180px', height: '180px',
-                        borderRadius: '50%'
-                    }}
+                    style={{ width: "100%", height: "100%" }}
                 />
             }
             {
                 !imageData && <Image 
-                    priority
-                    src={profilePic} 
-                    width={500} height={500}
+                    fill priority
+                    src="/intro/portfolio-picture.webp"
+                    sizes="(max-width: 600px) 50vw, (max-width: 1200px) 33vw"
                     alt="Cody Maness"
-                    style={{
-                        margin: "1em auto",
-                        width: '180px', height: 'auto',
-                        borderRadius: '50%'
-                    }}
                 />
             }
-
+        </div>
             <h1 style={{ margin: "0.5rem auto", fontSize: "3rem" }}>
                 Cody Maness
             </h1>

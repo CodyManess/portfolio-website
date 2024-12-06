@@ -6,7 +6,7 @@ interface Cert {
 
 export const certs: Cert[] = [
     {
-        icon: '/aws-developer-badge.png',
+        icon: '/credentials/aws-developer-badge.png',
         alt: 'AWS Certified Developer - Associate Badge'
     },
 ]

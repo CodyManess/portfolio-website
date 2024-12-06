@@ -51,9 +51,10 @@ export default function RoleItem({date, title, companyName, companyLogo, descrip
                 <TimelineDot 
                     style={{ 
                         margin: "0.5rem auto", 
-                        width: "4em", 
-                        height: "4em",
-                        backgroundColor: "white"
+                        width: "4em", height: "4em",
+                        backgroundColor: "white",
+                        position: "relative",
+                        padding: "0.5em",
                     }} 
                     variant="outlined"
                     color="primary"
@@ -65,9 +66,9 @@ export default function RoleItem({date, title, companyName, companyLogo, descrip
                             height: "auto"
                         }}
                         src={companyLogo}
-                        width={companyLogo.width} height={companyLogo.height}
                         alt={`${companyName} Logo`}
-                     />
+                        height={companyLogo.height} width={companyLogo.width}
+                    />
                 </TimelineDot>
                 <TimelineConnector />
             </TimelineSeparator>

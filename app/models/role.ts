@@ -1,9 +1,13 @@
-import { StaticImageData } from "next/image";
+interface Image {
+    src: string,
+    height: number,
+    width: number
+}
 
 export default interface Role {
     date: string,
     title: string,
     companyName: string,
-    companyLogo: StaticImageData,
+    companyLogo: Image,
     description: string
 }

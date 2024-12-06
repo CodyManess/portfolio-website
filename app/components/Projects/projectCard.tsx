@@ -36,7 +36,12 @@ const ProjectCard = (project: Project) => {
                                 return (
                                     <Chip
                                         key={tool.title} 
-                                        icon={<Image src={tool.icon} alt={tool.title}/>}
+                                        icon={
+                                            <Image 
+                                                src={tool.icon} alt={tool.title}
+                                                width={30} height={30}
+                                            />
+                                        }
                                         label={tool.title}
                                     />
                                 )

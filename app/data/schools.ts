@@ -1,12 +1,9 @@
-import mtsuPhoto from "../assets/education/mtsucampus.webp";
-import mtsuPhoto2 from "../assets/education/mtsucampus2.webp";
-import lsusPhoto from "../assets/education/lsuscampus.webp";
 import { Degree, CourseType } from "../models/school";
 
 export const schools: Degree[] = [
     {
         schoolName: "Middle Tennessee State University",
-        schoolPhoto: mtsuPhoto2,
+        schoolPhoto: "/credentials/mtsucampus2.webp",
         schoolLink: "https://www.mtsu.edu/program/computer-science-m-s/",
         title: "Master of Science in Computer Science",
         subtitle: "",
@@ -71,7 +68,7 @@ export const schools: Degree[] = [
     },
     {
         schoolName: "Louisiana State University - Shreveport",
-        schoolPhoto: lsusPhoto,
+        schoolPhoto: "/credentials/lsuscampus.webp",
         schoolLink: "https://www.lsus.edu/academics/graduate-studies/master-of-business-administration",
         title: "Master of Business Administration",
         subtitle: "Concentrating in Finance",
@@ -139,7 +136,7 @@ export const schools: Degree[] = [
     },
     {
         schoolName: "Middle Tennessee State University",
-        schoolPhoto: mtsuPhoto,
+        schoolPhoto: "/credentials/mtsucampus.webp",
         schoolLink: "https://www.mtsu.edu/program/computer-science-professional-computer-science-concentration-b-s/",
         title: "Bachelor of Science in Computer Science",
         subtitle: "Minoring in Communications and Mathematics",
