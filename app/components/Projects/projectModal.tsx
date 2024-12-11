@@ -23,7 +23,10 @@ const ProjectModal = ({project, open, handleClose}: Props) => {
                 }
             }}
         >
-            <DialogTitle id="scroll-dialog-title">{project.title} Details</DialogTitle>
+            <DialogTitle id="scroll-dialog-title">
+                {project.title} Details
+                <hr />
+            </DialogTitle>
             <DialogContent>
                 {
                     project.link && <Link 
@@ -33,7 +36,7 @@ const ProjectModal = ({project, open, handleClose}: Props) => {
                             color: 'var(--primary-color)', 
                             marginBottom: '1em'
                     }}>
-                        Program Link <OpenInNewIcon fontSize="small" />
+                        Public Link <OpenInNewIcon fontSize="small" />
                     </Link>
                 }
                 <Typography 
@@ -44,7 +47,7 @@ const ProjectModal = ({project, open, handleClose}: Props) => {
                 </Typography>
                 <Typography 
                     variant="body1"
-                    gutterBottom
+                    style={{ marginBottom: '1em' }}
                 >
                     { project.description }
                 </Typography>

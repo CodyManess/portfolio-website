@@ -30,7 +30,10 @@ const DegreeModal = ({degree, open, handleClose}: Props) => {
             }}
             aria-labelledby="dialog-title"
         >
-            <DialogTitle id="dialog-title">{title} Details</DialogTitle>
+            <DialogTitle id="dialog-title">
+                {title} Details
+                <hr />
+            </DialogTitle>
             <DialogContent style={{ display: 'flex', flexWrap: 'wrap' }}>
                 <div style={{ 
                     flex: 'auto', 

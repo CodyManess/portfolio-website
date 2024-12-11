@@ -24,7 +24,15 @@ const Tools: {[key: string]: Tool} = {
     Kotlin: {
         title: "Kotlin",
         icon: "/tool-icons/language-kotlin.svg"
-    }
+    },
+    Firebase: {
+        title: "Firebase",
+        icon: "/tool-icons/firebase.webp"
+    },
+    PHP: {
+        title: "PHP",
+        icon: "/tool-icons/php.svg"
+    },
 }
 
 export default Tools;

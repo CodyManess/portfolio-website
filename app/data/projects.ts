@@ -6,7 +6,7 @@ const projects: Project[] = [
         title: "Leaf Design System",
         description: "As a developer on myCigna Web Portal, I also worked to lay the groundwork for a smoother adoption of a new enterprise web component library called the Leaf Design System.  I meet with various stakeholders within the Leaf Design System to address potential concerns regarding each component and its features to ensure we covered as many use cases as possible and gain as much benefit as we could from the new library.",
         achievements: [],
-        tools: [Tools.Angular]
+        tools: [Tools.Angular, Tools.React]
     },
     {
         title: "myCigna Web Portal",
@@ -47,20 +47,20 @@ const projects: Project[] = [
         description: "I worked on the Android version of the MTSU Mobile App as a student developer, where I pushed to improve code quality, combine school event data adding more event features, and refreshed bus tracking app code.",
         link: "https://mtsu.edu/mobile/",
         achievements: [],
-        tools: [Tools.Kotlin, Tools.Swift]
+        tools: [Tools.Kotlin, Tools.Swift, Tools.PHP]
     },
     {
         title: "Dynamic Physical Therapy Website",
         description: "I worked on the development of a React website for a small business called Dynamic Physical Therapy advertising its various services and contact information.",
         link: "https://www.dynamicptsite.com/",
         achievements: [],
-        tools: [Tools.React]
+        tools: [Tools.React, Tools.Firebase]
     },
     {
         title: "Keystone Adult Daycare Donation Database",
         description: "During my time as a student at MTSU, I worked on the Java web application with a colleague to help create a portal for an Adult Daycare he was connected to.  This portal created an easy way for the Daycare staff to log donations and donation contact information, organize data, and set reminders to thank donors.",
         achievements: [],
-        tools: [Tools.Java]
+        tools: [Tools.Java, Tools.Firebase]
     },
 ]
 
