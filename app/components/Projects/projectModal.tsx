@@ -24,18 +24,18 @@ const ProjectModal = ({project, open, handleClose}: Props) => {
             }}
         >
             <DialogTitle id="scroll-dialog-title">{project.title} Details</DialogTitle>
-            {
-                project.link && <Link 
-                    href={project.link} 
-                    style={{ 
-                        display: 'block',
-                        color: 'var(--primary-color)', 
-                        marginBottom: '1em'
-                }}>
-                    Program Link <OpenInNewIcon fontSize="small" />
-                </Link>
-            }
             <DialogContent>
+                {
+                    project.link && <Link 
+                        href={project.link} 
+                        style={{ 
+                            display: 'block',
+                            color: 'var(--primary-color)', 
+                            marginBottom: '1em'
+                    }}>
+                        Program Link <OpenInNewIcon fontSize="small" />
+                    </Link>
+                }
                 <Typography 
                     variant="h5" component="h3"
                     gutterBottom
