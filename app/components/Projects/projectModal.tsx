@@ -1,6 +1,7 @@
-import { Chip, Dialog, DialogContent, DialogTitle, Slide, Typography } from "@mui/material";
+import { Chip, Dialog, DialogContent, DialogTitle, Link, Slide, Typography } from "@mui/material";
 import Project from "../../models/project"
 import Image from "next/image";
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 interface Props {
     project : Project, open: boolean, handleClose: () => void
@@ -23,6 +24,17 @@ const ProjectModal = ({project, open, handleClose}: Props) => {
             }}
         >
             <DialogTitle id="scroll-dialog-title">{project.title} Details</DialogTitle>
+            {
+                project.link && <Link 
+                    href={project.link} 
+                    style={{ 
+                        display: 'block',
+                        color: 'var(--primary-color)', 
+                        marginBottom: '1em'
+                }}>
+                    Program Link <OpenInNewIcon fontSize="small" />
+                </Link>
+            }
             <DialogContent>
                 <Typography 
                     variant="h5" component="h3"

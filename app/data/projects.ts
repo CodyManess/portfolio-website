@@ -11,18 +11,21 @@ const projects: Project[] = [
     {
         title: "myCigna Web Portal",
         description: "As a Developer at Cigna, I spent two rotations working on the myCigna Web Portal, an Angular web app that helped users can access their digital ID cards, manage their health information, update their profile, and more.  During my first rotation, I worked with the Dashboard team assisting with development on a UI redesign, added and updated Analytics tracking, and assisted with an onboarding redesign.  During my second rotation, I worked on the myCigna Coverages Team where I worked to improve accessibility within the overall site, documented components for a future redesign, added new features for users to more easily share their ID Cards, and increased test coverage.",
+        link: "https://my.cigna.com/",
         achievements: [],
         tools: [Tools.Angular, Tools.Kotlin, Tools.NodeJS]
     },
     {
         title: "myCigna Mobile App",
         description: "During my time with the Cigna Digital Mobile Team, I worked as an Android and then iOS developer on the myCigna Mobile App, an app that gives Cigna members an easy way to access plan information and features through their mobile device.  As a developer, I worked to connect Native parts of the app to the emerging React Native pages, improve code quality, increase analytics tracking, fix past bugs, and improve the app’s interaction with it’s Web and React Native portions.",
+        link: "https://my.cigna.com/",
         achievements: [],
         tools: [Tools.Swift, Tools.Kotlin]
     }, 
     {
         title: "Evernorth Mobile App",
         description: "During my time with the Cigna Digital Mobile Team, I worked as an Android and then iOS developer on the Evernorth Mobile App, an app that gives Evernorth members an easy way to access plan information and features through their mobile device.  As a developer, I worked to update chat features, improve code quality, increase analytics tracking, and fix past bugs.",
+        link: "https://www.evernorth.com/app",
         achievements: [],
         tools: [Tools.Swift, Tools.Kotlin]
     }, 
@@ -35,18 +38,21 @@ const projects: Project[] = [
     {
         title: "Military Treatment Facility (MTF) Portal",
         description: "The Military Treatment Facility (MTF) or Military Provider Portal (MPP), now known as Militaryrx, is a secure web portal used to renew prescriptions currently filled at the Tricare mail order pharmacy, reduce fax volume to renew prescriptions, and respond to beneficiary requests for prescriptions to be transferred from MTF/retail pharmacy to Home Delivery.",
+        link: "https://militaryrx.express-scripts.com/",
         achievements: [],
         tools: [Tools.React]
     },
     {
         title: "MTSU Mobile App",
         description: "I worked on the Android version of the MTSU Mobile App as a student developer, where I pushed to improve code quality, combine school event data adding more event features, and refreshed bus tracking app code.",
+        link: "https://mtsu.edu/mobile/",
         achievements: [],
         tools: [Tools.Kotlin, Tools.Swift]
     },
     {
         title: "Dynamic Physical Therapy Website",
         description: "I worked on the development of a React website for a small business called Dynamic Physical Therapy advertising its various services and contact information.",
+        link: "https://www.dynamicptsite.com/",
         achievements: [],
         tools: [Tools.React]
     },

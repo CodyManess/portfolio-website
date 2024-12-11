@@ -28,9 +28,6 @@ const ProjectCard = (project: Project) => {
                         <Typography gutterBottom variant="h5" component="h3">
                             { project.title }
                         </Typography>
-                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                            { project.description }
-                        </Typography>
                         {
                             project.tools.map(tool => {
                                 return (
