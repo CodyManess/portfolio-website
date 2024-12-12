@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
-import "./globals.css";
+import './globals.css'
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -10,21 +10,22 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://codymaness.com'),
-  title: "Resume - Cody Maness",
-  description: "Resume website for Cody Maness, a Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.",
+  title: 'Resume - Cody Maness',
+  description:
+    'Resume website for Cody Maness, a Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.',
   openGraph: {
-    title: "Resume - Cody Maness",
-    description: "Resume website for Cody Maness",
+    title: 'Resume - Cody Maness',
+    description: 'Resume website for Cody Maness',
     siteName: 'Resume - Cody Maness',
     locale: 'en_US',
     type: 'website',
-  }
-};
+  },
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en" className={roboto.className}>
@@ -32,9 +33,7 @@ export default function RootLayout({
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </head>
 
-      <body>
-        { children }
-      </body>
+      <body>{children}</body>
     </html>
-  );
+  )
 }
