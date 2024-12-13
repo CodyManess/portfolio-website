@@ -10,7 +10,11 @@ const Experience = () => {
     <section
       id="experience"
       className="section"
-      style={{ boxShadow: '0px -12px 20px black' }}
+      style={{
+        position: 'relative',
+        zIndex: 2,
+        boxShadow: '0px -12px 20px black',
+      }}
     >
       <Container>
         <Typography variant="h2">Experience</Typography>
