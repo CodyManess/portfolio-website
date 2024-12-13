@@ -86,12 +86,23 @@ export default function RoleItem({
           <Typography variant="h6" component="h3">
             {title}
           </Typography>
-          <Typography variant="subtitle2" component="h4">
+          <Typography
+            variant="subtitle2"
+            component="h4"
+            style={{ marginBottom: '0.5em' }}
+          >
             {companyName}
           </Typography>
-          <Typography style={{ whiteSpace: 'pre-line' }}>
-            {description}
-          </Typography>
+          {description.map((section, index) => (
+            <div style={{ marginTop: '0.5em' }} key={`${title}${index}`}>
+              <Typography component="h5">{section.heading}</Typography>
+              <ul>
+                {section.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </Paper>
       </TimelineContent>
     </TimelineItem>

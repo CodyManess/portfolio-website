@@ -35,7 +35,7 @@ body {
   }
 }
 
-div.MuiPaper-root .MuiTypography-root {
+div.MuiPaper-root .MuiTypography-root, ul {
   color: var(--foreground);
 }
 
