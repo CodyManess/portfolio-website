@@ -1,4 +1,9 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+Hello!  This repo is for my very own portfolio website, a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+Feel free to peruse my code and offer any suggestions on how to improve it as well as use it to inspire your own future creations!
+
+If you'd like to view the site it is deployed on and see it in action, please visit [codymaness.com](https://codymaness.com).  
 
 ## Getting Started
 
