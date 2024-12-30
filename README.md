@@ -1,9 +1,32 @@
 
-Hello!  This repo is for my very own portfolio website, a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Feel free to peruse my code and offer any suggestions on how to improve it as well as use it to inspire your own future creations!
+This repo is for my very own portfolio website, a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-If you'd like to view the site it is deployed on and see it in action, please visit [codymaness.com](https://codymaness.com).  
+This project was created to more creatively explore React and Next.js and finally check off having a portfolio website off my to-do list.
+
+Feel free to peruse my code, offer any suggestions on how to improve it, or use it to inspire your own future creations!
+
+If you'd like to view the site it is deployed on and see it in action, please visit [codymaness.com](https://codymaness.com). 
+
+
+### Built With
+
+[![Next][Next.js]](https://nextjs.org/)
+[![React][React.js]](https://reactjs.org/)
+[![TypeScript][Typescript]](https://www.typescriptlang.org/)
+
+### Deployed With
+[![Firebase][Firebase]](https://firebase.google.com/)
+[![Google Cloud][Google Cloud]](https://cloud.google.com/)
+
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[Typescript]: https://img.shields.io/badge/typescript-20232A?style=for-the-badge&logo=typescript&logoColor=3178C6
+[Firebase]: https://img.shields.io/badge/firebase-20232A?style=for-the-badge&logo=firebase&logoColor=DD2C00
+[Google Cloud]: https://img.shields.io/badge/google_cloud-20232A?style=for-the-badge&logo=googlecloud&logoColor=#4285F4
+
 
 ## Getting Started
 
@@ -23,9 +46,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
+### Learn More
 
 To learn more about Next.js, take a look at the following resources:
 
@@ -34,8 +55,11 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+Here's a few wonderful tools I'd like to acknowledge for helping me make this project a reality:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* [Material UI](https://mui.com/material-ui/) -
+* [Img Shields](https://shields.io)
+* [Best README Template](https://github.com/othneildrew/Best-README-Template) - Truly the best readme template even if I only used parts of it.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
