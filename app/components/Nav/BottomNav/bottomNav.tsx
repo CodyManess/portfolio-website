@@ -11,7 +11,7 @@ import { navLinks } from '@/app/data/links'
 const BottomNav = () => {
   const [value, setValue] = React.useState(navLinks[0].title.toLowerCase())
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleChange = (_: React.SyntheticEvent, newValue: string) => {
     setValue(newValue)
   }
 
@@ -24,6 +24,7 @@ const BottomNav = () => {
         left: 0,
         right: 0,
         zIndex: 3,
+        borderRadius: '4px 4px 0 0',
       }}
       elevation={3}
     >
@@ -41,7 +42,7 @@ const BottomNav = () => {
             href={`#${page.title.toLowerCase()}`}
             label={page.title}
             value={page.title.toLowerCase()}
-            icon={<page.icon />}
+            icon={<page.icon size="1.5em" />}
           />
         ))}
       </BottomNavigation>

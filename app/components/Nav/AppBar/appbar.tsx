@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react'
 import { AppBar, Link, Slide, Toolbar, useScrollTrigger } from '@mui/material'
-import { navLinks } from '../../data/links'
+import { navLinks } from '../../../data/links'
 
 function HideOnScroll({
   children,

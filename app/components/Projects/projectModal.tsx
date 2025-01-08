@@ -9,7 +9,7 @@ import {
 } from '@mui/material'
 import Project from '../../models/project'
 import Image from 'next/image'
-import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+import { FaExternalLinkAlt } from 'react-icons/fa'
 
 interface Props {
   project: Project
@@ -47,7 +47,7 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
               marginBottom: '1em',
             }}
           >
-            Public Link <OpenInNewIcon fontSize="small" />
+            Public Link <FaExternalLinkAlt fontSize="small" />
           </Link>
         )}
         <Typography variant="h5" component="h3" gutterBottom>

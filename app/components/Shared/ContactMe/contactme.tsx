@@ -1,4 +1,5 @@
-import { GitHub, LinkedIn, Email } from '@mui/icons-material'
+import { SiGithub, SiLinkedin } from 'react-icons/si'
+import { FaEnvelope } from 'react-icons/fa'
 import styles from './contactme.module.css'
 import { socialLinks } from '../../../data/links'
 
@@ -13,13 +14,13 @@ const ContactMe: React.FC = () => {
       }}
     >
       <a href={socialLinks.GitHub} aria-label="GitHub">
-        <GitHub />
+        <SiGithub />
       </a>
       <a href={socialLinks.LinkedIn} aria-label="LinkedIn">
-        <LinkedIn />
+        <SiLinkedin />
       </a>
       <a href={socialLinks.Email} aria-label="Email">
-        <Email />
+        <FaEnvelope />
       </a>
       {/* <Link href={Links.GitHub} aria-label="Article">
                 <Article />

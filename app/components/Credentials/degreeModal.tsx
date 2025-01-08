@@ -13,7 +13,7 @@ import {
   Typography,
 } from '@mui/material'
 import Link from 'next/link'
-import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+import { FaExternalLinkAlt } from 'react-icons/fa'
 
 interface Props {
   degree: Degree
@@ -60,7 +60,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
               marginBottom: '1em',
             }}
           >
-            Program Link <OpenInNewIcon fontSize="small" />
+            Program Link <FaExternalLinkAlt fontSize="small" />
           </Link>
           {awards.length !== 0 && (
             <>

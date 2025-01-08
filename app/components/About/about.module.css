@@ -1,0 +1,15 @@
+.aboutLinks a {
+  display: flex;
+  color: var(--foreground);
+  align-items: center;
+  font-size: 1.25em;
+}
+
+.aboutLinks svg {
+  margin-right: 0.5em;
+  font-size: 1.5em;
+}
+
+.about h3 {
+  margin-top: 1.75em;
+}

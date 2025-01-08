@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 const Creds = () => {
   return (
-    <section id="education" className="section">
+    <section id="credentials" className="section">
       <Container>
         <Typography variant="h2">Credentials</Typography>
         <Stack direction="row" sx={{ margin: '1em 0', flexWrap: 'wrap' }}>

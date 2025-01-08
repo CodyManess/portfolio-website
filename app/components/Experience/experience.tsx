@@ -7,15 +7,7 @@ import { roles } from '../../data/experience'
 
 const Experience = () => {
   return (
-    <section
-      id="experience"
-      className="section"
-      style={{
-        position: 'relative',
-        zIndex: 2,
-        boxShadow: '0px -12px 20px black',
-      }}
-    >
+    <section id="experience" className="section">
       <Container>
         <Typography variant="h2">Experience</Typography>
 

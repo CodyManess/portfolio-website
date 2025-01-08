@@ -64,6 +64,6 @@ svg.arrowPulseDown {
   margin: 0 auto;
   left: 0;
   right: 0;
-  font-size: 6em;
+  font-size: 5em;
   animation: arrow-pulse-down 2500ms linear infinite;
 }

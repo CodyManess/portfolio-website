@@ -1,7 +1,10 @@
-import HomeIcon from '@mui/icons-material/Home'
-import SchoolIcon from '@mui/icons-material/School'
-import WorkIcon from '@mui/icons-material/Work'
-import AccountTreeIcon from '@mui/icons-material/AccountTree'
+import {
+  FaHome,
+  FaSchool,
+  FaSuitcase,
+  FaInfo,
+  FaProjectDiagram,
+} from 'react-icons/fa'
 
 export const socialLinks = {
   GitHub: 'https://github.com/CodyManess',
@@ -11,19 +14,23 @@ export const socialLinks = {
 
 export const navLinks = [
   {
-    title: 'Intro',
-    icon: HomeIcon,
+    title: 'Home',
+    icon: FaHome,
+  },
+  {
+    title: 'About',
+    icon: FaInfo,
   },
   {
     title: 'Experience',
-    icon: WorkIcon,
+    icon: FaSuitcase,
   },
   {
     title: 'Credentials',
-    icon: SchoolIcon,
+    icon: FaSchool,
   },
   {
     title: 'Projects',
-    icon: AccountTreeIcon,
+    icon: FaProjectDiagram,
   },
 ]
