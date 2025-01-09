@@ -6,9 +6,9 @@ import {
   Slide,
   Typography,
 } from '@mui/material'
-import Project from '../../models/project'
 import { FaExternalLinkAlt } from 'react-icons/fa'
-import ToolChip from './toolChip'
+import Project from '@/app/models/project'
+import ToolChip from '@/app/components/Shared/toolChip'
 
 interface Props {
   project: Project

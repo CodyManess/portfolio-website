@@ -26,7 +26,7 @@ export const roles: Array<Role> = [
   },
   {
     date: 'Jun 2023',
-    title: 'Techology Early Career Development Program (TECDP) Lead Advisor',
+    title: 'TECDP Lead Advisor',
     companyName: 'The Cigna Group',
     companyLogo: cignaLogo,
     description: [
@@ -75,7 +75,7 @@ export const roles: Array<Role> = [
     ],
   },
   {
-    date: 'Mar 2020',
+    date: 'Mar 2021',
     title: 'Android Student Developer',
     companyName: 'Middle Tennessee State University',
     companyLogo: mtsuLogo,

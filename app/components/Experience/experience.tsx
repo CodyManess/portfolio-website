@@ -1,19 +1,34 @@
 'use client'
-import { Timeline } from '@mui/lab/'
+import { Timeline, timelineItemClasses } from '@mui/lab/'
 import { Container, Typography } from '@mui/material'
 import * as React from 'react'
-import RoleItem from './roleItem'
+import RoleItem from './RoleItem/roleItem'
 import { roles } from '../../data/experience'
 
 const Experience = () => {
+  const [expanded, setExpanded] = React.useState<number | false>(false)
   return (
     <section id="experience" className="section">
       <Container>
         <Typography variant="h2">Experience</Typography>
-
-        <Timeline position="right" style={{ padding: 0 }}>
+        <Timeline
+          position="right"
+          style={{ padding: 0 }}
+          sx={{
+            [`& .${timelineItemClasses.root}:before`]: {
+              flex: 0,
+              padding: 0,
+            },
+          }}
+        >
           {roles.map((role, index) => (
-            <RoleItem key={index} {...role} />
+            <RoleItem
+              key={index}
+              index={index}
+              role={role}
+              expanded={expanded}
+              setExpanded={setExpanded}
+            />
           ))}
         </Timeline>
       </Container>
