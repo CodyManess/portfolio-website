@@ -8,13 +8,13 @@
   border-radius: 2.25em;
   align-self: center;
 
-  @media only screen and (min-width: 600px) {
+  @media (min-width: 768px) {
     display: none;
   }
 }
 
 .companyDateMobile {
-  @media only screen and (min-width: 600px) {
+  @media (min-width: 768px) {
     display: none;
   }
 }
