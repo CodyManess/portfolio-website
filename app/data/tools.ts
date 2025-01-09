@@ -1,37 +1,55 @@
 import { Tool } from '@/app/models/project'
+import {
+  SiReact,
+  SiSwift,
+  SiNodedotjs,
+  SiAngular,
+  SiKotlin,
+  SiFirebase,
+  SiPhp,
+} from 'react-icons/si'
+import { FaJava } from 'react-icons/fa6'
 
 const Tools: { [key: string]: Tool } = {
   React: {
     title: 'React',
-    icon: '/tool-icons/react.svg',
+    icon: SiReact,
+    iconColor: '#61DBFB',
   },
   Swift: {
     title: 'Swift',
-    icon: '/tool-icons/language-swift.svg',
+    icon: SiSwift,
+    iconColor: '#FFAC45',
   },
   Java: {
     title: 'Java',
-    icon: '/tool-icons/language-java.svg',
+    icon: FaJava,
+    iconColor: '#007396',
   },
   NodeJS: {
     title: 'NodeJS',
-    icon: '/tool-icons/nodejs.svg',
+    icon: SiNodedotjs,
+    iconColor: '#68A063',
   },
   Angular: {
     title: 'Angular',
-    icon: '/tool-icons/angular.svg',
+    icon: SiAngular,
+    iconColor: '#ff0000',
   },
   Kotlin: {
     title: 'Kotlin',
-    icon: '/tool-icons/language-kotlin.svg',
+    icon: SiKotlin,
+    iconColor: '#0095D5',
   },
   Firebase: {
     title: 'Firebase',
-    icon: '/tool-icons/firebase.webp',
+    icon: SiFirebase,
+    iconColor: '#FF9100',
   },
   PHP: {
     title: 'PHP',
-    icon: '/tool-icons/php.svg',
+    icon: SiPhp,
+    iconColor: '#474a8a',
   },
 }
 

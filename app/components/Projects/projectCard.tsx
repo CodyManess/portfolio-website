@@ -1,15 +1,8 @@
-'use client'
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  Chip,
-  Typography,
-} from '@mui/material'
+import { Card, CardActionArea, CardContent, Typography } from '@mui/material'
 import * as React from 'react'
 import Project from '../../models/project'
 import ProjectModal from './projectModal'
-import Image from 'next/image'
+import ToolChip from './toolChip'
 
 const ProjectCard = (project: Project) => {
   const [open, setOpen] = React.useState(false)
@@ -32,20 +25,7 @@ const ProjectCard = (project: Project) => {
               {project.title}
             </Typography>
             {project.tools.map((tool) => {
-              return (
-                <Chip
-                  key={tool.title}
-                  icon={
-                    <Image
-                      src={tool.icon}
-                      alt={tool.title}
-                      width={30}
-                      height={30}
-                    />
-                  }
-                  label={tool.title}
-                />
-              )
+              return <ToolChip key={tool.title} tool={tool} />
             })}
           </CardContent>
         </CardActionArea>

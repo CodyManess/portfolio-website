@@ -1,5 +1,4 @@
 import {
-  Chip,
   Dialog,
   DialogContent,
   DialogTitle,
@@ -8,8 +7,8 @@ import {
   Typography,
 } from '@mui/material'
 import Project from '../../models/project'
-import Image from 'next/image'
 import { FaExternalLinkAlt } from 'react-icons/fa'
+import ToolChip from './toolChip'
 
 interface Props {
   project: Project
@@ -59,22 +58,9 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
         <Typography variant="h5" component="h3" gutterBottom>
           Tools Used
         </Typography>
-        {project.tools.map((tool) => {
-          return (
-            <Chip
-              key={tool.title}
-              icon={
-                <Image
-                  src={tool.icon}
-                  alt={tool.title}
-                  width={30}
-                  height={30}
-                />
-              }
-              label={tool.title}
-            />
-          )
-        })}
+        {project.tools.map((tool) => (
+          <ToolChip key={tool.title} tool={tool} />
+        ))}
       </DialogContent>
     </Dialog>
   )

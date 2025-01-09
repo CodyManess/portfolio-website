@@ -1,3 +1,4 @@
+'use client'
 import projects from '@/app/data/projects'
 import { Container, Stack, Typography } from '@mui/material'
 import * as React from 'react'

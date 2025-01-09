@@ -1,6 +1,7 @@
 import Role from '../models/role'
 import cignaLogo from '@/public/work-icons/cigna.webp'
 import mtsuLogo from '@/public/work-icons/mtsu.webp'
+import expressScriptsLogo from '@/public/work-icons/express-scripts.png'
 
 export interface WorkSection {
   heading?: string
@@ -91,9 +92,9 @@ export const roles: Array<Role> = [
   },
   {
     date: 'Jun 2020',
-    title: 'TECDP Intern',
-    companyName: 'The Cigna Group',
-    companyLogo: cignaLogo,
+    title: 'Front-end Intern',
+    companyName: 'Express Scripts',
+    companyLogo: expressScriptsLogo,
     description: [
       {
         items: [
