@@ -7,7 +7,6 @@ import {
 } from '@mui/material'
 import * as React from 'react'
 import { FaAngleDown } from 'react-icons/fa'
-import Image from 'next/image'
 import styles from './roleCard.module.css'
 
 interface RoleCardProps {
@@ -30,17 +29,6 @@ const RoleCard = ({ role, setExpanded, expanded, index }: RoleCardProps) => {
           <FaAngleDown size="1.5em" style={{ color: 'var(--foreground)' }} />
         }
       >
-        <div className={styles.companyLogo}>
-          <Image
-            style={{
-              margin: 'auto',
-              maxWidth: '100%',
-              height: 'auto',
-            }}
-            src={role.companyLogo}
-            alt={`${role.companyName} Logo`}
-          />
-        </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Typography variant="h6" component="h3">
             {role.title}

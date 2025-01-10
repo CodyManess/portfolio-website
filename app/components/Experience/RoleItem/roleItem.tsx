@@ -44,10 +44,7 @@ export default function RoleItem({
           {role.date}
         </Typography>
       </TimelineOppositeContent>
-      <TimelineSeparator
-        style={{ paddingRight: '10px' }}
-        className={styles.timelineSeparator}
-      >
+      <TimelineSeparator style={{ paddingRight: '10px' }}>
         <TimelineDot
           style={{
             margin: '0.5rem auto',
