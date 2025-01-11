@@ -27,6 +27,15 @@ If you'd like to view the site it is deployed on and see it in action, please vi
 [Firebase]: https://img.shields.io/badge/firebase-20232A?style=for-the-badge&logo=firebase&logoColor=DD2C00
 [Google Cloud]: https://img.shields.io/badge/google_cloud-20232A?style=for-the-badge&logo=googlecloud&logoColor=#4285F4
 
+## Roadmap
+
+- [x] Add an About Me Section
+- [ ] Move Const Data into a proper API
+- [ ] Look into further Next.js Optimizations
+- [ ] Improve Accessibility
+- [ ] Visual Updates
+    - [ ] Add Button Click Animations
+    - [ ] Add Card Click Animations
 
 ## Getting Started
 
