@@ -1,7 +1,4 @@
-interface Cert {
-  icon: string
-  alt: string
-}
+import Cert from '../models/cert'
 
 export const certs: Cert[] = [
   {

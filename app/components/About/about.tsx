@@ -41,7 +41,7 @@ const About: React.FC = () => {
             flexWrap: 'wrap',
           }}
         >
-          <div style={{ maxWidth: '350px' }}>
+          <div style={{ maxWidth: '360px' }}>
             <Typography variant="h6" component="h3">
               Tech Interests
             </Typography>
@@ -52,18 +52,19 @@ const About: React.FC = () => {
             </Typography>
           </div>
 
-          <div style={{ maxWidth: '350px' }}>
+          <div style={{ maxWidth: '360px' }}>
             <Typography variant="h6" component="h3">
               Personal Interests
             </Typography>
             <Typography variant="body1">
               Taking Care of my Pets &#128021; &#128049;, Politics & News
-              &#128240;, Trying new Food, Local Events, or Self Care, and
-              occassionally traveling &#127758;
+              &#128240;, Trying new Food, Local Events, or Self Care,
+              occassionally traveling &#127758;, and constantly trying new ways
+              to organize my notes on Notion &#128211;.
             </Typography>
           </div>
 
-          <div style={{ maxWidth: '350px' }}>
+          <div style={{ maxWidth: '360px' }}>
             <Typography variant="h6" component="h3">
               Favorite Movies, Books, Games, and Music
             </Typography>

@@ -1,5 +1,4 @@
 import { StaticImageData } from 'next/image'
-import { WorkSection } from '../data/experience'
 
 export default interface Role {
   date: string
@@ -7,4 +6,9 @@ export default interface Role {
   companyName: string
   companyLogo: StaticImageData
   description: Array<WorkSection>
+}
+
+export interface WorkSection {
+  heading?: string
+  items: Array<string>
 }

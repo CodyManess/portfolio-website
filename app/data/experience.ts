@@ -3,11 +3,6 @@ import cignaLogo from '@/public/work-icons/cigna.webp'
 import mtsuLogo from '@/public/work-icons/mtsu.webp'
 import expressScriptsLogo from '@/public/work-icons/express-scripts.png'
 
-export interface WorkSection {
-  heading?: string
-  items: Array<string>
-}
-
 export const roles: Array<Role> = [
   {
     date: 'Mar 2024',

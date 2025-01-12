@@ -1,6 +1,6 @@
 import { Container, Typography } from '@mui/material'
 import React from 'react'
-import ContactMe from '../Shared/ContactMe/contactme'
+import ContactMe from '../../Shared/ContactMe/contactme'
 import styles from './footer.module.css'
 
 const Footer: React.FC = () => {

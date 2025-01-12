@@ -8,7 +8,7 @@ import {
 
 export const socialLinks = {
   GitHub: 'https://github.com/CodyManess',
-  Email: 'mailto:contact@codymaness.com',
+  Email: 'mailto:cody.maness@outlook.com',
   LinkedIn: 'https://www.linkedin.com/in/cody-maness/',
 }
 
