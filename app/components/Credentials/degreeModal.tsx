@@ -38,9 +38,9 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
           padding: '1em',
         },
       }}
-      aria-labelledby="dialog-title"
+      aria-labelledby={`dialog-title-${title.replaceAll(' ', '-')}`}
     >
-      <DialogTitle id="dialog-title">
+      <DialogTitle id={`dialog-title-${title.replaceAll(' ', '-')}`}>
         {title} Details
         <hr />
       </DialogTitle>

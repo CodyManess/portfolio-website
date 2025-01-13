@@ -7,6 +7,7 @@ import {
   Paper,
 } from '@mui/material'
 import { navLinks } from '@/app/data/links'
+import styles from './bottomNav.module.css'
 
 const BottomNav = () => {
   const [value, setValue] = React.useState(navLinks[0].title.toLowerCase())
@@ -36,7 +37,7 @@ const BottomNav = () => {
       >
         {navLinks.map((page) => (
           <BottomNavigationAction
-            style={{ color: 'var(--primary-light)' }}
+            className={styles.navButton}
             key={page.title.toLowerCase()}
             component={Link}
             href={`#${page.title.toLowerCase()}`}

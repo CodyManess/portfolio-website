@@ -39,6 +39,7 @@ export default function RoleItem({
             padding: '1em',
             textWrap: 'nowrap',
             paddingTop: '1.5em',
+            color: 'var(--white)',
           }}
         >
           {role.date}

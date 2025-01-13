@@ -37,7 +37,9 @@ const RoleCard = ({ role, setExpanded, expanded, index }: RoleCardProps) => {
       <AccordionBody>
         {role.description.map((section, index) => (
           <div key={`${role.title}${index}`}>
-            <Typography component="h5">{section.heading}</Typography>
+            {section.heading && (
+              <Typography component="h4">{section.heading}</Typography>
+            )}
             <ul>
               {section.items.map((item) => (
                 <li key={item}>{item}</li>

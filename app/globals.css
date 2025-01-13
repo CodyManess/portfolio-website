@@ -6,7 +6,7 @@
 
   --primary-color: #007ab8;
   --primary-dark: #196db2;
-  --primary-light: #4dabf5;
+  --primary-light: #5fb5f6;
 
   --background: var(--white);
   --foreground: var(--black);
@@ -48,11 +48,6 @@ div.MuiToolbar-root {
   .MuiTypography-root {
     color: var(--white);
   }
-}
-
-div.MuiChip-root {
-  margin: 0 4px;
-  color: var(--foreground);
 }
 
 section {
