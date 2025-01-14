@@ -10,15 +10,17 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://codymaness.com'),
-  title: 'Resume - Cody Maness',
+  title: 'Cody Maness | Web & Mobile Developer',
   description:
     'Resume website for Cody Maness, a Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.',
   openGraph: {
-    title: 'Resume - Cody Maness',
-    description: 'Resume website for Cody Maness',
-    siteName: 'Resume - Cody Maness',
+    title: 'Cody Maness | Web & Mobile Developer',
+    description:
+      'Resume website for Cody Maness, a Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.',
+    siteName: 'Cody Maness | Web & Mobile Developer',
     locale: 'en_US',
     type: 'website',
+    url: 'https://codymaness.com',
   },
 }
 
