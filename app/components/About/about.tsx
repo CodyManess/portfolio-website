@@ -7,15 +7,7 @@ import styles from './about.module.css'
 
 const About: React.FC = () => {
   return (
-    <section
-      id="about"
-      className={'section ' + styles.about}
-      style={{
-        position: 'relative',
-        zIndex: 2,
-        boxShadow: '0px -12px 20px black',
-      }}
-    >
+    <section id="about" className={`section ${styles.about}`}>
       <Container>
         <Typography variant="h2">About Me</Typography>
         <Typography variant="h6" component="h3">
@@ -33,15 +25,9 @@ const About: React.FC = () => {
           accessible and engaging apps that can help others learn, laugh, or
           simply make their day a little easier.
         </Typography>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-          }}
-        >
-          <div style={{ maxWidth: '360px' }}>
+
+        <div className={styles.interestsContainer}>
+          <div className={styles.interestBlock}>
             <Typography variant="h6" component="h3">
               Tech Interests
             </Typography>
@@ -52,7 +38,7 @@ const About: React.FC = () => {
             </Typography>
           </div>
 
-          <div style={{ maxWidth: '360px' }}>
+          <div className={styles.interestBlock}>
             <Typography variant="h6" component="h3">
               Personal Interests
             </Typography>
@@ -64,14 +50,11 @@ const About: React.FC = () => {
             </Typography>
           </div>
 
-          <div style={{ maxWidth: '360px' }}>
+          <div className={styles.interestBlock}>
             <Typography variant="h6" component="h3">
               Favorite Movies, Books, Games, and Music
             </Typography>
-            <div
-              className={styles.aboutLinks}
-              style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
-            >
+            <div className={styles.aboutLinks}>
               <Link href="https://letterboxd.com/codyness/" target="_blank">
                 <SiLetterboxd /> Letterboxd
               </Link>

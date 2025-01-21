@@ -13,3 +13,26 @@
 .about h3 {
   margin-top: 1.75em;
 }
+
+.about {
+  position: relative;
+  z-index: 2;
+  box-shadow: 0px -12px 20px black;
+}
+
+.interestsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.interestBlock {
+  max-width: 360px;
+}
+
+.aboutLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
