@@ -5,14 +5,7 @@ import { socialLinks } from '../../../data/links'
 
 const ContactMe: React.FC = () => {
   return (
-    <div
-      className={styles.contactMe}
-      style={{
-        display: 'flex',
-        justifyContent: 'space-around',
-        flexWrap: 'wrap',
-      }}
-    >
+    <div className={styles.contactMe}>
       <a href={socialLinks.GitHub} aria-label="GitHub">
         <SiGithub />
       </a>
@@ -22,9 +15,6 @@ const ContactMe: React.FC = () => {
       <a href={socialLinks.Email} aria-label="Email">
         <FaEnvelope />
       </a>
-      {/* <Link href={Links.GitHub} aria-label="Article">
-                <Article />
-            </Link> */}
     </div>
   )
 }

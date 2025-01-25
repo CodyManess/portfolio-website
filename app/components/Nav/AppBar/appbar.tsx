@@ -1,6 +1,7 @@
 'use client'
 import * as React from 'react'
-import { AppBar, Link, Slide, Toolbar, useScrollTrigger } from '@mui/material'
+import { Slide, useScrollTrigger, AppBar } from '@mui/material'
+import styles from './appbar.module.css'
 import { navLinks } from '../../../data/links'
 
 function HideOnScroll({
@@ -20,28 +21,22 @@ function HideOnScroll({
 const PortfolioAppBar = () => {
   return (
     <HideOnScroll>
-      <AppBar>
-        <Toolbar
-          sx={{
-            justifyContent: 'center',
-            display: { xs: 'none', sm: 'flex' },
-            background: 'var(--surface-color)',
-          }}
-        >
-          {navLinks.map((page) => (
-            <Link
-              key={page.title}
-              variant="h6"
-              style={{
-                display: 'block',
-                margin: '2em 1em',
-              }}
-              href={`#${page.title.toLowerCase()}`}
-            >
-              {page.title}
-            </Link>
-          ))}
-        </Toolbar>
+      <AppBar className={styles.appBar}>
+        <nav>
+          <ul className={styles.navList}>
+            {navLinks.map((page) => (
+              <li key={page.title}>
+                <a
+                  key={page.title}
+                  className={styles.navLink}
+                  href={`#${page.title.toLowerCase()}`}
+                >
+                  {page.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </AppBar>
     </HideOnScroll>
   )

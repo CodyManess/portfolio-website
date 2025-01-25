@@ -6,7 +6,6 @@ import {
   AccordionBody,
   AccordionHeader,
 } from '../../Shared/Accordion/accordion'
-import { Typography } from '@mui/material'
 
 interface RoleCardProps {
   role: Role
@@ -19,27 +18,15 @@ const RoleCard = ({ role, setExpanded, expanded, index }: RoleCardProps) => {
   return (
     <Accordion index={index} expanded={expanded} setExpanded={setExpanded}>
       <AccordionHeader>
-        <Typography variant="h6" component="h3">
-          {role.title}
-        </Typography>
-        <Typography variant="subtitle1" component="p">
-          {role.companyName}
-        </Typography>
-        <Typography
-          variant="subtitle2"
-          component="p"
-          className={styles.companyDateMobile}
-        >
-          {role.date}
-        </Typography>
+        <h3 style={{ marginBottom: '0.4rem' }}>{role.title}</h3>
+        <p className="subtitle1">{role.companyName}</p>
+        <p className={`subtitle2 ${styles.companyDateMobile}`}>{role.date}</p>
       </AccordionHeader>
 
       <AccordionBody>
         {role.description.map((section, index) => (
           <div key={`${role.title}${index}`}>
-            {section.heading && (
-              <Typography component="h4">{section.heading}</Typography>
-            )}
+            {section.heading && <h4>{section.heading}</h4>}
             <ul>
               {section.items.map((item) => (
                 <li key={item}>{item}</li>

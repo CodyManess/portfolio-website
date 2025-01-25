@@ -6,7 +6,6 @@ import {
   TimelineDot,
   TimelineSeparator,
 } from '@mui/lab'
-import { Typography } from '@mui/material'
 import React from 'react'
 import Image from 'next/image'
 import Role from '../../../models/role'
@@ -32,18 +31,17 @@ export default function RoleItem({
         className={styles.timelineSeparator}
         sx={{ padding: 0, flex: 0 }}
       >
-        <Typography
-          variant="h6"
-          component="p"
-          sx={{
-            padding: '1em',
+        <p
+          style={{
+            padding: '1rem',
             textWrap: 'nowrap',
-            paddingTop: '1.5em',
+            paddingTop: '2.3rem',
             color: 'var(--white)',
+            fontSize: '1.25rem',
           }}
         >
           {role.date}
-        </Typography>
+        </p>
       </TimelineOppositeContent>
       <TimelineSeparator style={{ paddingRight: '10px' }}>
         <TimelineDot

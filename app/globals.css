@@ -13,6 +13,7 @@
 
   --section-background: var(--primary-color);
   --surface-background: var(--white);
+  --toolbar-background: var(--primary-color);
 
   @media (prefers-color-scheme: dark) {
     --background: var(--black);
@@ -20,6 +21,7 @@
 
     --section-background: var(--dark-grey);
     --surface-background: var(--grey);
+    --toolbar-background: var(--dark-grey)
   }
 }
 
@@ -29,25 +31,47 @@ body {
   margin: 0;
 }
 
+h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 3.25rem;
+}
+
+h3, .h3 {
+  font-weight: 400;
+  font-size: 1.35rem;
+}
+
+h4, .h4 {
+  font-weight: 400;
+  font-size: 1.15rem;
+}
+
+h5, .subtitle1 {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+h6, .subtitle2 {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
 
-div.MuiPaper-root .MuiTypography-root, ul {
+div.MuiPaper-root {
   color: var(--foreground);
 }
 
 div.MuiPaper-root {
   background-color: var(--surface-background);
-}
-
-div.MuiToolbar-root {
-  background-color: var(--section-background);
-  .MuiTypography-root {
-    color: var(--white);
-  }
 }
 
 section {

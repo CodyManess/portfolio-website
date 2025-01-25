@@ -1,4 +1,4 @@
-import { Container, Stack, Typography } from '@mui/material'
+import { Container, Stack } from '@mui/material'
 import * as React from 'react'
 import SchoolCard from './schoolCard'
 import { schools } from '../../data/schools'
@@ -9,7 +9,7 @@ const Creds = () => {
   return (
     <section id="credentials" className="section">
       <Container>
-        <Typography variant="h2">Credentials</Typography>
+        <h2>Credentials</h2>
         <Stack direction="row" sx={{ margin: '1em 0', flexWrap: 'wrap' }}>
           {schools.map((role, index) => (
             <SchoolCard key={index} {...role} />

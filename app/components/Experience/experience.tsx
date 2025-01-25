@@ -1,6 +1,6 @@
 'use client'
 import { Timeline, timelineItemClasses } from '@mui/lab/'
-import { Container, Typography } from '@mui/material'
+import { Container } from '@mui/material'
 import * as React from 'react'
 import RoleItem from './RoleItem/roleItem'
 import { roles } from '../../data/experience'
@@ -10,7 +10,7 @@ const Experience = () => {
   return (
     <section id="experience" className="section">
       <Container>
-        <Typography variant="h2">Experience</Typography>
+        <h2>Experience</h2>
         <Timeline
           position="right"
           style={{ padding: 0 }}

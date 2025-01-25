@@ -10,7 +10,6 @@ import {
   List,
   ListItem,
   Slide,
-  Typography,
 } from '@mui/material'
 import Link from 'next/link'
 import { FaExternalLinkAlt } from 'react-icons/fa'
@@ -64,44 +63,35 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
           </Link>
           {awards.length !== 0 && (
             <>
-              <Typography variant="h5" component="h2">
-                Awards
-              </Typography>
+              <h3>Awards</h3>
               <List>
                 {awards.map((award) => {
                   return (
                     <ListItem key={award}>
-                      <Typography>{award}</Typography>
+                      <p>{award}</p>
                     </ListItem>
                   )
                 })}
               </List>
             </>
           )}
-          `
         </div>
         <div style={{ flex: 'auto', maxWidth: '500px' }}>
-          <Typography variant="h5" component="h3" gutterBottom>
-            Curriculum
-          </Typography>
+          <h3 style={{ marginBottom: '1rem' }}>Curriculum</h3>
           {Object.values(CourseType).map((val) => {
             const filteredCourses = courses.filter(
               (course) => course.courseType === val
             )
             return (
               <div key={val}>
-                {filteredCourses.length !== 0 && (
-                  <Typography variant="h6" component="h4">
-                    {val}
-                  </Typography>
-                )}
+                {filteredCourses.length !== 0 && <h4>{val}</h4>}
                 <List>
                   {filteredCourses.map((val) => {
                     return (
                       <ListItem key={val.title}>
-                        <Typography>
+                        <p>
                           {val.courseNum} - {val.title}
-                        </Typography>
+                        </p>
                       </ListItem>
                     )
                   })}

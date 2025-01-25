@@ -1,11 +1,5 @@
 'use client'
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Typography,
-} from '@mui/material'
+import { Card, CardActionArea, CardContent, CardMedia } from '@mui/material'
 import * as React from 'react'
 import { Degree } from '../../models/school'
 import DegreeModal from './degreeModal'
@@ -21,7 +15,14 @@ const SchoolCard = (degree: Degree) => {
   return (
     <>
       <Card elevation={3} style={{ margin: '8px', flex: 1, minWidth: '320px' }}>
-        <CardActionArea onClick={handleOpen}>
+        <CardActionArea
+          style={{
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+          onClick={handleOpen}
+        >
           <CardMedia
             style={{
               height: '180px',
@@ -37,26 +38,17 @@ const SchoolCard = (degree: Degree) => {
               style={{ objectFit: 'cover' }}
             />
           </CardMedia>
-          <CardContent>
-            <Typography
-              gutterBottom
-              component="h3"
-              sx={{
-                color: 'text.secondary',
-                fontSize: 14,
-                maxHeight: '2em',
-              }}
-            >
-              {schoolName}
-            </Typography>
-            <Typography variant="h5" component="h4">
-              {title}
-            </Typography>
-            {subtitle && (
-              <Typography variant="subtitle2" component="h5">
-                {subtitle}
-              </Typography>
-            )}
+          <CardContent
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              marginRight: 'auto',
+              flex: 1,
+            }}
+          >
+            <p>{schoolName}</p>
+            <h3 style={{ margin: '0.25rem 0' }}>{title}</h3>
+            {subtitle && <p style={{ fontWeight: 700 }}>{subtitle}</p>}
           </CardContent>
         </CardActionArea>
       </Card>

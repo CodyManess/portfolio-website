@@ -1,4 +1,4 @@
-import { Card, CardActionArea, CardContent, Typography } from '@mui/material'
+import { Card, CardActionArea, CardContent } from '@mui/material'
 import * as React from 'react'
 import Project from '@/app/models/project'
 import ProjectModal from './projectModal'
@@ -21,9 +21,7 @@ const ProjectCard = (project: Project) => {
       >
         <CardActionArea style={{ height: '100%' }} onClick={handleOpen}>
           <CardContent style={{ height: '100%' }}>
-            <Typography gutterBottom variant="h5" component="h3">
-              {project.title}
-            </Typography>
+            <h3 style={{ marginBottom: '0.5rem' }}>{project.title}</h3>
             {project.tools.map((tool) => {
               return <ToolChip key={tool.title} tool={tool} />
             })}

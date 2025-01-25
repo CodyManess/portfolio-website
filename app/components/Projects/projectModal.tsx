@@ -1,11 +1,4 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  Link,
-  Slide,
-  Typography,
-} from '@mui/material'
+import { Dialog, DialogContent, DialogTitle, Link, Slide } from '@mui/material'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import Project from '@/app/models/project'
 import ToolChip from '@/app/components/Shared/toolChip'
@@ -49,15 +42,9 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
             Public Link <FaExternalLinkAlt fontSize="small" />
           </Link>
         )}
-        <Typography variant="h5" component="h3" gutterBottom>
-          Description
-        </Typography>
-        <Typography variant="body1" style={{ marginBottom: '1em' }}>
-          {project.description}
-        </Typography>
-        <Typography variant="h5" component="h3" gutterBottom>
-          Tools Used
-        </Typography>
+        <h3 style={{ marginBottom: '0.5em' }}>Description</h3>
+        <p style={{ marginBottom: '1.25em' }}>{project.description}</p>
+        <h3 style={{ marginBottom: '0.5em' }}>Tools Used</h3>
         {project.tools.map((tool) => (
           <ToolChip key={tool.title} tool={tool} />
         ))}

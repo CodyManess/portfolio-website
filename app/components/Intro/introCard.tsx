@@ -15,10 +15,10 @@ const IntroCard: React.FC<IntroCardProps> = ({ imageData }: IntroCardProps) => {
       className={styles.introCard}
       style={{
         display: 'flex',
-        padding: '1rem 1.5rem',
+        padding: '2rem',
         flexFlow: 'column',
         backgroundColor: imageData ? 'white' : 'var(--surface-background)',
-        borderRadius: '4px',
+        borderRadius: '8px',
       }}
     >
       <div
@@ -53,12 +53,22 @@ const IntroCard: React.FC<IntroCardProps> = ({ imageData }: IntroCardProps) => {
           />
         )}
       </div>
-      <h1 style={{ margin: '0.5rem auto', fontSize: '3rem' }}>Cody Maness</h1>
-      <h2 style={{ margin: '0.5rem auto' }}>Web & Mobile Developer</h2>
+      <h1 style={{ margin: 'auto', fontSize: '3rem' }}>
+        Cody Maness
+        <span
+          style={{
+            display: 'block',
+            margin: '0.5rem auto',
+            fontSize: '1.5rem',
+          }}
+        >
+          Web & Mobile Developer
+        </span>
+      </h1>
       <p
         style={{
           maxWidth: '400px',
-          margin: '1em auto',
+          margin: '1rem auto 1.75rem auto',
           textAlign: 'center',
         }}
       >

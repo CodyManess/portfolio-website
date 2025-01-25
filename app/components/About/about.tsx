@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Container } from '@mui/material'
+import { Container } from '@mui/material'
 import { SiLetterboxd, SiGoodreads, SiYoutubemusic } from 'react-icons/si'
 import { FaGamepad } from 'react-icons/fa6'
 import Link from 'next/link'
@@ -9,11 +9,9 @@ const About: React.FC = () => {
   return (
     <section id="about" className={`section ${styles.about}`}>
       <Container>
-        <Typography variant="h2">About Me</Typography>
-        <Typography variant="h6" component="h3">
-          How I got into Tech
-        </Typography>
-        <Typography variant="body1">
+        <h2>About Me</h2>
+        <h3>How I got into Tech</h3>
+        <p>
           Growing up in rural West TN, I always felt disconnected and out of
           place around the familiar fields, forests, and people of where I was
           from. After years of dial-up and limited satellite internet, I finally
@@ -24,36 +22,30 @@ const About: React.FC = () => {
           set me on the path to sharing this experience with others by creating
           accessible and engaging apps that can help others learn, laugh, or
           simply make their day a little easier.
-        </Typography>
+        </p>
 
         <div className={styles.interestsContainer}>
           <div className={styles.interestBlock}>
-            <Typography variant="h6" component="h3">
-              Tech Interests
-            </Typography>
-            <Typography variant="body1">
-              Web Development, Native & Cross Platform Mobile App Development,
-              Accessibility, Gen AI Assisted Software Development, Code Quality,
-              and Open Source
-            </Typography>
+            <h3>Tech Interests</h3>
+            <p>
+              Web Development &#128187;, Native & Cross Platform Mobile App
+              Development &#128241;, Accessibility, Gen AI Assisted Software
+              Development, Code Quality, and Open Source
+            </p>
           </div>
 
           <div className={styles.interestBlock}>
-            <Typography variant="h6" component="h3">
-              Personal Interests
-            </Typography>
-            <Typography variant="body1">
+            <h3>Personal Interests</h3>
+            <p>
               Taking Care of my Pets &#128021; &#128049;, Politics & News
               &#128240;, Trying new Food, Local Events, or Self Care,
-              occassionally traveling &#127758;, and constantly trying new ways
-              to organize my notes on Notion &#128211;.
-            </Typography>
+              occassionally traveling &#127758;, and constantly trying to build
+              a second brain on Notion &#128211;.
+            </p>
           </div>
 
           <div className={styles.interestBlock}>
-            <Typography variant="h6" component="h3">
-              Favorite Movies, Books, Games, and Music
-            </Typography>
+            <h3>Favorite Movies, Books, Games, and Music</h3>
             <div className={styles.aboutLinks}>
               <Link href="https://letterboxd.com/codyness/" target="_blank">
                 <SiLetterboxd /> Letterboxd
