@@ -5,7 +5,7 @@ import {
   Accordion,
   AccordionBody,
   AccordionHeader,
-} from '../Accordion/accordion'
+} from '../../Accordion/accordion'
 
 interface RoleCardProps {
   role: Role

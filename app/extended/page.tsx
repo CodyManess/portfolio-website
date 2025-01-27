@@ -1,13 +1,11 @@
-'use client'
-import RoleItem from '@/shared/components/RoleItem/roleItem'
 import styles from './extended.module.css'
-import { extendedRoles } from '@/shared/data/experience'
-import { Timeline, timelineItemClasses } from '@mui/lab'
 import { Container } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
 import { FaArrowLeft } from 'react-icons/fa6'
 import { Metadata } from 'next'
+import { extendedRoles } from '@/shared/data/experience'
+import WorkTimeline from '@/shared/components/WorkTimeline/WorkTimeline'
 
 export const metadata: Metadata = {
   title: 'Cody Maness | Extended Work History',
@@ -16,7 +14,6 @@ export const metadata: Metadata = {
 }
 
 const Page: React.FC = () => {
-  const [expanded, setExpanded] = React.useState<number | false>(false)
   return (
     <section id="extended-experience" className={`section ${styles.extended}`}>
       <Container>
@@ -40,30 +37,7 @@ const Page: React.FC = () => {
           From this, I hope you can see some of the ambition and hard work that
           helped me get to where I am today.
         </p>
-        <Timeline
-          position="right"
-          style={{
-            padding: 0,
-            maxWidth: '65em',
-            justifySelf: 'center',
-          }}
-          sx={{
-            [`& .${timelineItemClasses.root}:before`]: {
-              flex: 0,
-              padding: 0,
-            },
-          }}
-        >
-          {extendedRoles.map((role, index) => (
-            <RoleItem
-              key={index}
-              index={index}
-              role={role}
-              expanded={expanded}
-              setExpanded={setExpanded}
-            />
-          ))}
-        </Timeline>
+        <WorkTimeline roles={extendedRoles} />
       </Container>
     </section>
   )

@@ -8,7 +8,7 @@ import {
 } from '@mui/lab'
 import React from 'react'
 import Image from 'next/image'
-import Role from '../../models/role'
+import Role from '../../../models/role'
 import RoleCard from '../RoleCard/roleCard'
 import styles from './roleItem.module.css'
 import { Roboto_Mono } from 'next/font/google'
