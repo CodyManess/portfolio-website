@@ -1,4 +1,4 @@
-import { Tool } from '@/app/models/project'
+import { Tool } from '@/shared/models/project'
 import {
   SiReact,
   SiSwift,

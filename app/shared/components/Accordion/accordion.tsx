@@ -7,6 +7,7 @@ interface AccordionProps {
   expanded: number | false
   setExpanded: (index: number | false) => void
   children: React.ReactNode
+  className?: string
 }
 
 interface AccordionChildrenProps {
@@ -38,7 +39,7 @@ export function Accordion(props: AccordionProps) {
 
   return (
     <div
-      className={`${styles.accordionCard} ${props.expanded === props.index ? styles.active : ''}`}
+      className={`${props.className} ${props.expanded === props.index ? styles.active : ''}`}
     >
       {!!header && (
         <button

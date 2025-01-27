@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tool } from '@/app/models/project'
+import { Tool } from '@/src/app/models/project'
 
 interface ToolChipProps {
   tool: Tool
@@ -16,7 +16,7 @@ const ToolChip: React.FC<ToolChipProps> = ({ tool }) => {
         color: 'var(--foreground)',
         borderRadius: '2rem',
         margin: '0.25rem',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
       }}
     >
       <tool.icon

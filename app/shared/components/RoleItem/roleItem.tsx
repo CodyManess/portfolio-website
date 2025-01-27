@@ -8,9 +8,16 @@ import {
 } from '@mui/lab'
 import React from 'react'
 import Image from 'next/image'
-import Role from '../../../models/role'
+import Role from '../../models/role'
 import RoleCard from '../RoleCard/roleCard'
 import styles from './roleItem.module.css'
+import { Roboto_Mono } from 'next/font/google'
+
+export const robotoMono = Roboto_Mono({
+  style: ['normal'],
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 interface RoleItemProps {
   role: Role
@@ -31,17 +38,7 @@ export default function RoleItem({
         className={styles.timelineSeparator}
         sx={{ padding: 0, flex: 0 }}
       >
-        <p
-          style={{
-            padding: '1rem',
-            textWrap: 'nowrap',
-            paddingTop: '2.3rem',
-            color: 'var(--white)',
-            fontSize: '1.25rem',
-          }}
-        >
-          {role.date}
-        </p>
+        <p className={styles.date}>{role.date}</p>
       </TimelineOppositeContent>
       <TimelineSeparator style={{ paddingRight: '10px' }}>
         <TimelineDot
@@ -56,15 +53,17 @@ export default function RoleItem({
           variant="outlined"
           color="primary"
         >
-          <Image
-            style={{
-              margin: 'auto',
-              maxWidth: '100%',
-              height: 'auto',
-            }}
-            src={role.companyLogo}
-            alt={`${role.companyName} Logo`}
-          />
+          {role.companyLogo && (
+            <Image
+              style={{
+                margin: 'auto',
+                maxWidth: '100%',
+                height: 'auto',
+              }}
+              src={role.companyLogo}
+              alt={`${role.companyName} Logo`}
+            />
+          )}
         </TimelineDot>
         <TimelineConnector style={{ minHeight: '0.5em' }} />
       </TimelineSeparator>

@@ -1,8 +1,8 @@
 import { Card, CardActionArea, CardContent } from '@mui/material'
 import * as React from 'react'
-import Project from '@/app/models/project'
+import Project from '../../shared/models/project'
 import ProjectModal from './projectModal'
-import ToolChip from '@/app/components/Shared/toolChip'
+import ToolChip from '@/shared/components/toolChip'
 
 const ProjectCard = (project: Project) => {
   const [open, setOpen] = React.useState(false)

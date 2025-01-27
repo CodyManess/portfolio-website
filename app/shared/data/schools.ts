@@ -1,7 +1,7 @@
 import { Degree, CourseType } from '../models/school'
-import mtsucampus from '@/public/credentials/mtsucampus.webp'
-import mtsucampus2 from '@/public/credentials/mtsucampus2.webp'
-import lsuscampus from '@/public/credentials/lsuscampus.webp'
+import mtsucampus from '@public/credentials/mtsucampus.webp'
+import mtsucampus2 from '@public/credentials/mtsucampus2.webp'
+import lsuscampus from '@public/credentials/lsuscampus.webp'
 
 export const schools: Degree[] = [
   {

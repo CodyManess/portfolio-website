@@ -6,7 +6,7 @@ import {
   Link,
   Paper,
 } from '@mui/material'
-import { navLinks } from '@/app/data/links'
+import { navLinks } from '@/shared/data/links'
 import styles from './bottomNav.module.css'
 
 const BottomNav = () => {
@@ -40,7 +40,7 @@ const BottomNav = () => {
             className={styles.navButton}
             key={page.title.toLowerCase()}
             component={Link}
-            href={`#${page.title.toLowerCase()}`}
+            href={`/#${page.title.toLowerCase()}`}
             label={page.title}
             value={page.title.toLowerCase()}
             icon={<page.icon size="1.5em" />}

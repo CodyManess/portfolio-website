@@ -1,7 +1,7 @@
 import { Dialog, DialogContent, DialogTitle, Link, Slide } from '@mui/material'
 import { FaExternalLinkAlt } from 'react-icons/fa'
-import Project from '@/app/models/project'
-import ToolChip from '@/app/components/Shared/toolChip'
+import Project from '../../shared/models/project'
+import ToolChip from '@/shared/components/toolChip'
 
 interface Props {
   project: Project

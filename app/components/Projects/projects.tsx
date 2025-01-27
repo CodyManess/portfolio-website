@@ -1,5 +1,5 @@
 'use client'
-import projects from '@/app/data/projects'
+import projects from '../../shared/data/projects'
 import { Container, Stack } from '@mui/material'
 import * as React from 'react'
 import ProjectCard from './projectCard'

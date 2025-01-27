@@ -1,8 +1,3 @@
-.accordionCard {
-  border-radius: 8px;
-  background-color: var(--surface-background);
-}
-
 .accordionHeader {
   display: flex;
   justify-content: space-between;
@@ -39,7 +34,7 @@
 
 .accordionBodyContent {
   flex: 1 1 auto;
-  margin: 1em;
+  margin: 0.5em 1em 1em 1em;
   overflow: hidden;
   z-index: 2;
 }

@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import styles from './intro.module.css'
-import ContactMe from '../Shared/ContactMe/contactme'
+import ContactMe from '@/shared/components/ContactMe/contactme'
 import Image from 'next/image'
-import profilePic from '@/public/intro/portfolio-picture.webp'
+import profilePic from '@public/intro/portfolio-picture.webp'
 
 interface IntroCardProps {
   imageData?: ArrayBuffer

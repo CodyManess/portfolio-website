@@ -1,10 +1,22 @@
 .appBar {
+  box-shadow: var(--surface-shadow);
   background: var(--toolbar-background) !important;
+  display: none;
+  transition: top 0.3s !important;
+  position: fixed;
+  z-index: 1100;
+  top: 0;
+  left: auto;
+  right: 0;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 600px) {
   .appBar {
-    display: none;
+    display: flex;
   }
 }
 

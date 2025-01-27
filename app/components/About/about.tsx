@@ -39,8 +39,8 @@ const About: React.FC = () => {
             <p>
               Taking Care of my Pets &#128021; &#128049;, Politics & News
               &#128240;, Trying new Food, Local Events, or Self Care,
-              occassionally traveling &#127758;, and constantly trying to build
-              a second brain on Notion &#128211;.
+              occassionally traveling &#127758;, and writing new notes on Notion
+              &#128211;.
             </p>
           </div>
 

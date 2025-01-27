@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import './globals.css'
+import PortfolioAppBar from '@/shared/components/Nav/AppBar/appbar'
+import BottomNav from '@/shared/components/Nav/BottomNav/bottomNav'
+import Footer from '@/shared/components/Nav/Footer/footer'
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -11,14 +14,14 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://codymaness.com'),
-  title: 'Cody Maness | Web & Mobile Developer',
+  title: 'Cody Maness | Full-Stack Developer',
   description:
-    'Resume website for Cody Maness, a Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.',
+    'Resume website for Cody Maness, a Full-Stack Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.',
   openGraph: {
-    title: 'Cody Maness | Web & Mobile Developer',
+    title: 'Cody Maness | Full-Stack Developer',
     description:
-      'Resume website for Cody Maness, a Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.',
-    siteName: 'Cody Maness | Web & Mobile Developer',
+      'Resume website for Cody Maness, a Full-Stack Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.',
+    siteName: 'Cody Maness | Full-Stack Developer',
     locale: 'en_US',
     type: 'website',
     url: 'https://codymaness.com',
@@ -32,7 +35,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={roboto.className}>
-      <body>{children}</body>
+      <body>
+        <PortfolioAppBar />
+        {children}
+        <Footer />
+        <BottomNav />
+      </body>
     </html>
   )
 }

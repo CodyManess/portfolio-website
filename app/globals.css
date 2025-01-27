@@ -13,6 +13,7 @@
 
   --section-background: var(--primary-color);
   --surface-background: var(--white);
+  --surface-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   --toolbar-background: var(--primary-color);
 
   @media (prefers-color-scheme: dark) {
@@ -31,6 +32,16 @@ body {
   margin: 0;
 }
 
+/** MUI Overrides */
+div.MuiPaper-root {
+  color: var(--foreground);
+}
+
+div.MuiPaper-root {
+  background-color: var(--surface-background);
+}
+
+/** Typogrpah */
 h2, h3, h4, h5, h6, p {
   margin: 0;
 }
@@ -66,12 +77,18 @@ h6, .subtitle2 {
   }
 }
 
-div.MuiPaper-root {
-  color: var(--foreground);
+a {
+  color: var(--primary-color);
+  &:hover {
+    color: var(--primary-dark);
+  }
 }
 
-div.MuiPaper-root {
+/** Styled Components */
+.card {
+  border-radius: 8px;
   background-color: var(--surface-background);
+  box-shadow: var(--surface-shadow);
 }
 
 section {
@@ -88,7 +105,10 @@ section {
   .MuiPaper-root {
     background-color: var(--background);
   }
-  div h2 {
+  .MuiTimelineOppositeContent-root {
+    color: var(--white);
+  }
+  div > h2,a {
     color: var(--white);
   }
 }

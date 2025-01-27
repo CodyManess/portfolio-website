@@ -1,7 +1,7 @@
 'use client'
 import { Card, CardActionArea, CardContent, CardMedia } from '@mui/material'
 import * as React from 'react'
-import { Degree } from '../../models/school'
+import { Degree } from '../../shared/models/school'
 import DegreeModal from './degreeModal'
 import Image from 'next/image'
 

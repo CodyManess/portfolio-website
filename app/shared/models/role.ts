@@ -4,7 +4,7 @@ export default interface Role {
   date: string
   title: string
   companyName: string
-  companyLogo: StaticImageData
+  companyLogo?: StaticImageData
   description: Array<WorkSection>
 }
 

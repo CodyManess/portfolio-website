@@ -1,11 +1,11 @@
 import * as React from 'react'
 import styles from './roleCard.module.css'
-import Role from '@/app/models/role'
+import Role from '@/shared/models/role'
 import {
   Accordion,
   AccordionBody,
   AccordionHeader,
-} from '../../Shared/Accordion/accordion'
+} from '../Accordion/accordion'
 
 interface RoleCardProps {
   role: Role
@@ -16,7 +16,12 @@ interface RoleCardProps {
 
 const RoleCard = ({ role, setExpanded, expanded, index }: RoleCardProps) => {
   return (
-    <Accordion index={index} expanded={expanded} setExpanded={setExpanded}>
+    <Accordion
+      className="card"
+      index={index}
+      expanded={expanded}
+      setExpanded={setExpanded}
+    >
       <AccordionHeader>
         <h3 style={{ marginBottom: '0.4rem' }}>{role.title}</h3>
         <p className="subtitle1">{role.companyName}</p>
@@ -26,7 +31,9 @@ const RoleCard = ({ role, setExpanded, expanded, index }: RoleCardProps) => {
       <AccordionBody>
         {role.description.map((section, index) => (
           <div key={`${role.title}${index}`}>
-            {section.heading && <h4>{section.heading}</h4>}
+            {section.heading && (
+              <h4 className="subtitle2">{section.heading}</h4>
+            )}
             <ul>
               {section.items.map((item) => (
                 <li key={item}>{item}</li>

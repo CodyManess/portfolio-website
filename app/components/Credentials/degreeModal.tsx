@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react'
-import { CourseType, Degree } from '../../models/school'
+import { CourseType, Degree } from '../../shared/models/school'
 import {
   Button,
   Dialog,

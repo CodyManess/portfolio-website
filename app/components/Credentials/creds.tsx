@@ -1,8 +1,8 @@
 import { Container, Stack } from '@mui/material'
 import * as React from 'react'
 import SchoolCard from './schoolCard'
-import { schools } from '../../data/schools'
-import { certs } from '@/app/data/certifications'
+import { schools } from '../../shared/data/schools'
+import { certs } from '../../shared/data/certifications'
 import Image from 'next/image'
 
 const Creds = () => {
