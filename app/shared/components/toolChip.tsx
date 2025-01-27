@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tool } from '@/src/app/models/project'
+import { Tool } from '@/shared/models/project'
 
 interface ToolChipProps {
   tool: Tool
