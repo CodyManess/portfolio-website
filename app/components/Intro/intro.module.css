@@ -15,20 +15,7 @@ section.intro {
   color: var(--primary-color);
 }
 
-.introCard h1 {
-  text-align: center;
-}
-
-.introCard h2 {
-  text-align: center;
-}
-
-.introCard p {
-  text-align: center;
-}
-
 /* Card Glow Animation */
-
 @keyframes card-glow {
   0% {
     box-shadow: 0 0 30px 30px var(--primary-dark);

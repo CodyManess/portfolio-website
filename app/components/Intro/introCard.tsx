@@ -53,7 +53,14 @@ const IntroCard: React.FC<IntroCardProps> = ({ imageData }: IntroCardProps) => {
           />
         )}
       </div>
-      <h1 style={{ margin: 'auto', fontSize: '3rem' }}>
+      <h1
+        style={{
+          display: 'flex',
+          flexFlow: 'column',
+          margin: 'auto',
+          fontSize: '3rem',
+        }}
+      >
         Cody Maness
         <span
           style={{
