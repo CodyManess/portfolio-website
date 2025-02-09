@@ -1,9 +1,9 @@
 import { Container, Stack } from '@mui/material'
 import * as React from 'react'
-import SchoolCard from './schoolCard'
+import SchoolCard from './SchoolCard/schoolCard'
 import { schools } from '../../shared/data/schools'
 import { certs } from '../../shared/data/certifications'
-import Image from 'next/image'
+import CertBadge from './CertBadge/certBadge'
 
 const Creds = () => {
   return (
@@ -18,17 +18,17 @@ const Creds = () => {
         <div
           style={{
             display: 'flex',
-            justifyContent: 'center',
+            justifyContent: 'space-around',
             marginTop: '2em',
           }}
         >
           {certs.map((cert) => (
-            <Image
-              src={cert.icon}
-              alt={cert.alt}
-              width={150}
-              height={150}
-              key={cert.icon}
+            <CertBadge
+              key={cert.name}
+              icon={cert.icon}
+              iconType={cert.iconType}
+              name={cert.name}
+              org={cert.org}
             />
           ))}
         </div>
