@@ -1,8 +1,10 @@
-import { StaticImageData } from 'next/image'
+export interface EducationData {
+  degrees: Degree[]
+  certs: Cert[]
+}
 
 export interface Degree {
   schoolName: string
-  schoolPhoto: StaticImageData
   schoolLink: string
   title: string
   subtitle: string
@@ -20,4 +22,16 @@ export enum CourseType {
   Core = 'Core Requirements',
   Concentration = 'Concentration',
   SupportCourses = 'Supporting Courses',
+}
+
+export enum IconType {
+  Badge,
+  Logo,
+}
+
+export interface Cert {
+  icon: string
+  iconType: IconType
+  name: string
+  org: string
 }

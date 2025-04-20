@@ -1,4 +1,4 @@
-import Cert, { IconType } from '@/shared/models/cert'
+import { Cert, IconType } from '@/shared/models/education'
 import React from 'react'
 import Image from 'next/image'
 import styles from './certBadge.module.css'

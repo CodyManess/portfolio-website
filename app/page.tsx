@@ -6,18 +6,16 @@ import About from './components/About/about'
 
 export default function Home() {
   return (
-    <>
-      <main>
-        <Intro />
+    <main>
+      <Intro />
 
-        <About />
+      <About />
 
-        <Experience />
+      <Experience />
 
-        <Creds />
+      <Creds />
 
-        <Projects />
-      </main>
-    </>
+      <Projects />
+    </main>
   )
 }

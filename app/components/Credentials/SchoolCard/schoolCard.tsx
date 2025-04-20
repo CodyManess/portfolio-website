@@ -1,16 +1,33 @@
 'use client'
 import { Card, CardActionArea, CardContent, CardMedia } from '@mui/material'
 import * as React from 'react'
-import { Degree } from '../../../shared/models/school'
+import { Degree } from '../../../shared/models/education'
 import DegreeModal from './degreeModal'
 import Image from 'next/image'
 
-const SchoolCard = (degree: Degree) => {
-  const { schoolName, schoolPhoto, title, subtitle } = degree
+import mtsucampus from '@public/credentials/mtsucampus.webp'
+import mtsucampus2 from '@public/credentials/mtsucampus2.webp'
+import lsuscampus from '@public/credentials/lsuscampus.webp'
+
+const DegreeCard = (degree: Degree) => {
+  const { schoolName, title, subtitle } = degree
 
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  const schoolPhoto = () => {
+    switch (schoolName) {
+      case 'Master of Science in Computer Science':
+        return mtsucampus
+      case 'Bachelor of Science in Computer Science':
+        return mtsucampus2
+      case 'Master of Business Administration':
+        return lsuscampus
+      default:
+        return mtsucampus
+    }
+  }
 
   return (
     <>
@@ -32,7 +49,7 @@ const SchoolCard = (degree: Degree) => {
           >
             <Image
               fill
-              src={schoolPhoto}
+              src={schoolPhoto()}
               alt={schoolName}
               sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
               style={{ objectFit: 'cover' }}
@@ -58,4 +75,4 @@ const SchoolCard = (degree: Degree) => {
   )
 }
 
-export default SchoolCard
+export default DegreeCard
