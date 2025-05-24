@@ -1,4 +1,4 @@
-import { Degree, CourseType } from '@/shared/models/education';
+import { Degree, CourseType } from '@/shared/models/education'
 
 export const degrees: Degree[] = [
   {
@@ -250,4 +250,4 @@ export const degrees: Degree[] = [
       },
     ],
   },
-];
+]

@@ -1,4 +1,4 @@
-import { Cert, IconType } from '@/shared/models/education';
+import { Cert, IconType } from '@/shared/models/education'
 
 export const certs: Cert[] = [
   {
@@ -13,4 +13,4 @@ export const certs: Cert[] = [
     name: 'Gen AI for Software Development',
     org: 'DeepLearning.ai',
   },
-];
+]
