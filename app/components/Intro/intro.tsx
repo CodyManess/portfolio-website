@@ -8,7 +8,7 @@ const Intro = () => {
     <section id="home" className={styles.intro}>
       <IntroCard />
 
-      <FaAngleDown className={styles.arrowPulseDown} />
+      <FaAngleDown className={styles.arrowPulseDown} aria-hidden="true" />
     </section>
   )
 }

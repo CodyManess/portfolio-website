@@ -10,6 +10,10 @@ Feel free to peruse my code, offer any suggestions on how to improve it, or use 
 
 If you'd like to view the site it is deployed on and see it in action, please visit [codymaness.com](https://codymaness.com). 
 
+Recently, this project has undergone enhancements focusing on:
+*   **Improved Data Management:** Refactored how data (like educational qualifications) is handled, promoting better separation of concerns by moving static data out of API routes.
+*   **Enhanced Code Quality:** Increased code readability and maintainability through measures like TSDoc comments for components, removal of console logs, and general code cleanup.
+*   **Best Practices & Accessibility:** Ongoing efforts to align with Next.js best practices, optimize for performance, and improve accessibility (e.g., adding ARIA attributes).
 
 ### Built With
 
@@ -30,7 +34,7 @@ If you'd like to view the site it is deployed on and see it in action, please vi
 ## Roadmap
 
 - [x] Add an About Me Section
-- [ ] Move Const Data into a proper API
+- [x] Move Const Data into a proper API
 - [ ] Look into further Next.js Optimizations
 - [ ] Improve Accessibility
 - [ ] Visual Updates

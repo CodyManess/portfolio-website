@@ -31,8 +31,6 @@ const Creds = () => {
     fetchData()
   }, [])
 
-  console.log(educationData)
-
   let sectionBody = (
     <>
       <Stack direction="row" sx={{ margin: '1em 0', flexWrap: 'wrap' }}>

@@ -9,6 +9,10 @@ import mtsucampus from '@public/credentials/mtsucampus.webp'
 import mtsucampus2 from '@public/credentials/mtsucampus2.webp'
 import lsuscampus from '@public/credentials/lsuscampus.webp'
 
+/**
+ * Props for the DegreeCard component.
+ * @param degree - The degree data object to display.
+ */
 const DegreeCard = (degree: Degree) => {
   const { schoolName, title, subtitle } = degree
 
