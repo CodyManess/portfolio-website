@@ -3,6 +3,13 @@ import React from 'react'
 import Image from 'next/image'
 import styles from './certBadge.module.css'
 
+/**
+ * Props for the CertBadge component.
+ * @param icon - The path or URL to the certificate icon/badge.
+ * @param iconType - The type of icon (e.g., Badge or Logo).
+ * @param name - The name of the certificate.
+ * @param org - The organization that issued the certificate.
+ */
 const CertBadge = ({ icon, iconType, name, org }: Cert) => {
   return (
     <>

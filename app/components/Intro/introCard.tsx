@@ -6,6 +6,9 @@ import Image from 'next/image'
 import profilePic from '@public/intro/portfolio-picture.webp'
 
 interface IntroCardProps {
+  /** Optional image data to display as the profile picture.
+   * If not provided, a default image is used.
+   */
   imageData?: ArrayBuffer
 }
 

@@ -4,6 +4,10 @@ import Project from '../../shared/models/project'
 import ProjectModal from './projectModal'
 import ToolChip from '@/shared/components/toolChip'
 
+/**
+ * Props for the ProjectCard component.
+ * @param project - The project data object to display.
+ */
 const ProjectCard = (project: Project) => {
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => setOpen(true)
