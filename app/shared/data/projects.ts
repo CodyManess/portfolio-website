@@ -36,22 +36,29 @@ const projects: Project[] = [
   {
     title: 'TECDPortal',
     description:
-      'An internal portal for the Technology Early Career Development Program (TECDP) at the Cigna Group.  It’s main purpose was to provide a one stop location that connects TECDPs with commonly used resources and program specific tools.  These tools include a page for applying and posting TECDP positions, an internal ticket/request portal, and a page that shows personalized information regarding the buddy program.',
-    achievements: [],
+      'As part of the Technology Early Career Development Program (TECDP) at the Cigna Group, I worked as an Angular developer on the TECDPortal, an internal portal for the program.  It’s main purpose was to provide a one stop location that connects TECDPs with commonly used resources and program specific tools.\n\nThese tools included a page for applying and posting internal TECDP positions, an internal ticket/request portal, a dashboard that displayed weekly news, and a page that shows personalized information regarding the buddy program.',
+    achievements: [
+      'Cleaned up of over 2000 lines of code by reducing copied code through components and functions, removing unused/deprecated code, and reducing project scope through the removal of unpopular features.',
+      'Led Migration of the Job Board page from Angularjs to Angular 8',
+      'Worked with a team of frontend Devs to utilize Figma to create a redesigned mockup of the Dashboard page',
+    ],
     tools: [Tools.Angular],
   },
   {
     title: 'Military Treatment Facility (MTF) Portal',
     description:
-      'The Military Treatment Facility (MTF) or Military Provider Portal (MPP), now known as Militaryrx, is a secure web portal used to renew prescriptions currently filled at the Tricare mail order pharmacy, reduce fax volume to renew prescriptions, and respond to beneficiary requests for prescriptions to be transferred from MTF/retail pharmacy to Home Delivery.',
+      'The Military Treatment Facility (MTF) or Military Provider Portal (MPP), now known as Militaryrx, is a secure React web portal used to renew prescriptions currently filled at the Tricare mail order pharmacy, reduce fax volume to renew prescriptions, and respond to beneficiary requests for prescriptions to be transferred from MTF/retail pharmacy to Home Delivery.',
     link: 'https://militaryrx.express-scripts.com/',
-    achievements: [],
+    achievements: [
+      'Updated styling, unit tests, and over 15 component types to finish integrating a new enterprise component library',
+      'Helped deliver a major new feature that added the ability to submit and process a new prescriptions via the Express-Scripts MTF site, instead of having to use a paper form',
+    ],
     tools: [Tools.React],
   },
   {
     title: 'MTSU Mobile App',
     description:
-      'I worked on the Android version of the MTSU Mobile App as a student developer, where I pushed to improve code quality, combine school event data adding more event features, and refreshed bus tracking app code.',
+      'As a student developer on the MTSU Mobile App, I led the maintenance and improvements for the Android version of MTSU’s campus application, which helped students more easily access campus information like their email, schedule, campus buses, and events.\n\nDuring my time, I pushed to improve code quality by migrating features from Java and XML to Kotlin and Jetpack Compose and I championed more event features to allow students to become more connected to campus life.  I also worked on the PHP backend to update and improve code quality as well as added new endpoints.',
     link: 'https://mtsu.edu/mobile/',
     achievements: [],
     tools: [Tools.Kotlin, Tools.Swift, Tools.PHP],
@@ -59,7 +66,7 @@ const projects: Project[] = [
   {
     title: 'Dynamic Physical Therapy Website',
     description:
-      'I worked on the development of a React website for a small business called Dynamic Physical Therapy advertising its various services and contact information.',
+      'During college, I worked with a team of developers from a small startup called Bandilla on the development of a React website for a small business called Dynamic Physical Therapy advertising its contact information and various services.\n\nFor backend services, we used Firebase, utilizing its Node.js Cloud Functions and Cloud Firestore’s NoSQL Database to process the contact form and manage some content.',
     link: 'https://www.dynamicptsite.com/',
     achievements: [],
     tools: [Tools.React, Tools.Firebase],
@@ -67,7 +74,7 @@ const projects: Project[] = [
   {
     title: 'Keystone Adult Daycare Donation Database',
     description:
-      'During my time as a student at MTSU, I worked on the Java web application with a colleague to help create a portal for an Adult Daycare he was connected to.  This portal created an easy way for the Daycare staff to log donations and donation contact information, organize data, and set reminders to thank donors.',
+      'During my time as a student at MTSU, I worked on this web application with a colleague after recently finishing a Java class.  This application was a donation tracking tool for an Adult Daycare he was connected to.  This tool made it easier for the Daycare staff to log donations and donation contact information, organize donation data, and set reminders to thank donors.\n\nTo create this tool, we utilized the Full-Stack Java framework Vaadin, Spring Boot, and mySQL.',
     achievements: [],
     tools: [Tools.Java, Tools.Firebase],
   },

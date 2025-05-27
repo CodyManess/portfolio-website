@@ -1,4 +1,12 @@
-import { Dialog, DialogContent, DialogTitle, Link, Slide } from '@mui/material'
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Link,
+  Slide,
+} from '@mui/material'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import Project from '../../shared/models/project'
 import ToolChip from '@/shared/components/toolChip'
@@ -14,8 +22,10 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
     <Dialog
       open={open}
       onClose={handleClose}
+      slots={{
+        transition: Slide,
+      }}
       keepMounted
-      TransitionComponent={Slide}
       closeAfterTransition={false}
       sx={{
         '& .MuiDialog-paper': {
@@ -44,11 +54,24 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
         )}
         <h3 style={{ marginBottom: '0.5em' }}>Description</h3>
         <p style={{ marginBottom: '1.25em' }}>{project.description}</p>
+        {project.achievements.length !== 0 && (
+          <>
+            <h3 style={{ marginBottom: '0.5em' }}>Achievements</h3>
+            <ul style={{ marginBottom: '1.25em' }}>
+              {project.achievements.map((achievement) => (
+                <li key={achievement}>{achievement}</li>
+              ))}
+            </ul>
+          </>
+        )}
         <h3 style={{ marginBottom: '0.5em' }}>Tools Used</h3>
         {project.tools.map((tool) => (
           <ToolChip key={tool.title} tool={tool} />
         ))}
       </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose}>Close</Button>
+      </DialogActions>
     </Dialog>
   )
 }
