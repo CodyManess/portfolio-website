@@ -59,7 +59,17 @@ const Creds = () => {
   )
 
   if (isLoading) {
-    sectionBody = <CircularProgress />
+    sectionBody = (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          margin: '2em 0',
+        }}
+      >
+        <CircularProgress />
+      </div>
+    )
   }
 
   if (error) {
