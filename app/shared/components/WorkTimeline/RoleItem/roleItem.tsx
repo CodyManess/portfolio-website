@@ -6,7 +6,6 @@ import {
   TimelineDot,
   TimelineSeparator,
 } from '@mui/lab'
-import React from 'react'
 import Image from 'next/image'
 import Role from '../../../models/role'
 import RoleCard from '../RoleCard/roleCard'

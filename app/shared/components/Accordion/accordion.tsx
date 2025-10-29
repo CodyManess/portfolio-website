@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import styles from './accordion.module.css'
 import { FaAngleDown } from 'react-icons/fa'
 
@@ -17,6 +17,16 @@ interface AccordionChildrenProps {
 export function Accordion(props: AccordionProps) {
   const accordionBody = useRef<HTMLDivElement>(null)
   const accordionHeader = useRef<HTMLButtonElement>(null)
+  const [height, setHeight] = useState<string | number>('0px')
+
+  useEffect(() => {
+    const element = accordionBody.current
+    if (props.expanded === props.index && element) {
+      setHeight(element.scrollHeight)
+    } else {
+      setHeight('0px')
+    }
+  }, [props.expanded, props.index])
 
   let header
   let body
@@ -62,15 +72,7 @@ export function Accordion(props: AccordionProps) {
           id={`accordionpanel${props.index}`}
           role="region"
           aria-labelledby={`accordion${props.index}`}
-          style={
-            props.expanded === props.index
-              ? {
-                  height: accordionBody.current
-                    ? accordionBody.current.scrollHeight
-                    : 'auto',
-                }
-              : { height: '0px' }
-          }
+          style={{ height }}
         >
           <div className={styles.accordionBodyContent}>{body}</div>
         </div>

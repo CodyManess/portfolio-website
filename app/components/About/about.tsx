@@ -1,5 +1,4 @@
 import React from 'react'
-import { Container } from '@mui/material'
 import { SiLetterboxd, SiGoodreads, SiYoutubemusic } from 'react-icons/si'
 import { FaGamepad } from 'react-icons/fa6'
 import Link from 'next/link'
@@ -8,7 +7,7 @@ import styles from './about.module.css'
 const About: React.FC = () => {
   return (
     <section id="about" className={`section ${styles.about}`}>
-      <Container>
+      <div>
         <h2>About Me</h2>
         <h3>How I got into Tech</h3>
         <p>
@@ -68,7 +67,7 @@ const About: React.FC = () => {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   )
 }
