@@ -15,33 +15,18 @@ interface IntroCardProps {
 const IntroCard: React.FC<IntroCardProps> = ({ imageData }: IntroCardProps) => {
   return (
     <div
-      className={styles.introCard}
-      style={{
-        display: 'flex',
-        padding: '2rem',
-        flexFlow: 'column',
-        backgroundColor: imageData ? 'white' : 'var(--surface-background)',
-        borderRadius: '8px',
-      }}
+      className={`${styles.introCard} p-8 flex flex-col rounded-lg ${
+        imageData ? 'bg-white' : 'bg-surface-background-light dark:bg-surface-background-dark'
+      }`}
     >
-      <div
-        style={{
-          display: 'flex',
-          margin: '1em auto',
-          width: '180px',
-          height: '180px',
-          position: 'relative',
-          borderRadius: '50%',
-          overflow: 'hidden',
-        }}
-      >
+      <div className="relative mx-auto w-44 h-44 rounded-full overflow-hidden">
         {imageData && (
           <img
             src={imageData as unknown as string}
             alt="Cody Maness"
             width="743px"
             height="743px"
-            style={{ width: '100%', height: '100%' }}
+            className="w-full h-full"
           />
         )}
         {!imageData && (
@@ -56,32 +41,13 @@ const IntroCard: React.FC<IntroCardProps> = ({ imageData }: IntroCardProps) => {
           />
         )}
       </div>
-      <h1
-        style={{
-          display: 'flex',
-          flexFlow: 'column',
-          margin: 'auto',
-          fontSize: '3rem',
-        }}
-      >
+      <h1 className="flex flex-col mx-auto text-5xl">
         Cody Maness
-        <span
-          style={{
-            display: 'block',
-            margin: '0.5rem auto',
-            fontSize: '1.5rem',
-          }}
-        >
+        <span className="block mx-auto mt-2 text-2xl">
           Web & Mobile Developer
         </span>
       </h1>
-      <p
-        style={{
-          maxWidth: '400px',
-          margin: '1rem auto 1.75rem auto',
-          textAlign: 'center',
-        }}
-      >
+      <p className="max-w-md mx-auto my-4 text-center">
         Mobile and Web Developer with a love for creating engaging, accessible,
         and user-friendly applications.
       </p>

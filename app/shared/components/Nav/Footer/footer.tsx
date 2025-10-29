@@ -6,9 +6,9 @@ import styles from './footer.module.css'
 const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
-      <Container style={{ marginBottom: '4em' }}>
+      <Container className="mb-16">
         <h2>Thank you for visiting my website!</h2>
-        <p className="h3" style={{ margin: '1.5em' }}>
+        <p className="h3 my-6">
           Feel free to reach out to me through email or my socials below.
         </p>
 

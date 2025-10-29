@@ -18,15 +18,7 @@ const BottomNav = () => {
 
   return (
     <Paper
-      sx={{
-        display: { sm: 'none' },
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        zIndex: 3,
-        borderRadius: '4px 4px 0 0',
-      }}
+      className="sm:hidden fixed bottom-0 left-0 right-0 z-10 rounded-t-lg"
       elevation={3}
     >
       <BottomNavigation
