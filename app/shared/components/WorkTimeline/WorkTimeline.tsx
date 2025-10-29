@@ -13,11 +13,7 @@ export default function WorkTimeline({ roles }: WorkTimelineProps) {
   return (
     <Timeline
       position="right"
-      style={{
-        padding: 0,
-        maxWidth: '65em',
-        justifySelf: 'center',
-      }}
+      className="p-0 max-w-2xl justify-self-center"
       sx={{
         [`& .${timelineItemClasses.root}:before`]: {
           flex: 0,
