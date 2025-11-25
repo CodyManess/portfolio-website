@@ -1,0 +1,46 @@
+.accordionHeader {
+  display: flex;
+  justify-content: space-between;
+  transition: 0.3s;
+  padding: 1em;
+  width: 100%;
+  background: none;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.accordionHeader:focus {
+  border-radius: 8px;
+  background-color: hsl(from var(--surface-background) h s calc(l - 5));
+}
+
+.accordionTitle {
+  text-align: left;
+  padding: 0.25rem;
+}
+
+.accordionIcon {
+  display: flex;
+  align-self: center;
+  transition: 0.35s;
+  font-size: 2em;
+}
+
+.active .accordionIcon {
+  transform: rotate(180deg);
+}
+
+.accordionBodyContent {
+  flex: 1 1 auto;
+  margin: 0.5em 1em 1em 1em;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.accordionBody {
+  position: relative;
+  overflow: hidden;
+  transition: height 0.35s ease;
+}
