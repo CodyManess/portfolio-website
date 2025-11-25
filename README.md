@@ -1,5 +1,5 @@
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 This repo is for my very own portfolio website, a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
@@ -8,12 +8,13 @@ This project was created to more creatively explore React and Next.js and finall
 
 Feel free to peruse my code, offer any suggestions on how to improve it, or use it to inspire your own future creations!
 
-If you'd like to view the site it is deployed on and see it in action, please visit [codymaness.com](https://codymaness.com). 
+If you'd like to view the site it is deployed on and see it in action, please visit [codymaness.com](https://codymaness.com).
 
 Recently, this project has undergone enhancements focusing on:
-*   **Improved Data Management:** Refactored how data (like educational qualifications) is handled, promoting better separation of concerns by moving static data out of API routes.
-*   **Enhanced Code Quality:** Increased code readability and maintainability through measures like TSDoc comments for components, removal of console logs, and general code cleanup.
-*   **Best Practices & Accessibility:** Ongoing efforts to align with Next.js best practices, optimize for performance, and improve accessibility (e.g., adding ARIA attributes).
+
+- **Improved Data Management:** Refactored how data (like educational qualifications) is handled, promoting better separation of concerns by moving static data out of API routes.
+- **Enhanced Code Quality:** Increased code readability and maintainability through measures like TSDoc comments for components, removal of console logs, and general code cleanup.
+- **Best Practices & Accessibility:** Ongoing efforts to align with Next.js best practices, optimize for performance, and improve accessibility (e.g., adding ARIA attributes).
 
 ### Built With
 
@@ -22,6 +23,7 @@ Recently, this project has undergone enhancements focusing on:
 [![TypeScript][Typescript]](https://www.typescriptlang.org/)
 
 ### Deployed With
+
 [![Firebase][Firebase]](https://firebase.google.com/)
 [![Google Cloud][Google Cloud]](https://cloud.google.com/)
 
@@ -38,8 +40,8 @@ Recently, this project has undergone enhancements focusing on:
 - [ ] Look into further Next.js Optimizations
 - [ ] Improve Accessibility
 - [ ] Visual Updates
-    - [ ] Add Button Click Animations
-    - [ ] Add Card Click Animations
+  - [ ] Add Button Click Animations
+  - [ ] Add Card Click Animations
 
 ## Getting Started
 
@@ -69,10 +71,11 @@ To learn more about Next.js, take a look at the following resources:
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
+
 Here's a few wonderful tools I'd like to acknowledge for helping me make this project a reality:
 
-* [Material UI](https://mui.com/material-ui/) -
-* [Img Shields](https://shields.io)
-* [Best README Template](https://github.com/othneildrew/Best-README-Template) - Truly the best readme template even if I only used parts of it.
-
+- [Material UI](https://mui.com/material-ui/) -
+- [Img Shields](https://shields.io)
+- [Best README Template](https://github.com/othneildrew/Best-README-Template) - Truly the best readme template even if I only used parts of it.

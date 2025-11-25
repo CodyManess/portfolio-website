@@ -1,5 +1,5 @@
 import { ImageResponse } from 'next/og'
-import IntroCard from './components/Intro/introCard'
+import IntroCard from '@/components/Intro/introCard'
 import './globals.css'
 
 export const runtime = 'edge'

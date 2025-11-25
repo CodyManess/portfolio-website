@@ -13,7 +13,9 @@
 
   --section-background: var(--primary-color);
   --surface-background: var(--white);
-  --surface-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  --surface-shadow:
+    0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   --toolbar-background: var(--primary-color);
 
   @media (prefers-color-scheme: dark) {
@@ -22,7 +24,7 @@
 
     --section-background: var(--dark-grey);
     --surface-background: var(--grey);
-    --toolbar-background: var(--dark-grey)
+    --toolbar-background: var(--dark-grey);
   }
 }
 
@@ -46,7 +48,12 @@ div.MuiPaper-root {
 }
 
 /** Typogrpah */
-h2, h3, h4, h5, h6, p {
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
 }
 
@@ -55,22 +62,26 @@ h2 {
   font-size: 3.25rem;
 }
 
-h3, .h3 {
+h3,
+.h3 {
   font-weight: 400;
   font-size: 1.35rem;
 }
 
-h4, .h4 {
+h4,
+.h4 {
   font-weight: 400;
   font-size: 1.15rem;
 }
 
-h5, .subtitle1 {
+h5,
+.subtitle1 {
   font-weight: 700;
   font-size: 1rem;
 }
 
-h6, .subtitle2 {
+h6,
+.subtitle2 {
   font-weight: 500;
   font-size: 1rem;
 }
@@ -112,7 +123,8 @@ section {
   .MuiTimelineOppositeContent-root {
     color: var(--white);
   }
-  div > h2,a {
+  div > h2,
+  a {
     color: var(--white);
   }
 }

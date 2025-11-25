@@ -1,16 +1,9 @@
 import type { Metadata } from 'next'
-import { Roboto } from 'next/font/google'
 import './globals.css'
 import PortfolioAppBar from '@/shared/components/Nav/AppBar/appbar'
 import BottomNav from '@/shared/components/Nav/BottomNav/bottomNav'
 import Footer from '@/shared/components/Nav/Footer/footer'
-
-const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  display: 'swap',
-})
+import ThemeRegistry from './ThemeRegistry'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://codymaness.com'),
@@ -34,12 +27,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={roboto.className}>
+    <html lang="en">
       <body>
-        <PortfolioAppBar />
-        {children}
-        <Footer />
-        <BottomNav />
+        <ThemeRegistry>
+          <PortfolioAppBar />
+          {children}
+          <Footer />
+          <BottomNav />
+        </ThemeRegistry>
       </body>
     </html>
   )
