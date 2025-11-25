@@ -1,15 +1,20 @@
 // @ts-check
 
-import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import next from 'eslint-config-next';
-import prettier from 'eslint-config-prettier';
-import globals from 'globals';
-
+import eslint from '@eslint/js'
+import tseslint from 'typescript-eslint'
+import next from 'eslint-config-next'
+import prettier from 'eslint-config-prettier'
+import globals from 'globals'
 
 export default tseslint.config(
   {
-    ignores: [".next/**", "node_modules/**", "out/**", "build/**", "next-env.d.ts"],
+    ignores: [
+      '.next/**',
+      'node_modules/**',
+      'out/**',
+      'build/**',
+      'next-env.d.ts',
+    ],
   },
   next,
   eslint.configs.recommended,
@@ -22,5 +27,5 @@ export default tseslint.config(
       },
     },
   },
-  prettier,
-);
+  prettier
+)

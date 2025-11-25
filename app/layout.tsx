@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { Roboto } from 'next/font/google'
 import './globals.css'
 import PortfolioAppBar from '@/shared/components/Nav/AppBar/appbar'
 import BottomNav from '@/shared/components/Nav/BottomNav/bottomNav'
 import Footer from '@/shared/components/Nav/Footer/footer'
+import ThemeRegistry from './ThemeRegistry'
+import { Roboto } from 'next/font/google'
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -34,12 +35,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={roboto.className}>
-      <body>
-        <PortfolioAppBar />
-        {children}
-        <Footer />
-        <BottomNav />
+    <html lang="en">
+      <body className={roboto.className}>
+        <ThemeRegistry>
+          <PortfolioAppBar />
+          {children}
+          <Footer />
+          <BottomNav />
+        </ThemeRegistry>
       </body>
     </html>
   )
