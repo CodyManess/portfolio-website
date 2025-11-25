@@ -1,9 +1,9 @@
 {
-	"folders": [
-		{
-			"uri": "vscode-remote://wsl+ubuntu/home/codyness/Projects/portfolio-website"
-		}
-	],
-	"remoteAuthority": "wsl+Ubuntu",
-	"settings": {}
+  "folders": [
+    {
+      "uri": "vscode-remote://wsl+ubuntu/home/codyness/Projects/portfolio-website",
+    },
+  ],
+  "remoteAuthority": "wsl+Ubuntu",
+  "settings": {},
 }
