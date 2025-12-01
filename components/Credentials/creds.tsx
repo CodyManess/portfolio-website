@@ -33,18 +33,17 @@ const Creds = () => {
 
   let sectionBody = (
     <>
-      <Stack direction="row" sx={{ margin: '1em 0', flexWrap: 'wrap' }}>
+      <Stack
+        direction="row"
+        className="my-4 mx-0 flex-wrap"
+        useFlexGap
+        spacing={2}
+      >
         {educationData?.degrees.map((role, index) => (
           <DegreeCard key={index} {...role} />
         ))}
       </Stack>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-around',
-          marginTop: '2em',
-        }}
-      >
+      <div className="flex justify-around mt-8">
         {educationData?.certs.map((cert) => (
           <CertBadge
             key={cert.name}
@@ -60,13 +59,7 @@ const Creds = () => {
 
   if (isLoading) {
     sectionBody = (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          margin: '2em 0',
-        }}
-      >
+      <div className="flex justify-center my-8">
         <CircularProgress />
       </div>
     )

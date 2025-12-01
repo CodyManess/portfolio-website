@@ -27,13 +27,7 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
       }}
       keepMounted
       closeAfterTransition={false}
-      sx={{
-        '& .MuiDialog-paper': {
-          maxWidth: 800,
-          margin: '8px',
-          padding: '1em',
-        },
-      }}
+      className="[&_.MuiDialog-paper]:max-w-[800px] [&_.MuiDialog-paper]:m-2 [&_.MuiDialog-paper]:p-4"
     >
       <DialogTitle id="scroll-dialog-title">
         {project.title} Details
@@ -43,28 +37,24 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
         {project.link && (
           <Link
             href={project.link}
-            style={{
-              display: 'block',
-              color: 'var(--primary-color)',
-              marginBottom: '1em',
-            }}
+            className="block text-[var(--primary-color)] mb-4"
           >
             Public Link <FaExternalLinkAlt fontSize="small" />
           </Link>
         )}
-        <h3 style={{ marginBottom: '0.5em' }}>Description</h3>
-        <p style={{ marginBottom: '1.25em' }}>{project.description}</p>
+        <h3 className="mb-2">Description</h3>
+        <p className="mb-5">{project.description}</p>
         {project.achievements.length !== 0 && (
           <>
-            <h3 style={{ marginBottom: '0.5em' }}>Achievements</h3>
-            <ul style={{ marginBottom: '1.25em' }}>
+            <h3 className="mb-2">Achievements</h3>
+            <ul className="mb-5">
               {project.achievements.map((achievement) => (
                 <li key={achievement}>{achievement}</li>
               ))}
             </ul>
           </>
         )}
-        <h3 style={{ marginBottom: '0.5em' }}>Tools Used</h3>
+        <h3 className="mb-2">Tools Used</h3>
         {project.tools.map((tool) => (
           <ToolChip key={tool.title} tool={tool} />
         ))}

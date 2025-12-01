@@ -18,22 +18,14 @@ const BottomNav = () => {
 
   return (
     <Paper
-      sx={{
-        display: { sm: 'none' },
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        zIndex: 3,
-        borderRadius: '4px 4px 0 0',
-      }}
+      className="fixed bottom-0 left-0 right-0 z-[3] rounded-t sm:hidden"
       elevation={3}
     >
       <BottomNavigation
         showLabels
         value={value}
         onChange={handleChange}
-        style={{ backgroundColor: 'var(--surface-color)' }}
+        className="bg-[var(--surface-color)]"
       >
         {navLinks.map((page) => (
           <BottomNavigationAction

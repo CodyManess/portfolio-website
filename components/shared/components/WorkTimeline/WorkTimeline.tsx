@@ -1,5 +1,5 @@
 'use client'
-import { Timeline, timelineItemClasses } from '@mui/lab'
+import { Timeline } from '@mui/lab'
 import RoleItem from './RoleItem/roleItem'
 import React from 'react'
 import Role from '@/shared/models/role'
@@ -13,17 +13,7 @@ export default function WorkTimeline({ roles }: WorkTimelineProps) {
   return (
     <Timeline
       position="right"
-      style={{
-        padding: 0,
-        maxWidth: '65em',
-        justifySelf: 'center',
-      }}
-      sx={{
-        [`& .${timelineItemClasses.root}:before`]: {
-          flex: 0,
-          padding: 0,
-        },
-      }}
+      className="p-0 max-w-[65em] justify-self-center [&_.MuiTimelineItem-root::before]:flex-none [&_.MuiTimelineItem-root::before]:p-0"
     >
       {roles.map((role, index) => (
         <RoleItem

@@ -32,9 +32,7 @@ const CertBadge = ({ icon, iconType, name, org }: Cert) => {
             alt={name}
             width={75}
             height={75}
-            style={{
-              marginTop: '0.25em',
-            }}
+            className="mt-[0.25em]"
           />
           <p className={styles.certName}>{name}</p>
           <p className={styles.certOrg}>{org}</p>

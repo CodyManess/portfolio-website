@@ -35,41 +35,27 @@ const DegreeCard = (degree: Degree) => {
 
   return (
     <>
-      <Card elevation={3} style={{ margin: '8px', flex: 1, minWidth: '320px' }}>
+      <Card
+        elevation={3}
+        className="m-2 flex-1 min-w-[320px]"
+      >
         <CardActionArea
-          style={{
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
+          className="h-full flex flex-col"
           onClick={handleOpen}
         >
-          <CardMedia
-            style={{
-              height: '180px',
-              width: '100%',
-              position: 'relative',
-            }}
-          >
+          <CardMedia className="h-[180px] w-full relative">
             <Image
               fill
               src={schoolPhoto()}
               alt={schoolName}
               sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              style={{ objectFit: 'cover' }}
+              className="object-cover"
             />
           </CardMedia>
-          <CardContent
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              marginRight: 'auto',
-              flex: 1,
-            }}
-          >
+          <CardContent className="flex flex-col mr-auto flex-1">
             <p>{schoolName}</p>
-            <h3 style={{ margin: '0.25rem 0' }}>{title}</h3>
-            {subtitle && <p style={{ fontWeight: 700 }}>{subtitle}</p>}
+            <h3 className="my-1 mx-0">{title}</h3>
+            {subtitle && <p className="font-bold">{subtitle}</p>}
           </CardContent>
         </CardActionArea>
       </Card>

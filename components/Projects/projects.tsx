@@ -9,7 +9,12 @@ const Projects = () => {
     <section id="projects" className="section">
       <Container>
         <h2>Projects</h2>
-        <Stack direction="row" sx={{ margin: '1em 0', flexWrap: 'wrap' }}>
+        <Stack
+          direction="row"
+          className="my-4 mx-0 flex-wrap"
+          useFlexGap
+          spacing={2}
+        >
           {projects.map((project) => {
             return <ProjectCard key={project.title} {...project} />
           })}

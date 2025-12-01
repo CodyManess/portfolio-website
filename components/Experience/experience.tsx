@@ -10,13 +10,12 @@ const Experience = () => {
         <h2>Experience</h2>
         <WorkTimeline roles={roles} />
         <Link
-          className="h3"
-          style={{ display: 'block', marginTop: '2rem' }}
+          className="h3 block mt-8"
           href="/extended"
         >
           Extended Job History
           <FaArrowRight
-            style={{ verticalAlign: 'bottom', margin: '0 0 2px 4px' }}
+            className="align-bottom m-[0_0_2px_4px]"
           />
         </Link>
       </div>

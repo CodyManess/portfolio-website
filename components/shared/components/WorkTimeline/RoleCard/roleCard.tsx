@@ -22,7 +22,7 @@ const RoleCard = ({ role, setExpanded, expanded, index }: RoleCardProps) => {
       setExpanded={setExpanded}
     >
       <AccordionHeader>
-        <h3 style={{ marginBottom: '0.4rem' }}>{role.title}</h3>
+        <h3 className="mb-[0.4rem]">{role.title}</h3>
         <p className="subtitle1">{role.companyName}</p>
         <p className={`subtitle2 ${styles.companyDateMobile}`}>{role.date}</p>
       </AccordionHeader>

@@ -18,12 +18,11 @@ const Page: React.FC = () => {
     <section id="extended-experience" className={`section ${styles.extended}`}>
       <Container>
         <Link
-          className="h3"
-          style={{ display: 'inline-block', marginBottom: '2rem' }}
+          className="h3 inline-block mb-8"
           href="/#experience"
         >
           <FaArrowLeft
-            style={{ verticalAlign: 'bottom', margin: '0 4px 0 2px' }}
+            className="align-bottom m-[0_4px_0_2px]"
           />
           Back to Portfolio
         </Link>

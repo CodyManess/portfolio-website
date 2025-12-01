@@ -17,15 +17,11 @@ const ProjectCard = (project: Project) => {
     <>
       <Card
         elevation={3}
-        style={{
-          margin: '8px',
-          flex: 1,
-          minWidth: '320px',
-        }}
+        className="m-2 flex-1 min-w-[320px]"
       >
-        <CardActionArea style={{ height: '100%' }} onClick={handleOpen}>
-          <CardContent style={{ height: '100%' }}>
-            <h3 style={{ marginBottom: '0.5rem' }}>{project.title}</h3>
+        <CardActionArea className="h-full" onClick={handleOpen}>
+          <CardContent className="h-full">
+            <h3 className="mb-2">{project.title}</h3>
             {project.tools.map((tool) => {
               return <ToolChip key={tool.title} tool={tool} />
             })}

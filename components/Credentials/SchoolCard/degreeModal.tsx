@@ -30,34 +30,18 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
       keepMounted
       TransitionComponent={Slide}
       closeAfterTransition={false}
-      sx={{
-        '& .MuiDialog-paper': {
-          maxWidth: 800,
-          margin: '8px',
-          padding: '1em',
-        },
-      }}
+      className="[&_.MuiDialog-paper]:max-w-[800px] [&_.MuiDialog-paper]:m-2 [&_.MuiDialog-paper]:p-4"
       aria-labelledby={`dialog-title-${title.replaceAll(' ', '-')}`}
     >
       <DialogTitle id={`dialog-title-${title.replaceAll(' ', '-')}`}>
         {title} Details
         <hr />
       </DialogTitle>
-      <DialogContent style={{ display: 'flex', flexWrap: 'wrap' }}>
-        <div
-          style={{
-            flex: 'auto',
-            maxWidth: '200px',
-            marginRight: '2em',
-          }}
-        >
+      <DialogContent className="flex flex-wrap">
+        <div className="flex-auto max-w-[200px] mr-8">
           <Link
             href={schoolLink}
-            style={{
-              display: 'block',
-              color: 'var(--primary-color)',
-              marginBottom: '1em',
-            }}
+            className="block text-[var(--primary-color)] mb-4"
           >
             Program Link <FaExternalLinkAlt fontSize="small" />
           </Link>
@@ -76,8 +60,8 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
             </>
           )}
         </div>
-        <div style={{ flex: 'auto', maxWidth: '500px' }}>
-          <h3 style={{ marginBottom: '1rem' }}>Curriculum</h3>
+        <div className="flex-auto max-w-[500px]">
+          <h3 className="mb-4">Curriculum</h3>
           {Object.values(CourseType).map((val) => {
             const filteredCourses = courses.filter(
               (course) => course.courseType === val

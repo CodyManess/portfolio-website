@@ -34,39 +34,27 @@ export default function RoleItem({
   return (
     <TimelineItem>
       <TimelineOppositeContent
-        className={styles.timelineSeparator}
-        sx={{ padding: 0, flex: 0 }}
+        className={`${styles.timelineSeparator} p-0 flex-none`}
       >
         <p className={`${robotoMono.className} ${styles.date}`}>{role.date}</p>
       </TimelineOppositeContent>
-      <TimelineSeparator style={{ paddingRight: '10px' }}>
+      <TimelineSeparator className="pr-[10px]">
         <TimelineDot
-          style={{
-            margin: '0.5rem auto',
-            width: '4em',
-            height: '4em',
-            backgroundColor: 'white',
-            position: 'relative',
-            padding: '0.5em',
-          }}
+          className="m-[0.5rem_auto] w-[4em] h-[4em] bg-white relative p-[0.5em]"
           variant="outlined"
           color="primary"
         >
           {role.companyLogo && (
             <Image
-              style={{
-                margin: 'auto',
-                maxWidth: '100%',
-                height: 'auto',
-              }}
+              className="m-auto max-w-full h-auto"
               src={role.companyLogo}
               alt={`${role.companyName} Logo`}
             />
           )}
         </TimelineDot>
-        <TimelineConnector style={{ minHeight: '0.5em' }} />
+        <TimelineConnector className="min-h-[0.5em]" />
       </TimelineSeparator>
-      <TimelineContent style={{ alignContent: 'center', padding: '4px 0' }}>
+      <TimelineContent className="content-center py-1 px-0">
         <RoleCard
           role={role}
           setExpanded={setExpanded}

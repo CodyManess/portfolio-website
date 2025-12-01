@@ -7,24 +7,9 @@ interface ToolChipProps {
 
 const ToolChip: React.FC<ToolChipProps> = ({ tool }) => {
   return (
-    <div
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        padding: '0.5rem 1rem',
-        backgroundColor: 'var(--surface-background)',
-        color: 'var(--foreground)',
-        borderRadius: '2rem',
-        margin: '0.25rem',
-        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-      }}
-    >
-      <tool.icon
-        style={{ marginRight: '0.5rem' }}
-        size="1rem"
-        color={tool.iconColor}
-      />
-      <span style={{ fontSize: '1rem' }}>{tool.title}</span>
+    <div className="inline-flex items-center px-4 py-2 bg-[var(--surface-background)] text-[var(--foreground)] rounded-[2rem] m-1 shadow-sm">
+      <tool.icon className="mr-2" size="1rem" color={tool.iconColor} />
+      <span className="text-base">{tool.title}</span>
     </div>
   )
 }
