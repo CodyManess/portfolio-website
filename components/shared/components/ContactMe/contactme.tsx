@@ -1,5 +1,4 @@
-import { SiGithub, SiLinkedin } from 'react-icons/si'
-import { FaEnvelope } from 'react-icons/fa'
+import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa6'
 import styles from './contactme.module.css'
 import { socialLinks } from '../../data/links'
 
@@ -7,10 +6,10 @@ const ContactMe: React.FC = () => {
   return (
     <div className={styles.contactMe}>
       <a href={socialLinks.GitHub} aria-label="GitHub">
-        <SiGithub />
+        <FaGithub />
       </a>
       <a href={socialLinks.LinkedIn} aria-label="LinkedIn">
-        <SiLinkedin />
+        <FaLinkedin />
       </a>
       <a href={socialLinks.Email} aria-label="Email">
         <FaEnvelope />
