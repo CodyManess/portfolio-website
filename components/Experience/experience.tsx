@@ -6,7 +6,7 @@ import WorkTimeline from '@/shared/components/WorkTimeline/WorkTimeline'
 const Experience = () => {
   return (
     <section id="experience" className="section">
-      <div>
+      <div className="mx-4">
         <h2>Experience</h2>
         <WorkTimeline roles={roles} />
         <Link
@@ -15,9 +15,7 @@ const Experience = () => {
           href="/extended"
         >
           Extended Job History
-          <FaArrowRight
-            style={{ verticalAlign: 'bottom', margin: '0 0 2px 4px' }}
-          />
+          <FaArrowRight style={{ display: 'inline', margin: '0 0 2px 4px' }} />
         </Link>
       </div>
     </section>

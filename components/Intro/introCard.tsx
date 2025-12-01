@@ -15,12 +15,12 @@ interface IntroCardProps {
 const IntroCard: React.FC<IntroCardProps> = ({ imageData }: IntroCardProps) => {
   return (
     <div
-      className={`${styles.introCard} flex p-8 flex-col bg-[var(--surface-background)] rounded-lg`}
+      className={`${styles.introCard} flex p-8 flex-col rounded-lg`}
       style={{
         backgroundColor: imageData ? 'white' : 'var(--surface-background)',
       }}
     >
-      <div className="flex m-[1em_auto] w-[180px] h-[180px] relative rounded-full overflow-hidden">
+      <div className="flex my-4 mx-auto w-45 h-45 relative rounded-full overflow-hidden">
         {imageData && (
           <img
             src={imageData as unknown as string}
@@ -42,13 +42,13 @@ const IntroCard: React.FC<IntroCardProps> = ({ imageData }: IntroCardProps) => {
           />
         )}
       </div>
-      <h1 className="flex flex-col m-auto text-[3rem]">
+      <h1 className="flex flex-col m-auto text-5xl text-center">
         Cody Maness
-        <span className="block m-[0.5rem_auto] text-[1.5rem]">
+        <span className="block my-2 mx-auto text-2xl text-center">
           Web & Mobile Developer
         </span>
       </h1>
-      <p className="max-w-[400px] m-[1rem_auto_1.75rem_auto] text-center">
+      <p className="max-w-sm mt-4 mb-7 mx-auto text-center">
         Mobile and Web Developer with a love for creating engaging, accessible,
         and user-friendly applications.
       </p>
