@@ -15,33 +15,19 @@ interface IntroCardProps {
 const IntroCard: React.FC<IntroCardProps> = ({ imageData }: IntroCardProps) => {
   return (
     <div
-      className={styles.introCard}
+      className={`${styles.introCard} flex p-8 flex-col bg-[var(--surface-background)] rounded-lg`}
       style={{
-        display: 'flex',
-        padding: '2rem',
-        flexFlow: 'column',
         backgroundColor: imageData ? 'white' : 'var(--surface-background)',
-        borderRadius: '8px',
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          margin: '1em auto',
-          width: '180px',
-          height: '180px',
-          position: 'relative',
-          borderRadius: '50%',
-          overflow: 'hidden',
-        }}
-      >
+      <div className="flex m-[1em_auto] w-[180px] h-[180px] relative rounded-full overflow-hidden">
         {imageData && (
           <img
             src={imageData as unknown as string}
             alt="Cody Maness"
             width="743px"
             height="743px"
-            style={{ width: '100%', height: '100%' }}
+            className="w-full h-full"
           />
         )}
         {!imageData && (
@@ -56,32 +42,13 @@ const IntroCard: React.FC<IntroCardProps> = ({ imageData }: IntroCardProps) => {
           />
         )}
       </div>
-      <h1
-        style={{
-          display: 'flex',
-          flexFlow: 'column',
-          margin: 'auto',
-          fontSize: '3rem',
-        }}
-      >
+      <h1 className="flex flex-col m-auto text-[3rem]">
         Cody Maness
-        <span
-          style={{
-            display: 'block',
-            margin: '0.5rem auto',
-            fontSize: '1.5rem',
-          }}
-        >
+        <span className="block m-[0.5rem_auto] text-[1.5rem]">
           Web & Mobile Developer
         </span>
       </h1>
-      <p
-        style={{
-          maxWidth: '400px',
-          margin: '1rem auto 1.75rem auto',
-          textAlign: 'center',
-        }}
-      >
+      <p className="max-w-[400px] m-[1rem_auto_1.75rem_auto] text-center">
         Mobile and Web Developer with a love for creating engaging, accessible,
         and user-friendly applications.
       </p>
