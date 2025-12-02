@@ -15,8 +15,6 @@ export default function WorkTimeline({ roles }: WorkTimelineProps) {
       position="right"
       style={{
         padding: 0,
-        maxWidth: '65em',
-        justifySelf: 'center',
       }}
       sx={{
         [`& .${timelineItemClasses.root}:before`]: {
@@ -24,6 +22,7 @@ export default function WorkTimeline({ roles }: WorkTimelineProps) {
           padding: 0,
         },
       }}
+      className="max-w-screen-lg justify-self-center"
     >
       {roles.map((role, index) => (
         <RoleItem
