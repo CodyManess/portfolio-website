@@ -3,15 +3,17 @@ import React from 'react'
 import { SiLetterboxd, SiGoodreads, SiYoutubemusic } from 'react-icons/si'
 import { FaGamepad } from 'react-icons/fa6'
 import Link from 'next/link'
-import styles from './about.module.css'
 import { Container } from '@mui/material'
 
 const About: React.FC = () => {
   return (
-    <section id="about" className={`section ${styles.about}`}>
+    <section
+      id="about"
+      className="section relative z-[2] shadow-[0px_-12px_20px_black]"
+    >
       <Container>
         <h2>About Me</h2>
-        <h3>How I got into Tech</h3>
+        <h3 className="mt-[1.75em] mb-[0.25em]">How I got into Tech</h3>
         <p>
           Growing up in rural West TN, I always felt disconnected and out of
           place around the familiar fields, forests, and people of where I was
@@ -25,9 +27,9 @@ const About: React.FC = () => {
           simply make their day a little easier.
         </p>
 
-        <div className={styles.interestsContainer}>
-          <div className={styles.interestBlock}>
-            <h3>Tech Interests</h3>
+        <div className="flex flex-row justify-between flex-wrap">
+          <div className="max-w-[360px]">
+            <h3 className="mt-[1.75em] mb-[0.25em]">Tech Interests</h3>
             <p>
               Web Development &#128187;, Native & Cross Platform Mobile App
               Development &#128241;, Accessibility, Gen AI Assisted Software
@@ -35,8 +37,8 @@ const About: React.FC = () => {
             </p>
           </div>
 
-          <div className={styles.interestBlock}>
-            <h3>Personal Interests</h3>
+          <div className="max-w-[360px]">
+            <h3 className="mt-[1.75em] mb-[0.25em]">Personal Interests</h3>
             <p>
               Taking Care of my Pets &#128021; &#128049;, Politics & News
               &#128240;, Trying new Food, Local Events, or Self Care,
@@ -45,26 +47,39 @@ const About: React.FC = () => {
             </p>
           </div>
 
-          <div className={styles.interestBlock}>
-            <h3>Favorite Movies, Books, Games, and Music</h3>
-            <div className={styles.aboutLinks}>
-              <Link href="https://letterboxd.com/codyness/" target="_blank">
-                <SiLetterboxd /> Letterboxd
+          <div className="max-w-[360px]">
+            <h3 className="mt-[1.75em] mb-[0.25em]">
+              Favorite Movies, Books, Games, and Music
+            </h3>
+            <div className="flex flex-col gap-[10px]">
+              <Link
+                href="https://letterboxd.com/codyness/"
+                target="_blank"
+                className="flex items-center text-[1.25em] text-[var(--foreground)]"
+              >
+                <SiLetterboxd className="mr-[0.5em] text-[1.5em]" /> Letterboxd
               </Link>
-              <Link href="https://www.goodreads.com/codyness" target="_blank">
-                <SiGoodreads /> GoodReads
+              <Link
+                href="https://www.goodreads.com/codyness"
+                target="_blank"
+                className="flex items-center text-[1.25em] text-[var(--foreground)]"
+              >
+                <SiGoodreads className="mr-[0.5em] text-[1.5em]" /> GoodReads
               </Link>
               <Link
                 href="https://www.backloggd.com/u/codyness/"
                 target="_blank"
+                className="flex items-center text-[1.25em] text-[var(--foreground)]"
               >
-                <FaGamepad /> Backloggd
+                <FaGamepad className="mr-[0.5em] text-[1.5em]" /> Backloggd
               </Link>
               <Link
                 href="https://music.youtube.com/channel/UC6zBwn_RPU5-MfYKbkg6BBA?si=syL9spZjwEp_v0cK"
                 target="_blank"
+                className="flex items-center text-[1.25em] text-[var(--foreground)]"
               >
-                <SiYoutubemusic /> Youtube Music
+                <SiYoutubemusic className="mr-[0.5em] text-[1.5em]" /> Youtube
+                Music
               </Link>
             </div>
           </div>
