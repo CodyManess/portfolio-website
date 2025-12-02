@@ -9,13 +9,9 @@ const Experience = () => {
       <div className="mx-4">
         <h2>Experience</h2>
         <WorkTimeline roles={roles} />
-        <Link
-          className="h3"
-          style={{ display: 'block', marginTop: '2rem' }}
-          href="/extended"
-        >
+        <Link className="h3 mt-8 block" href="/extended">
           Extended Job History
-          <FaArrowRight style={{ display: 'inline', margin: '0 0 2px 4px' }} />
+          <FaArrowRight className="mb-[2px] ml-1 inline" />
         </Link>
       </div>
     </section>

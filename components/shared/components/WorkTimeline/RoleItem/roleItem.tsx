@@ -39,7 +39,7 @@ export default function RoleItem({
       >
         <p className={`${robotoMono.className} ${styles.date}`}>{role.date}</p>
       </TimelineOppositeContent>
-      <TimelineSeparator style={{ paddingRight: '10px' }}>
+      <TimelineSeparator className="pr-[10px]">
         <TimelineDot
           style={{
             margin: '0.5rem auto',
@@ -54,17 +54,13 @@ export default function RoleItem({
         >
           {role.companyLogo && (
             <Image
-              style={{
-                margin: 'auto',
-                maxWidth: '100%',
-                height: 'auto',
-              }}
+              className="m-auto max-w-full h-auto"
               src={role.companyLogo}
               alt={`${role.companyName} Logo`}
             />
           )}
         </TimelineDot>
-        <TimelineConnector style={{ minHeight: '0.5em' }} />
+        <TimelineConnector className="min-h-[0.5em]" />
       </TimelineSeparator>
       <TimelineContent style={{ alignContent: 'center', padding: '4px 0' }}>
         <RoleCard
