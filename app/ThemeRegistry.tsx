@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react'
 import { ThemeProvider } from '@mui/material/styles'
-import NextAppDirEmotionCacheProvider from './EmotionCache'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
 import theme from './theme'
 
 export default function ThemeRegistry({
@@ -10,8 +10,8 @@ export default function ThemeRegistry({
   children: React.ReactNode
 }) {
   return (
-    <NextAppDirEmotionCacheProvider options={{ key: 'mui' }}>
+    <AppRouterCacheProvider options={{ key: 'mui' }}>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
-    </NextAppDirEmotionCacheProvider>
+    </AppRouterCacheProvider>
   )
 }
