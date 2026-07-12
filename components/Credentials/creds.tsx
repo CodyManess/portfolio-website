@@ -1,6 +1,6 @@
 'use client'
-import { Container, Stack, CircularProgress } from '@mui/material'
 import * as React from 'react'
+import { CircularProgress } from '@mui/material'
 import DegreeCard from './SchoolCard/schoolCard'
 import CertBadge from './CertBadge/certBadge'
 import { useEffect } from 'react'
@@ -33,11 +33,11 @@ const Creds = () => {
 
   let sectionBody = (
     <>
-      <Stack direction="row" sx={{ margin: '1em 0', flexWrap: 'wrap' }}>
+      <div className="flex flex-row flex-wrap my-4 -mx-2">
         {educationData?.degrees.map((role, index) => (
           <DegreeCard key={index} {...role} />
         ))}
-      </Stack>
+      </div>
       <div
         style={{
           display: 'flex',
@@ -78,10 +78,10 @@ const Creds = () => {
 
   return (
     <section id="credentials" className="section">
-      <Container>
+      <div className="container mx-auto px-4 lg:px-6">
         <h2>Education</h2>
         {sectionBody}
-      </Container>
+      </div>
     </section>
   )
 }

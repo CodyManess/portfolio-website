@@ -1,3 +1,4 @@
+'use client'
 import { Card, CardActionArea, CardContent } from '@mui/material'
 import * as React from 'react'
 import Project from '@/shared/models/project'
