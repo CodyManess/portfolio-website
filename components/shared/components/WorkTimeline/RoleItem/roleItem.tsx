@@ -9,7 +9,6 @@ import {
 import Image from 'next/image'
 import Role from '../../../models/role'
 import RoleCard from '../RoleCard/roleCard'
-import styles from './roleItem.module.css'
 import { Roboto_Mono } from 'next/font/google'
 
 const robotoMono = Roboto_Mono({
@@ -34,10 +33,14 @@ export default function RoleItem({
   return (
     <TimelineItem>
       <TimelineOppositeContent
-        className={styles.timelineSeparator}
+        className="hidden md:flex"
         sx={{ padding: 0, flex: 0 }}
       >
-        <p className={`${robotoMono.className} ${styles.date}`}>{role.date}</p>
+        <p
+          className={`${robotoMono.className} pt-7 pr-4 pb-4 pl-0 whitespace-nowrap text-[1.1rem] font-medium`}
+        >
+          {role.date}
+        </p>
       </TimelineOppositeContent>
       <TimelineSeparator className="pr-[10px]">
         <TimelineDot

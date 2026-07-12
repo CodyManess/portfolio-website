@@ -1,7 +1,6 @@
 import { Cert, IconType } from '@/shared/models/education'
 import React from 'react'
 import Image from 'next/image'
-import styles from './certBadge.module.css'
 
 /**
  * Props for the CertBadge component.
@@ -24,7 +23,7 @@ const CertBadge = ({ icon, iconType, name, org }: Cert) => {
       ) : (
         <div
           key={icon}
-          className={styles.certLogo}
+          className="bg-gradient-to-b from-[var(--primary-dark)] via-[var(--primary-dark)] to-[var(--primary-light)] flex flex-col items-center w-[148px] h-[148px] text-center rounded-full bg-[var(--primary-dark)] border-2 border-[var(--primary-color)]"
           aria-label={`${name} Cert from ${org}`}
         >
           <Image
@@ -36,8 +35,8 @@ const CertBadge = ({ icon, iconType, name, org }: Cert) => {
               marginTop: '0.25em',
             }}
           />
-          <p className={styles.certName}>{name}</p>
-          <p className={styles.certOrg}>{org}</p>
+          <p className="text-sm">{name}</p>
+          <p className="text-xs font-semibold">{org}</p>
         </div>
       )}
     </>

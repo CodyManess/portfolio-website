@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react'
-import styles from './accordion.module.css'
 import { FaAngleDown } from 'react-icons/fa'
 
 interface AccordionProps {
@@ -49,32 +48,33 @@ export function Accordion(props: AccordionProps) {
 
   return (
     <div
-      className={`${props.className} ${props.expanded === props.index ? styles.active : ''}`}
+      className={`group ${props.className}`}
+      data-active={props.expanded === props.index}
     >
       {!!header && (
         <button
           ref={accordionHeader}
-          className={styles.accordionHeader}
+          className="flex justify-between transition-all duration-300 p-4 w-full bg-transparent text-inherit border-none cursor-pointer outline-none focus:rounded-lg focus:brightness-95 dark:focus:brightness-110"
           onClick={toggleAccordion}
           aria-expanded={props.expanded === props.index}
           aria-controls={`accordionpanel${props.index}`}
           id={`accordion${props.index}`}
         >
-          <div className={styles.accordionTitle}>{header}</div>
-          <FaAngleDown className={styles.accordionIcon} />
+          <div className="text-left p-1">{header}</div>
+          <FaAngleDown className="flex self-center transition-transform duration-300 text-[2em] group-data-[active=true]:rotate-180" />
         </button>
       )}
 
       {!!body && (
         <div
           ref={accordionBody}
-          className={`${styles.accordionBody}`}
+          className="relative overflow-hidden transition-[height] duration-300 ease-in-out"
           id={`accordionpanel${props.index}`}
           role="region"
           aria-labelledby={`accordion${props.index}`}
           style={{ height }}
         >
-          <div className={styles.accordionBodyContent}>{body}</div>
+          <div className="flex-1 m-2 mx-4 overflow-hidden z-[2]">{body}</div>
         </div>
       )}
     </div>

@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
-import styles from './intro.module.css'
 import ContactMe from '@/shared/components/ContactMe/contactme'
 import Image from 'next/image'
 import profilePic from '@public/intro/portfolio-picture.webp'
@@ -15,7 +14,7 @@ interface IntroCardProps {
 const IntroCard: React.FC<IntroCardProps> = ({ imageData }: IntroCardProps) => {
   return (
     <div
-      className={`${styles.introCard} flex p-8 flex-col rounded-lg`}
+      className="animate-[card-glow_5000ms_linear_infinite] [&_svg]:text-[var(--primary-color)] flex p-8 flex-col rounded-lg"
       style={{
         backgroundColor: imageData ? 'white' : 'var(--surface-background)',
       }}

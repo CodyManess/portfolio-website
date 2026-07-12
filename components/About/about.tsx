@@ -2,11 +2,13 @@ import React from 'react'
 import { SiLetterboxd, SiGoodreads, SiYoutubemusic } from 'react-icons/si'
 import { FaGamepad } from 'react-icons/fa6'
 import Link from 'next/link'
-import styles from './about.module.css'
 
 const About: React.FC = () => {
   return (
-    <section id="about" className={`section ${styles.about}`}>
+    <section
+      id="about"
+      className="section relative z-[2] shadow-[0px_-12px_20px_black]"
+    >
       <div className="container mx-auto px-4 lg:px-6">
         <h2>About Me</h2>
         <h3>How I got into Tech</h3>
@@ -23,8 +25,8 @@ const About: React.FC = () => {
           simply make their day a little easier.
         </p>
 
-        <div className={styles.interestsContainer}>
-          <div className={styles.interestBlock}>
+        <div className="flex flex-row justify-between flex-wrap">
+          <div className="max-w-[360px]">
             <h3>Tech Interests</h3>
             <p>
               Web Development &#128187;, Native & Cross Platform Mobile App
@@ -33,7 +35,7 @@ const About: React.FC = () => {
             </p>
           </div>
 
-          <div className={styles.interestBlock}>
+          <div className="max-w-[360px]">
             <h3>Personal Interests</h3>
             <p>
               Taking Care of my Pets &#128021; &#128049;, Politics & News
@@ -43,9 +45,9 @@ const About: React.FC = () => {
             </p>
           </div>
 
-          <div className={styles.interestBlock}>
+          <div className="max-w-[360px]">
             <h3>Favorite Movies, Books, Games, and Music</h3>
-            <div className={styles.aboutLinks}>
+            <div className="flex flex-col gap-[10px] [&_a]:flex [&_a]:items-center [&_a]:text-[var(--foreground)] [&_a]:text-xl [&_svg]:mr-2 [&_svg]:text-2xl [&_h3]:mt-7 [&_h3]:mb-1">
               <Link href="https://letterboxd.com/codyness/" target="_blank">
                 <SiLetterboxd /> Letterboxd
               </Link>

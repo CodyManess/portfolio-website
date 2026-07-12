@@ -1,10 +1,9 @@
 import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa6'
-import styles from './contactme.module.css'
 import { socialLinks } from '../../data/links'
 
 const ContactMe: React.FC = () => {
   return (
-    <div className={styles.contactMe}>
+    <div className="flex justify-around max-w-[40rem] mx-auto w-full [&_svg]:m-4 [&_svg]:w-12 [&_svg]:h-12">
       <a href={socialLinks.GitHub} aria-label="GitHub">
         <FaGithub />
       </a>

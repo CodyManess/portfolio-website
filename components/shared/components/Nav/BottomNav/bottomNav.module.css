@@ -1,6 +1,0 @@
-.navButton {
-  color: var(--primary-dark) !important;
-  @media (prefers-color-scheme: dark) {
-    color: var(--primary-light) !important;
-  }
-}

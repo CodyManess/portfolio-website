@@ -1,4 +1,3 @@
-import styles from './roleCard.module.css'
 import Role from '@/shared/models/role'
 import {
   Accordion,
@@ -24,7 +23,7 @@ const RoleCard = ({ role, setExpanded, expanded, index }: RoleCardProps) => {
       <AccordionHeader>
         <h3 className="mb-[0.4rem]">{role.title}</h3>
         <p className="subtitle1">{role.companyName}</p>
-        <p className={`subtitle2 ${styles.companyDateMobile}`}>{role.date}</p>
+        <p className="subtitle2 mt-1 md:hidden">{role.date}</p>
       </AccordionHeader>
 
       <AccordionBody>

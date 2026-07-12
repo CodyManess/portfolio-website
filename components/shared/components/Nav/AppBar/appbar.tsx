@@ -1,6 +1,5 @@
 'use client'
 import * as React from 'react'
-import styles from './appbar.module.css'
 import { navLinks } from '@/shared/data/links'
 import Link from 'next/link'
 import { useEffect } from 'react'
@@ -32,13 +31,16 @@ const PortfolioAppBar = () => {
   }, [])
 
   return (
-    <nav id="navbar" className={styles.appBar}>
-      <ul className={styles.navList}>
+    <nav
+      id="navbar"
+      className="hidden sm:flex shadow-[var(--surface-shadow)] bg-[var(--toolbar-background)] transition-[top] duration-300 fixed z-[1100] top-0 right-0 flex-col w-full"
+    >
+      <ul className="flex justify-center list-none py-8 m-0">
         {navLinks.map((page) => (
           <li key={page.title}>
             <Link
               key={page.title}
-              className={styles.navLink}
+              className="text-xl font-medium m-4 text-[var(--white)] underline-offset-4 decoration-[rgba(25,118,210,0.4)] hover:decoration-inherit"
               href={`/#${page.title.toLowerCase()}`}
             >
               {page.title}

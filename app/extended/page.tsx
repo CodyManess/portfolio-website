@@ -1,5 +1,3 @@
-import styles from './extended.module.css'
-import { Container } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
 import { FaArrowLeft } from 'react-icons/fa6'
@@ -15,14 +13,10 @@ export const metadata: Metadata = {
 
 const Page: React.FC = () => {
   return (
-    <section id="extended-experience" className={`section ${styles.extended}`}>
-      <Container>
-        <Link
-          className="h3 ml-2"
-          style={{ display: 'inline-block', marginBottom: '2rem' }}
-          href="/#experience"
-        >
-          <FaArrowLeft style={{ display: 'inline', margin: '0 4px 0 2px' }} />
+    <section id="extended-experience" className="section sm:mt-[12vh]">
+      <div className="container mx-auto px-4 lg:px-6">
+        <Link className="h3 ml-2 inline-block mb-8" href="/#experience">
+          <FaArrowLeft className="inline mx-1" />
           Back to Portfolio
         </Link>
         <h2>Extended Job History</h2>
@@ -36,7 +30,7 @@ const Page: React.FC = () => {
           helped me get to where I am today.
         </p>
         <WorkTimeline roles={extendedRoles} />
-      </Container>
+      </div>
     </section>
   )
 }
