@@ -5,7 +5,7 @@ import WorkTimeline from '@/components/shared/work-timeline/work-timeline'
 
 const Experience = () => {
   return (
-    <section id="experience" className="section">
+    <section id="experience" className="py-16 flex justify-center">
       <div className="container mx-auto px-4 lg:px-6">
         <h2>Experience</h2>
         <WorkTimeline roles={roles} />

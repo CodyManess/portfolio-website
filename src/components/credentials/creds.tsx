@@ -64,7 +64,10 @@ const Creds = () => {
   }
 
   return (
-    <section id="credentials" className="section">
+    <section
+      id="credentials"
+      className="py-16 flex justify-center bg-[var(--section-background)] text-white [&_a]:text-white"
+    >
       <div className="container mx-auto px-4 lg:px-6">
         <h2>Education</h2>
         {sectionBody}

@@ -75,95 +75,60 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  margin: 0;
-}
+  body {
+    color: var(--foreground);
+    background: var(--background);
+    margin: 0;
+  }
 
-/** Typogrpah */
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-}
 
-h2 {
-  font-weight: 300;
-  font-size: 3.25rem;
-}
+  h2 {
+    font-weight: 300;
+    font-size: 3.25rem;
+  }
 
-h3,
-.h3 {
-  font-weight: 400;
-  font-size: 1.35rem;
-}
+  h3,
+  .h3 {
+    font-weight: 400;
+    font-size: 1.35rem;
+  }
 
-h4,
-.h4 {
-  font-weight: 400;
-  font-size: 1.15rem;
-}
+  h4,
+  .h4 {
+    font-weight: 400;
+    font-size: 1.15rem;
+  }
 
-h5,
-.subtitle1 {
-  font-weight: 700;
-  font-size: 1rem;
-}
+  h5,
+  .subtitle1 {
+    font-weight: 700;
+    font-size: 1rem;
+  }
 
-h6,
-.subtitle2 {
-  font-weight: 500;
-  font-size: 1rem;
+  h6,
+  .subtitle2 {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  a {
+    color: var(--primary-color);
+    &:hover {
+      color: var(--primary-dark);
+    }
+  }
+
+
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-}
-
-a {
-  color: var(--primary-color);
-  &:hover {
-    color: var(--primary-dark);
-  }
-}
-
-/** Styled Components */
-.card {
-  border-radius: 8px;
-  background-color: var(--surface-background);
-  box-shadow: var(--surface-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-}
-
-section {
-  display: flex;
-  justify-content: center;
-}
-
-.section {
-  padding: 4em 0;
-}
-
-.section:nth-child(odd) {
-  background-color: var(--section-background);
-  div > h2,
-  a {
-    color: var(--white);
   }
 }
 

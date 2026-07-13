@@ -7,7 +7,7 @@ const About: React.FC = () => {
   return (
     <section
       id="about"
-      className="section relative z-[2] shadow-[0px_-12px_20px_black]"
+      className="py-16 flex justify-center relative z-[2] shadow-[0px_-12px_20px_black] bg-[var(--section-background)] text-white [&_a]:text-white"
     >
       <div className="container mx-auto px-4 lg:px-6 flex flex-col gap-8">
         <div>
@@ -50,7 +50,7 @@ const About: React.FC = () => {
 
           <div className="max-w-[360px]">
             <h3 className="mb-4">Favorite Movies, Books, Games, and Music</h3>
-            <div className="flex flex-col gap-4 [&_a]:flex [&_a]:items-center [&_a]:text-[var(--foreground)] [&_a]:text-xl [&_svg]:mr-3 [&_svg]:text-2xl">
+            <div className="flex flex-col gap-4 [&_a]:flex [&_a]:items-center [&_a]:text-white [&_a]:text-xl [&_svg]:mr-3 [&_svg]:text-2xl">
               <Link
                 href="https://letterboxd.com/codyness/"
                 target="_blank"

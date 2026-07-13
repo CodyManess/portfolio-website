@@ -14,7 +14,7 @@ const Projects = () => {
   const currentProjects = projects.slice(startIndex, endIndex)
 
   return (
-    <section id="projects" className="section">
+    <section id="projects" className="py-16 flex justify-center">
       <div className="container mx-auto px-4 lg:px-6">
         <h2>Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
