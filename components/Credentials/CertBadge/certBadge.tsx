@@ -16,27 +16,32 @@ const CertBadge = ({ icon, iconType, name, org }: Cert) => {
         <Image
           src={icon}
           alt={`${name} Cert`}
-          width={150}
-          height={150}
+          width={160}
+          height={160}
           key={icon}
+          className="drop-shadow-md"
         />
       ) : (
         <div
           key={icon}
-          className="bg-gradient-to-b from-[var(--primary-dark)] via-[var(--primary-dark)] to-[var(--primary-light)] flex flex-col items-center w-[148px] h-[148px] text-center rounded-full bg-[var(--primary-dark)] border-2 border-[var(--primary-color)]"
+          className="bg-gradient-to-br from-[var(--primary-dark)] to-[var(--primary-color)] flex flex-col justify-center items-center w-40 h-40 p-4 text-center rounded-full border border-white/20 shadow-lg text-white overflow-hidden"
           aria-label={`${name} Cert from ${org}`}
         >
-          <Image
-            src={icon}
-            alt={name}
-            width={75}
-            height={75}
-            style={{
-              marginTop: '0.25em',
-            }}
-          />
-          <p className="text-sm">{name}</p>
-          <p className="text-xs font-semibold">{org}</p>
+          <div className="flex-shrink-0 mb-1">
+            <Image
+              src={icon}
+              alt={name}
+              width={56}
+              height={56}
+              className="object-contain"
+            />
+          </div>
+          <p className="text-xs font-semibold leading-tight mb-1 line-clamp-2 text-balance">
+            {name}
+          </p>
+          <p className="text-[11px] font-bold text-white/80 line-clamp-1">
+            {org}
+          </p>
         </div>
       )}
     </>
