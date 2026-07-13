@@ -17,11 +17,11 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://codymaness.com'),
   title: 'Cody Maness | Full-Stack Developer',
   description:
-    'Resume website for Cody Maness, a Full-Stack Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.',
+    'Full-Stack Web & Mobile Developer building accessible, scalable, and engaging digital experiences.',
   openGraph: {
     title: 'Cody Maness | Full-Stack Developer',
     description:
-      'Resume website for Cody Maness, a Full-Stack Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.',
+      'Full-Stack Web & Mobile Developer building accessible, scalable, and engaging digital experiences.',
     siteName: 'Cody Maness | Full-Stack Developer',
     locale: 'en_US',
     type: 'website',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Cody Maness | Full-Stack Developer',
     description:
-      'Resume website for Cody Maness, a Full-Stack Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.',
+      'Full-Stack Web & Mobile Developer building accessible, scalable, and engaging digital experiences.',
     images: ['/opengraph-image'],
   },
 }

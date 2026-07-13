@@ -48,7 +48,7 @@ export default async function Image() {
         <div
           style={{
             display: 'flex',
-            margin: '16px auto',
+            margin: '8px auto',
             width: '160px',
             height: '160px',
             position: 'relative',
@@ -73,8 +73,8 @@ export default async function Image() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            margin: '16px auto',
-            fontSize: '36px',
+            margin: '8px auto',
+            fontSize: '42px',
             textAlign: 'center',
             alignItems: 'center',
             fontWeight: 'bold',
@@ -85,8 +85,8 @@ export default async function Image() {
           <span
             style={{
               display: 'block',
-              marginTop: '8px',
-              fontSize: '14px',
+              marginTop: '6px',
+              fontSize: '20px',
               textAlign: 'center',
               color: '#5fb5f6',
               fontWeight: '600',
@@ -100,15 +100,31 @@ export default async function Image() {
         <p
           style={{
             maxWidth: '380px',
-            marginTop: '16px',
+            marginTop: '8px',
             textAlign: 'center',
             color: '#94a3b8',
-            fontSize: '14px',
+            fontSize: '20px',
             lineHeight: '1.6',
           }}
         >
-          Creating accessible, scalable, and premium web & mobile applications.
+          Creating accessible, scalable, and engaging web & mobile applications.
         </p>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginTop: '14px',
+            padding: '10px 28px',
+            borderRadius: '9999px',
+            backgroundColor: '#007AB8',
+            color: '#ffffff',
+            fontSize: '18px',
+            fontWeight: '600',
+            letterSpacing: '0.5px',
+          }}
+        >
+          View Portfolio →
+        </div>
       </div>
     </div>,
     {

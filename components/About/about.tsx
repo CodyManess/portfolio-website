@@ -14,16 +14,17 @@ const About: React.FC = () => {
           <h2 className="mb-2">About Me</h2>
           <h3 className="text-xl mb-4">How I got into Tech</h3>
           <p className="leading-relaxed text-base md:text-lg">
-            Growing up in rural West TN, I always felt disconnected and out of
-            place around the familiar fields, forests, and people of where I was
-            from. After years of dial-up and limited satellite internet, I
-            finally got my first consistent connection to the wider world, a
-            smartphone. At 14, this device gave me access to the vast resources
-            of the internet, where I could explore, learn, and connect with
-            others in ways I never imagined. This sparked an insatiable
-            curiosity about technology and set me on my current path: creating
-            accessible, scalable, and engaging applications that help people
-            learn, connect, and simplify their daily lives.
+            Growing up in rural West Tennessee, I often felt disconnected from
+            the familiar fields and small-town life around me. After years of
+            relying on dial-up and spotty satellite connections, getting my
+            first smartphone at 14 finally provided a consistent link to the
+            wider world. That device unlocked the vast resources of the
+            internet, allowing me to explore, learn, and connect in ways I had
+            never imagined. It also sparked an insatiable curiosity about
+            technology that set me on my current path as a full-stack engineer.
+            Today, my focus is on building accessible, scalable web and mobile
+            applications that help people learn, connect, and simplify their
+            daily lives.
           </p>
         </div>
 
