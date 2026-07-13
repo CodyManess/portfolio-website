@@ -18,8 +18,7 @@
       }
     ],
     "paths": {
-      "@/shared/*": ["./components/shared/*"],
-      "@/*": ["./*"],
+      "@/*": ["./src/*"],
       "@public/*": ["./public/*"]
     },
     "target": "ES2020"
