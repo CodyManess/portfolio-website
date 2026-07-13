@@ -1,6 +1,14 @@
 import { Cert, IconType } from '@/shared/models/education'
 import React from 'react'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
+
+import awsBadge from '@public/credentials/aws-developer-badge.png'
+import deepLearningLogo from '@public/credentials/deep-learning-logo.png'
+
+const imageMap: Record<string, StaticImageData> = {
+  '/credentials/aws-developer-badge.png': awsBadge,
+  '/credentials/deep-learning-logo.png': deepLearningLogo,
+}
 
 /**
  * Props for the CertBadge component.
@@ -10,11 +18,13 @@ import Image from 'next/image'
  * @param org - The organization that issued the certificate.
  */
 const CertBadge = ({ icon, iconType, name, org }: Cert) => {
+  const imageSrc = imageMap[icon] ?? icon
+
   return (
     <>
       {iconType === IconType.Badge ? (
         <Image
-          src={icon}
+          src={imageSrc}
           alt={`${name} Cert`}
           width={160}
           height={160}
@@ -29,7 +39,7 @@ const CertBadge = ({ icon, iconType, name, org }: Cert) => {
         >
           <div className="flex-shrink-0 mb-1">
             <Image
-              src={icon}
+              src={imageSrc}
               alt={name}
               width={56}
               height={56}
