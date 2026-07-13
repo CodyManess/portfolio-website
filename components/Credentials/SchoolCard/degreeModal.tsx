@@ -28,8 +28,9 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
       open={open}
       onClose={handleClose}
       keepMounted
-      TransitionComponent={Slide}
+      slots={{ transition: Slide }}
       closeAfterTransition={false}
+
       sx={{
         '& .MuiDialog-paper': {
           maxWidth: 800,

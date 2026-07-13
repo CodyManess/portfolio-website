@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import ContactMe from '@/shared/components/ContactMe/contactme'
 import Image from 'next/image'
@@ -21,12 +20,13 @@ const IntroCard: React.FC<IntroCardProps> = ({ imageData }: IntroCardProps) => {
     >
       <div className="flex my-4 mx-auto w-45 h-45 relative rounded-full overflow-hidden">
         {imageData && (
-          <img
+          <Image
             src={imageData as unknown as string}
             alt="Cody Maness"
-            width="743px"
-            height="743px"
+            width={743}
+            height={743}
             className="w-full h-full"
+            unoptimized
           />
         )}
         {!imageData && (

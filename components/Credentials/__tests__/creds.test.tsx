@@ -2,7 +2,7 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import Creds from '../creds'
-import { EducationData } from '@/shared/models/education'
+import { EducationData, IconType } from '@/shared/models/education'
 
 describe('Creds', () => {
   beforeEach(() => {
@@ -17,8 +17,6 @@ describe('Creds', () => {
           title: 'Bachelor of Science in Computer Science',
           subtitle: 'Concentration in Software Engineering',
           schoolLink: 'https://www.mock.edu',
-          startYear: '2018',
-          endYear: '2022',
           awards: ["Dean's List"],
           courses: [],
         },
@@ -28,7 +26,7 @@ describe('Creds', () => {
           name: 'Mock Certified Developer',
           org: 'Mocking Inc.',
           icon: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
-          iconType: 'Fa',
+          iconType: IconType.Logo,
         },
       ],
     }
@@ -38,7 +36,7 @@ describe('Creds', () => {
         ok: true,
         json: () => Promise.resolve(mockEducationData),
       })
-    )
+    ) as jest.Mock
 
     render(<Creds />)
 
@@ -57,7 +55,7 @@ describe('Creds', () => {
         status: 500,
         json: () => Promise.resolve({}),
       })
-    )
+    ) as jest.Mock
 
     render(<Creds />)
 
