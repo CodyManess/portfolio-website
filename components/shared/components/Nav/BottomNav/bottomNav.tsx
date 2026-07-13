@@ -1,54 +1,34 @@
 'use client'
 import * as React from 'react'
-import {
-  BottomNavigation,
-  BottomNavigationAction,
-  Link,
-  Paper,
-} from '@mui/material'
+import Link from 'next/link'
 import { navLinks } from '@/shared/data/links'
 
 const BottomNav = () => {
   const [value, setValue] = React.useState(navLinks[0].title.toLowerCase())
 
-  const handleChange = (_: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue)
-  }
-
   return (
-    <Paper
-      sx={{
-        display: { sm: 'none' },
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        zIndex: 3,
-        borderRadius: '4px 4px 0 0',
-        backgroundColor: 'var(--surface-background-transparent)',
-        backdropFilter: 'blur(10px)',
-      }}
-      elevation={3}
-    >
-      <BottomNavigation
-        showLabels
-        value={value}
-        onChange={handleChange}
-        style={{ backgroundColor: 'transparent' }}
-      >
-        {navLinks.map((page) => (
-          <BottomNavigationAction
-            className="!text-[var(--primary-dark)] dark:!text-[var(--primary-light)]"
-            key={page.title.toLowerCase()}
-            component={Link}
-            href={`/#${page.title.toLowerCase()}`}
-            label={page.title}
-            value={page.title.toLowerCase()}
-            icon={<page.icon size="1.5em" />}
-          />
-        ))}
-      </BottomNavigation>
-    </Paper>
+    <div className="sm:hidden fixed bottom-0 left-0 right-0 z-50 rounded-t-lg bg-[var(--surface-background-transparent)] backdrop-blur-md shadow-[0_-2px_10px_rgba(0,0,0,0.1)]">
+      <div className="flex justify-around items-center h-16">
+        {navLinks.map((page) => {
+          const isActive = value === page.title.toLowerCase()
+          return (
+            <Link
+              key={page.title.toLowerCase()}
+              href={`/#${page.title.toLowerCase()}`}
+              onClick={() => setValue(page.title.toLowerCase())}
+              className={`flex flex-col items-center justify-center w-full h-full text-sm transition-colors ${
+                isActive
+                  ? 'text-[var(--primary-color)]'
+                  : 'text-[var(--primary-dark)] dark:text-[var(--primary-light)] opacity-70 hover:opacity-100'
+              }`}
+            >
+              <page.icon size="1.5em" className="mb-1" />
+              <span>{page.title}</span>
+            </Link>
+          )
+        })}
+      </div>
+    </div>
   )
 }
 

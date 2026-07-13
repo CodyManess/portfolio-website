@@ -1,5 +1,5 @@
 'use client'
-import { Card, CardActionArea, CardContent, CardMedia } from '@mui/material'
+import { Card, CardContent } from '@/components/ui/card'
 import * as React from 'react'
 import { Degree } from '@/shared/models/education'
 import DegreeModal from './degreeModal'
@@ -35,43 +35,24 @@ const DegreeCard = (degree: Degree) => {
 
   return (
     <>
-      <Card elevation={3} style={{ margin: '8px', flex: 1, minWidth: '320px' }}>
-        <CardActionArea
-          style={{
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-          onClick={handleOpen}
-        >
-          <CardMedia
-            style={{
-              height: '180px',
-              width: '100%',
-              position: 'relative',
-            }}
-          >
-            <Image
-              fill
-              src={schoolPhoto()}
-              alt={schoolName}
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              style={{ objectFit: 'cover' }}
-            />
-          </CardMedia>
-          <CardContent
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              marginRight: 'auto',
-              flex: 1,
-            }}
-          >
-            <p>{schoolName}</p>
-            <h3 style={{ margin: '0.25rem 0' }}>{title}</h3>
-            {subtitle && <p style={{ fontWeight: 700 }}>{subtitle}</p>}
-          </CardContent>
-        </CardActionArea>
+      <Card
+        className="m-2 flex-1 min-w-[320px] overflow-hidden cursor-pointer hover:opacity-90 transition-opacity shadow-md flex flex-col pt-0 pb-0"
+        onClick={handleOpen}
+      >
+        <div className="h-[180px] w-full relative">
+          <Image
+            fill
+            src={schoolPhoto()}
+            alt={schoolName}
+            sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover"
+          />
+        </div>
+        <CardContent className="flex flex-col mr-auto flex-1 p-4">
+          <p>{schoolName}</p>
+          <h3 className="my-1 text-lg font-semibold">{title}</h3>
+          {subtitle && <p className="font-bold">{subtitle}</p>}
+        </CardContent>
       </Card>
 
       <DegreeModal degree={degree} open={open} handleClose={handleClose} />

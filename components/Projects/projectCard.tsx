@@ -1,5 +1,5 @@
 'use client'
-import { Card, CardActionArea, CardContent } from '@mui/material'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import * as React from 'react'
 import Project from '@/shared/models/project'
 import ProjectModal from './projectModal'
@@ -17,21 +17,21 @@ const ProjectCard = (project: Project) => {
   return (
     <>
       <Card
-        elevation={3}
-        style={{
-          margin: '8px',
-          flex: 1,
-          minWidth: '320px',
-        }}
+        className="m-2 flex-1 min-w-[320px] cursor-pointer hover:opacity-90 transition-opacity shadow-md"
+        onClick={handleOpen}
       >
-        <CardActionArea style={{ height: '100%' }} onClick={handleOpen}>
-          <CardContent style={{ height: '100%' }}>
-            <h3 style={{ marginBottom: '0.5rem' }}>{project.title}</h3>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-xl font-semibold mb-2">
+            {project.title}
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="h-full">
+          <div className="flex flex-wrap gap-1">
             {project.tools.map((tool) => {
               return <ToolChip key={tool.title} tool={tool} />
             })}
-          </CardContent>
-        </CardActionArea>
+          </div>
+        </CardContent>
       </Card>
 
       <ProjectModal project={project} open={open} handleClose={handleClose} />

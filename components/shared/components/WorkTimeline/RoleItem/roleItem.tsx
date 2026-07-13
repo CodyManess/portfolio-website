@@ -1,11 +1,3 @@
-import {
-  TimelineOppositeContent,
-  TimelineItem,
-  TimelineContent,
-  TimelineConnector,
-  TimelineDot,
-  TimelineSeparator,
-} from '@mui/lab'
 import Image from 'next/image'
 import Role from '../../../models/role'
 import RoleCard from '../RoleCard/roleCard'
@@ -22,6 +14,7 @@ interface RoleItemProps {
   setExpanded: (index: number | false) => void
   expanded: number | false
   index: number
+  isLast: boolean
 }
 
 export default function RoleItem({
@@ -29,50 +22,45 @@ export default function RoleItem({
   setExpanded,
   expanded,
   index,
+  isLast,
 }: RoleItemProps) {
   return (
-    <TimelineItem>
-      <TimelineOppositeContent
-        className="hidden md:flex"
-        sx={{ padding: 0, flex: 0 }}
-      >
+    <div className="flex w-full mb-3 relative">
+      {/* Date Column (Hidden on mobile) */}
+      <div className="hidden md:flex flex-col flex-none w-48 lg:w-60 text-right pr-6 pt-[41px]">
         <p
-          className={`${robotoMono.className} pt-7 pr-4 pb-4 pl-0 whitespace-nowrap text-[1.1rem] font-medium`}
+          className={`${robotoMono.className} text-sm lg:text-[1.1rem] font-medium whitespace-nowrap`}
         >
           {role.date}
         </p>
-      </TimelineOppositeContent>
-      <TimelineSeparator className="pr-[10px]">
-        <TimelineDot
-          style={{
-            margin: '0.5rem auto',
-            width: '4em',
-            height: '4em',
-            backgroundColor: 'white',
-            position: 'relative',
-            padding: '0.5em',
-          }}
-          variant="outlined"
-          color="primary"
-        >
+      </div>
+
+      {/* Center Line and Dot */}
+      <div className="flex flex-col items-center relative shrink-0 pt-[18px]">
+        <div className="w-16 h-16 rounded-full bg-white border border-border flex items-center justify-center z-10 p-2 shadow-sm shrink-0">
           {role.companyLogo && (
             <Image
-              className="m-auto max-w-full h-auto"
+              className="max-w-full h-auto object-contain"
               src={role.companyLogo}
               alt={`${role.companyName} Logo`}
             />
           )}
-        </TimelineDot>
-        <TimelineConnector className="min-h-[0.5em]" />
-      </TimelineSeparator>
-      <TimelineContent style={{ alignContent: 'center', padding: '4px 0' }}>
+        </div>
+        {/* Vertical Line */}
+        {!isLast && (
+          <div className="w-[2px] bg-white/30 absolute top-[82px] bottom-[-30px] left-1/2 -translate-x-1/2"></div>
+        )}
+      </div>
+
+      {/* Content Column */}
+      <div className="flex-1 pl-4 md:pl-6 pt-1 pb-1">
         <RoleCard
           role={role}
           setExpanded={setExpanded}
           expanded={expanded}
           index={index}
         />
-      </TimelineContent>
-    </TimelineItem>
+      </div>
+    </div>
   )
 }

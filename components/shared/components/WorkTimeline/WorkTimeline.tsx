@@ -1,5 +1,4 @@
 'use client'
-import { Timeline, timelineItemClasses } from '@mui/lab'
 import RoleItem from './RoleItem/roleItem'
 import React from 'react'
 import Role from '@/shared/models/role'
@@ -10,20 +9,9 @@ interface WorkTimelineProps {
 
 export default function WorkTimeline({ roles }: WorkTimelineProps) {
   const [expanded, setExpanded] = React.useState<number | false>(false)
+
   return (
-    <Timeline
-      position="right"
-      style={{
-        padding: 0,
-      }}
-      sx={{
-        [`& .${timelineItemClasses.root}:before`]: {
-          flex: 0,
-          padding: 0,
-        },
-      }}
-      className="max-w-screen-lg justify-self-center"
-    >
+    <div className="flex flex-col max-w-screen-lg mx-auto w-full py-8 overflow-hidden">
       {roles.map((role, index) => (
         <RoleItem
           key={index}
@@ -31,8 +19,9 @@ export default function WorkTimeline({ roles }: WorkTimelineProps) {
           role={role}
           expanded={expanded}
           setExpanded={setExpanded}
+          isLast={index === roles.length - 1}
         />
       ))}
-    </Timeline>
+    </div>
   )
 }

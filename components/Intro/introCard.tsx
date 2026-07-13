@@ -47,7 +47,7 @@ const IntroCard: React.FC<IntroCardProps> = ({ imageData }: IntroCardProps) => {
           Web & Mobile Developer
         </span>
       </h1>
-      <p className="max-w-sm mt-4 mb-7 mx-auto text-center">
+      <p className="max-w-sm mt-4 pb-4 mx-auto text-center">
         Mobile and Web Developer with a love for creating engaging, accessible,
         and user-friendly applications.
       </p>

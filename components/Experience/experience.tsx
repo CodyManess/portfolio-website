@@ -6,7 +6,7 @@ import WorkTimeline from '@/shared/components/WorkTimeline/WorkTimeline'
 const Experience = () => {
   return (
     <section id="experience" className="section">
-      <div className="mx-4">
+      <div className="container mx-auto px-4 lg:px-6">
         <h2>Experience</h2>
         <WorkTimeline roles={roles} />
         <Link className="h3 mt-8 block" href="/extended">

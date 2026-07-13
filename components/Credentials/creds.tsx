@@ -1,6 +1,5 @@
 'use client'
 import * as React from 'react'
-import { CircularProgress } from '@mui/material'
 import DegreeCard from './SchoolCard/schoolCard'
 import CertBadge from './CertBadge/certBadge'
 import { useEffect } from 'react'
@@ -60,14 +59,8 @@ const Creds = () => {
 
   if (isLoading) {
     sectionBody = (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          margin: '2em 0',
-        }}
-      >
-        <CircularProgress />
+      <div className="flex justify-center my-8">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--primary-color)]"></div>
       </div>
     )
   }
