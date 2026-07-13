@@ -25,6 +25,8 @@ const BottomNav = () => {
         right: 0,
         zIndex: 3,
         borderRadius: '4px 4px 0 0',
+        backgroundColor: 'var(--surface-background-transparent)',
+        backdropFilter: 'blur(10px)',
       }}
       elevation={3}
     >
@@ -32,7 +34,7 @@ const BottomNav = () => {
         showLabels
         value={value}
         onChange={handleChange}
-        style={{ backgroundColor: 'var(--surface-color)' }}
+        style={{ backgroundColor: 'transparent' }}
       >
         {navLinks.map((page) => (
           <BottomNavigationAction

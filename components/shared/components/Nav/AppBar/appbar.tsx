@@ -33,7 +33,7 @@ const PortfolioAppBar = () => {
   return (
     <nav
       id="navbar"
-      className="hidden sm:flex shadow-[var(--surface-shadow)] bg-[var(--toolbar-background)] transition-[top] duration-300 fixed z-[1100] top-0 right-0 flex-col w-full"
+      className="hidden sm:flex shadow-[var(--surface-shadow)] bg-[var(--toolbar-background)]/90 backdrop-blur-md transition-[top] duration-300 fixed z-[1100] top-0 right-0 flex-col w-full"
     >
       <ul className="flex justify-center list-none py-8 m-0">
         {navLinks.map((page) => (

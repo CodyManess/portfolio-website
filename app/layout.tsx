@@ -1,15 +1,14 @@
 import type { Metadata } from 'next'
-import { Roboto } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import PortfolioAppBar from '@/shared/components/Nav/AppBar/appbar'
 import BottomNav from '@/shared/components/Nav/BottomNav/bottomNav'
 import Footer from '@/shared/components/Nav/Footer/footer'
 import ThemeRegistry from './ThemeRegistry'
 
-const roboto = Roboto({
+const inter = Inter({
   weight: ['300', '400', '500', '700'],
   subsets: ['latin'],
-  style: ['normal', 'italic'],
   display: 'swap',
 })
 
@@ -36,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <body className={inter.className}>
         <ThemeRegistry>
           <PortfolioAppBar />
           {children}

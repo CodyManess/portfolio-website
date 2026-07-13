@@ -13,7 +13,7 @@ interface IntroCardProps {
 const IntroCard: React.FC<IntroCardProps> = ({ imageData }: IntroCardProps) => {
   return (
     <div
-      className="animate-[card-glow_5000ms_linear_infinite] [&_svg]:text-[var(--primary-color)] flex p-8 flex-col rounded-lg"
+      className="[&_svg]:text-[var(--primary-color)] flex p-8 flex-col rounded-lg"
       style={{
         backgroundColor: imageData ? 'white' : 'var(--surface-background)',
       }}
