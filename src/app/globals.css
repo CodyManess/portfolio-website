@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "shadcn/tailwind.css";
 
+@source "../**/*.{js,ts,jsx,tsx}";
+
 @custom-variant dark (@media (prefers-color-scheme: dark));
 
 :root {
@@ -48,7 +50,7 @@
     --foreground: var(--white);
 
     --section-background: var(--dark-grey);
-    --surface-background: var(--grey);
+    --surface-background: var(--dark-grey);
     --surface-background-transparent: rgba(30, 41, 59, 0.8);
     --toolbar-background: var(--dark-grey);
 

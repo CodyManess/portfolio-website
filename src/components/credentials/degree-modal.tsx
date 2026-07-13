@@ -27,7 +27,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
           <DialogTitle className="!text-2xl font-light text-[var(--foreground)]">
             {title} Details
           </DialogTitle>
-          <hr className="border-[var(--grey)] dark:border-white/20 mt-2" />
+          <hr className="border-border mt-2" />
         </DialogHeader>
 
         <div className="flex flex-wrap py-4 gap-8">

@@ -26,7 +26,7 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
           <DialogTitle className="!text-2xl font-light text-[var(--foreground)]">
             {project.title} Details
           </DialogTitle>
-          <hr className="border-[var(--grey)] dark:border-white/20 mt-2" />
+          <hr className="border-border mt-2" />
         </DialogHeader>
 
         <div className="py-2">
@@ -41,12 +41,12 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
           )}
 
           <h3 className="text-lg font-semibold mb-2">Description</h3>
-          <p className="mb-5 text-[var(--foreground)]">{project.description}</p>
+          <p className="mb-8 text-[var(--foreground)]">{project.description}</p>
 
           {project.achievements.length !== 0 && (
             <>
               <h3 className="text-lg font-semibold mb-2">Achievements</h3>
-              <ul className="list-disc pl-5 mb-5 space-y-1 text-[var(--foreground)]">
+              <ul className="list-disc pl-5 mb-8 space-y-1 text-[var(--foreground)]">
                 {project.achievements.map((achievement) => (
                   <li key={achievement}>{achievement}</li>
                 ))}
