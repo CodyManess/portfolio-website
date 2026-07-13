@@ -74,7 +74,7 @@ export function Accordion(props: AccordionProps) {
           aria-labelledby={`accordion${props.index}`}
           style={{ height }}
         >
-          <div className="flex-1 m-2 mx-4 overflow-hidden z-[2]">{body}</div>
+          <div className="flex-1 mb-6 mx-8 overflow-hidden z-[2]">{body}</div>
         </div>
       )}
     </div>

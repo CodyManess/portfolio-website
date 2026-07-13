@@ -31,7 +31,7 @@ const RoleCard = ({ role, setExpanded, expanded, index }: RoleCardProps) => {
             {section.heading && (
               <h4 className="subtitle2">{section.heading}</h4>
             )}
-            <ul className="list-disc pl-5 mt-1.5 mb-3 space-y-1 text-sm text-slate-600 dark:text-slate-300">
+            <ul className="list-disc pl-5 space-y-1 text-sm text-slate-600 dark:text-slate-300">
               {section.items.map((item) => (
                 <li key={item}>{item}</li>
               ))}
