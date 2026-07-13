@@ -4,6 +4,7 @@ import * as React from 'react'
 import { Degree } from '@/shared/models/education'
 import DegreeModal from './degreeModal'
 import Image from 'next/image'
+import { cn, CARD_CLASSNAME } from '@/lib/utils'
 
 import mtsucampus from '@public/credentials/mtsucampus.webp'
 import mtsucampus2 from '@public/credentials/mtsucampus2.webp'
@@ -36,7 +37,10 @@ const DegreeCard = (degree: Degree) => {
   return (
     <>
       <Card
-        className="m-2 flex-1 min-w-[320px] overflow-hidden cursor-pointer hover:opacity-90 transition-opacity shadow-md flex flex-col pt-0 pb-0"
+        className={cn(
+          CARD_CLASSNAME,
+          'overflow-hidden flex flex-col pt-0 pb-0'
+        )}
         onClick={handleOpen}
       >
         <div className="h-[180px] w-full relative">
@@ -49,9 +53,17 @@ const DegreeCard = (degree: Degree) => {
           />
         </div>
         <CardContent className="flex flex-col mr-auto flex-1 p-4">
-          <p>{schoolName}</p>
-          <h3 className="my-1 text-lg font-semibold">{title}</h3>
-          {subtitle && <p className="font-bold">{subtitle}</p>}
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
+            {schoolName}
+          </p>
+          <h3 className="my-1 text-lg font-semibold text-[var(--foreground)] group-hover:text-[var(--primary-color)] dark:group-hover:text-[var(--primary-light)] transition-colors duration-300">
+            {title}
+          </h3>
+          {subtitle && (
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+              {subtitle}
+            </p>
+          )}
         </CardContent>
       </Card>
 

@@ -13,7 +13,7 @@ export const dynamic = 'force-dynamic'
 
 export default async function Image() {
   const imageBuffer = readFileSync(
-    join(process.cwd(), 'public/opengraph-image.jpg')
+    join(process.cwd(), 'public/intro/portfolio-picture.webp')
   )
   const arrayBuffer = imageBuffer.buffer.slice(
     imageBuffer.byteOffset,
