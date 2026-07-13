@@ -1,17 +1,16 @@
 import type { Metadata } from 'next'
-import { Inter, Geist } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import PortfolioAppBar from '@/shared/components/Nav/AppBar/appbar'
 import BottomNav from '@/shared/components/Nav/BottomNav/bottomNav'
 import Footer from '@/shared/components/Nav/Footer/footer'
 import { cn } from '@/lib/utils'
 
-const geist = Geist({ subsets: ['latin'], variable: '--font-sans' })
-
 const inter = Inter({
   weight: ['300', '400', '500', '700'],
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-sans',
 })
 
 export const metadata: Metadata = {
@@ -36,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={cn('font-sans', geist.variable)}>
+    <html lang="en" className={cn('font-sans', inter.variable)}>
       <body className={inter.className}>
         <PortfolioAppBar />
         {children}

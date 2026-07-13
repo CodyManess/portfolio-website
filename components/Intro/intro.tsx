@@ -6,7 +6,7 @@ const Intro = () => {
   return (
     <section
       id="home"
-      className="flex h-[calc(100vh-56px)] bg-[var(--black)] p-2 items-center relative z-1 sm:h-screen"
+      className="flex h-[calc(100vh-56px)] bg-[var(--black)] p-2 items-center relative z-[1] sm:h-screen"
     >
       <IntroCard />
 

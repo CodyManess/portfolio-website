@@ -37,13 +37,7 @@ const Creds = () => {
           <DegreeCard key={index} {...role} />
         ))}
       </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-around',
-          marginTop: '2em',
-        }}
-      >
+      <div className="flex justify-around mt-8">
         {educationData?.certs.map((cert) => (
           <CertBadge
             key={cert.name}
