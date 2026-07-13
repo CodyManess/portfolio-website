@@ -27,6 +27,13 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://codymaness.com',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cody Maness | Full-Stack Developer',
+    description:
+      'Resume website for Cody Maness, a Full-Stack Web and Mobile Software Developer with a passion for building accessible, elegant, and robust digital experiences.',
+    images: ['/opengraph-image'],
+  },
 }
 
 export default function RootLayout({

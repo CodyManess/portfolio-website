@@ -1,5 +1,5 @@
 'use client'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import * as React from 'react'
 import Project from '@/shared/models/project'
 import ProjectModal from './projectModal'
@@ -21,9 +21,9 @@ const ProjectCard = (project: Project) => {
         onClick={handleOpen}
       >
         <CardHeader className="pb-2">
-          <CardTitle className="text-xl font-semibold text-[var(--foreground)] group-hover:text-[var(--primary-color)] dark:group-hover:text-[var(--primary-light)] transition-colors duration-300">
+          <h3 className="text-xl font-semibold text-[var(--foreground)] group-hover:text-[var(--primary-color)] dark:group-hover:text-[var(--primary-light)] transition-colors duration-300">
             {project.title}
-          </CardTitle>
+          </h3>
         </CardHeader>
         <CardContent className="pt-2">
           <div className="flex flex-wrap gap-2">
