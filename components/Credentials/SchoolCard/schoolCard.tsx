@@ -21,7 +21,7 @@ const DegreeCard = (degree: Degree) => {
   const handleClose = () => setOpen(false)
 
   const schoolPhoto = () => {
-    switch (schoolName) {
+    switch (title) {
       case 'Master of Science in Computer Science':
         return mtsucampus
       case 'Bachelor of Science in Computer Science':
