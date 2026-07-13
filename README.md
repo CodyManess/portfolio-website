@@ -59,7 +59,21 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
+
+### Project Architecture
+
+All source code and test files follow standard Next.js conventions:
+*   `src/app/`: Next.js App Router directories, API routes (`api/`), and style setup.
+*   `src/components/`: Modular component folders.
+    *   `src/components/ui/`: Base UI/Shadcn custom UI primitives.
+    *   `src/components/nav/`: Navigation panels (header, footer, bottom bar).
+    *   `src/components/shared/`: Utility components (accordion, timeline).
+*   `src/data/`: Structured JSON/TS data representing experiences, credentials, projects, etc.
+*   `src/types/`: Centralized TypeScript interfaces and definitions.
+*   `__tests__/`: Centralized Jest tests directory at the root.
+
+All files and directories within `src/` use **kebab-case** format.
 
 ### Learn More
 
