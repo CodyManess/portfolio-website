@@ -1,54 +1,44 @@
 import { Tool } from '@/types/project'
-import {
-  SiReact,
-  SiSwift,
-  SiNodedotjs,
-  SiAngular,
-  SiKotlin,
-  SiFirebase,
-  SiPhp,
-} from 'react-icons/si'
-import { FaJava } from 'react-icons/fa6'
 
 const Tools: { [key: string]: Tool } = {
   React: {
     title: 'React',
-    icon: SiReact,
+    iconName: 'SiReact',
     iconColor: '#61DBFB',
   },
   Swift: {
     title: 'Swift',
-    icon: SiSwift,
+    iconName: 'SiSwift',
     iconColor: '#FFAC45',
   },
   Java: {
     title: 'Java',
-    icon: FaJava,
+    iconName: 'FaJava',
     iconColor: '#007396',
   },
   NodeJS: {
     title: 'NodeJS',
-    icon: SiNodedotjs,
+    iconName: 'SiNodedotjs',
     iconColor: '#68A063',
   },
   Angular: {
     title: 'Angular',
-    icon: SiAngular,
+    iconName: 'SiAngular',
     iconColor: '#ff0000',
   },
   Kotlin: {
     title: 'Kotlin',
-    icon: SiKotlin,
+    iconName: 'SiKotlin',
     iconColor: '#0095D5',
   },
   Firebase: {
     title: 'Firebase',
-    icon: SiFirebase,
+    iconName: 'SiFirebase',
     iconColor: '#FF9100',
   },
   PHP: {
     title: 'PHP',
-    icon: SiPhp,
+    iconName: 'SiPhp',
     iconColor: '#474a8a',
   },
 }

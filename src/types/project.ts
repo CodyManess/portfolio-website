@@ -1,5 +1,3 @@
-import { IconType } from 'react-icons'
-
 export default interface Project {
   title: string
   description: string
@@ -10,6 +8,6 @@ export default interface Project {
 
 export interface Tool {
   title: string
-  icon: IconType
+  iconName: string
   iconColor: string
 }

@@ -1,11 +1,35 @@
 import React from 'react'
 import { Tool } from '@/types/project'
+import {
+  SiReact,
+  SiSwift,
+  SiNodedotjs,
+  SiAngular,
+  SiKotlin,
+  SiFirebase,
+  SiPhp,
+} from 'react-icons/si'
+import { FaJava } from 'react-icons/fa6'
+import { IconType } from 'react-icons'
 
 interface ToolChipProps {
   tool: Tool
 }
 
+const iconMap: { [key: string]: IconType } = {
+  SiReact,
+  SiSwift,
+  SiNodedotjs,
+  SiAngular,
+  SiKotlin,
+  SiFirebase,
+  SiPhp,
+  FaJava,
+}
+
 const ToolChip: React.FC<ToolChipProps> = ({ tool }) => {
+  const IconComponent = iconMap[tool.iconName]
+
   return (
     <div
       className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full border border-slate-200/80 dark:border-slate-800/50 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 transition-all duration-300 ease-out hover:-translate-y-0.5 cursor-default hover:border-[var(--hover-border)] hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] shadow-xs"
@@ -17,11 +41,13 @@ const ToolChip: React.FC<ToolChipProps> = ({ tool }) => {
         } as React.CSSProperties
       }
     >
-      <tool.icon
-        className="mr-1.5 transition-transform duration-300"
-        size="0.875rem"
-        color={tool.iconColor}
-      />
+      {IconComponent && (
+        <IconComponent
+          className="mr-1.5 transition-transform duration-300"
+          size="0.875rem"
+          color={tool.iconColor}
+        />
+      )}
       <span>{tool.title}</span>
     </div>
   )
