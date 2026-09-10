@@ -45,10 +45,14 @@ const ProjectList = () => {
     return <div className="my-8 text-center text-red-500">{error}</div>
   }
 
-  const totalPages = Math.ceil(projects.length / PROJECTS_PER_PAGE)
+  const totalPages = Math.ceil(
+    (Array.isArray(projects) ? projects.length : 0) / PROJECTS_PER_PAGE
+  )
   const startIndex = (currentPage - 1) * PROJECTS_PER_PAGE
   const endIndex = startIndex + PROJECTS_PER_PAGE
-  const currentProjects = projects.slice(startIndex, endIndex)
+  const currentProjects = Array.isArray(projects)
+    ? projects.slice(startIndex, endIndex)
+    : []
 
   return (
     <>
