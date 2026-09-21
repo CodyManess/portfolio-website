@@ -6,6 +6,16 @@ const Tools: { [key: string]: Tool } = {
     iconName: 'SiReact',
     iconColor: '#61DBFB',
   },
+  ReactNative: {
+    title: 'React Native',
+    iconName: 'SiReact',
+    iconColor: '#61DAFB',
+  },
+  TypeScript: {
+    title: 'TypeScript',
+    iconName: 'SiTypescript',
+    iconColor: '#3178C6',
+  },
   Swift: {
     title: 'Swift',
     iconName: 'SiSwift',

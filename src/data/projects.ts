@@ -3,6 +3,13 @@ import Tools from './tools'
 
 const projects: Project[] = [
   {
+    title: 'Digital Platform Library',
+    description:
+      'The Digital Platform Library is an internal package full of utilities and tools shared throughout Digital across our various repositories. It provides shared components, helpers, and standard configurations to ensure consistency and accelerate development across teams.',
+    achievements: [],
+    tools: [Tools.React, Tools.ReactNative, Tools.TypeScript],
+  },
+  {
     title: 'Leaf Design System',
     description:
       'As a developer on the myCigna Web Portal, I also worked to lay the groundwork for a smoother adoption of a new enterprise web component library called the Leaf Design System. I met with various stakeholders within the Leaf Design System to address potential concerns regarding each component and its features to ensure we covered as many use cases as possible and maximized the benefit of the new library.',
@@ -23,7 +30,7 @@ const projects: Project[] = [
       "During my time with the Cigna Digital Mobile Team, I worked as an Android and then iOS developer on the myCigna Mobile App, an app that gives Cigna members an easy way to access plan information and features through their mobile devices. As a developer, I worked to connect native parts of the app to the emerging React Native pages, improve code quality, increase analytics tracking, fix past bugs, and improve the app's interaction with its web and React Native portions.",
     link: 'https://my.cigna.com/',
     achievements: [],
-    tools: [Tools.Swift, Tools.Kotlin],
+    tools: [Tools.Swift, Tools.Kotlin, Tools.ReactNative],
   },
   {
     title: 'Evernorth Mobile App',

@@ -8,6 +8,7 @@ import {
   SiKotlin,
   SiFirebase,
   SiPhp,
+  SiTypescript,
 } from 'react-icons/si'
 import { FaJava } from 'react-icons/fa6'
 import { IconType } from 'react-icons'
@@ -24,6 +25,7 @@ const iconMap: { [key: string]: IconType } = {
   SiKotlin,
   SiFirebase,
   SiPhp,
+  SiTypescript,
   FaJava,
 }
 
