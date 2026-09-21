@@ -13,8 +13,8 @@ export const roles: Array<Role> = [
       {
         items: [
           'I worked as a Full-Stack Angular Developer on the myCigna Coverages team.',
-          'Assisted with the resolution of various accessibility issues and contributed to guides to help improve accessbility standards within code.',
-          'Added new features including enhanced ID Card Sharing options, presentation of Small Group Coverages details, and various bug fixes',
+          'Assisted with the resolution of various accessibility issues and contributed to guides to help improve accessibility standards in code.',
+          'Added new features including enhanced ID card sharing options, presentation of small group coverage details, and various bug fixes.',
         ],
       },
     ],
@@ -27,10 +27,10 @@ export const roles: Array<Role> = [
     description: [
       {
         heading:
-          'Rotation 3: iOS Developer for the MyCigna and Evernorth Mobile Apps',
+          'Rotation 3: iOS Developer for the myCigna and Evernorth Mobile Apps',
         items: [
-          'Maintained the MyCigna and Evernorth mobile apps through the timely correction of bugs',
-          'Migrated multiple feature modules to MVVM SwiftUI',
+          'Maintained the myCigna and Evernorth mobile apps through the timely correction of bugs.',
+          'Migrated multiple feature modules to MVVM SwiftUI.',
         ],
       },
     ],
@@ -43,28 +43,28 @@ export const roles: Array<Role> = [
     description: [
       {
         heading:
-          'I started working Full Time at Cigna in the Technology Early Career Development Program (TECDP)',
+          'I started working full-time at Cigna in the Technology Early Career Development Program (TECDP)',
         items: [
-          'This is a three year rotational program that strives to prepare recent graduates for their careers by working in various roles within The Cigna Group.',
+          'This is a three-year rotational program that strives to prepare recent graduates for their careers by working in various roles within The Cigna Group.',
           'This role also included responsibilities outside of rotations to improve hard and soft skills including mentorships, trainings, networking, and volunteering.',
         ],
       },
       {
         heading:
-          'Rotation 1: Angular Frontend Engineer on the MyCigna Dashboard Team ',
+          'Rotation 1: Angular Frontend Engineer on the myCigna Dashboard Team',
         items: [
-          'Assisted with the Dashboard Redesign Release',
-          'Maintained various portions of the myCigna web app through the timely correction of bugs',
+          'Assisted with the dashboard redesign release.',
+          'Maintained various portions of the myCigna web app through the timely correction of bugs.',
           'Added new features through communication with product owners and following proper release guidelines to ensure thorough testing.',
         ],
       },
       {
         heading:
-          'Rotation 2: Android Developer for the MyCigna and Evernorth Mobile Apps',
+          'Rotation 2: Android Developer for the myCigna and Evernorth Mobile Apps',
         items: [
-          'Ensured proper analytics tracking for over 50 actions throughout the app',
-          'Maintained the MyCigna and Evernorth mobile apps through the timely correction of bugs',
-          'Assisted with the addition of new features',
+          'Ensured proper analytics tracking for over 50 actions throughout the app.',
+          'Maintained the myCigna and Evernorth mobile apps through the timely correction of bugs.',
+          'Assisted with the addition of new features.',
         ],
       },
     ],
@@ -78,8 +78,8 @@ export const roles: Array<Role> = [
       {
         items: [
           'Assisted with the development and maintenance of the Android version of the MTSU Mobile Application.',
-          'Advocated for the use of current Android Development practices by updating past code to reduce technical debt.',
-          'Developed and tested new features planned for release including access to information for Events on Campus, widgets for the dashboard page, and integration with Microsoft Azure.',
+          'Advocated for the use of current Android development practices by updating past code to reduce technical debt.',
+          'Developed and tested new features planned for release including access to campus events information, widgets for the dashboard page, and integration with Microsoft Azure.',
           'Helped maintain a backlog of stories for various planned features for developers to pick up.',
         ],
       },
@@ -94,7 +94,7 @@ export const roles: Array<Role> = [
       {
         items: [
           'Worked on a scrum-based team to maintain and develop new features for a React web application called the Military Treatment Facility (MTF) Provider Portal, a secure web portal for Department of Defense prescribers.',
-          'Assisted with the development of two major releases to update the user-interface and add new features to meet business needs.',
+          'Assisted with the development of two major releases to update the user interface and add new features to meet business needs.',
         ],
       },
     ],
@@ -110,7 +110,7 @@ export const extendedRoles: Array<Role> = [
     description: [
       {
         items: [
-          'Left my Student Technology Assistant position to become a Computer Science Tutor and help students, as well as myself, become better familiar with algorithms, data structures, and other computer science concepts.',
+          'Left my Student Technology Assistant position to become a Computer Science Tutor and help students, as well as myself, deepen my familiarity with algorithms, data structures, and other computer science concepts.',
           'Assisted students with homework and concepts related to Computer Science I, II, and Data Structures and Algorithms.',
         ],
       },
@@ -138,9 +138,9 @@ export const extendedRoles: Array<Role> = [
     description: [
       {
         items: [
-          'Worked at MTSU ITD Help Desk as my primary part-time job to gain more work experience with technology',
-          'Used Active Directory Domain Services to assist students and faculty with Microsoft 365 account issues like password issues, MFA setup, and account lockouts.',
-          'Also assisted students and faculty with broader technology concerns regarding MTSU technology and software as well as operating issues with Mac, Windows, and Linux.',
+          'Worked at the MTSU ITD Help Desk as my primary part-time job to gain hands-on technical experience.',
+          'Used Active Directory Domain Services to assist students and faculty with Microsoft 365 account issues such as password resets, MFA setup, and account lockouts.',
+          'Also assisted students and faculty with broader technology concerns regarding MTSU software and systems as well as operating system issues across macOS, Windows, and Linux.',
         ],
       },
     ],
@@ -155,7 +155,7 @@ export const extendedRoles: Array<Role> = [
         items: [
           'Worked seasonally through my Summer and Winter breaks of 2018 while back home from MTSU.',
           'Worked as the front counter host helping customers with orders through the register as well as through the new self-service kiosks.',
-          'Also, worked the drive-thru window when needed.',
+          'Also worked the drive-thru window when needed.',
           'Other responsibilities included maintaining the dining room, restocking inventory, serving ice cream and coffee, and cleaning bathrooms.',
         ],
       },
@@ -183,8 +183,8 @@ export const extendedRoles: Array<Role> = [
     description: [
       {
         items: [
-          "Worked as a store associate at Goody's a small town department store.",
-          'Assisted customers with checking out and finding items, reorganized the store at closing, and organized and restocked inventory',
+          "Worked as a store associate at Goody's, a small-town department store.",
+          'Assisted customers with checking out and finding items, reorganized the store at closing, and organized and restocked inventory.',
           'After leaving for college, I worked some weekends when visiting family as well as during breaks and holidays.',
         ],
       },
@@ -198,9 +198,9 @@ export const extendedRoles: Array<Role> = [
     description: [
       {
         items: [
-          'My first job at 16 years old where I primarily worked as a dishwasher, but was given the opportunity to fill in as a waiter once a week.',
-          'As dishwasher, I washed dishes, bussed tables, disposed of trash, and cleaned the bathrooms',
-          'As waiter, I took orders, served food, handled customer feedback, cleaned the dining room and waiting area, checked out guests, and prepared salads.',
+          'In my first job at 16 years old, I primarily worked as a dishwasher, but was given the opportunity to fill in as a waiter once a week.',
+          'As a dishwasher, I washed dishes, bussed tables, disposed of trash, and cleaned the bathrooms.',
+          'As a waiter, I took orders, served food, handled customer feedback, cleaned the dining room and waiting area, checked out guests, and prepared salads.',
         ],
       },
     ],

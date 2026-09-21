@@ -8,7 +8,7 @@ import WorkTimeline from '@/components/shared/work-timeline/work-timeline'
 export const metadata: Metadata = {
   title: 'Cody Maness | Extended Work History',
   description:
-    "An extra page within my Portfolio that details past jobs I've worked before and during undergrad.",
+    'An extra page within my portfolio detailing past jobs worked before and during college.',
 }
 
 const Page: React.FC = () => {
@@ -23,9 +23,9 @@ const Page: React.FC = () => {
         <p>
           Here you&apos;ll find the past jobs I do not normally include on my
           professional resume. <br />
-          As you can see below, I&apos;ve had a colorful job history working to
-          get through high school and college, often working multiple jobs at
-          once to make ends meet. <br />
+          As you can see below, I&apos;ve had a colorful job history while
+          getting through high school and college, often balancing multiple jobs
+          at once to make ends meet. <br />
           From this, I hope you can see some of the ambition and hard work that
           helped me get to where I am today.
         </p>

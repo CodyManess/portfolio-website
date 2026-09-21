@@ -32,8 +32,8 @@ const About: React.FC = () => {
           <div className="max-w-[360px]">
             <h3 className="mb-4">Tech Interests</h3>
             <p className="leading-relaxed">
-              Web Development &#128187;, Native & Cross Platform Mobile App
-              Development &#128241;, Accessibility, Gen AI Assisted Software
+              Web Development &#128187;, Native & Cross-Platform Mobile App
+              Development &#128241;, Accessibility, GenAI-Assisted Software
               Development, Code Quality, and Open Source
             </p>
           </div>
@@ -41,10 +41,10 @@ const About: React.FC = () => {
           <div className="max-w-[360px]">
             <h3 className="mb-4">Personal Interests</h3>
             <p className="leading-relaxed">
-              Taking Care of my Pets &#128021; &#128049;, Politics & News
-              &#128240;, Trying new Food, Local Events, or Self Care,
-              occasionally traveling &#127758;, and writing new notes on Notion
-              &#128211;.
+              Taking care of my pets &#128021; &#128049;, keeping up with
+              politics & news &#128240;, exploring new food, attending local
+              events, prioritizing self-care, traveling &#127758;, and
+              organizing notes on Notion &#128211;.
             </p>
           </div>
 
@@ -63,7 +63,7 @@ const About: React.FC = () => {
                 target="_blank"
                 className="hover:text-[var(--primary-color)] transition-colors"
               >
-                <SiGoodreads /> GoodReads
+                <SiGoodreads /> Goodreads
               </Link>
               <Link
                 href="https://www.backloggd.com/u/codyness/"
@@ -77,7 +77,7 @@ const About: React.FC = () => {
                 target="_blank"
                 className="hover:text-[var(--primary-color)] transition-colors"
               >
-                <SiYoutubemusic /> Youtube Music
+                <SiYoutubemusic /> YouTube Music
               </Link>
             </div>
           </div>

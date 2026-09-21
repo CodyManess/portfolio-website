@@ -6,7 +6,7 @@ export const degrees: Degree[] = [
     schoolLink: 'https://www.mtsu.edu/program/computer-science-m-s/',
     title: 'Master of Science in Computer Science',
     subtitle: '',
-    awards: ['Accelerated Bachelors to Masters Program'],
+    awards: ["Accelerated Bachelor's to Master's Program"],
     courses: [
       {
         courseType: CourseType.Core,
@@ -140,7 +140,7 @@ export const degrees: Degree[] = [
     awards: [
       'Summa Cum Laude',
       'University Honors with Distinction',
-      'Accelerated Bachelors to Masters (ABM) Program',
+      "Accelerated Bachelor's to Master's (ABM) Program",
     ],
     courses: [
       {
@@ -241,7 +241,7 @@ export const degrees: Degree[] = [
       {
         courseType: CourseType.SupportCourses,
         courseNum: 'MATH 3460',
-        title: 'Foundation of Higher Mathematics',
+        title: 'Foundations of Higher Mathematics',
       },
       {
         courseType: CourseType.SupportCourses,
