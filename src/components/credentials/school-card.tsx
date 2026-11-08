@@ -57,7 +57,7 @@ const DegreeCard = (degree: Degree) => {
             src={schoolPhotos[title] ?? mtsucampus}
             alt={schoolName}
             sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover"
+            className="object-cover aspect-[16/9]"
           />
         </div>
         <CardContent className="flex flex-col mr-auto flex-1 p-4">
