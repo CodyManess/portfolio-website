@@ -1,9 +1,10 @@
 import React from 'react'
-import ContactMe from '../shared/contact-me'
+import ContactMe from '@/components/shared/contact-me'
 
 const Footer: React.FC = () => {
+  // Extra bottom padding on mobile keeps content clear of the fixed BottomNav
   return (
-    <footer className="bg-[#0b0f19] text-slate-400 pt-16 pb-10 text-center border-t border-slate-900">
+    <footer className="bg-[#0b0f19] text-slate-400 pt-16 pb-28 sm:pb-10 text-center border-t border-slate-900">
       <div className="container mx-auto px-4 lg:px-6 mb-12 flex flex-col items-center">
         <h2 className="text-3xl md:text-4xl font-semibold text-white pb-6">
           Thank you for visiting!

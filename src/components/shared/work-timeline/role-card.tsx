@@ -1,5 +1,9 @@
 import Role from '@/types/role'
-import { Accordion, AccordionBody, AccordionHeader } from '../accordion'
+import {
+  Accordion,
+  AccordionBody,
+  AccordionHeader,
+} from '@/components/shared/accordion'
 import { CARD_CLASSNAME } from '@/lib/utils'
 
 interface RoleCardProps {

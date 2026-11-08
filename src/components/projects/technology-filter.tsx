@@ -1,31 +1,8 @@
 'use client'
 import * as React from 'react'
 import { Tool } from '@/types/project'
-import {
-  SiReact,
-  SiSwift,
-  SiNodedotjs,
-  SiAngular,
-  SiKotlin,
-  SiFirebase,
-  SiPhp,
-  SiTypescript,
-} from 'react-icons/si'
-import { FaJava } from 'react-icons/fa6'
-import { IconType } from 'react-icons'
 import { cn } from '@/lib/utils'
-
-const iconMap: { [key: string]: IconType } = {
-  SiReact,
-  SiSwift,
-  SiNodedotjs,
-  SiAngular,
-  SiKotlin,
-  SiFirebase,
-  SiPhp,
-  SiTypescript,
-  FaJava,
-}
+import { toolIconMap } from '@/lib/tool-icons'
 
 interface Props {
   tools: Tool[]
@@ -73,7 +50,7 @@ const TechnologyFilter = ({
       </button>
 
       {tools.map((tool) => {
-        const IconComponent = iconMap[tool.iconName]
+        const IconComponent = toolIconMap[tool.iconName]
         const isSelected = selectedTool === tool.title
         const count = toolCounts[tool.title] ?? 0
 

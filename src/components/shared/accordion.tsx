@@ -1,5 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react'
+'use client'
+import React, { useId, useRef } from 'react'
 import { FaAngleDown } from 'react-icons/fa'
+import { cn } from '@/lib/utils'
 
 interface AccordionProps {
   index: number
@@ -14,27 +16,22 @@ interface AccordionChildrenProps {
 }
 
 export function Accordion(props: AccordionProps) {
-  const accordionBody = useRef<HTMLDivElement>(null)
   const accordionHeader = useRef<HTMLButtonElement>(null)
-  const [height, setHeight] = useState<string | number>('0px')
-
-  useEffect(() => {
-    const element = accordionBody.current
-    if (props.expanded === props.index && element) {
-      setHeight(element.scrollHeight)
-    } else {
-      setHeight('0px')
-    }
-  }, [props.expanded, props.index])
+  // useId guarantees unique, SSR-safe ids even when multiple accordion groups
+  // (e.g. several timelines) are rendered on the same page.
+  const id = useId()
+  const headerId = `${id}-header`
+  const panelId = `${id}-panel`
+  const isOpen = props.expanded === props.index
 
   let header
   let body
 
   const toggleAccordion = () => {
-    if (props.expanded === props.index) {
+    if (isOpen) {
       accordionHeader.current?.blur()
     }
-    props.setExpanded(props.expanded === props.index ? false : props.index)
+    props.setExpanded(isOpen ? false : props.index)
   }
 
   React.Children.forEach(props.children, (child) => {
@@ -47,34 +44,42 @@ export function Accordion(props: AccordionProps) {
   })
 
   return (
-    <div
-      className={`group ${props.className}`}
-      data-active={props.expanded === props.index}
-    >
+    <div className={cn('group', props.className)} data-active={isOpen}>
       {!!header && (
         <button
           ref={accordionHeader}
+          type="button"
           className="flex justify-between transition-all duration-300 p-4 w-full bg-transparent text-inherit border-none cursor-pointer outline-none focus:rounded-lg focus:brightness-95 dark:focus:brightness-110"
           onClick={toggleAccordion}
-          aria-expanded={props.expanded === props.index}
-          aria-controls={`accordionpanel${props.index}`}
-          id={`accordion${props.index}`}
+          aria-expanded={isOpen}
+          aria-controls={panelId}
+          id={headerId}
         >
           <div className="text-left p-1">{header}</div>
-          <FaAngleDown className="flex self-center transition-transform duration-300 text-[2em] group-data-[active=true]:rotate-180" />
+          <FaAngleDown
+            className="flex self-center transition-transform duration-300 text-[2em] group-data-[active=true]:rotate-180"
+            aria-hidden="true"
+          />
         </button>
       )}
 
       {!!body && (
+        // Animating grid-template-rows between 0fr and 1fr lets CSS handle the
+        // expand/collapse transition without measuring scrollHeight in JS, and
+        // keeps the height correct when the content reflows (e.g. on resize).
         <div
-          ref={accordionBody}
-          className="relative overflow-hidden transition-[height] duration-300 ease-in-out"
-          id={`accordionpanel${props.index}`}
+          className={cn(
+            'grid transition-[grid-template-rows] duration-300 ease-in-out',
+            isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+          )}
+          id={panelId}
           role="region"
-          aria-labelledby={`accordion${props.index}`}
-          style={{ height }}
+          aria-labelledby={headerId}
+          inert={!isOpen}
         >
-          <div className="flex-1 mb-6 mx-8 overflow-hidden z-[2]">{body}</div>
+          <div className="min-h-0 overflow-hidden">
+            <div className="mb-6 mx-8">{body}</div>
+          </div>
         </div>
       )}
     </div>

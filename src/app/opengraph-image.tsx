@@ -1,20 +1,25 @@
 import { ImageResponse } from 'next/og'
-import { readFileSync } from 'fs'
-import { join } from 'path'
-import './globals.css'
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
 
 // Image metadata
 export const alt = 'Profile of Cody Maness'
 
-export const contentType = 'image/jpg'
+export const size = {
+  width: 1200,
+  height: 630,
+}
 
-export const dynamic = 'force-dynamic'
+// ImageResponse always renders a PNG, regardless of the embedded source image
+export const contentType = 'image/png'
 
+// No dynamic APIs are used, so the image is generated once at build time and
+// served statically instead of being re-rendered on every request.
 export default async function Image() {
-  const imageBuffer = readFileSync(
-    join(process.cwd(), 'public/opengraph-image.jpg')
+  const base64Image = await readFile(
+    join(process.cwd(), 'public/opengraph-image.jpg'),
+    'base64'
   )
-  const base64Image = imageBuffer.toString('base64')
   const imageDataUrl = `data:image/jpeg;base64,${base64Image}`
 
   return new ImageResponse(
@@ -128,8 +133,7 @@ export default async function Image() {
       </div>
     </div>,
     {
-      width: 1200,
-      height: 630,
+      ...size,
     }
   )
 }

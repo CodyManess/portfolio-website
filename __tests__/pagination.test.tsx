@@ -23,9 +23,10 @@ describe('Pagination Component', () => {
       />
     )
 
-    // Check summary text
+    // Check summary text (defaults to "items" when itemLabel is omitted)
     expect(screen.getByText(/Showing/i)).toBeInTheDocument()
     expect(screen.getByText('15')).toBeInTheDocument()
+    expect(screen.getByText(/items/i)).toBeInTheDocument()
 
     // Previous should be disabled on first page
     const prevBtn = screen.getByRole('button', { name: /previous/i })

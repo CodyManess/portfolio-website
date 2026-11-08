@@ -10,6 +10,8 @@ interface PaginationProps {
   totalItems?: number
   startIndex?: number
   endIndex?: number
+  /** Plural noun used in the item count summary, e.g. "Showing 1 to 6 of 9 projects" */
+  itemLabel?: string
   className?: string
 }
 
@@ -20,6 +22,7 @@ const Pagination = ({
   totalItems,
   startIndex,
   endIndex,
+  itemLabel = 'items',
   className,
 }: PaginationProps) => {
   if (totalPages <= 1) return null
@@ -60,7 +63,6 @@ const Pagination = ({
 
   return (
     <nav
-      role="navigation"
       aria-label="Pagination Navigation"
       className={cn(
         'flex flex-col sm:flex-row items-center justify-between gap-4 mt-12 mb-6',
@@ -81,7 +83,7 @@ const Pagination = ({
               : totalItems}
           </span>{' '}
           of <span className="font-semibold text-foreground">{totalItems}</span>{' '}
-          projects
+          {itemLabel}
         </p>
       )}
 
@@ -96,7 +98,7 @@ const Pagination = ({
           className="inline-flex items-center gap-1 px-3 py-2 text-xs font-medium rounded-xl border border-slate-200/80 dark:border-slate-800/40 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 disabled:opacity-40 disabled:pointer-events-none transition-all duration-200 hover:border-[var(--primary-color)]/30 hover:text-[var(--primary-color)] dark:hover:border-[var(--primary-light)]/40 dark:hover:text-[var(--primary-light)] cursor-pointer"
         >
           <FaChevronLeft className="size-3" />
-          <span className="hidden xs:inline sm:inline">Prev</span>
+          <span className="hidden sm:inline">Prev</span>
         </button>
 
         {/* Mobile: Compact Page Indicator (visible only on small mobile screens < 640px) */}
@@ -157,7 +159,7 @@ const Pagination = ({
           aria-label="Go to next page"
           className="inline-flex items-center gap-1 px-3 py-2 text-xs font-medium rounded-xl border border-slate-200/80 dark:border-slate-800/40 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 disabled:opacity-40 disabled:pointer-events-none transition-all duration-200 hover:border-[var(--primary-color)]/30 hover:text-[var(--primary-color)] dark:hover:border-[var(--primary-light)]/40 dark:hover:text-[var(--primary-light)] cursor-pointer"
         >
-          <span className="hidden xs:inline sm:inline">Next</span>
+          <span className="hidden sm:inline">Next</span>
           <FaChevronRight className="size-3" />
         </button>
       </div>

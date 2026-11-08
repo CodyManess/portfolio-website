@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react'
-import { CourseType, Degree } from '@/types/education'
+import { Course, CourseType, Degree } from '@/types/education'
 import {
   Dialog,
   DialogContent,
@@ -19,6 +19,20 @@ interface Props {
   open: boolean
   handleClose: () => void
 }
+
+const CourseItem = ({ course }: { course: Course }) => (
+  <div className="flex items-center gap-2.5 p-2.5 rounded-lg border border-border/70 bg-card hover:border-[var(--primary-color)]/50 hover:bg-muted/30 transition-all duration-200">
+    <Badge
+      variant="outline"
+      className="font-mono text-xs font-semibold px-2 py-0.5 bg-muted/60 text-foreground shrink-0"
+    >
+      {course.courseNum}
+    </Badge>
+    <span className="text-sm font-medium text-foreground leading-snug line-clamp-2">
+      {course.title}
+    </span>
+  </div>
+)
 
 const DegreeModal = ({ degree, open, handleClose }: Props) => {
   const { schoolName, title, subtitle, schoolLink, awards, courses } = degree
@@ -151,20 +165,10 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                         </h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                           {filtered.map((course) => (
-                            <div
+                            <CourseItem
                               key={`${course.courseNum}-${course.title}`}
-                              className="flex items-center gap-2.5 p-2.5 rounded-lg border border-border/70 bg-card hover:border-[var(--primary-color)]/50 hover:bg-muted/30 transition-all duration-200"
-                            >
-                              <Badge
-                                variant="outline"
-                                className="font-mono text-xs font-semibold px-2 py-0.5 bg-muted/60 text-foreground shrink-0"
-                              >
-                                {course.courseNum}
-                              </Badge>
-                              <span className="text-sm font-medium text-foreground leading-snug line-clamp-2">
-                                {course.title}
-                              </span>
-                            </div>
+                              course={course}
+                            />
                           ))}
                         </div>
                       </div>
@@ -176,20 +180,10 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                   {courses
                     .filter((course) => course.courseType === activeTab)
                     .map((course) => (
-                      <div
+                      <CourseItem
                         key={`${course.courseNum}-${course.title}`}
-                        className="flex items-center gap-2.5 p-2.5 rounded-lg border border-border/70 bg-card hover:border-[var(--primary-color)]/50 hover:bg-muted/30 transition-all duration-200"
-                      >
-                        <Badge
-                          variant="outline"
-                          className="font-mono text-xs font-semibold px-2 py-0.5 bg-muted/60 text-foreground shrink-0"
-                        >
-                          {course.courseNum}
-                        </Badge>
-                        <span className="text-sm font-medium text-foreground leading-snug line-clamp-2">
-                          {course.title}
-                        </span>
-                      </div>
+                        course={course}
+                      />
                     ))}
                 </div>
               )}

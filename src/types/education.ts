@@ -12,7 +12,7 @@ export interface Degree {
   courses: Course[]
 }
 
-interface Course {
+export interface Course {
   courseType: CourseType
   courseNum: string
   title: string

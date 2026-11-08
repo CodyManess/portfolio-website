@@ -33,8 +33,8 @@ const Creds = () => {
   let sectionBody = (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-        {educationData?.degrees.map((role, index) => (
-          <DegreeCard key={index} {...role} />
+        {educationData?.degrees.map((degree) => (
+          <DegreeCard key={degree.title} {...degree} />
         ))}
       </div>
       <div className="flex justify-around mt-8">

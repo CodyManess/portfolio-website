@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 const securityHeaders = [
   {
     key: 'X-DNS-Prefetch-Control',
@@ -26,14 +25,16 @@ const securityHeaders = [
   },
 ]
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Don't advertise the framework via the `X-Powered-By` response header
+  poweredByHeader: false,
   images: {
     formats: ['image/avif', 'image/webp'],
     qualities: [25, 50, 75, 100],
   },
-  experimental: {
-    optimizePackageImports: ['react-icons', 'lucide-react'],
-  },
+  // Note: `react-icons/*` and `lucide-react` are already included in Next.js'
+  // default `optimizePackageImports` list, so no experimental config is needed.
   async headers() {
     return [
       {

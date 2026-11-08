@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import Creds from '@/components/credentials/creds'
 import { EducationData, IconType } from '@/types/education'
 
@@ -45,6 +45,13 @@ describe('Creds', () => {
 
     expect(degreeElement).toBeInTheDocument()
     expect(certElement).toBeInTheDocument()
+
+    // Degree card should be keyboard-activatable and open the degree modal
+    const degreeCard = screen.getByRole('button', {
+      name: /View coursework for Bachelor of Science in Computer Science/i,
+    })
+    fireEvent.keyDown(degreeCard, { key: 'Enter' })
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
   })
 
   it('renders an error message when fetch fails', async () => {

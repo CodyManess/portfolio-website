@@ -6,7 +6,7 @@ import Project from '@/types/project'
 import ProjectModal from './project-modal'
 import ToolChip from '@/components/shared/tool-chip'
 import { FaArrowRight, FaExternalLinkAlt, FaStar } from 'react-icons/fa'
-import { cn } from '@/lib/utils'
+import { cn, CARD_CLASSNAME } from '@/lib/utils'
 
 /**
  * Props for the ProjectCard component.
@@ -32,10 +32,7 @@ const ProjectCard = (project: Project) => {
         aria-label={`View details for ${project.title}`}
         onKeyDown={handleKeyDown}
         className={cn(
-          'group h-full flex flex-col justify-between cursor-pointer border border-slate-200/80 dark:border-slate-800/40',
-          'bg-gradient-to-br from-white to-slate-50/50 dark:from-slate-900/60 dark:to-slate-950/80 rounded-2xl shadow-sm',
-          'transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(0,122,184,0.12)]',
-          'hover:border-[var(--primary-color)]/40 dark:hover:border-[var(--primary-light)]/40',
+          CARD_CLASSNAME,
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-color)] pb-3'
         )}
         onClick={handleOpen}

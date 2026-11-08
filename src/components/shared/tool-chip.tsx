@@ -1,36 +1,13 @@
 import React from 'react'
 import { Tool } from '@/types/project'
-import {
-  SiReact,
-  SiSwift,
-  SiNodedotjs,
-  SiAngular,
-  SiKotlin,
-  SiFirebase,
-  SiPhp,
-  SiTypescript,
-} from 'react-icons/si'
-import { FaJava } from 'react-icons/fa6'
-import { IconType } from 'react-icons'
+import { toolIconMap } from '@/lib/tool-icons'
 
 interface ToolChipProps {
   tool: Tool
 }
 
-const iconMap: { [key: string]: IconType } = {
-  SiReact,
-  SiSwift,
-  SiNodedotjs,
-  SiAngular,
-  SiKotlin,
-  SiFirebase,
-  SiPhp,
-  SiTypescript,
-  FaJava,
-}
-
 const ToolChip: React.FC<ToolChipProps> = ({ tool }) => {
-  const IconComponent = iconMap[tool.iconName]
+  const IconComponent = toolIconMap[tool.iconName]
 
   return (
     <div

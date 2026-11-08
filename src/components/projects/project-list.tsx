@@ -140,6 +140,7 @@ const ProjectList = () => {
         totalItems={filteredProjects.length}
         startIndex={startIndex}
         endIndex={endIndex}
+        itemLabel="projects"
       />
     </>
   )
