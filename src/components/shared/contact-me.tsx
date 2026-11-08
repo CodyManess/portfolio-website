@@ -6,6 +6,8 @@ const ContactMe: React.FC = () => {
     <div className="flex justify-center gap-6 md:gap-8 w-full">
       <a
         href={socialLinks.GitHub}
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label="GitHub"
         className="group flex items-center justify-center w-16 h-16 rounded-full bg-white/10 border border-white/20 backdrop-blur-md !text-white transition-all duration-300 hover:bg-white/20 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(255,255,255,0.15)]"
       >
@@ -13,6 +15,8 @@ const ContactMe: React.FC = () => {
       </a>
       <a
         href={socialLinks.LinkedIn}
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label="LinkedIn"
         className="group flex items-center justify-center w-16 h-16 rounded-full bg-white/10 border border-white/20 backdrop-blur-md !text-white transition-all duration-300 hover:bg-[#0a66c2]/80 hover:border-[#0a66c2] hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(10,102,194,0.35)]"
       >

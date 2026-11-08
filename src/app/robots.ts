@@ -5,7 +5,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/private/',
     },
     sitemap: 'https://codymaness.com/sitemap.xml',
     host: 'https://codymaness.com',
