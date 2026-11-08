@@ -15,6 +15,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://codymaness.com'),
+  alternates: {
+    canonical: '/',
+  },
   title: 'Cody Maness | Full-Stack Developer',
   description:
     'Full-Stack Web & Mobile Developer building accessible, scalable, and engaging digital experiences.',

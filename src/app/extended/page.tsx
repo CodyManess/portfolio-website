@@ -9,6 +9,15 @@ export const metadata: Metadata = {
   title: 'Cody Maness | Extended Work History',
   description:
     'An extra page within my portfolio detailing past jobs worked before and during college.',
+  alternates: {
+    canonical: '/extended',
+  },
+  openGraph: {
+    title: 'Cody Maness | Extended Work History',
+    description:
+      'An extra page within my portfolio detailing past jobs worked before and during college.',
+    url: 'https://codymaness.com/extended',
+  },
 }
 
 const Page: React.FC = () => {
@@ -19,7 +28,7 @@ const Page: React.FC = () => {
           <FaArrowLeft className="inline mx-1" />
           Back to Portfolio
         </Link>
-        <h2>Extended Job History</h2>
+        <h1 className="h2">Extended Job History</h1>
         <p>
           Here you&apos;ll find the past jobs I do not normally include on my
           professional resume. <br />
