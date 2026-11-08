@@ -6,6 +6,6 @@
   ],
   "remoteAuthority": "wsl+Ubuntu",
   "settings": {
-    "css.lint.unknownAtRules": "ignore"
+    "css.lint.unknownAtRules": "ignore",
   },
 }

@@ -11,7 +11,7 @@ export default function WorkTimeline({ roles }: WorkTimelineProps) {
   const [expanded, setExpanded] = React.useState<number | false>(false)
 
   return (
-    <div className="flex flex-col max-w-screen-lg mx-auto w-full py-8 overflow-hidden">
+    <div className="flex flex-col md:grid md:grid-cols-[max-content_auto_minmax(0,1fr)] max-w-4xl mx-auto w-full py-6">
       {roles.map((role, index) => (
         <RoleItem
           key={index}
