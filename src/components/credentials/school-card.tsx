@@ -54,9 +54,10 @@ const DegreeCard = (degree: Degree) => {
         <div className="h-[180px] w-full relative">
           <Image
             fill
+            placeholder="blur"
             src={schoolPhotos[title] ?? mtsucampus}
             alt={schoolName}
-            sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover aspect-[16/9]"
           />
         </div>

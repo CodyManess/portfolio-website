@@ -16,6 +16,7 @@ const IntroCard = () => {
           <div className="w-40 h-40 relative rounded-full overflow-hidden border-2 border-white dark:border-slate-900 bg-slate-100">
             <Image
               preload
+              fetchPriority="high"
               fill
               placeholder="blur"
               quality={100}

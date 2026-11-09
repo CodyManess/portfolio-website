@@ -1,6 +1,6 @@
 'use client'
 import React, { useId, useRef } from 'react'
-import { FaAngleDown } from 'react-icons/fa'
+import { FaAngleDown } from 'react-icons/fa6'
 import { cn } from '@/lib/utils'
 
 interface AccordionProps {

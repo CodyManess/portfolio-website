@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react'
-import { FaChevronLeft, FaChevronRight, FaEllipsisH } from 'react-icons/fa'
+import { FaChevronLeft, FaChevronRight, FaEllipsis } from 'react-icons/fa6'
 import { cn } from '@/lib/utils'
 
 interface PaginationProps {
@@ -123,7 +123,7 @@ const Pagination = ({
                   className="w-9 h-9 flex items-center justify-center text-muted-foreground"
                   aria-hidden="true"
                 >
-                  <FaEllipsisH className="size-3 opacity-60" />
+                  <FaEllipsis className="size-3 opacity-60" />
                 </span>
               )
             }

@@ -8,7 +8,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import { Button, buttonVariants } from '@/components/ui/button'
-import { FaCheckCircle, FaExternalLinkAlt } from 'react-icons/fa'
+import { FaCircleCheck, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 import Project from '@/types/project'
 import ToolChip from '@/components/shared/tool-chip'
 import Link from 'next/link'
@@ -45,7 +45,8 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
                 'text-xs font-medium hover:text-[var(--primary-color)] hover:border-[var(--primary-color)] transition-colors focus-visible:outline-none'
               )}
             >
-              Visit Project <FaExternalLinkAlt className="ml-1.5 size-3" />
+              Visit Project{' '}
+              <FaArrowUpRightFromSquare className="ml-1.5 size-3" />
             </Link>
           )}
         </div>
@@ -88,7 +89,7 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
                     key={idx}
                     className="flex items-start gap-3 p-3 rounded-xl border border-border/70 bg-card hover:border-[var(--primary-color)]/30 hover:bg-muted/30 transition-colors text-sm"
                   >
-                    <FaCheckCircle
+                    <FaCircleCheck
                       className="size-4 text-[var(--primary-color)] mt-0.5 shrink-0"
                       aria-hidden="true"
                     />

@@ -11,7 +11,7 @@ const Intro = () => {
       <IntroCard />
 
       <FaAngleDown
-        className="text-[var(--white)] absolute mx-auto inset-x-0 text-[5em] animate-[arrow-pulse-down_2500ms_linear_infinite]"
+        className="text-[var(--white)] absolute bottom-[-10px] mx-auto inset-x-0 text-[5em] animate-[arrow-pulse-down_2500ms_linear_infinite]"
         aria-hidden="true"
       />
     </section>

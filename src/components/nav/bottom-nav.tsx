@@ -32,11 +32,25 @@ const BottomNav = () => {
       setValue(currentSection)
     }
 
-    const rafId = window.requestAnimationFrame(updateActiveSection)
-    window.addEventListener('scroll', updateActiveSection, { passive: true })
+    let rafId: number | undefined
+
+    const onScroll = () => {
+      if (rafId !== undefined) return
+      rafId = window.requestAnimationFrame(() => {
+        rafId = undefined
+        updateActiveSection()
+      })
+    }
+
+    if (window.scrollY > 0) {
+      onScroll()
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
-      window.cancelAnimationFrame(rafId)
-      window.removeEventListener('scroll', updateActiveSection)
+      if (rafId !== undefined) {
+        window.cancelAnimationFrame(rafId)
+      }
+      window.removeEventListener('scroll', onScroll)
     }
   }, [pathname])
 

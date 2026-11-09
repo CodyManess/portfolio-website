@@ -1,15 +1,33 @@
 'use client'
 import * as React from 'react'
+import { useEffect, useState } from 'react'
 import DegreeCard from './school-card'
 import CertBadge from './cert-badge'
-import { useEffect } from 'react'
+import { Skeleton } from '@/components/ui/skeleton'
 import { EducationData } from '@/types/education'
 
+const CredsSkeleton = () => (
+  <div aria-busy="true" aria-label="Loading education data">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+      {[0, 1, 2].map((i) => (
+        <Skeleton
+          key={i}
+          className="h-[310px] w-full rounded-2xl bg-white/15"
+        />
+      ))}
+    </div>
+    <div className="flex justify-around mt-8">
+      {[0, 1].map((i) => (
+        <Skeleton key={i} className="w-40 h-40 rounded-full bg-white/15" />
+      ))}
+    </div>
+  </div>
+)
+
 const Creds = () => {
-  const [educationData, setEducationData] =
-    React.useState<EducationData | null>(null)
-  const [isLoading, setIsLoading] = React.useState<boolean>(true)
-  const [error, setError] = React.useState<string | null>(null)
+  const [educationData, setEducationData] = useState<EducationData | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,11 +70,7 @@ const Creds = () => {
   )
 
   if (isLoading) {
-    sectionBody = (
-      <div className="flex justify-center my-8">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--primary-color)]"></div>
-      </div>
-    )
+    sectionBody = <CredsSkeleton />
   }
 
   if (error) {

@@ -11,7 +11,7 @@ import {
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
-import { FaAward, FaExternalLinkAlt } from 'react-icons/fa'
+import { FaAward, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 import { cn } from '@/lib/utils'
 
 interface Props {
@@ -100,7 +100,8 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                 'text-xs font-medium hover:text-[var(--primary-color)] hover:border-[var(--primary-color)] transition-colors focus-visible:outline-none'
               )}
             >
-              Program Website <FaExternalLinkAlt className="ml-1.5 size-3" />
+              Program Website{' '}
+              <FaArrowUpRightFromSquare className="ml-1.5 size-3" />
             </Link>
           )}
         </div>

@@ -5,7 +5,7 @@ import * as React from 'react'
 import Project from '@/types/project'
 import ProjectModal from './project-modal'
 import ToolChip from '@/components/shared/tool-chip'
-import { FaArrowRight, FaExternalLinkAlt, FaStar } from 'react-icons/fa'
+import { FaArrowRight, FaArrowUpRightFromSquare, FaStar } from 'react-icons/fa6'
 import { cn, CARD_CLASSNAME } from '@/lib/utils'
 
 /**
@@ -43,7 +43,10 @@ const ProjectCard = (project: Project) => {
             {project.link ? (
               <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[var(--primary-color)] dark:text-[var(--primary-light)]">
                 Live Project{' '}
-                <FaExternalLinkAlt className="size-2.5" aria-hidden="true" />
+                <FaArrowUpRightFromSquare
+                  className="size-2.5"
+                  aria-hidden="true"
+                />
               </span>
             ) : (
               <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">

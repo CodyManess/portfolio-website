@@ -157,11 +157,11 @@
 /* Intro Animations */
 @keyframes arrow-pulse-down {
   0% {
-    bottom: 30px;
+    transform: translateY(-40px);
     opacity: 0;
   }
   100% {
-    bottom: -10px;
+    transform: translateY(0);
     opacity: 1;
   }
 }

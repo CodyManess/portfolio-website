@@ -7,14 +7,12 @@ import Footer from '@/components/nav/footer'
 import { cn } from '@/lib/utils'
 
 const inter = Inter({
-  weight: ['300', '400', '500', '600', '700'],
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
 })
 
 const robotoMono = Roboto_Mono({
-  weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-mono',

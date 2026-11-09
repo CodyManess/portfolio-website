@@ -28,9 +28,9 @@ const CertBadge = ({ icon, iconType, name, org }: Cert) => {
           alt={`${name} Cert`}
           width={160}
           height={160}
+          sizes="160px"
           key={icon}
           className="w-40 h-40 drop-shadow-md object-contain"
-          loading="eager"
         />
       ) : (
         <div
@@ -44,8 +44,8 @@ const CertBadge = ({ icon, iconType, name, org }: Cert) => {
               alt={name}
               width={56}
               height={56}
+              sizes="56px"
               className="w-full h-full object-contain"
-              loading="eager"
             />
           </div>
           <p className="text-xs font-semibold leading-tight mb-1 line-clamp-2 text-balance">

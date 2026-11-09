@@ -64,7 +64,7 @@ export default function RoleItem({
                 className="w-full h-full object-contain"
                 src={role.companyLogo}
                 alt={`${role.companyName} Logo`}
-                loading="eager"
+                sizes="44px"
               />
             </div>
           ) : (

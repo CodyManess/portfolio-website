@@ -31,9 +31,10 @@
     "singleQuote": true
   },
   "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not op_mini all"
+    "chrome 111",
+    "edge 111",
+    "firefox 111",
+    "safari 16.4"
   ],
   "dependencies": {
     "@base-ui/react": "^1.9.0",

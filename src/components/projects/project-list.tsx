@@ -7,8 +7,28 @@ import TechnologyFilter from './technology-filter'
 import Pagination from '@/components/shared/pagination'
 import Project, { Tool } from '@/types/project'
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 
 const PROJECTS_PER_PAGE = 6
+
+const ProjectListSkeleton = () => (
+  <div aria-busy="true" aria-label="Loading project data">
+    <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+      {Array.from({ length: 10 }, (_, i) => (
+        <Skeleton key={i} className="h-8 w-20 rounded-full" />
+      ))}
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+      {Array.from({ length: PROJECTS_PER_PAGE }, (_, i) => (
+        <Skeleton key={i} className="h-[240px] w-full rounded-2xl" />
+      ))}
+    </div>
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-12 mb-6">
+      <Skeleton className="h-4 w-44 order-2 sm:order-1" />
+      <Skeleton className="h-9 w-48 rounded-xl order-1 sm:order-2" />
+    </div>
+  </div>
+)
 
 const ProjectList = () => {
   const [projects, setProjects] = useState<Project[]>([])
@@ -79,11 +99,7 @@ const ProjectList = () => {
   }, [projects, selectedTool])
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center my-8 w-full">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--primary-color)]"></div>
-      </div>
-    )
+    return <ProjectListSkeleton />
   }
 
   if (error) {

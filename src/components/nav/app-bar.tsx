@@ -9,16 +9,20 @@ const PortfolioAppBar = () => {
 
   useEffect(() => {
     let prevScrollpos: number = window.scrollY
+    let isHidden = false
 
     const onScroll = function () {
       const currentScrollPos: number = window.scrollY
       const navbar = navRef.current
       if (!navbar) return
 
-      if (prevScrollpos > currentScrollPos) {
-        navbar.style.top = '0'
-      } else {
-        navbar.style.top = `-${navbar.clientHeight}px`
+      const shouldShow = prevScrollpos > currentScrollPos
+      if (shouldShow && isHidden) {
+        navbar.style.transform = 'translateY(0)'
+        isHidden = false
+      } else if (!shouldShow && !isHidden && currentScrollPos > 0) {
+        navbar.style.transform = 'translateY(-100%)'
+        isHidden = true
       }
 
       prevScrollpos = currentScrollPos
@@ -37,7 +41,7 @@ const PortfolioAppBar = () => {
       ref={navRef}
       id="navbar"
       aria-label="Main"
-      className="hidden sm:flex shadow-[var(--surface-shadow)] bg-[var(--toolbar-background)]/90 backdrop-blur-md transition-[top] duration-300 fixed z-[1100] top-0 right-0 flex-col w-full"
+      className="hidden sm:flex shadow-[var(--surface-shadow)] bg-[var(--toolbar-background)]/90 backdrop-blur-md transition-transform duration-300 fixed z-[1100] top-0 right-0 flex-col w-full"
     >
       <ul className="flex justify-center list-none py-8 m-0">
         {navLinks.map((page) => (
