@@ -67,11 +67,14 @@ export default function RoleItem({
           )}
         >
           {role.companyLogo ? (
-            <Image
-              className="max-w-full max-h-full w-auto h-auto object-contain"
-              src={role.companyLogo}
-              alt={`${role.companyName} Logo`}
-            />
+            <div className="relative w-7 h-7 sm:w-11 sm:h-11 flex items-center justify-center">
+              <Image
+                className="w-full h-full object-contain"
+                src={role.companyLogo}
+                alt={`${role.companyName} Logo`}
+                loading="eager"
+              />
+            </div>
           ) : (
             <FaBriefcase
               className="text-base sm:text-xl text-[var(--primary-color)] dark:text-[var(--primary-light)]"

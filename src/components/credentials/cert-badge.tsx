@@ -29,7 +29,8 @@ const CertBadge = ({ icon, iconType, name, org }: Cert) => {
           width={160}
           height={160}
           key={icon}
-          className="drop-shadow-md"
+          className="w-40 h-40 drop-shadow-md object-contain"
+          loading="eager"
         />
       ) : (
         <div
@@ -37,13 +38,14 @@ const CertBadge = ({ icon, iconType, name, org }: Cert) => {
           className="bg-gradient-to-br from-[var(--primary-dark)] to-[var(--primary-color)] flex flex-col justify-center items-center w-40 h-40 p-4 text-center rounded-full border border-white/20 shadow-lg text-white overflow-hidden"
           aria-label={`${name} Cert from ${org}`}
         >
-          <div className="flex-shrink-0 mb-1">
+          <div className="flex-shrink-0 mb-1 w-14 h-14 flex items-center justify-center">
             <Image
               src={imageSrc}
               alt={name}
               width={56}
               height={56}
-              className="object-contain"
+              className="w-full h-full object-contain"
+              loading="eager"
             />
           </div>
           <p className="text-xs font-semibold leading-tight mb-1 line-clamp-2 text-balance">
