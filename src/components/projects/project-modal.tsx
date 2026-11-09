@@ -88,7 +88,10 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
                     key={idx}
                     className="flex items-start gap-3 p-3 rounded-xl border border-border/70 bg-card hover:border-[var(--primary-color)]/30 hover:bg-muted/30 transition-colors text-sm"
                   >
-                    <FaCheckCircle className="size-4 text-[var(--primary-color)] mt-0.5 shrink-0" />
+                    <FaCheckCircle
+                      className="size-4 text-[var(--primary-color)] mt-0.5 shrink-0"
+                      aria-hidden="true"
+                    />
                     <span className="text-foreground leading-snug">
                       {achievement}
                     </span>

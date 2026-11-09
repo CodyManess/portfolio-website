@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Roboto_Mono } from 'next/font/google'
 import './globals.css'
 import PortfolioAppBar from '@/components/nav/app-bar'
 import BottomNav from '@/components/nav/bottom-nav'
@@ -7,10 +7,17 @@ import Footer from '@/components/nav/footer'
 import { cn } from '@/lib/utils'
 
 const inter = Inter({
-  weight: ['300', '400', '500', '700'],
+  weight: ['300', '400', '500', '600', '700'],
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
+})
+
+const robotoMono = Roboto_Mono({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
 })
 
 export const metadata: Metadata = {
@@ -48,9 +55,9 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={cn('font-sans', inter.variable)}
+      className={cn('font-sans', inter.variable, robotoMono.variable)}
     >
-      <body className={inter.className}>
+      <body className={cn(inter.className, 'font-sans antialiased')}>
         <PortfolioAppBar />
         {children}
         <Footer />

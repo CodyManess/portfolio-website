@@ -1,15 +1,8 @@
 import Image from 'next/image'
 import Role from '@/types/role'
 import RoleCard from './role-card'
-import { Roboto_Mono } from 'next/font/google'
 import { FaBriefcase } from 'react-icons/fa6'
 import { cn } from '@/lib/utils'
-
-const robotoMono = Roboto_Mono({
-  style: ['normal'],
-  subsets: ['latin'],
-  display: 'swap',
-})
 
 interface RoleItemProps {
   role: Role
@@ -34,8 +27,7 @@ export default function RoleItem({
       <div className="hidden md:flex items-start justify-end pr-4 pt-[29px] relative">
         <span
           className={cn(
-            robotoMono.className,
-            'inline-flex items-center px-3.5 py-1.5 rounded-full text-xs lg:text-sm font-medium whitespace-nowrap border transition-all duration-300 shadow-2xs z-10',
+            'font-mono inline-flex items-center px-3.5 py-1.5 rounded-full text-xs lg:text-sm font-medium whitespace-nowrap border transition-all duration-300 shadow-2xs z-10',
             isExpanded
               ? 'bg-[var(--primary-color)]/10 dark:bg-[var(--primary-light)]/15 text-[var(--primary-color)] dark:text-[var(--primary-light)] border-[var(--primary-color)]/35 dark:border-[var(--primary-light)]/40'
               : 'bg-slate-100/90 dark:bg-slate-900/90 text-slate-600 dark:text-slate-300 border-slate-200/90 dark:border-slate-800 group-hover/item:border-[var(--primary-color)]/30 dark:group-hover/item:border-[var(--primary-light)]/35 group-hover/item:text-[var(--primary-color)] dark:group-hover/item:text-[var(--primary-light)]'

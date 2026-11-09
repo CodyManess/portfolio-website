@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 lg:px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-slate-900 pt-8 text-xs text-slate-500">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-slate-900 pt-8 text-xs text-slate-400">
           <div className="text-center md:text-left">
             <p className="mb-2">
               Built by Cody Maness using Next.js, Tailwind CSS, and TypeScript.

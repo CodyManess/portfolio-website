@@ -1,4 +1,4 @@
-import { ComponentType } from 'react'
+import { IconType } from 'react-icons'
 
 export interface TechInterest {
   name: string
@@ -14,5 +14,5 @@ export interface MediaLink {
   name: string
   category: string
   url: string
-  icon: ComponentType<{ className?: string }>
+  icon: IconType
 }

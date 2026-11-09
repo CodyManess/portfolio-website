@@ -5,7 +5,7 @@ import profilePic from '@public/intro/portfolio-picture.webp'
 
 const IntroCard = () => {
   return (
-    <div className="relative z-10 w-full max-w-md mx-auto p-8 md:p-10 rounded-3xl border border-slate-200/60 dark:border-white/5 bg-white/70 dark:bg-slate-900/60 backdrop-blur-xl shadow-xl shadow-slate-900/10 dark:shadow-black/50 flex flex-col items-center">
+    <div className="relative z-10 w-full max-w-md mx-auto p-8 md:p-10 rounded-3xl border border-slate-200/60 dark:border-white/5 bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl shadow-xl shadow-slate-900/10 dark:shadow-black/50 flex flex-col items-center">
       {/* Decorative colored glow blob behind profile picture */}
       <div className="absolute top-8 w-48 h-48 bg-[var(--primary-color)]/10 dark:bg-[var(--primary-light)]/10 rounded-full blur-2xl -z-10 pointer-events-none" />
 
@@ -36,7 +36,7 @@ const IntroCard = () => {
         </span>
       </h1>
 
-      <p className="text-center text-slate-600 dark:text-slate-300 leading-relaxed text-sm md:text-base max-w-xs mt-2 mb-6">
+      <p className="text-center text-slate-700 dark:text-slate-200 leading-relaxed text-sm md:text-base max-w-xs mt-2 mb-6">
         Mobile and Web Developer with a love for creating engaging, accessible,
         and user-friendly applications.
       </p>

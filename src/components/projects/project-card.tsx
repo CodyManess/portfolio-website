@@ -42,7 +42,8 @@ const ProjectCard = (project: Project) => {
           <div className="flex items-center justify-between gap-2 mb-2">
             {project.link ? (
               <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[var(--primary-color)] dark:text-[var(--primary-light)]">
-                Live Project <FaExternalLinkAlt className="size-2.5" />
+                Live Project{' '}
+                <FaExternalLinkAlt className="size-2.5" aria-hidden="true" />
               </span>
             ) : (
               <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">
@@ -54,7 +55,7 @@ const ProjectCard = (project: Project) => {
                 variant="outline"
                 className="text-[10px] px-1.5 py-0 border-amber-500/30 text-amber-700 dark:text-amber-400 bg-amber-500/10 font-medium gap-1"
               >
-                <FaStar className="size-2 text-amber-500" />
+                <FaStar className="size-2 text-amber-500" aria-hidden="true" />
                 {project.achievements.length} Highlight
                 {project.achievements.length === 1 ? '' : 's'}
               </Badge>
@@ -80,7 +81,10 @@ const ProjectCard = (project: Project) => {
           {/* Interactive Footer CTA */}
           <div className="pt-3 border-t border-border/50 flex items-center justify-between text-xs font-medium text-muted-foreground group-hover:text-[var(--primary-color)] dark:group-hover:text-[var(--primary-light)] transition-colors mt-auto">
             <span>View details</span>
-            <FaArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-1" />
+            <FaArrowRight
+              className="size-3 transition-transform duration-300 group-hover:translate-x-1"
+              aria-hidden="true"
+            />
           </div>
         </CardContent>
       </Card>

@@ -41,8 +41,8 @@ const TechnologyFilter = ({
           className={cn(
             'ml-1.5 px-1.5 py-0.5 rounded-full text-[10px] font-medium leading-none transition-colors',
             selectedTool === null
-              ? 'bg-white/25 text-white'
-              : 'bg-slate-200/80 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+              ? 'bg-black/25 text-white font-semibold'
+              : 'bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
           )}
         >
           {totalCount}
@@ -82,6 +82,8 @@ const TechnologyFilter = ({
                 className="mr-1.5 transition-transform duration-300 shrink-0"
                 size="0.875rem"
                 color={tool.iconColor}
+                role="presentation"
+                aria-hidden="true"
               />
             )}
             <span>{tool.title}</span>
@@ -89,8 +91,8 @@ const TechnologyFilter = ({
               className={cn(
                 'ml-1.5 px-1.5 py-0.5 rounded-full text-[10px] font-medium leading-none transition-colors',
                 isSelected
-                  ? 'bg-[var(--tool-color)] text-white'
-                  : 'bg-slate-200/80 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+                  ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-semibold'
+                  : 'bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
               )}
             >
               {count}
