@@ -107,15 +107,15 @@ const BottomNav = () => {
               className={cn(
                 'group flex flex-col items-center justify-center gap-1 h-full px-1 min-w-0 transition-colors duration-200',
                 isActive
-                  ? 'text-[var(--primary-color)] dark:text-[var(--primary-light)] font-semibold'
-                  : 'text-slate-500 dark:text-slate-400 font-medium hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-light)]'
+                  ? 'text-(--primary-color) dark:text-(--primary-light) font-semibold'
+                  : 'text-slate-500 dark:text-slate-400 font-medium hover:text-(--primary-color) dark:hover:text-(--primary-light)'
               )}
             >
               <span
                 className={cn(
                   'flex items-center justify-center px-3 py-1 rounded-full transition-all duration-200',
                   isActive
-                    ? 'bg-[var(--primary-color)]/12 dark:bg-[var(--primary-light)]/15 text-[var(--primary-color)] dark:text-[var(--primary-light)]'
+                    ? 'bg-(--primary-color)/12 dark:bg-(--primary-light)/15 text-(--primary-color) dark:text-(--primary-light)'
                     : 'group-hover:bg-slate-100 dark:group-hover:bg-slate-800/70'
                 )}
               >

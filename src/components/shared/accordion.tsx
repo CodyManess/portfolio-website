@@ -42,7 +42,7 @@ export function Accordion(props: AccordionProps) {
   return (
     <div
       className={cn(
-        'group data-[active=true]:border-[var(--primary-color)]/40 dark:data-[active=true]:border-[var(--primary-light)]/50 data-[active=true]:shadow-[0_12px_30px_rgba(0,122,184,0.12)]',
+        'group data-[active=true]:border-(--primary-color)/40 dark:data-[active=true]:border-(--primary-light)/50 data-[active=true]:shadow-[0_12px_30px_rgba(0,122,184,0.12)]',
         props.className
       )}
       data-active={isOpen}
@@ -50,7 +50,7 @@ export function Accordion(props: AccordionProps) {
       {!!header && (
         <button
           type="button"
-          className="flex items-center justify-between gap-2.5 sm:gap-4 transition-all duration-300 p-3.5 sm:p-5 w-full bg-transparent text-inherit border-none cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-color)] focus-visible:rounded-2xl"
+          className="flex items-center justify-between gap-2.5 sm:gap-4 transition-all duration-300 p-3.5 sm:p-5 w-full bg-transparent text-inherit border-none cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:rounded-2xl"
           onClick={toggleAccordion}
           aria-expanded={isOpen}
           aria-controls={panelId}
@@ -58,7 +58,7 @@ export function Accordion(props: AccordionProps) {
         >
           <div className="text-left flex-1 min-w-0">{header}</div>
           <span
-            className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center self-center rounded-full border border-slate-200/80 dark:border-slate-700/80 bg-slate-100/80 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 transition-all duration-300 group-hover:border-[var(--primary-color)]/30 group-hover:bg-[var(--primary-color)]/10 group-hover:text-[var(--primary-color)] dark:group-hover:border-[var(--primary-light)]/40 dark:group-hover:bg-[var(--primary-light)]/15 dark:group-hover:text-[var(--primary-light)] group-data-[active=true]:border-transparent group-data-[active=true]:bg-[var(--primary-color)] group-data-[active=true]:text-white dark:group-data-[active=true]:bg-[var(--primary-light)] dark:group-data-[active=true]:text-slate-950"
+            className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center self-center rounded-full border border-slate-200/80 dark:border-slate-700/80 bg-slate-100/80 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 transition-all duration-300 group-hover:border-(--primary-color)/30 group-hover:bg-(--primary-color)/10 group-hover:text-(--primary-color) dark:group-hover:border-(--primary-light)/40 dark:group-hover:bg-(--primary-light)/15 dark:group-hover:text-(--primary-light) group-data-[active=true]:border-transparent group-data-[active=true]:bg-(--primary-color) group-data-[active=true]:text-white dark:group-data-[active=true]:bg-(--primary-light) dark:group-data-[active=true]:text-slate-950"
             aria-hidden="true"
           >
             <FaAngleDown className="text-sm sm:text-base transition-transform duration-300 group-data-[active=true]:rotate-180" />

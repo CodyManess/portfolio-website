@@ -34,7 +34,7 @@ const ProjectCard = (project: Project) => {
         onKeyDown={handleKeyDown}
         className={cn(
           CARD_CLASSNAME,
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-color)] pb-3'
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--primary-color) pb-3'
         )}
         onClick={handleOpen}
       >
@@ -42,7 +42,7 @@ const ProjectCard = (project: Project) => {
           {/* Top Metadata Row */}
           <div className="flex items-center justify-between gap-2 mb-2">
             {safeLink ? (
-              <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[var(--primary-color)] dark:text-[var(--primary-light)]">
+              <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-(--primary-color) dark:text-(--primary-light)">
                 Live Project{' '}
                 <FaArrowUpRightFromSquare
                   className="size-2.5"
@@ -66,7 +66,7 @@ const ProjectCard = (project: Project) => {
             )}
           </div>
 
-          <h3 className="text-lg font-semibold text-[var(--foreground)] group-hover:text-[var(--primary-color)] dark:group-hover:text-[var(--primary-light)] transition-colors duration-300">
+          <h3 className="text-lg font-semibold text-foreground group-hover:text-(--primary-color) dark:group-hover:text-(--primary-light) transition-colors duration-300">
             {project.title}
           </h3>
 
@@ -83,7 +83,7 @@ const ProjectCard = (project: Project) => {
           </div>
 
           {/* Interactive Footer CTA */}
-          <div className="pt-3 border-t border-border/50 flex items-center justify-between text-xs font-medium text-muted-foreground group-hover:text-[var(--primary-color)] dark:group-hover:text-[var(--primary-light)] transition-colors mt-auto">
+          <div className="pt-3 border-t border-border/50 flex items-center justify-between text-xs font-medium text-muted-foreground group-hover:text-(--primary-color) dark:group-hover:text-(--primary-light) transition-colors mt-auto">
             <span>View details</span>
             <FaArrowRight
               className="size-3 transition-transform duration-300 group-hover:translate-x-1"

@@ -95,7 +95,7 @@ const Pagination = ({
           onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
           disabled={currentPage === 1}
           aria-label="Go to previous page"
-          className="inline-flex items-center gap-1 px-3 py-2 text-xs font-medium rounded-xl border border-slate-200/80 dark:border-slate-800/40 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 disabled:opacity-40 disabled:pointer-events-none transition-all duration-200 hover:border-[var(--primary-color)]/30 hover:text-[var(--primary-color)] dark:hover:border-[var(--primary-light)]/40 dark:hover:text-[var(--primary-light)] cursor-pointer"
+          className="inline-flex items-center gap-1 px-3 py-2 text-xs font-medium rounded-xl border border-slate-200/80 dark:border-slate-800/40 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 disabled:opacity-40 disabled:pointer-events-none transition-all duration-200 hover:border-(--primary-color)/30 hover:text-(--primary-color) dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light) cursor-pointer"
         >
           <FaChevronLeft className="size-3" />
           <span className="hidden sm:inline">Prev</span>
@@ -141,8 +141,8 @@ const Pagination = ({
                 className={cn(
                   'w-9 h-9 flex items-center justify-center text-xs font-semibold rounded-xl border transition-all duration-200 cursor-pointer',
                   isActive
-                    ? 'bg-[var(--primary-color)] border-[var(--primary-color)] text-white shadow-[0_0_12px_rgba(0,122,184,0.3)]'
-                    : 'border-slate-200/80 dark:border-slate-800/40 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 hover:border-[var(--primary-color)]/30 hover:text-[var(--primary-color)] dark:hover:border-[var(--primary-light)]/40 dark:hover:text-[var(--primary-light)]'
+                    ? 'bg-(--primary-color) border-(--primary-color) text-white shadow-[0_0_12px_rgba(0,122,184,0.3)]'
+                    : 'border-slate-200/80 dark:border-slate-800/40 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 hover:border-(--primary-color)/30 hover:text-(--primary-color) dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light)'
                 )}
               >
                 {pageNum}
@@ -157,7 +157,7 @@ const Pagination = ({
           onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
           disabled={currentPage === totalPages}
           aria-label="Go to next page"
-          className="inline-flex items-center gap-1 px-3 py-2 text-xs font-medium rounded-xl border border-slate-200/80 dark:border-slate-800/40 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 disabled:opacity-40 disabled:pointer-events-none transition-all duration-200 hover:border-[var(--primary-color)]/30 hover:text-[var(--primary-color)] dark:hover:border-[var(--primary-light)]/40 dark:hover:text-[var(--primary-light)] cursor-pointer"
+          className="inline-flex items-center gap-1 px-3 py-2 text-xs font-medium rounded-xl border border-slate-200/80 dark:border-slate-800/40 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 disabled:opacity-40 disabled:pointer-events-none transition-all duration-200 hover:border-(--primary-color)/30 hover:text-(--primary-color) dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light) cursor-pointer"
         >
           <span className="hidden sm:inline">Next</span>
           <FaChevronRight className="size-3" />

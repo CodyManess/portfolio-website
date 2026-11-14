@@ -32,8 +32,8 @@ const TechnologyFilter = ({
         className={cn(
           'inline-flex items-center px-3.5 py-1.5 text-xs font-semibold rounded-full border transition-all duration-300 ease-out cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
           selectedTool === null
-            ? 'bg-[var(--primary-color)] border-[var(--primary-color)] text-white ring-2 ring-[var(--primary-color)]/30 -translate-y-0.5 shadow-sm'
-            : 'border-slate-200/80 dark:border-slate-800/50 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 hover:-translate-y-0.5 hover:border-[var(--primary-color)]/40 hover:text-[var(--primary-color)]'
+            ? 'bg-(--primary-color) border-(--primary-color) text-white ring-2 ring-(--primary-color)/30 -translate-y-0.5 shadow-sm'
+            : 'border-slate-200/80 dark:border-slate-800/50 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 hover:-translate-y-0.5 hover:border-(--primary-color)/40 hover:text-(--primary-color)'
         )}
       >
         <span>All</span>
@@ -63,8 +63,8 @@ const TechnologyFilter = ({
             className={cn(
               'inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-full border transition-all duration-300 ease-out cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
               isSelected
-                ? 'border-[var(--tool-color)] bg-[var(--tool-bg)] text-[var(--tool-text)] ring-2 ring-[var(--tool-color)]/30 -translate-y-0.5 shadow-sm'
-                : 'border-slate-200/80 dark:border-slate-800/50 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 hover:-translate-y-0.5 hover:border-[var(--hover-border)] hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]'
+                ? 'border-(--tool-color) bg-(--tool-bg) text-(--tool-text) ring-2 ring-(--tool-color)/30 -translate-y-0.5 shadow-sm'
+                : 'border-slate-200/80 dark:border-slate-800/50 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 hover:-translate-y-0.5 hover:border-(--hover-border) hover:bg-(--hover-bg) hover:text-(--hover-text)'
             )}
             style={
               {

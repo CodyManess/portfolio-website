@@ -28,7 +28,7 @@ const Page: React.FC = () => {
     >
       <div className="container mx-auto px-4 lg:px-6">
         <Link
-          className="group inline-flex items-center gap-2 text-sm sm:text-base font-semibold px-4 py-2 rounded-full border border-slate-200/80 dark:border-slate-800/80 bg-slate-100/70 dark:bg-slate-900/70 hover:border-[var(--primary-color)]/40 dark:hover:border-[var(--primary-light)]/40 mb-6 transition-all duration-200"
+          className="group inline-flex items-center gap-2 text-sm sm:text-base font-semibold px-4 py-2 rounded-full border border-slate-200/80 dark:border-slate-800/80 bg-slate-100/70 dark:bg-slate-900/70 hover:border-(--primary-color)/40 dark:hover:border-(--primary-light)/40 mb-6 transition-all duration-200"
           href="/#experience"
         >
           <FaArrowLeft

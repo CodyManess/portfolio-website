@@ -21,7 +21,7 @@ interface Props {
 }
 
 const CourseItem = ({ course }: { course: Course }) => (
-  <div className="flex items-center gap-2.5 p-2.5 rounded-lg border border-border/70 bg-card hover:border-[var(--primary-color)]/50 hover:bg-muted/30 transition-all duration-200">
+  <div className="flex items-center gap-2.5 p-2.5 rounded-lg border border-border/70 bg-card hover:border-(--primary-color)/50 hover:bg-muted/30 transition-all duration-200">
     <Badge
       variant="outline"
       className="font-mono text-xs font-semibold px-2 py-0.5 bg-muted/60 text-foreground shrink-0"
@@ -68,7 +68,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-[800px] max-h-[90vh] flex flex-col p-6 gap-0 overflow-hidden">
+      <DialogContent className="sm:max-w-200 max-h-[90vh] flex flex-col p-6 gap-0 overflow-hidden">
         {/* Header Section */}
         <DialogHeader className="pr-8 space-y-1 text-left">
           {schoolName && (
@@ -114,7 +114,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: 'outline', size: 'sm' }),
-                'text-xs font-medium hover:text-[var(--primary-color)] hover:border-[var(--primary-color)] transition-colors focus-visible:outline-none'
+                'text-xs font-medium hover:text-(--primary-color) hover:border-(--primary-color) transition-colors focus-visible:outline-none'
               )}
             >
               Program Website{' '}
@@ -215,7 +215,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
           <Button
             variant="ghost"
             onClick={handleModalClose}
-            className="uppercase text-[var(--primary-color)] hover:text-[var(--primary-dark)] hover:bg-transparent font-semibold tracking-wider text-xs"
+            className="uppercase text-(--primary-color) hover:text-(--primary-dark) hover:bg-transparent font-semibold tracking-wider text-xs"
           >
             Close
           </Button>

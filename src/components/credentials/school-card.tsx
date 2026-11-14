@@ -47,25 +47,25 @@ const DegreeCard = (degree: Degree) => {
         onKeyDown={handleKeyDown}
         className={cn(
           CARD_CLASSNAME,
-          'overflow-hidden flex flex-col pt-0 pb-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-light)]'
+          'overflow-hidden flex flex-col pt-0 pb-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--primary-light)'
         )}
         onClick={handleOpen}
       >
-        <div className="h-[180px] w-full relative">
+        <div className="h-45 w-full relative">
           <Image
             fill
             placeholder="blur"
             src={schoolPhotos[title] ?? mtsucampus}
             alt={schoolName}
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover aspect-[16/9]"
+            className="object-cover aspect-video"
           />
         </div>
         <CardContent className="flex flex-col mr-auto flex-1 p-4">
           <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
             {schoolName}
           </p>
-          <h3 className="my-1 text-lg font-semibold text-[var(--foreground)] group-hover:text-[var(--primary-color)] dark:group-hover:text-[var(--primary-light)] transition-colors duration-300">
+          <h3 className="my-1 text-lg font-semibold text-(--foreground) group-hover:text-(--primary-color) dark:group-hover:text-(--primary-light) transition-colors duration-300">
             {title}
           </h3>
           {subtitle && (

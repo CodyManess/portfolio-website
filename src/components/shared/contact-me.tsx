@@ -9,7 +9,7 @@ const ContactMe: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
-        className="group flex items-center justify-center w-16 h-16 rounded-full bg-white/10 border border-white/20 backdrop-blur-md !text-white transition-all duration-300 hover:bg-white/20 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(255,255,255,0.15)]"
+        className="group flex items-center justify-center w-16 h-16 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-white! transition-all duration-300 hover:bg-white/20 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(255,255,255,0.15)]"
       >
         <FaGithub
           className="w-7 h-7 transition-transform duration-300 group-hover:scale-110"
@@ -22,7 +22,7 @@ const ContactMe: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
-        className="group flex items-center justify-center w-16 h-16 rounded-full bg-white/10 border border-white/20 backdrop-blur-md !text-white transition-all duration-300 hover:bg-[#0a66c2]/80 hover:border-[#0a66c2] hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(10,102,194,0.35)]"
+        className="group flex items-center justify-center w-16 h-16 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-white! transition-all duration-300 hover:bg-[#0a66c2]/80 hover:border-[#0a66c2] hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(10,102,194,0.35)]"
       >
         <FaLinkedin
           className="w-7 h-7 transition-transform duration-300 group-hover:scale-110"
@@ -33,7 +33,7 @@ const ContactMe: React.FC = () => {
       <a
         href={socialLinks.Email}
         aria-label="Email"
-        className="group flex items-center justify-center w-16 h-16 rounded-full bg-white/10 border border-white/20 backdrop-blur-md !text-white transition-all duration-300 hover:bg-[#ea4335]/80 hover:border-[#ea4335] hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(234,67,53,0.35)]"
+        className="group flex items-center justify-center w-16 h-16 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-white! transition-all duration-300 hover:bg-[#ea4335]/80 hover:border-[#ea4335] hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(234,67,53,0.35)]"
       >
         <FaEnvelope
           className="w-7 h-7 transition-transform duration-300 group-hover:scale-110"

@@ -14,7 +14,7 @@ const About: React.FC = () => {
   return (
     <section
       id="about"
-      className="py-16 md:py-20 flex justify-center relative z-[2] shadow-[0px_-12px_20px_black] bg-[var(--section-background)] text-white"
+      className="py-16 md:py-20 flex justify-center relative z-2 shadow-[0px_-12px_20px_black] bg-(--section-background) text-white"
     >
       <div className="container mx-auto px-4 lg:px-6 flex flex-col gap-8">
         <div>
@@ -54,8 +54,8 @@ const About: React.FC = () => {
             </div>
 
             {/* Core Mission Card */}
-            <div className="lg:col-span-5 xl:col-span-4 bg-gradient-to-br from-slate-950/35 to-slate-950/15 dark:from-slate-900/60 dark:to-slate-950/60 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-3xl p-6 sm:p-8 flex flex-col justify-start shadow-lg relative overflow-hidden">
-              <div className="absolute -top-12 -right-12 w-36 h-36 bg-[var(--primary-light)]/20 rounded-full blur-2xl pointer-events-none" />
+            <div className="lg:col-span-5 xl:col-span-4 bg-linear-to-br from-slate-950/35 to-slate-950/15 dark:from-slate-900/60 dark:to-slate-950/60 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-3xl p-6 sm:p-8 flex flex-col justify-start shadow-lg relative overflow-hidden">
+              <div className="absolute -top-12 -right-12 w-36 h-36 bg-(--primary-light)/20 rounded-full blur-2xl pointer-events-none" />
               <FaQuoteRight
                 className="absolute -bottom-2 -right-2 text-7xl text-white/10 pointer-events-none select-none"
                 aria-hidden="true"

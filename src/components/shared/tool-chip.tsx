@@ -11,7 +11,7 @@ const ToolChip: React.FC<ToolChipProps> = ({ tool }) => {
 
   return (
     <div
-      className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full border border-slate-200/80 dark:border-slate-800/50 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 transition-all duration-300 ease-out hover:-translate-y-0.5 cursor-default hover:border-[var(--hover-border)] hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] shadow-xs"
+      className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full border border-slate-200/80 dark:border-slate-800/50 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 transition-all duration-300 ease-out hover:-translate-y-0.5 cursor-default hover:border-(--hover-border) hover:bg-(--hover-bg) hover:text-(--hover-text) shadow-xs"
       style={
         {
           '--hover-border': `${tool.iconColor}40`,

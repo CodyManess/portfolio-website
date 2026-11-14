@@ -23,14 +23,14 @@ const RoleCard = ({ role, setExpanded, expanded, index }: RoleCardProps) => {
     >
       <AccordionHeader>
         <div className="flex flex-col gap-1">
-          <h3 className="text-base sm:text-xl font-semibold tracking-tight leading-snug text-[var(--foreground)] group-hover:text-[var(--primary-color)] dark:group-hover:text-[var(--primary-light)] group-data-[active=true]:text-[var(--primary-color)] dark:group-data-[active=true]:text-[var(--primary-light)] transition-colors duration-300">
+          <h3 className="text-base sm:text-xl font-semibold tracking-tight leading-snug text-foreground group-hover:text-(--primary-color) dark:group-hover:text-(--primary-light) group-data-[active=true]:text-(--primary-color) dark:group-data-[active=true]:text-(--primary-light) transition-colors duration-300">
             {role.title}
           </h3>
           <div className="flex flex-col items-start gap-1.5 mt-0.5">
             <p className="text-xs sm:text-[0.95rem] font-semibold text-slate-600 dark:text-slate-300">
               {role.companyName}
             </p>
-            <p className="md:hidden text-[11px] font-mono font-medium px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800/90 text-[var(--primary-color)] dark:text-[var(--primary-light)] border border-slate-200/80 dark:border-slate-700/70">
+            <p className="md:hidden text-[11px] font-mono font-medium px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800/90 text-(--primary-color) dark:text-(--primary-light) border border-slate-200/80 dark:border-slate-700/70">
               {role.date}
             </p>
           </div>
@@ -42,11 +42,11 @@ const RoleCard = ({ role, setExpanded, expanded, index }: RoleCardProps) => {
           {role.description.map((section, sectionIndex) => (
             <div key={`${role.title}${sectionIndex}`} className="space-y-2">
               {section.heading && (
-                <h4 className="text-sm sm:text-[0.95rem] font-semibold text-slate-800 dark:text-slate-100 pl-3 border-l-2 border-[var(--primary-color)] dark:border-[var(--primary-light)] leading-snug">
+                <h4 className="text-sm sm:text-[0.95rem] font-semibold text-slate-800 dark:text-slate-100 pl-3 border-l-2 border-(--primary-color) dark:border-(--primary-light) leading-snug">
                   {section.heading}
                 </h4>
               )}
-              <ul className="list-disc pl-5 space-y-1.5 text-sm sm:text-[0.925rem] leading-relaxed text-slate-600 dark:text-slate-300 marker:text-[var(--primary-color)] dark:marker:text-[var(--primary-light)]">
+              <ul className="list-disc pl-5 space-y-1.5 text-sm sm:text-[0.925rem] leading-relaxed text-slate-600 dark:text-slate-300 marker:text-(--primary-color) dark:marker:text-(--primary-light)">
                 {section.items.map((item) => (
                   <li key={item}>{item}</li>
                 ))}

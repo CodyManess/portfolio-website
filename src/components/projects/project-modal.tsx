@@ -31,7 +31,7 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-[800px] max-h-[90vh] flex flex-col p-6 gap-0 overflow-hidden">
+      <DialogContent className="sm:max-w-200 max-h-[90vh] flex flex-col p-6 gap-0 overflow-hidden">
         {/* Header Section */}
         <div className="flex flex-wrap items-start justify-between gap-3 pr-8 pb-3 border-b border-border">
           <DialogHeader className="space-y-1 text-left">
@@ -50,7 +50,7 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: 'outline', size: 'sm' }),
-                'text-xs font-medium hover:text-[var(--primary-color)] hover:border-[var(--primary-color)] transition-colors focus-visible:outline-none'
+                'text-xs font-medium hover:text-(--primary-color) hover:border-(--primary-color) transition-colors focus-visible:outline-none'
               )}
             >
               Visit Project{' '}
@@ -95,10 +95,10 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
                 {project.achievements.map((achievement, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-3 p-3 rounded-xl border border-border/70 bg-card hover:border-[var(--primary-color)]/30 hover:bg-muted/30 transition-colors text-sm"
+                    className="flex items-start gap-3 p-3 rounded-xl border border-border/70 bg-card hover:border-(--primary-color)/30 hover:bg-muted/30 transition-colors text-sm"
                   >
                     <FaCircleCheck
-                      className="size-4 text-[var(--primary-color)] mt-0.5 shrink-0"
+                      className="size-4 text-(--primary-color) mt-0.5 shrink-0"
                       aria-hidden="true"
                     />
                     <span className="text-foreground leading-snug">
@@ -120,7 +120,7 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
           <Button
             variant="ghost"
             onClick={handleClose}
-            className="uppercase text-[var(--primary-color)] hover:text-[var(--primary-dark)] hover:bg-transparent font-semibold tracking-wider text-xs"
+            className="uppercase text-(--primary-color) hover:text-(--primary-dark) hover:bg-transparent font-semibold tracking-wider text-xs"
           >
             Close
           </Button>

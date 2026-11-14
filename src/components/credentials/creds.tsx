@@ -11,10 +11,7 @@ const CredsSkeleton = () => (
   <div aria-busy="true" aria-label="Loading education data">
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
       {[0, 1, 2].map((i) => (
-        <Skeleton
-          key={i}
-          className="h-[310px] w-full rounded-2xl bg-white/15"
-        />
+        <Skeleton key={i} className="h-77.5 w-full rounded-2xl bg-white/15" />
       ))}
     </div>
     <div className="flex justify-around mt-8">
@@ -125,7 +122,7 @@ const Creds = () => {
   return (
     <section
       id="credentials"
-      className="py-16 flex justify-center bg-[var(--section-background)] text-white [&_a]:text-white"
+      className="py-16 flex justify-center bg-(--section-background) text-white [&_a]:text-white"
     >
       <div className="container mx-auto px-4 lg:px-6">
         <h2 className="mb-6 sm:mb-8">Education</h2>

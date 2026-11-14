@@ -20,7 +20,7 @@ const ProjectListSkeleton = () => (
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
       {Array.from({ length: PROJECTS_PER_PAGE }, (_, i) => (
-        <Skeleton key={i} className="h-[240px] w-full rounded-2xl" />
+        <Skeleton key={i} className="h-60 w-full rounded-2xl" />
       ))}
     </div>
     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-12 mb-6">

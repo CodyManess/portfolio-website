@@ -35,10 +35,10 @@ const CertBadge = ({ icon, iconType, name, org }: Cert) => {
       ) : (
         <div
           key={icon}
-          className="bg-gradient-to-br from-[var(--primary-dark)] to-[var(--primary-color)] flex flex-col justify-center items-center w-40 h-40 p-4 text-center rounded-full border border-white/20 shadow-lg text-white overflow-hidden"
+          className="bg-linear-to-br from-(--primary-dark) to-(--primary-color) flex flex-col justify-center items-center w-40 h-40 p-4 text-center rounded-full border border-white/20 shadow-lg text-white overflow-hidden"
           aria-label={`${name} Cert from ${org}`}
         >
-          <div className="flex-shrink-0 mb-1 w-14 h-14 flex items-center justify-center">
+          <div className="shrink-0 mb-1 w-14 h-14 flex items-center justify-center">
             <Image
               src={imageSrc}
               alt={name}
