@@ -2,7 +2,7 @@
 
 Welcome! This workspace contains Cody Maness's personal portfolio website, built with Next.js 16 (App Router), React 19, TypeScript 6, Tailwind CSS v4, and shadcn/ui (`base-nova` style using `@base-ui/react` primitives).
 
-Please adhere to the following architecture, framework conventions, naming rules, styling guidelines, documentation sync rules, and testing protocols.
+Please adhere to the following architecture, framework conventions, security/accessibility invariants, naming rules, documentation sync rules, and testing protocols.
 
 ---
 
@@ -25,9 +25,14 @@ We utilize a standard `src/` directory layout:
     │   ├── shared/      # Shared UI components (Accordion, ContactMe, Pagination, ToolChip, WorkTimeline)
     │   └── ui/          # shadcn/ui & Base UI primitive components (Badge, Button, Card, Dialog, Skeleton)
     ├── data/            # Structured local data (about, degrees, certs, experience, links, projects, tools)
-    ├── lib/             # Shared utilities (`utils.ts` for `cn`/`CARD_CLASSNAME`, `tool-icons.ts` for `toolIconMap`)
+    ├── lib/             # Shared utilities (`utils.ts` for `cn`/`CARD_CLASSNAME`/`getSafeExternalUrl`, `tool-icons.ts` for `toolIconMap`)
     └── types/           # Core TypeScript interfaces and enums
 ```
+
+### Scoped Rules & Workspace Skills
+
+- Directory-specific rules live in `__tests__/AGENTS.md` and `src/data/AGENTS.md`.
+- Task runbooks live in `.agents/skills/` (`add-project`, `add-credential`, `add-ui-component`). Load the relevant `SKILL.md` when performing those tasks.
 
 ### Import Aliases
 
@@ -43,6 +48,16 @@ We utilize a standard `src/` directory layout:
 - **Tailwind CSS v4 (CSS-first config)**: Tailwind v4 is configured directly in `src/app/globals.css` via `@import "tailwindcss";`, `@theme inline`, and `@custom-variant dark (@media (prefers-color-scheme: dark));`. There is **no** `tailwind.config.js` or `tailwind.config.ts`.
 - **Next.js 16 Image Qualities**: `next.config.mjs` restricts `next/image` `qualities` to `[25, 50, 75, 100]`. Any `<Image quality={...} />` prop must use one of those configured values.
 - **Static Data & API Routes**: Structured portfolio content lives in `src/data/` typed against interfaces in `src/types/`. Route handlers under `src/app/api/` use `export const dynamic = 'force-static'` so they prerender statically at build time.
+- **Fonts**: Inter and Roboto Mono variable fonts are bundled locally in `src/app/fonts/` via `next/font/local` so builds and CSP stay self-contained without network font requests.
+
+---
+
+## Security, Accessibility & Motion Invariants
+
+- **External URL Sanitization**: Pass all external URLs rendered in `href` or `window.open` through `getSafeExternalUrl()` (`@/lib/utils`), which allows only `http:` and `https:` schemes.
+- **JSON-LD Escaping**: Any inline `<script type="application/ld+json">` payload must escape `<` (`JSON.stringify(...).replace(/</g, '\\u003c')`).
+- **Security Headers & CSP**: `next.config.mjs` enforces CSP (`default-src 'self'`, `font-src 'self'`, `img-src 'self' blob: data:`, `frame-ancestors 'none'`), `Cross-Origin-Resource-Policy: same-origin`, `Cross-Origin-Opener-Policy: same-origin`, `X-Frame-Options: DENY`, and `poweredByHeader: false`. Do not add remote script/font/image origins without updating CSP intentionally.
+- **Reduced Motion & Focus Preservation**: Gate animations and smooth scrolling behind `motion-reduce:` / `prefers-reduced-motion`, and never blur interactive triggers programmatically on collapse or modal close.
 
 ---
 
@@ -52,7 +67,7 @@ We utilize a standard `src/` directory layout:
   - _Correct_: `src/components/credentials/school-card.tsx`
   - _Incorrect_: `src/components/Credentials/schoolCard.tsx`
 - **React Components**: Use PascalCase for React component names internally, while keeping the file name in kebab-case.
-- **Prettier Formatting**: Configured in `package.json` (`semi: false`, `singleQuote: true`, `tabWidth: 2`, `trailingComma: "es5"`). Run `npm run format` to format files across the repository.
+- **Prettier Formatting**: Configured in `package.json` (`semi: false`, `singleQuote: true`, `tabWidth: 2`, `trailingComma: "es5"`) with `.prettierignore`. Run `npm run format` to format files across the repository.
 
 ---
 
@@ -79,10 +94,13 @@ We utilize a standard `src/` directory layout:
 
 ## Testing & Validation
 
-- All unit tests must be stored in the root `__tests__/` directory.
-- Before completing any task, verify that documentation (`README.md`, `.agents/AGENTS.md`) is still accurate and run validation commands to ensure formatting, linting, type checking, tests, and the production build pass:
-  - Check formatting: `npm run format:check` (and `npm run format` when needed)
-  - Run linting: `npm run lint` (`eslint . --max-warnings=0`)
-  - Run typecheck: `npm run typecheck` (`tsc --noEmit`)
-  - Run tests: `npm test` (or `npm run test`)
-  - Run production build: `npm run build`
+- Runtime uses Node 22 LTS pinned in `.tool-versions` (`mise`).
+- All unit tests live in `__tests__/`. `jest.setup.js` resets `global.fetch` before each test to reject unmocked network calls, and `jest.config.mjs` enables `clearMocks: true` and `restoreMocks: true`.
+- Before completing any task, verify docs are synced and run:
+  - Combined check: `npm run check` (runs `format:check`, `lint`, `typecheck`, and `test`)
+  - Or individually:
+    - `npm run format:check` (and `npm run format` when needed)
+    - `npm run lint` (`eslint . --max-warnings=0`, including type-checked TypeScript, `jsx-a11y`, `testing-library`, and `jest-dom` rules)
+    - `npm run typecheck` (`tsc --noEmit` with `noUncheckedIndexedAccess` and `noImplicitOverride`)
+    - `npm test` (or `npm run test`)
+  - Production build: `npm run build` (note: in restricted Windows sandboxes where Turbopack cannot spawn PostCSS subprocesses, validate compilation with `npx next build --webpack` or run `npm run build` locally)

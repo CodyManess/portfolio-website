@@ -89,6 +89,7 @@ Visit the live site at **[codymaness.com](https://codymaness.com)**.
 | `npm test`             | Runs the Jest unit test suite in `__tests__/`.                               |
 | `npm run format`       | Formats files across the repository with Prettier (`prettier --write .`).    |
 | `npm run format:check` | Checks repository formatting without modifying files (`prettier --check .`). |
+| `npm run check`        | Runs `format:check`, `lint`, `typecheck`, and `test` sequentially.           |
 
 ---
 

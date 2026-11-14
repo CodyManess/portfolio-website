@@ -19,11 +19,46 @@
     },
     {
       "type": "npm",
+      "script": "lint",
+      "problemMatcher": ["$eslint-stylish"],
+      "label": "npm: lint",
+      "detail": "eslint . --max-warnings=0"
+    },
+    {
+      "type": "npm",
+      "script": "typecheck",
+      "problemMatcher": ["$tsc"],
+      "label": "npm: typecheck",
+      "detail": "tsc --noEmit"
+    },
+    {
+      "type": "npm",
       "script": "test",
       "group": "test",
       "problemMatcher": [],
       "label": "npm: test",
       "detail": "jest"
+    },
+    {
+      "type": "npm",
+      "script": "format",
+      "problemMatcher": [],
+      "label": "npm: format",
+      "detail": "prettier --write ."
+    },
+    {
+      "type": "npm",
+      "script": "format:check",
+      "problemMatcher": [],
+      "label": "npm: format:check",
+      "detail": "prettier --check ."
+    },
+    {
+      "type": "npm",
+      "script": "check",
+      "problemMatcher": [],
+      "label": "npm: check",
+      "detail": "format:check, lint, typecheck, and test"
     }
   ]
 }
