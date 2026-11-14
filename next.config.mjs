@@ -49,6 +49,10 @@ const securityHeaders = [
     key: 'Cross-Origin-Opener-Policy',
     value: 'same-origin',
   },
+  {
+    key: 'Cross-Origin-Resource-Policy',
+    value: 'same-origin',
+  },
 ]
 
 /** @type {import('next').NextConfig} */

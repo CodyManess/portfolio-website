@@ -80,8 +80,9 @@ We utilize a standard `src/` directory layout:
 ## Testing & Validation
 
 - All unit tests must be stored in the root `__tests__/` directory.
-- Before completing any task, verify that documentation (`README.md`, `.agents/AGENTS.md`) is still accurate and run validation commands to ensure formatting, linting, tests, and the production build pass:
-  - Run linting: `npm run lint`
+- Before completing any task, verify that documentation (`README.md`, `.agents/AGENTS.md`) is still accurate and run validation commands to ensure formatting, linting, type checking, tests, and the production build pass:
+  - Check formatting: `npm run format:check` (and `npm run format` when needed)
+  - Run linting: `npm run lint` (`eslint . --max-warnings=0`)
+  - Run typecheck: `npm run typecheck` (`tsc --noEmit`)
   - Run tests: `npm test` (or `npm run test`)
   - Run production build: `npm run build`
-  - Run formatter (when needed): `npm run format`

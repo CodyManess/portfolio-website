@@ -56,7 +56,7 @@ Visit the live site at **[codymaness.com](https://codymaness.com)**.
 
 ### Prerequisites
 
-- **Node.js** `>=20.9.0`
+- **Node.js** `>=20.9.0` (Node 22 LTS pinned in [.tool-versions](.tool-versions))
 - **npm** (or a compatible package manager)
 
 ### Installation & Local Development
@@ -79,14 +79,16 @@ Visit the live site at **[codymaness.com](https://codymaness.com)**.
 
 ### Available Scripts
 
-| Command          | Description                                           |
-| ---------------- | ----------------------------------------------------- |
-| `npm run dev`    | Starts the local Next.js development server.          |
-| `npm run build`  | Creates an optimized production build (`next build`). |
-| `npm start`      | Starts the production server (`next start`).          |
-| `npm run lint`   | Runs ESLint across the project (`eslint .`).          |
-| `npm test`       | Runs the Jest unit test suite in `__tests__/`.        |
-| `npm run format` | Formats files across the repository with Prettier.    |
+| Command                | Description                                                                  |
+| ---------------------- | ---------------------------------------------------------------------------- |
+| `npm run dev`          | Starts the local Next.js development server.                                 |
+| `npm run build`        | Creates an optimized production build (`next build`).                        |
+| `npm start`            | Starts the production server (`next start`).                                 |
+| `npm run lint`         | Runs strict ESLint checks across the project (`--max-warnings=0`).           |
+| `npm run typecheck`    | Runs strict TypeScript type checking (`tsc --noEmit`).                       |
+| `npm test`             | Runs the Jest unit test suite in `__tests__/`.                               |
+| `npm run format`       | Formats files across the repository with Prettier (`prettier --write .`).    |
+| `npm run format:check` | Checks repository formatting without modifying files (`prettier --check .`). |
 
 ---
 

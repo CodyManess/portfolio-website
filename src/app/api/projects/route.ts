@@ -6,6 +6,6 @@ import projects from '@/data/projects'
 // by default).
 export const dynamic = 'force-static'
 
-export async function GET() {
+export function GET() {
   return NextResponse.json(projects)
 }

@@ -8,6 +8,7 @@ import {
   FaQuoteRight,
 } from 'react-icons/fa6'
 import { techInterests, personalInterests, mediaLinks } from '@/data/about'
+import { getSafeExternalUrl } from '@/lib/utils'
 
 const About: React.FC = () => {
   return (
@@ -165,10 +166,12 @@ const About: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
                   {mediaLinks.map((media) => {
                     const Icon = media.icon
+                    const safeUrl = getSafeExternalUrl(media.url)
+                    if (!safeUrl) return null
                     return (
                       <Link
                         key={media.name}
-                        href={media.url}
+                        href={safeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group flex flex-col justify-between p-3.5 rounded-2xl bg-slate-950/25 dark:bg-white/10 border border-white/20 dark:border-white/15 text-white transition-all duration-200 hover:bg-slate-950/40 dark:hover:bg-white/20 hover:border-white/35 hover:-translate-y-1 hover:shadow-md"

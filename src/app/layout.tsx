@@ -1,19 +1,23 @@
 import type { Metadata } from 'next'
-import { Inter, Roboto_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import PortfolioAppBar from '@/components/nav/app-bar'
 import BottomNav from '@/components/nav/bottom-nav'
 import Footer from '@/components/nav/footer'
 import { cn } from '@/lib/utils'
 
-const inter = Inter({
-  subsets: ['latin'],
+const inter = localFont({
+  src: './fonts/inter-latin-wght-normal.woff2',
+  weight: '100 900',
+  style: 'normal',
   display: 'swap',
   variable: '--font-sans',
 })
 
-const robotoMono = Roboto_Mono({
-  subsets: ['latin'],
+const robotoMono = localFont({
+  src: './fonts/roboto-mono-latin-wght-normal.woff2',
+  weight: '100 700',
+  style: 'normal',
   display: 'swap',
   variable: '--font-mono',
 })

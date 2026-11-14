@@ -102,4 +102,62 @@ describe('ProjectList with TechnologyFilter', () => {
     expect(screen.getByText('Angular Project')).toBeInTheDocument()
     expect(screen.getByText('Full Stack Project')).toBeInTheDocument()
   })
+
+  it('shows an error alert and supports retry when fetch fails', async () => {
+    const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+    try {
+      global.fetch = jest
+        .fn()
+        .mockResolvedValueOnce({
+          ok: false,
+          status: 500,
+          json: () => Promise.resolve([]),
+        })
+        .mockResolvedValueOnce({
+          ok: true,
+          json: () => Promise.resolve(mockProjects),
+        })
+
+      render(<ProjectList />)
+
+      const alert = await screen.findByRole('alert')
+      expect(alert).toHaveTextContent(/Failed to load project data/i)
+
+      fireEvent.click(screen.getByRole('button', { name: /retry/i }))
+      expect(await screen.findByText('React Project')).toBeInTheDocument()
+      expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+    } finally {
+      consoleSpy.mockRestore()
+    }
+  })
+
+  it('shows an error alert when API returns a non-array payload', async () => {
+    const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+    try {
+      global.fetch = jest.fn(() =>
+        Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve({ invalid: true }),
+        })
+      ) as jest.Mock
+
+      render(<ProjectList />)
+
+      const alert = await screen.findByRole('alert')
+      expect(alert).toHaveTextContent(/Failed to load project data/i)
+    } finally {
+      consoleSpy.mockRestore()
+    }
+  })
+
+  it('aborts in-flight fetch on unmount', () => {
+    const abortSpy = jest.spyOn(AbortController.prototype, 'abort')
+    global.fetch = jest.fn(() => new Promise(() => {})) as jest.Mock
+
+    const { unmount } = render(<ProjectList />)
+    unmount()
+
+    expect(abortSpy).toHaveBeenCalledTimes(1)
+    abortSpy.mockRestore()
+  })
 })

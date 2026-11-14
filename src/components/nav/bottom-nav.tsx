@@ -5,19 +5,28 @@ import { usePathname } from 'next/navigation'
 import { navLinks } from '@/data/links'
 import { cn } from '@/lib/utils'
 
+const MOBILE_MEDIA_QUERY = '(max-width: 639px)'
+
 const BottomNav = () => {
   const pathname = usePathname()
-  const [value, setValue] = React.useState(navLinks[0].title.toLowerCase())
+  const [value, setValue] = React.useState(
+    navLinks[0]?.title.toLowerCase() ?? 'home'
+  )
   const activeValue = pathname?.startsWith('/extended') ? 'experience' : value
 
   React.useEffect(() => {
     if (pathname?.startsWith('/extended')) return
 
+    const mql =
+      typeof window.matchMedia === 'function'
+        ? window.matchMedia(MOBILE_MEDIA_QUERY)
+        : null
+
     const sectionIds = navLinks.map((page) => page.title.toLowerCase())
 
     const updateActiveSection = () => {
       const triggerLine = window.innerHeight * 0.35
-      let currentSection = sectionIds[0]
+      let currentSection = sectionIds[0] ?? 'home'
 
       for (const id of sectionIds) {
         const element = document.getElementById(id)
@@ -33,24 +42,50 @@ const BottomNav = () => {
     }
 
     let rafId: number | undefined
+    let isScheduled = false
+    let isListening = false
 
-    const onScroll = () => {
-      if (rafId !== undefined) return
+    const scheduleUpdate = () => {
+      if (isScheduled) return
+      isScheduled = true
       rafId = window.requestAnimationFrame(() => {
+        isScheduled = false
         rafId = undefined
         updateActiveSection()
       })
     }
 
-    if (window.scrollY > 0) {
-      onScroll()
+    const syncListener = () => {
+      const isMobile = mql ? mql.matches : true
+      if (isMobile && !isListening) {
+        scheduleUpdate()
+        window.addEventListener('scroll', scheduleUpdate, { passive: true })
+        window.addEventListener('hashchange', scheduleUpdate)
+        isListening = true
+      } else if (!isMobile && isListening) {
+        window.removeEventListener('scroll', scheduleUpdate)
+        window.removeEventListener('hashchange', scheduleUpdate)
+        if (rafId !== undefined) {
+          window.cancelAnimationFrame(rafId)
+          rafId = undefined
+        }
+        isScheduled = false
+        isListening = false
+      }
     }
-    window.addEventListener('scroll', onScroll, { passive: true })
+
+    syncListener()
+    mql?.addEventListener('change', syncListener)
+
     return () => {
+      mql?.removeEventListener('change', syncListener)
+      if (isListening) {
+        window.removeEventListener('scroll', scheduleUpdate)
+        window.removeEventListener('hashchange', scheduleUpdate)
+      }
       if (rafId !== undefined) {
         window.cancelAnimationFrame(rafId)
       }
-      window.removeEventListener('scroll', onScroll)
     }
   }, [pathname])
 

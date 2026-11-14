@@ -12,7 +12,7 @@ import { FaCircleCheck, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 import Project from '@/types/project'
 import ToolChip from '@/components/shared/tool-chip'
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
+import { cn, getSafeExternalUrl } from '@/lib/utils'
 
 interface Props {
   project: Project
@@ -21,8 +21,16 @@ interface Props {
 }
 
 const ProjectModal = ({ project, open, handleClose }: Props) => {
+  const safeLink = getSafeExternalUrl(project.link)
+
+  const handleOpenChange = (nextOpen: boolean) => {
+    if (!nextOpen) {
+      handleClose()
+    }
+  }
+
   return (
-    <Dialog open={open} onOpenChange={handleClose}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-[800px] max-h-[90vh] flex flex-col p-6 gap-0 overflow-hidden">
         {/* Header Section */}
         <div className="flex flex-wrap items-start justify-between gap-3 pr-8 pb-3 border-b border-border">
@@ -35,9 +43,9 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
             </DialogDescription>
           </DialogHeader>
 
-          {project.link && (
+          {safeLink && (
             <Link
-              href={project.link}
+              href={safeLink}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(

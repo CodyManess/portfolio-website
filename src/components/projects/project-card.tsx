@@ -6,7 +6,7 @@ import Project from '@/types/project'
 import ProjectModal from './project-modal'
 import ToolChip from '@/components/shared/tool-chip'
 import { FaArrowRight, FaArrowUpRightFromSquare, FaStar } from 'react-icons/fa6'
-import { cn, CARD_CLASSNAME } from '@/lib/utils'
+import { cn, CARD_CLASSNAME, getSafeExternalUrl } from '@/lib/utils'
 
 /**
  * Props for the ProjectCard component.
@@ -14,6 +14,7 @@ import { cn, CARD_CLASSNAME } from '@/lib/utils'
  */
 const ProjectCard = (project: Project) => {
   const [open, setOpen] = React.useState(false)
+  const safeLink = getSafeExternalUrl(project.link)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
@@ -40,7 +41,7 @@ const ProjectCard = (project: Project) => {
         <CardHeader className="pb-2">
           {/* Top Metadata Row */}
           <div className="flex items-center justify-between gap-2 mb-2">
-            {project.link ? (
+            {safeLink ? (
               <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[var(--primary-color)] dark:text-[var(--primary-light)]">
                 Live Project{' '}
                 <FaArrowUpRightFromSquare

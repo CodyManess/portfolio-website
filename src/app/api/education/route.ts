@@ -7,7 +7,7 @@ import { certs } from '@/data/education-certs'
 // by default).
 export const dynamic = 'force-static'
 
-export async function GET() {
+export function GET() {
   return NextResponse.json({
     certs,
     degrees,

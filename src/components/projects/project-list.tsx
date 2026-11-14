@@ -34,55 +34,73 @@ const ProjectList = () => {
   const [projects, setProjects] = useState<Project[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [retryCount, setRetryCount] = useState(0)
   const [selectedTool, setSelectedTool] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
+    const controller = new AbortController()
+
     const fetchProjects = async () => {
       try {
-        const response = await fetch('/api/projects')
+        const response = await fetch('/api/projects', {
+          signal: controller.signal,
+        })
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
-        const data: Project[] = await response.json()
-        setProjects(data)
+        const data: unknown = await response.json()
+        if (!Array.isArray(data)) {
+          throw new Error('Invalid project data format')
+        }
+        setProjects(data as Project[])
+        setError(null)
       } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') return
         setError('Failed to load project data.')
         console.error('Error fetching project data:', err)
       } finally {
-        setIsLoading(false)
+        if (!controller.signal.aborted) {
+          setIsLoading(false)
+        }
       }
     }
-    fetchProjects()
-  }, [])
 
-  const availableTools = useMemo(() => {
+    void fetchProjects()
+    return () => {
+      controller.abort()
+    }
+  }, [retryCount])
+
+  const handleRetry = () => {
+    setIsLoading(true)
+    setError(null)
+    setRetryCount((count) => count + 1)
+  }
+
+  const safeProjects = useMemo(
+    () => (Array.isArray(projects) ? projects : []),
+    [projects]
+  )
+
+  const { availableTools, toolCounts } = useMemo(() => {
     const toolMap = new Map<string, Tool>()
-    if (Array.isArray(projects)) {
-      projects.forEach((project) => {
-        project.tools?.forEach((tool) => {
-          if (!toolMap.has(tool.title)) {
-            toolMap.set(tool.title, tool)
-          }
-        })
-      })
-    }
-    return Array.from(toolMap.values()).sort((a, b) =>
-      a.title.localeCompare(b.title)
-    )
-  }, [projects])
-
-  const toolCounts = useMemo(() => {
     const counts: Record<string, number> = {}
-    if (Array.isArray(projects)) {
-      projects.forEach((project) => {
-        project.tools?.forEach((tool) => {
-          counts[tool.title] = (counts[tool.title] || 0) + 1
-        })
+    safeProjects.forEach((project) => {
+      project.tools?.forEach((tool) => {
+        if (!toolMap.has(tool.title)) {
+          toolMap.set(tool.title, tool)
+        }
+        counts[tool.title] = (counts[tool.title] || 0) + 1
       })
+    })
+    return {
+      availableTools: Array.from(toolMap.values()).sort((a, b) =>
+        a.title.localeCompare(b.title)
+      ),
+      toolCounts: counts,
     }
-    return counts
-  }, [projects])
+  }, [safeProjects])
 
   const handleSelectTool = (toolTitle: string | null) => {
     setSelectedTool(toolTitle)
@@ -90,31 +108,40 @@ const ProjectList = () => {
   }
 
   const filteredProjects = useMemo(() => {
-    if (!selectedTool || !Array.isArray(projects)) {
-      return projects
+    if (!selectedTool) {
+      return safeProjects
     }
-    return projects.filter((project) =>
+    return safeProjects.filter((project) =>
       project.tools?.some((tool) => tool.title === selectedTool)
     )
-  }, [projects, selectedTool])
+  }, [safeProjects, selectedTool])
 
   if (isLoading) {
     return <ProjectListSkeleton />
   }
 
   if (error) {
-    return <div className="my-8 text-center text-red-500">{error}</div>
+    return (
+      <div
+        role="alert"
+        className="my-8 flex flex-col items-center gap-3 rounded-2xl border border-destructive/30 bg-destructive/5 p-6 text-center"
+      >
+        <p className="text-sm sm:text-base font-medium text-destructive">
+          {error}
+        </p>
+        <Button type="button" variant="outline" size="sm" onClick={handleRetry}>
+          Retry
+        </Button>
+      </div>
+    )
   }
 
-  const totalPages = Math.ceil(
-    (Array.isArray(filteredProjects) ? filteredProjects.length : 0) /
-      PROJECTS_PER_PAGE
-  )
-  const startIndex = (currentPage - 1) * PROJECTS_PER_PAGE
+  const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE)
+  const effectivePage =
+    totalPages > 0 ? Math.min(Math.max(currentPage, 1), totalPages) : 1
+  const startIndex = (effectivePage - 1) * PROJECTS_PER_PAGE
   const endIndex = startIndex + PROJECTS_PER_PAGE
-  const currentProjects = Array.isArray(filteredProjects)
-    ? filteredProjects.slice(startIndex, endIndex)
-    : []
+  const currentProjects = filteredProjects.slice(startIndex, endIndex)
 
   return (
     <>
@@ -124,7 +151,7 @@ const ProjectList = () => {
           selectedTool={selectedTool}
           onSelectTool={handleSelectTool}
           toolCounts={toolCounts}
-          totalCount={projects.length}
+          totalCount={safeProjects.length}
         />
       )}
 
@@ -150,7 +177,7 @@ const ProjectList = () => {
       )}
 
       <Pagination
-        currentPage={currentPage}
+        currentPage={effectivePage}
         totalPages={totalPages}
         onPageChange={setCurrentPage}
         totalItems={filteredProjects.length}

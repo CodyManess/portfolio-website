@@ -50,7 +50,9 @@ export default function Home() {
     <main>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(personSchema).replace(/</g, '\\u003c'),
+        }}
       />
       <Intro />
 

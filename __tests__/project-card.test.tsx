@@ -61,5 +61,15 @@ describe('ProjectCard Component', () => {
 
     fireEvent.keyDown(card, { key: 'Enter' })
     expect(screen.getByRole('dialog')).toBeInTheDocument()
+
+    // Close the modal before testing Space activation
+    const closeButton = screen.getAllByRole('button', { name: /close/i })[0]
+    expect(closeButton).toBeInTheDocument()
+    if (!closeButton) return
+    fireEvent.click(closeButton)
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+
+    fireEvent.keyDown(card, { key: ' ' })
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
   })
 })

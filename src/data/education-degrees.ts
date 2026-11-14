@@ -150,7 +150,7 @@ export const degrees: Degree[] = [
       },
       {
         courseType: CourseType.Core,
-        courseNum: 'CSCI 2170',
+        courseNum: 'CSCI 1170',
         title: 'Computer Science I',
       },
       {
@@ -235,7 +235,7 @@ export const degrees: Degree[] = [
       },
       {
         courseType: CourseType.SupportCourses,
-        courseNum: 'MATH 1920',
+        courseNum: 'MATH 2050',
         title: 'Probability and Statistics',
       },
       {

@@ -54,20 +54,63 @@ describe('Creds', () => {
     expect(screen.getByRole('dialog')).toBeInTheDocument()
   })
 
-  it('renders an error message when fetch fails', async () => {
-    global.fetch = jest.fn(() =>
-      Promise.resolve({
-        ok: false,
-        status: 500,
-        json: () => Promise.resolve({}),
-      })
-    ) as jest.Mock
+  it('renders an error message and supports retry when fetch fails', async () => {
+    const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+    try {
+      global.fetch = jest
+        .fn()
+        .mockResolvedValueOnce({
+          ok: false,
+          status: 500,
+          json: () => Promise.resolve({}),
+        })
+        .mockResolvedValueOnce({
+          ok: true,
+          json: () => Promise.resolve({ degrees: [], certs: [] }),
+        })
 
-    render(<Creds />)
+      render(<Creds />)
 
-    const errorMessage = await screen.findByText(
-      /Failed to load education data/i
-    )
-    expect(errorMessage).toBeInTheDocument()
+      const alert = await screen.findByRole('alert')
+      expect(alert).toHaveTextContent(/Failed to load education data/i)
+
+      fireEvent.click(screen.getByRole('button', { name: /retry/i }))
+      expect(
+        await screen.findByRole('heading', { name: /education/i })
+      ).toBeInTheDocument()
+      expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+    } finally {
+      consoleSpy.mockRestore()
+    }
+  })
+
+  it('shows an error alert when API returns malformed payload', async () => {
+    const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+    try {
+      global.fetch = jest.fn(() =>
+        Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve({ unexpected: true }),
+        })
+      ) as jest.Mock
+
+      render(<Creds />)
+
+      const alert = await screen.findByRole('alert')
+      expect(alert).toHaveTextContent(/Failed to load education data/i)
+    } finally {
+      consoleSpy.mockRestore()
+    }
+  })
+
+  it('aborts in-flight fetch on unmount', () => {
+    const abortSpy = jest.spyOn(AbortController.prototype, 'abort')
+    global.fetch = jest.fn(() => new Promise(() => {})) as jest.Mock
+
+    const { unmount } = render(<Creds />)
+    unmount()
+
+    expect(abortSpy).toHaveBeenCalledTimes(1)
+    abortSpy.mockRestore()
   })
 })

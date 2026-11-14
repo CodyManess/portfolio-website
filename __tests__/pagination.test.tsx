@@ -7,7 +7,7 @@ describe('Pagination Component', () => {
     const { container } = render(
       <Pagination currentPage={1} totalPages={1} onPageChange={jest.fn()} />
     )
-    expect(container.firstChild).toBeNull()
+    expect(container).toBeEmptyDOMElement()
   })
 
   it('renders summary text and handles next and previous page changes', () => {

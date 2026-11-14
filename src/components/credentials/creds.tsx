@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import DegreeCard from './school-card'
 import CertBadge from './cert-badge'
 import { Skeleton } from '@/components/ui/skeleton'
+import { Button } from '@/components/ui/button'
 import { EducationData } from '@/types/education'
 
 const CredsSkeleton = () => (
@@ -24,29 +25,57 @@ const CredsSkeleton = () => (
   </div>
 )
 
+const isValidEducationData = (data: unknown): data is EducationData => {
+  if (!data || typeof data !== 'object') return false
+  const record = data as Record<string, unknown>
+  return Array.isArray(record.degrees) && Array.isArray(record.certs)
+}
+
 const Creds = () => {
   const [educationData, setEducationData] = useState<EducationData | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
+  const [retryCount, setRetryCount] = useState<number>(0)
 
   useEffect(() => {
+    const controller = new AbortController()
+
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/education')
+        const response = await fetch('/api/education', {
+          signal: controller.signal,
+        })
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
-        const data: EducationData = await response.json()
+        const data: unknown = await response.json()
+        if (!isValidEducationData(data)) {
+          throw new Error('Invalid education data format')
+        }
         setEducationData(data)
+        setError(null)
       } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') return
         setError('Failed to load education data.')
         console.error('Error fetching education data:', err)
       } finally {
-        setIsLoading(false)
+        if (!controller.signal.aborted) {
+          setIsLoading(false)
+        }
       }
     }
-    fetchData()
-  }, [])
+
+    void fetchData()
+    return () => {
+      controller.abort()
+    }
+  }, [retryCount])
+
+  const handleRetry = () => {
+    setIsLoading(true)
+    setError(null)
+    setRetryCount((count) => count + 1)
+  }
 
   let sectionBody = (
     <>
@@ -74,7 +103,23 @@ const Creds = () => {
   }
 
   if (error) {
-    sectionBody = <div>{error}</div>
+    sectionBody = (
+      <div
+        role="alert"
+        className="my-8 flex flex-col items-center gap-3 rounded-2xl border border-white/20 bg-slate-950/30 p-6 text-center text-white"
+      >
+        <p className="text-sm sm:text-base font-medium">{error}</p>
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          onClick={handleRetry}
+          className="border-white/30 bg-white/10 text-white hover:bg-white/20 hover:text-white"
+        >
+          Retry
+        </Button>
+      </div>
+    )
   }
 
   return (

@@ -1,5 +1,5 @@
 'use client'
-import React, { useId, useRef } from 'react'
+import React, { useId } from 'react'
 import { FaAngleDown } from 'react-icons/fa6'
 import { cn } from '@/lib/utils'
 
@@ -16,7 +16,6 @@ interface AccordionChildrenProps {
 }
 
 export function Accordion(props: AccordionProps) {
-  const accordionHeader = useRef<HTMLButtonElement>(null)
   // useId guarantees unique, SSR-safe ids even when multiple accordion groups
   // (e.g. several timelines) are rendered on the same page.
   const id = useId()
@@ -28,9 +27,6 @@ export function Accordion(props: AccordionProps) {
   let body
 
   const toggleAccordion = () => {
-    if (isOpen) {
-      accordionHeader.current?.blur()
-    }
     props.setExpanded(isOpen ? false : props.index)
   }
 
@@ -53,7 +49,6 @@ export function Accordion(props: AccordionProps) {
     >
       {!!header && (
         <button
-          ref={accordionHeader}
           type="button"
           className="flex items-center justify-between gap-2.5 sm:gap-4 transition-all duration-300 p-3.5 sm:p-5 w-full bg-transparent text-inherit border-none cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-color)] focus-visible:rounded-2xl"
           onClick={toggleAccordion}

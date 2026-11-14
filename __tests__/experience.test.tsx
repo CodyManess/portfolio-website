@@ -28,8 +28,12 @@ describe('Experience section & WorkTimeline', () => {
       ).toBeInTheDocument()
     })
 
+    const firstRole = roles[0]
+    expect(firstRole).toBeDefined()
+    if (!firstRole) return
+
     const firstRoleButton = screen.getByRole('button', {
-      name: new RegExp(roles[0].title, 'i'),
+      name: new RegExp(firstRole.title, 'i'),
     })
     expect(firstRoleButton).toHaveAttribute('aria-expanded', 'false')
 

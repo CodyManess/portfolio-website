@@ -85,9 +85,10 @@ describe('DegreeModal', () => {
       <DegreeModal degree={mockDegree} open={true} handleClose={handleClose} />
     )
 
-    const closeButtons = screen.getAllByRole('button', { name: /close/i })
-    expect(closeButtons.length).toBeGreaterThanOrEqual(1)
-    fireEvent.click(closeButtons[0])
+    const closeButton = screen.getAllByRole('button', { name: /close/i })[0]
+    expect(closeButton).toBeInTheDocument()
+    if (!closeButton) return
+    fireEvent.click(closeButton)
 
     expect(handleClose).toHaveBeenCalledTimes(1)
   })

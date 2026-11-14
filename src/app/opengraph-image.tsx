@@ -16,11 +16,16 @@ export const contentType = 'image/png'
 // No dynamic APIs are used, so the image is generated once at build time and
 // served statically instead of being re-rendered on every request.
 export default async function Image() {
-  const base64Image = await readFile(
-    join(process.cwd(), 'public/opengraph-image.jpg'),
-    'base64'
-  )
-  const imageDataUrl = `data:image/jpeg;base64,${base64Image}`
+  let imageDataUrl: string | null = null
+  try {
+    const base64Image = await readFile(
+      join(process.cwd(), 'public/opengraph-image.jpg'),
+      'base64'
+    )
+    imageDataUrl = `data:image/jpeg;base64,${base64Image}`
+  } catch (err) {
+    console.warn('Unable to load public/opengraph-image.jpg:', err)
+  }
 
   return new ImageResponse(
     <div
@@ -50,30 +55,32 @@ export default async function Image() {
             '0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.3)',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            margin: '8px auto',
-            width: '160px',
-            height: '160px',
-            position: 'relative',
-            borderRadius: '9999px',
-            overflow: 'hidden',
-            border: '4px solid #007AB8',
-          }}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={imageDataUrl}
-            alt="Cody Maness"
+        {imageDataUrl && (
+          <div
             style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
+              display: 'flex',
+              margin: '8px auto',
+              width: '160px',
+              height: '160px',
+              position: 'relative',
               borderRadius: '9999px',
+              overflow: 'hidden',
+              border: '4px solid #007AB8',
             }}
-          />
-        </div>
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={imageDataUrl}
+              alt="Cody Maness"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: '9999px',
+              }}
+            />
+          </div>
+        )}
         <h1
           style={{
             display: 'flex',

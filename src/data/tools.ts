@@ -1,6 +1,6 @@
 import { Tool } from '@/types/project'
 
-const Tools: { [key: string]: Tool } = {
+const Tools = {
   React: {
     title: 'React',
     iconName: 'SiReact',
@@ -51,6 +51,6 @@ const Tools: { [key: string]: Tool } = {
     iconName: 'SiPhp',
     iconColor: '#474a8a',
   },
-}
+} satisfies Record<string, Tool>
 
 export default Tools

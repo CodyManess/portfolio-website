@@ -6,7 +6,8 @@ describe('Home', () => {
   beforeEach(() => {
     jest.clearAllMocks()
     global.fetch = jest.fn((url: string | URL | Request) => {
-      const urlStr = url.toString()
+      const urlStr =
+        typeof url === 'string' ? url : url instanceof URL ? url.href : url.url
       if (urlStr.includes('/api/education')) {
         return Promise.resolve({
           ok: true,

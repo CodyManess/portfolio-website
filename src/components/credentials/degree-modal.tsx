@@ -12,7 +12,7 @@ import { Button, buttonVariants } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 import { FaAward, FaArrowUpRightFromSquare } from 'react-icons/fa6'
-import { cn } from '@/lib/utils'
+import { cn, getSafeExternalUrl } from '@/lib/utils'
 
 interface Props {
   degree: Degree
@@ -36,21 +36,38 @@ const CourseItem = ({ course }: { course: Course }) => (
 
 const DegreeModal = ({ degree, open, handleClose }: Props) => {
   const { schoolName, title, subtitle, schoolLink, awards, courses } = degree
-  const [activeTab, setActiveTab] = React.useState<string>('ALL')
+  const [activeTab, setActiveTab] = React.useState<CourseType | 'ALL'>('ALL')
+  const safeSchoolLink = getSafeExternalUrl(schoolLink)
 
   const handleModalClose = () => {
     setActiveTab('ALL')
     handleClose()
   }
 
-  const availableCategories = React.useMemo(() => {
-    return Object.values(CourseType).filter((type) =>
-      courses.some((course) => course.courseType === type)
+  const handleOpenChange = (nextOpen: boolean) => {
+    if (!nextOpen) {
+      handleModalClose()
+    }
+  }
+
+  const { availableCategories, coursesByCategory } = React.useMemo(() => {
+    const grouped = new Map<CourseType, Course[]>()
+    for (const course of courses) {
+      const list = grouped.get(course.courseType)
+      if (list) {
+        list.push(course)
+      } else {
+        grouped.set(course.courseType, [course])
+      }
+    }
+    const categories = Object.values(CourseType).filter((type) =>
+      grouped.has(type)
     )
+    return { availableCategories: categories, coursesByCategory: grouped }
   }, [courses])
 
   return (
-    <Dialog open={open} onOpenChange={handleModalClose}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-[800px] max-h-[90vh] flex flex-col p-6 gap-0 overflow-hidden">
         {/* Header Section */}
         <DialogHeader className="pr-8 space-y-1 text-left">
@@ -90,9 +107,9 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
             <div />
           )}
 
-          {schoolLink && (
+          {safeSchoolLink && (
             <Link
-              href={schoolLink}
+              href={safeSchoolLink}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
@@ -126,9 +143,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                     All ({courses.length})
                   </button>
                   {availableCategories.map((type) => {
-                    const count = courses.filter(
-                      (c) => c.courseType === type
-                    ).length
+                    const count = coursesByCategory.get(type)?.length ?? 0
                     return (
                       <button
                         key={type}
@@ -152,9 +167,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
               {activeTab === 'ALL' ? (
                 <div className="space-y-6">
                   {availableCategories.map((type) => {
-                    const filtered = courses.filter(
-                      (c) => c.courseType === type
-                    )
+                    const filtered = coursesByCategory.get(type) ?? []
                     if (filtered.length === 0) return null
                     return (
                       <div key={type} className="space-y-3">
@@ -178,14 +191,12 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                 </div>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {courses
-                    .filter((course) => course.courseType === activeTab)
-                    .map((course) => (
-                      <CourseItem
-                        key={`${course.courseNum}-${course.title}`}
-                        course={course}
-                      />
-                    ))}
+                  {(coursesByCategory.get(activeTab) ?? []).map((course) => (
+                    <CourseItem
+                      key={`${course.courseNum}-${course.title}`}
+                      course={course}
+                    />
+                  ))}
                 </div>
               )}
             </>
