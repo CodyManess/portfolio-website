@@ -1,6 +1,8 @@
-import { Cert, IconType } from '@/types/education'
+import type { Cert } from '@/types/education'
+import { IconType } from '@/types/education'
 import React from 'react'
-import Image, { StaticImageData } from 'next/image'
+import type { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 import awsBadge from '@public/credentials/aws-developer-badge.png'
 import deepLearningLogo from '@public/credentials/deep-learning-logo.png'
@@ -20,43 +22,37 @@ const imageMap: Record<string, StaticImageData> = {
 const CertBadge = ({ icon, iconType, name, org }: Cert) => {
   const imageSrc = imageMap[icon] ?? icon
 
-  return (
-    <>
-      {iconType === IconType.Badge ? (
+  return iconType === IconType.Badge ? (
+    <Image
+      src={imageSrc}
+      alt={`${name} Cert`}
+      width={160}
+      height={160}
+      sizes="160px"
+      key={icon}
+      className="size-40 object-contain drop-shadow-md"
+    />
+  ) : (
+    <div
+      key={icon}
+      className="flex size-40 flex-col items-center justify-center overflow-hidden rounded-full border border-white/20 bg-linear-to-br from-(--primary-dark) to-(--primary-color) p-4 text-center text-white shadow-lg"
+      aria-label={`${name} Cert from ${org}`}
+    >
+      <div className="mb-1 flex size-14 shrink-0 items-center justify-center">
         <Image
           src={imageSrc}
-          alt={`${name} Cert`}
-          width={160}
-          height={160}
-          sizes="160px"
-          key={icon}
-          className="w-40 h-40 drop-shadow-md object-contain"
+          alt={name}
+          width={56}
+          height={56}
+          sizes="56px"
+          className="size-full object-contain"
         />
-      ) : (
-        <div
-          key={icon}
-          className="bg-linear-to-br from-(--primary-dark) to-(--primary-color) flex flex-col justify-center items-center w-40 h-40 p-4 text-center rounded-full border border-white/20 shadow-lg text-white overflow-hidden"
-          aria-label={`${name} Cert from ${org}`}
-        >
-          <div className="shrink-0 mb-1 w-14 h-14 flex items-center justify-center">
-            <Image
-              src={imageSrc}
-              alt={name}
-              width={56}
-              height={56}
-              sizes="56px"
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <p className="text-xs font-semibold leading-tight mb-1 line-clamp-2 text-balance">
-            {name}
-          </p>
-          <p className="text-[11px] font-bold text-white/80 line-clamp-1">
-            {org}
-          </p>
-        </div>
-      )}
-    </>
+      </div>
+      <p className="mb-1 line-clamp-2 text-xs/tight font-semibold text-balance">
+        {name}
+      </p>
+      <p className="line-clamp-1 text-[11px] font-bold text-white/80">{org}</p>
+    </div>
   )
 }
 

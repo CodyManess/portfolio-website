@@ -1,6 +1,6 @@
 import { SiLetterboxd, SiGoodreads, SiYoutubemusic } from 'react-icons/si'
 import { FaGamepad } from 'react-icons/fa6'
-import { TechInterest, PersonalInterest, MediaLink } from '@/types/about'
+import type { TechInterest, PersonalInterest, MediaLink } from '@/types/about'
 
 export const techInterests: TechInterest[] = [
   { name: 'Web Development', emoji: '💻' },

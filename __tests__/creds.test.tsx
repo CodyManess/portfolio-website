@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
 import Creds from '@/components/credentials/creds'
-import { EducationData, IconType } from '@/types/education'
+import type { EducationData } from '@/types/education'
+import { IconType } from '@/types/education'
 
 describe('Creds', () => {
   beforeEach(() => {

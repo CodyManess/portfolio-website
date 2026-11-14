@@ -1,4 +1,5 @@
-import { Cert, IconType } from '@/types/education'
+import type { Cert } from '@/types/education'
+import { IconType } from '@/types/education'
 
 export const certs: Cert[] = [
   {

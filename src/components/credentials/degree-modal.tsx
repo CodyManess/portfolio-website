@@ -1,6 +1,7 @@
 'use client'
 import * as React from 'react'
-import { Course, CourseType, Degree } from '@/types/education'
+import type { Course, Degree } from '@/types/education'
+import { CourseType } from '@/types/education'
 import {
   Dialog,
   DialogContent,
@@ -21,14 +22,14 @@ interface Props {
 }
 
 const CourseItem = ({ course }: { course: Course }) => (
-  <div className="flex items-center gap-2.5 p-2.5 rounded-lg border border-border/70 bg-card hover:border-(--primary-color)/50 hover:bg-muted/30 transition-all duration-200">
+  <div className="flex items-center gap-2.5 rounded-lg border border-border/70 bg-card p-2.5 transition-all duration-200 hover:border-(--primary-color)/50 hover:bg-muted/30">
     <Badge
       variant="outline"
-      className="font-mono text-xs font-semibold px-2 py-0.5 bg-muted/60 text-foreground shrink-0"
+      className="shrink-0 bg-muted/60 px-2 py-0.5 font-mono text-xs font-semibold text-foreground"
     >
       {course.courseNum}
     </Badge>
-    <span className="text-sm font-medium text-foreground leading-snug line-clamp-2">
+    <span className="line-clamp-2 text-sm/snug font-medium text-foreground">
       {course.title}
     </span>
   </div>
@@ -68,37 +69,37 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-200 max-h-[90vh] flex flex-col p-6 gap-0 overflow-hidden">
+      <DialogContent className="flex max-h-[90vh] flex-col gap-0 overflow-hidden p-6 sm:max-w-200">
         {/* Header Section */}
-        <DialogHeader className="pr-8 space-y-1 text-left">
-          {schoolName && (
-            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        <DialogHeader className="space-y-1 pr-8 text-left">
+          {schoolName ? (
+            <p className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
               {schoolName}
             </p>
-          )}
-          <DialogTitle className="text-xl sm:text-2xl font-semibold text-foreground tracking-tight">
+          ) : null}
+          <DialogTitle className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
             {title}
           </DialogTitle>
-          {subtitle && (
-            <DialogDescription className="text-sm text-muted-foreground mt-0.5">
+          {subtitle ? (
+            <DialogDescription className="mt-0.5 text-sm text-muted-foreground">
               {subtitle}
             </DialogDescription>
-          )}
+          ) : null}
         </DialogHeader>
 
         {/* Accolades & Program Link Action Row */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 pb-4 border-b border-border">
-          {awards && awards.length > 0 ? (
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pt-3 pb-4">
+          {awards.length > 0 ? (
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mr-1">
+              <span className="mr-1 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
                 Honors:
               </span>
               {awards.map((award) => (
                 <span
                   key={award}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-800 dark:text-amber-300"
                 >
-                  <FaAward className="size-3 text-amber-500 shrink-0" />
+                  <FaAward className="size-3 shrink-0 text-amber-500" />
                   {award}
                 </span>
               ))}
@@ -107,36 +108,36 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
             <div />
           )}
 
-          {safeSchoolLink && (
+          {safeSchoolLink ? (
             <Link
               href={safeSchoolLink}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: 'outline', size: 'sm' }),
-                'text-xs font-medium hover:text-(--primary-color) hover:border-(--primary-color) transition-colors focus-visible:outline-none'
+                'text-xs font-medium transition-colors hover:border-(--primary-color) hover:text-(--primary-color) focus-visible:outline-none'
               )}
             >
               Program Website{' '}
               <FaArrowUpRightFromSquare className="ml-1.5 size-3" />
             </Link>
-          )}
+          ) : null}
         </div>
 
         {/* Modal Body - Tabbed Curriculum Grid */}
-        <div className="flex-1 overflow-y-auto pr-1 py-4 space-y-5">
+        <div className="flex-1 space-y-5 overflow-y-auto py-4 pr-1">
           {courses.length > 0 ? (
             <>
               {/* Category Filter Tabs */}
               {availableCategories.length > 1 && (
-                <div className="flex flex-wrap items-center gap-1.5 p-1 bg-muted/50 rounded-lg w-fit border border-border/50">
+                <div className="flex w-fit flex-wrap items-center gap-1.5 rounded-lg border border-border/50 bg-muted/50 p-1">
                   <button
                     type="button"
                     onClick={() => setActiveTab('ALL')}
                     className={cn(
-                      'px-3 py-1 text-xs font-medium rounded-md transition-all cursor-pointer',
+                      'cursor-pointer rounded-md px-3 py-1 text-xs font-medium transition-all',
                       activeTab === 'ALL'
-                        ? 'bg-background text-foreground shadow-xs font-semibold'
+                        ? 'bg-background font-semibold text-foreground shadow-xs'
                         : 'text-muted-foreground hover:text-foreground'
                     )}
                   >
@@ -150,9 +151,9 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                         type="button"
                         onClick={() => setActiveTab(type)}
                         className={cn(
-                          'px-3 py-1 text-xs font-medium rounded-md transition-all cursor-pointer',
+                          'cursor-pointer rounded-md px-3 py-1 text-xs font-medium transition-all',
                           activeTab === type
-                            ? 'bg-background text-foreground shadow-xs font-semibold'
+                            ? 'bg-background font-semibold text-foreground shadow-xs'
                             : 'text-muted-foreground hover:text-foreground'
                         )}
                       >
@@ -171,13 +172,13 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                     if (filtered.length === 0) return null
                     return (
                       <div key={type} className="space-y-3">
-                        <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+                        <h3 className="flex items-center gap-2 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
                           <span>{type}</span>
-                          <span className="text-[11px] font-normal px-2 py-0.5 rounded-full bg-muted text-muted-foreground border border-border/50">
+                          <span className="rounded-full border border-border/50 bg-muted px-2 py-0.5 text-[11px] font-normal text-muted-foreground">
                             {filtered.length}
                           </span>
                         </h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                           {filtered.map((course) => (
                             <CourseItem
                               key={`${course.courseNum}-${course.title}`}
@@ -190,7 +191,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                   })}
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                   {(coursesByCategory.get(activeTab) ?? []).map((course) => (
                     <CourseItem
                       key={`${course.courseNum}-${course.title}`}
@@ -201,21 +202,21 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
               )}
             </>
           ) : (
-            <p className="text-sm text-muted-foreground py-4">
+            <p className="py-4 text-sm text-muted-foreground">
               No coursework details available.
             </p>
           )}
         </div>
 
         {/* Footer Section */}
-        <div className="flex items-center justify-between pt-3 border-t border-border mt-auto">
+        <div className="mt-auto flex items-center justify-between border-t border-border pt-3">
           <span className="text-xs text-muted-foreground">
             {courses.length} Total Course{courses.length === 1 ? '' : 's'}
           </span>
           <Button
             variant="ghost"
             onClick={handleModalClose}
-            className="uppercase text-(--primary-color) hover:text-(--primary-dark) hover:bg-transparent font-semibold tracking-wider text-xs"
+            className="text-xs font-semibold tracking-wider text-(--primary-color) uppercase hover:bg-transparent hover:text-(--primary-dark)"
           >
             Close
           </Button>

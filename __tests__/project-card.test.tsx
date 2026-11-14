@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
 import ProjectCard from '@/components/projects/project-card'
-import Project from '@/types/project'
+import type Project from '@/types/project'
 
 describe('ProjectCard Component', () => {
   const mockProject: Project = {

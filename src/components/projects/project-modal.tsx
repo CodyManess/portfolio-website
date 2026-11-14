@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dialog'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { FaCircleCheck, FaArrowUpRightFromSquare } from 'react-icons/fa6'
-import Project from '@/types/project'
+import type Project from '@/types/project'
 import ToolChip from '@/components/shared/tool-chip'
 import Link from 'next/link'
 import { cn, getSafeExternalUrl } from '@/lib/utils'
@@ -31,11 +31,11 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-200 max-h-[90vh] flex flex-col p-6 gap-0 overflow-hidden">
+      <DialogContent className="flex max-h-[90vh] flex-col gap-0 overflow-hidden p-6 sm:max-w-200">
         {/* Header Section */}
-        <div className="flex flex-wrap items-start justify-between gap-3 pr-8 pb-3 border-b border-border">
+        <div className="flex flex-wrap items-start justify-between gap-3 border-b border-border pr-8 pb-3">
           <DialogHeader className="space-y-1 text-left">
-            <DialogTitle className="text-xl sm:text-2xl font-semibold text-foreground tracking-tight">
+            <DialogTitle className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
               {project.title}
             </DialogTitle>
             <DialogDescription className="text-xs text-muted-foreground">
@@ -43,28 +43,28 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
             </DialogDescription>
           </DialogHeader>
 
-          {safeLink && (
+          {safeLink ? (
             <Link
               href={safeLink}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: 'outline', size: 'sm' }),
-                'text-xs font-medium hover:text-(--primary-color) hover:border-(--primary-color) transition-colors focus-visible:outline-none'
+                'text-xs font-medium transition-colors hover:border-(--primary-color) hover:text-(--primary-color) focus-visible:outline-none'
               )}
             >
               Visit Project{' '}
               <FaArrowUpRightFromSquare className="ml-1.5 size-3" />
             </Link>
-          )}
+          ) : null}
         </div>
 
         {/* Modal Scrollable Body */}
-        <div className="flex-1 overflow-y-auto pr-1 py-4 space-y-6">
+        <div className="flex-1 space-y-6 overflow-y-auto py-4 pr-1">
           {/* Tech Stack Banner */}
-          {project.tools && project.tools.length > 0 && (
+          {project.tools.length > 0 ? (
             <div className="space-y-2">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              <h4 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
                 Technologies Used
               </h4>
               <div className="flex flex-wrap gap-2">
@@ -73,46 +73,46 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
                 ))}
               </div>
             </div>
-          )}
+          ) : null}
 
           {/* Description Section */}
           <div className="space-y-2">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            <h4 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
               Overview
             </h4>
-            <p className="text-sm text-foreground/90 leading-relaxed whitespace-pre-line">
+            <p className="text-sm/relaxed whitespace-pre-line text-foreground/90">
               {project.description}
             </p>
           </div>
 
           {/* Key Achievements & Impact Section */}
-          {project.achievements && project.achievements.length > 0 && (
+          {project.achievements.length > 0 ? (
             <div className="space-y-3">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              <h4 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
                 Key Contributions & Achievements
               </h4>
               <div className="space-y-2.5">
-                {project.achievements.map((achievement, idx) => (
+                {project.achievements.map((achievement) => (
                   <div
-                    key={idx}
-                    className="flex items-start gap-3 p-3 rounded-xl border border-border/70 bg-card hover:border-(--primary-color)/30 hover:bg-muted/30 transition-colors text-sm"
+                    key={achievement}
+                    className="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-3 text-sm transition-colors hover:border-(--primary-color)/30 hover:bg-muted/30"
                   >
                     <FaCircleCheck
-                      className="size-4 text-(--primary-color) mt-0.5 shrink-0"
+                      className="mt-0.5 size-4 shrink-0 text-(--primary-color)"
                       aria-hidden="true"
                     />
-                    <span className="text-foreground leading-snug">
+                    <span className="leading-snug text-foreground">
                       {achievement}
                     </span>
                   </div>
                 ))}
               </div>
             </div>
-          )}
+          ) : null}
         </div>
 
         {/* Footer Section */}
-        <div className="flex items-center justify-between pt-3 border-t border-border mt-auto">
+        <div className="mt-auto flex items-center justify-between border-t border-border pt-3">
           <span className="text-xs text-muted-foreground">
             {project.tools.length} Technolog
             {project.tools.length === 1 ? 'y' : 'ies'}
@@ -120,7 +120,7 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
           <Button
             variant="ghost"
             onClick={handleClose}
-            className="uppercase text-(--primary-color) hover:text-(--primary-dark) hover:bg-transparent font-semibold tracking-wider text-xs"
+            className="text-xs font-semibold tracking-wider text-(--primary-color) uppercase hover:bg-transparent hover:text-(--primary-dark)"
           >
             Close
           </Button>

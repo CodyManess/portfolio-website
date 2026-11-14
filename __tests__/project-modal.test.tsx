@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
 import ProjectModal from '@/components/projects/project-modal'
-import Project from '@/types/project'
+import type Project from '@/types/project'
 
 describe('ProjectModal', () => {
   const mockProjectWithAchievements: Project = {

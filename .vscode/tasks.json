@@ -26,10 +26,17 @@
     },
     {
       "type": "npm",
+      "script": "typegen",
+      "problemMatcher": [],
+      "label": "npm: typegen",
+      "detail": "next typegen"
+    },
+    {
+      "type": "npm",
       "script": "typecheck",
       "problemMatcher": ["$tsc"],
       "label": "npm: typecheck",
-      "detail": "tsc --noEmit"
+      "detail": "next typegen && tsc --noEmit"
     },
     {
       "type": "npm",
@@ -58,7 +65,7 @@
       "script": "check",
       "problemMatcher": [],
       "label": "npm: check",
-      "detail": "format:check, lint, typecheck, and test"
+      "detail": "typegen, format:check, lint, typecheck, and test"
     }
   ]
 }

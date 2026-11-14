@@ -5,7 +5,8 @@ import { useEffect, useState, useMemo } from 'react'
 import ProjectCard from './project-card'
 import TechnologyFilter from './technology-filter'
 import Pagination from '@/components/shared/pagination'
-import Project, { Tool } from '@/types/project'
+import type { Tool } from '@/types/project'
+import type Project from '@/types/project'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 
@@ -13,19 +14,19 @@ const PROJECTS_PER_PAGE = 6
 
 const ProjectListSkeleton = () => (
   <div aria-busy="true" aria-label="Loading project data">
-    <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+    <div className="mb-8 flex flex-wrap items-center justify-center gap-2">
       {Array.from({ length: 10 }, (_, i) => (
         <Skeleton key={i} className="h-8 w-20 rounded-full" />
       ))}
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+    <div className="my-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {Array.from({ length: PROJECTS_PER_PAGE }, (_, i) => (
         <Skeleton key={i} className="h-60 w-full rounded-2xl" />
       ))}
     </div>
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-12 mb-6">
-      <Skeleton className="h-4 w-44 order-2 sm:order-1" />
-      <Skeleton className="h-9 w-48 rounded-xl order-1 sm:order-2" />
+    <div className="mt-12 mb-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
+      <Skeleton className="order-2 h-4 w-44 sm:order-1" />
+      <Skeleton className="order-1 h-9 w-48 rounded-xl sm:order-2" />
     </div>
   </div>
 )
@@ -87,7 +88,7 @@ const ProjectList = () => {
     const toolMap = new Map<string, Tool>()
     const counts: Record<string, number> = {}
     safeProjects.forEach((project) => {
-      project.tools?.forEach((tool) => {
+      project.tools.forEach((tool) => {
         if (!toolMap.has(tool.title)) {
           toolMap.set(tool.title, tool)
         }
@@ -112,7 +113,7 @@ const ProjectList = () => {
       return safeProjects
     }
     return safeProjects.filter((project) =>
-      project.tools?.some((tool) => tool.title === selectedTool)
+      project.tools.some((tool) => tool.title === selectedTool)
     )
   }, [safeProjects, selectedTool])
 
@@ -126,7 +127,7 @@ const ProjectList = () => {
         role="alert"
         className="my-8 flex flex-col items-center gap-3 rounded-2xl border border-destructive/30 bg-destructive/5 p-6 text-center"
       >
-        <p className="text-sm sm:text-base font-medium text-destructive">
+        <p className="text-sm font-medium text-destructive sm:text-base">
           {error}
         </p>
         <Button type="button" variant="outline" size="sm" onClick={handleRetry}>
@@ -156,14 +157,14 @@ const ProjectList = () => {
       )}
 
       {currentProjects.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+        <div className="my-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {currentProjects.map((project) => {
             return <ProjectCard key={project.title} {...project} />
           })}
         </div>
       ) : (
-        <div className="text-center py-12 space-y-3">
-          <p className="text-muted-foreground text-sm">
+        <div className="space-y-3 py-12 text-center">
+          <p className="text-sm text-muted-foreground">
             No projects found matching the selected technology.
           </p>
           <Button

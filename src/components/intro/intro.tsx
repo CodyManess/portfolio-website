@@ -6,12 +6,12 @@ const Intro = () => {
   return (
     <section
       id="home"
-      className="flex h-[calc(100dvh-56px)] bg-(--black) p-2 items-center relative z-1 sm:h-dvh"
+      className="relative z-1 flex h-[calc(100dvh-56px)] items-center bg-(--black) p-2 sm:h-dvh"
     >
       <IntroCard />
 
       <FaAngleDown
-        className="text-(--white) absolute -bottom-2.5 mx-auto inset-x-0 text-[5em] animate-[arrow-pulse-down_2500ms_linear_infinite] motion-reduce:animate-none"
+        className="absolute inset-x-0 -bottom-2.5 mx-auto animate-[arrow-pulse-down_2500ms_linear_infinite] text-[5em] text-(--white) motion-reduce:animate-none"
         aria-hidden="true"
       />
     </section>

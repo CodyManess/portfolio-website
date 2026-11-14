@@ -101,7 +101,7 @@ We utilize a standard `src/` directory layout:
   - Or individually:
     - `npm run typegen` (generates `next-env.d.ts` and `.next/types/` on fresh checkouts before `lint` / `typecheck`)
     - `npm run format:check` (and `npm run format` when needed)
-    - `npm run lint` (`eslint . --max-warnings=0`, including type-checked TypeScript, `jsx-a11y`, `testing-library`, and `jest-dom` rules)
+    - `npm run lint` (`eslint . --max-warnings=0`, including strict type-checked TypeScript, strict `jsx-a11y`, `better-tailwindcss`, `eslint-comments`, `testing-library`, and `jest-dom` rules)
     - `npm run typecheck` (`next typegen && tsc --noEmit` with `noUncheckedIndexedAccess` and `noImplicitOverride`)
     - `npm test` (or `npm run test`)
   - Production build: `npm run build` (note: in restricted Windows sandboxes where Turbopack cannot spawn PostCSS subprocesses, validate compilation with `npx next build --webpack` or run `npm run build` locally)

@@ -17,12 +17,12 @@ export default function Error({
   }, [error])
 
   return (
-    <main className="min-h-[70vh] flex items-center justify-center px-4 py-16">
-      <div className="max-w-md w-full rounded-3xl border border-slate-200/80 dark:border-slate-800/60 bg-(--surface-background) p-8 text-center shadow-lg space-y-4">
-        <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
+    <main className="flex min-h-[70vh] items-center justify-center px-4 py-16">
+      <div className="w-full max-w-md space-y-4 rounded-3xl border border-slate-200/80 bg-(--surface-background) p-8 text-center shadow-lg dark:border-slate-800/60">
+        <h1 className="text-2xl font-bold text-foreground sm:text-3xl">
           Something went wrong
         </h1>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-sm/relaxed text-muted-foreground">
           An unexpected error occurred while rendering this page. You can try
           reloading the view or return to the home page.
         </p>

@@ -4,15 +4,15 @@ import { cn } from '@/lib/utils'
 
 export default function NotFound() {
   return (
-    <main className="min-h-[70vh] flex items-center justify-center px-4 py-16">
-      <div className="max-w-md w-full rounded-3xl border border-slate-200/80 dark:border-slate-800/60 bg-(--surface-background) p-8 text-center shadow-lg space-y-4">
-        <p className="text-xs font-semibold uppercase tracking-wider text-(--primary-color) dark:text-(--primary-light)">
+    <main className="flex min-h-[70vh] items-center justify-center px-4 py-16">
+      <div className="w-full max-w-md space-y-4 rounded-3xl border border-slate-200/80 bg-(--surface-background) p-8 text-center shadow-lg dark:border-slate-800/60">
+        <p className="text-xs font-semibold tracking-wider text-(--primary-color) uppercase dark:text-(--primary-light)">
           404
         </p>
-        <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
+        <h1 className="text-2xl font-bold text-foreground sm:text-3xl">
           Page Not Found
         </h1>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-sm/relaxed text-muted-foreground">
           The page you are looking for does not exist or may have been moved.
         </p>
         <div className="pt-2">

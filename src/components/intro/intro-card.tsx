@@ -5,15 +5,15 @@ import profilePic from '@public/intro/portfolio-picture.webp'
 
 const IntroCard = () => {
   return (
-    <div className="relative z-10 w-full max-w-md mx-auto p-8 md:p-10 rounded-3xl border border-slate-200/60 dark:border-white/5 bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl shadow-xl shadow-slate-900/10 dark:shadow-black/50 flex flex-col items-center">
+    <div className="relative z-10 mx-auto flex w-full max-w-md flex-col items-center rounded-3xl border border-slate-200/60 bg-white/95 p-8 shadow-xl shadow-slate-900/10 backdrop-blur-xl md:p-10 dark:border-white/5 dark:bg-slate-900/90 dark:shadow-black/50">
       {/* Decorative colored glow blob behind profile picture */}
-      <div className="absolute top-8 w-48 h-48 bg-(--primary-color)/10 dark:bg-(--primary-light)/10 rounded-full blur-2xl -z-10 pointer-events-none" />
+      <div className="pointer-events-none absolute top-8 -z-10 size-48 rounded-full bg-(--primary-color)/10 blur-2xl dark:bg-(--primary-light)/10" />
 
       {/* Profile Pic Ring */}
-      <div className="relative group/avatar mb-2">
-        <div className="absolute inset-0 bg-linear-to-tr from-(--primary-color) to-(--primary-light) rounded-full blur-sm opacity-70 group-hover/avatar:opacity-100 transition-opacity duration-300" />
-        <div className="relative p-1 bg-linear-to-tr from-(--primary-color) to-(--primary-light) rounded-full shadow-[0_4px_20px_rgba(0,122,184,0.25)] dark:shadow-[0_4px_20px_rgba(25,109,178,0.4)]">
-          <div className="w-40 h-40 relative rounded-full overflow-hidden border-2 border-white dark:border-slate-900 bg-slate-100">
+      <div className="group/avatar relative mb-2">
+        <div className="absolute inset-0 rounded-full bg-linear-to-tr from-(--primary-color) to-(--primary-light) opacity-70 blur-sm transition-opacity duration-300 group-hover/avatar:opacity-100" />
+        <div className="relative rounded-full bg-linear-to-tr from-(--primary-color) to-(--primary-light) p-1 shadow-[0_4px_20px_rgba(0,122,184,0.25)] dark:shadow-[0_4px_20px_rgba(25,109,178,0.4)]">
+          <div className="relative size-40 overflow-hidden rounded-full border-2 border-white bg-slate-100 dark:border-slate-900">
             <Image
               loading="eager"
               fetchPriority="high"
@@ -30,19 +30,19 @@ const IntroCard = () => {
         </div>
       </div>
 
-      <h1 className="flex flex-col items-center mt-6 text-4xl md:text-5xl font-bold tracking-tight text-center bg-clip-text text-transparent bg-linear-to-b from-slate-900 via-slate-800 to-slate-950 dark:from-white dark:via-slate-100 dark:to-slate-300">
+      <h1 className="mt-6 flex flex-col items-center bg-linear-to-b from-slate-900 via-slate-800 to-slate-950 bg-clip-text text-center text-4xl font-bold tracking-tight text-transparent md:text-5xl dark:from-white dark:via-slate-100 dark:to-slate-300">
         Cody Maness
-        <span className="block text-sm font-semibold uppercase tracking-wider text-(--primary-color) dark:text-(--primary-light) mt-2">
+        <span className="mt-2 block text-sm font-semibold tracking-wider text-(--primary-color) uppercase dark:text-(--primary-light)">
           Web & Mobile Developer
         </span>
       </h1>
 
-      <p className="text-center text-slate-700 dark:text-slate-200 leading-relaxed text-sm md:text-base max-w-xs mt-2 mb-6">
+      <p className="mt-2 mb-6 max-w-xs text-center text-sm/relaxed text-slate-700 md:text-base dark:text-slate-200">
         Mobile and Web Developer with a love for creating engaging, accessible,
         and user-friendly applications.
       </p>
 
-      <div className="w-full border-t border-slate-200/60 dark:border-white/5 pt-6 flex justify-center">
+      <div className="flex w-full justify-center border-t border-slate-200/60 pt-6 dark:border-white/5">
         <ContactMe />
       </div>
     </div>

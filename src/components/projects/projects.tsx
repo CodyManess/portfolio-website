@@ -2,7 +2,7 @@ import ProjectList from './project-list'
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-16 flex justify-center">
+    <section id="projects" className="flex justify-center py-16">
       <div className="container mx-auto px-4 lg:px-6">
         <h2 className="mb-6 sm:mb-8">Projects</h2>
         <ProjectList />

@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react'
-import { Tool } from '@/types/project'
+import type { Tool } from '@/types/project'
 import { cn } from '@/lib/utils'
 import { toolIconMap } from '@/lib/tool-icons'
 
@@ -20,8 +20,9 @@ const TechnologyFilter = ({
   totalCount,
 }: Props) => {
   return (
+    // eslint-disable-next-line jsx-a11y/prefer-tag-over-role -- Toolbar of toggle buttons is not a form <fieldset>
     <div
-      className="flex flex-wrap items-center justify-center gap-2 mb-8"
+      className="mb-8 flex flex-wrap items-center justify-center gap-2"
       role="group"
       aria-label="Filter projects by technology"
     >
@@ -30,19 +31,19 @@ const TechnologyFilter = ({
         onClick={() => onSelectTool(null)}
         aria-pressed={selectedTool === null}
         className={cn(
-          'inline-flex items-center px-3.5 py-1.5 text-xs font-semibold rounded-full border transition-all duration-300 ease-out cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+          'inline-flex cursor-pointer items-center rounded-full border px-3.5 py-1.5 text-xs font-semibold shadow-xs transition-all duration-300 ease-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
           selectedTool === null
-            ? 'bg-(--primary-color) border-(--primary-color) text-white ring-2 ring-(--primary-color)/30 -translate-y-0.5 shadow-sm'
-            : 'border-slate-200/80 dark:border-slate-800/50 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 hover:-translate-y-0.5 hover:border-(--primary-color)/40 hover:text-(--primary-color)'
+            ? '-translate-y-0.5 border-(--primary-color) bg-(--primary-color) text-white shadow-sm ring-2 ring-(--primary-color)/30'
+            : 'border-slate-200/80 bg-slate-50/60 text-slate-600 hover:-translate-y-0.5 hover:border-(--primary-color)/40 hover:text-(--primary-color) dark:border-slate-800/50 dark:bg-slate-900/40 dark:text-slate-300'
         )}
       >
         <span>All</span>
         <span
           className={cn(
-            'ml-1.5 px-1.5 py-0.5 rounded-full text-[10px] font-medium leading-none transition-colors',
+            'ml-1.5 rounded-full px-1.5 py-0.5 text-[10px] leading-none font-medium transition-colors',
             selectedTool === null
-              ? 'bg-black/25 text-white font-semibold'
-              : 'bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+              ? 'bg-black/25 font-semibold text-white'
+              : 'bg-slate-200/80 text-slate-700 dark:bg-slate-800 dark:text-slate-300'
           )}
         >
           {totalCount}
@@ -61,10 +62,10 @@ const TechnologyFilter = ({
             onClick={() => onSelectTool(isSelected ? null : tool.title)}
             aria-pressed={isSelected}
             className={cn(
-              'inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-full border transition-all duration-300 ease-out cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+              'inline-flex cursor-pointer items-center rounded-full border px-3 py-1.5 text-xs font-semibold shadow-xs transition-all duration-300 ease-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
               isSelected
-                ? 'border-(--tool-color) bg-(--tool-bg) text-(--tool-text) ring-2 ring-(--tool-color)/30 -translate-y-0.5 shadow-sm'
-                : 'border-slate-200/80 dark:border-slate-800/50 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 hover:-translate-y-0.5 hover:border-(--hover-border) hover:bg-(--hover-bg) hover:text-(--hover-text)'
+                ? '-translate-y-0.5 border-(--tool-color) bg-(--tool-bg) text-(--tool-text) shadow-sm ring-2 ring-(--tool-color)/30'
+                : 'border-slate-200/80 bg-slate-50/60 text-slate-600 hover:-translate-y-0.5 hover:border-(--hover-border) hover:bg-(--hover-bg) hover:text-(--hover-text) dark:border-slate-800/50 dark:bg-slate-900/40 dark:text-slate-300'
             )}
             style={
               {
@@ -77,22 +78,21 @@ const TechnologyFilter = ({
               } as React.CSSProperties
             }
           >
-            {IconComponent && (
+            {IconComponent ? (
               <IconComponent
-                className="mr-1.5 transition-transform duration-300 shrink-0"
+                className="mr-1.5 shrink-0 transition-transform duration-300"
                 size="0.875rem"
                 color={tool.iconColor}
-                role="presentation"
                 aria-hidden="true"
               />
-            )}
+            ) : null}
             <span>{tool.title}</span>
             <span
               className={cn(
-                'ml-1.5 px-1.5 py-0.5 rounded-full text-[10px] font-medium leading-none transition-colors',
+                'ml-1.5 rounded-full px-1.5 py-0.5 text-[10px] leading-none font-medium transition-colors',
                 isSelected
-                  ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-semibold'
-                  : 'bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+                  ? 'bg-slate-900 font-semibold text-white dark:bg-white dark:text-slate-900'
+                  : 'bg-slate-200/80 text-slate-700 dark:bg-slate-800 dark:text-slate-300'
               )}
             >
               {count}

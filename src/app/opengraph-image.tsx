@@ -55,7 +55,7 @@ export default async function Image() {
             '0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.3)',
         }}
       >
-        {imageDataUrl && (
+        {imageDataUrl ? (
           <div
             style={{
               display: 'flex',
@@ -79,7 +79,7 @@ export default async function Image() {
               }}
             />
           </div>
-        )}
+        ) : null}
         <h1
           style={{
             display: 'flex',

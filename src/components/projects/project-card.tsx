@@ -2,7 +2,7 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import * as React from 'react'
-import Project from '@/types/project'
+import type Project from '@/types/project'
 import ProjectModal from './project-modal'
 import ToolChip from '@/components/shared/tool-chip'
 import { FaArrowRight, FaArrowUpRightFromSquare, FaStar } from 'react-icons/fa6'
@@ -27,6 +27,7 @@ const ProjectCard = (project: Project) => {
 
   return (
     <>
+      {/* eslint-disable-next-line jsx-a11y/prefer-tag-over-role -- Card contains block headings/paragraphs invalid inside <button> */}
       <Card
         tabIndex={0}
         role="button"
@@ -34,13 +35,13 @@ const ProjectCard = (project: Project) => {
         onKeyDown={handleKeyDown}
         className={cn(
           CARD_CLASSNAME,
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--primary-color) pb-3'
+          'pb-3 focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none'
         )}
         onClick={handleOpen}
       >
         <CardHeader className="pb-2">
           {/* Top Metadata Row */}
-          <div className="flex items-center justify-between gap-2 mb-2">
+          <div className="mb-2 flex items-center justify-between gap-2">
             {safeLink ? (
               <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-(--primary-color) dark:text-(--primary-light)">
                 Live Project{' '}
@@ -50,40 +51,40 @@ const ProjectCard = (project: Project) => {
                 />
               </span>
             ) : (
-              <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">
+              <span className="text-[11px] font-medium tracking-wider text-muted-foreground uppercase">
                 Internal Tool
               </span>
             )}
-            {project.achievements && project.achievements.length > 0 && (
+            {project.achievements.length > 0 ? (
               <Badge
                 variant="outline"
-                className="text-[10px] px-1.5 py-0 border-amber-500/30 text-amber-700 dark:text-amber-400 bg-amber-500/10 font-medium gap-1"
+                className="gap-1 border-amber-500/30 bg-amber-500/10 px-1.5 py-0 text-[10px] font-medium text-amber-700 dark:text-amber-400"
               >
                 <FaStar className="size-2 text-amber-500" aria-hidden="true" />
                 {project.achievements.length} Highlight
                 {project.achievements.length === 1 ? '' : 's'}
               </Badge>
-            )}
+            ) : null}
           </div>
 
-          <h3 className="text-lg font-semibold text-foreground group-hover:text-(--primary-color) dark:group-hover:text-(--primary-light) transition-colors duration-300">
+          <h3 className="text-lg font-semibold text-foreground transition-colors duration-300 group-hover:text-(--primary-color) dark:group-hover:text-(--primary-light)">
             {project.title}
           </h3>
 
-          <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed mt-1">
+          <p className="mt-1 line-clamp-2 text-xs/relaxed text-muted-foreground">
             {project.description}
           </p>
         </CardHeader>
 
-        <CardContent className="pt-2 flex flex-col justify-between flex-1">
-          <div className="flex flex-wrap gap-1.5 mb-4">
+        <CardContent className="flex flex-1 flex-col justify-between pt-2">
+          <div className="mb-4 flex flex-wrap gap-1.5">
             {project.tools.map((tool) => {
               return <ToolChip key={tool.title} tool={tool} />
             })}
           </div>
 
           {/* Interactive Footer CTA */}
-          <div className="pt-3 border-t border-border/50 flex items-center justify-between text-xs font-medium text-muted-foreground group-hover:text-(--primary-color) dark:group-hover:text-(--primary-light) transition-colors mt-auto">
+          <div className="mt-auto flex items-center justify-between border-t border-border/50 pt-3 text-xs font-medium text-muted-foreground transition-colors group-hover:text-(--primary-color) dark:group-hover:text-(--primary-light)">
             <span>View details</span>
             <FaArrowRight
               className="size-3 transition-transform duration-300 group-hover:translate-x-1"

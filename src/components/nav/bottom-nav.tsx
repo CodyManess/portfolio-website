@@ -12,10 +12,10 @@ const BottomNav = () => {
   const [value, setValue] = React.useState(
     navLinks[0]?.title.toLowerCase() ?? 'home'
   )
-  const activeValue = pathname?.startsWith('/extended') ? 'experience' : value
+  const activeValue = pathname.startsWith('/extended') ? 'experience' : value
 
   React.useEffect(() => {
-    if (pathname?.startsWith('/extended')) return
+    if (pathname.startsWith('/extended')) return
 
     const mql =
       typeof window.matchMedia === 'function'
@@ -92,9 +92,9 @@ const BottomNav = () => {
   return (
     <nav
       aria-label="Mobile"
-      className="sm:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.08)] pb-[env(safe-area-inset-bottom)]"
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200/80 bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] backdrop-blur-xl sm:hidden dark:border-slate-800/80 dark:bg-slate-900/95"
     >
-      <div className="grid grid-cols-5 items-center h-16 px-1">
+      <div className="grid h-16 grid-cols-5 items-center px-1">
         {navLinks.map((page) => {
           const id = page.title.toLowerCase()
           const isActive = activeValue === id
@@ -105,23 +105,23 @@ const BottomNav = () => {
               onClick={() => setValue(id)}
               aria-current={isActive ? 'location' : undefined}
               className={cn(
-                'group flex flex-col items-center justify-center gap-1 h-full px-1 min-w-0 transition-colors duration-200',
+                'group flex h-full min-w-0 flex-col items-center justify-center gap-1 px-1 transition-colors duration-200',
                 isActive
-                  ? 'text-(--primary-color) dark:text-(--primary-light) font-semibold'
-                  : 'text-slate-500 dark:text-slate-400 font-medium hover:text-(--primary-color) dark:hover:text-(--primary-light)'
+                  ? 'font-semibold text-(--primary-color) dark:text-(--primary-light)'
+                  : 'font-medium text-slate-500 hover:text-(--primary-color) dark:text-slate-400 dark:hover:text-(--primary-light)'
               )}
             >
               <span
                 className={cn(
-                  'flex items-center justify-center px-3 py-1 rounded-full transition-all duration-200',
+                  'flex items-center justify-center rounded-full px-3 py-1 transition-all duration-200',
                   isActive
-                    ? 'bg-(--primary-color)/12 dark:bg-(--primary-light)/15 text-(--primary-color) dark:text-(--primary-light)'
+                    ? 'bg-(--primary-color)/12 text-(--primary-color) dark:bg-(--primary-light)/15 dark:text-(--primary-light)'
                     : 'group-hover:bg-slate-100 dark:group-hover:bg-slate-800/70'
                 )}
               >
                 <page.icon className="text-base" aria-hidden="true" />
               </span>
-              <span className="text-[11px] leading-none tracking-tight truncate max-w-full">
+              <span className="max-w-full truncate text-[11px] leading-none tracking-tight">
                 {page.title}
               </span>
             </Link>

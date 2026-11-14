@@ -1,4 +1,4 @@
-import Role from '@/types/role'
+import type Role from '@/types/role'
 import {
   Accordion,
   AccordionBody,
@@ -23,14 +23,14 @@ const RoleCard = ({ role, setExpanded, expanded, index }: RoleCardProps) => {
     >
       <AccordionHeader>
         <div className="flex flex-col gap-1">
-          <h3 className="text-base sm:text-xl font-semibold tracking-tight leading-snug text-foreground group-hover:text-(--primary-color) dark:group-hover:text-(--primary-light) group-data-[active=true]:text-(--primary-color) dark:group-data-[active=true]:text-(--primary-light) transition-colors duration-300">
+          <h3 className="text-base/snug font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-(--primary-color) group-data-[active=true]:text-(--primary-color) sm:text-xl dark:group-hover:text-(--primary-light) dark:group-data-[active=true]:text-(--primary-light)">
             {role.title}
           </h3>
-          <div className="flex flex-col items-start gap-1.5 mt-0.5">
-            <p className="text-xs sm:text-[0.95rem] font-semibold text-slate-600 dark:text-slate-300">
+          <div className="mt-0.5 flex flex-col items-start gap-1.5">
+            <p className="text-xs font-semibold text-slate-600 sm:text-[0.95rem] dark:text-slate-300">
               {role.companyName}
             </p>
-            <p className="md:hidden text-[11px] font-mono font-medium px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800/90 text-(--primary-color) dark:text-(--primary-light) border border-slate-200/80 dark:border-slate-700/70">
+            <p className="rounded-full border border-slate-200/80 bg-slate-100 px-2.5 py-0.5 font-mono text-[11px] font-medium text-(--primary-color) md:hidden dark:border-slate-700/70 dark:bg-slate-800/90 dark:text-(--primary-light)">
               {role.date}
             </p>
           </div>
@@ -38,15 +38,18 @@ const RoleCard = ({ role, setExpanded, expanded, index }: RoleCardProps) => {
       </AccordionHeader>
 
       <AccordionBody>
-        <div className="border-t border-slate-200/80 dark:border-slate-800/80 pt-4 space-y-4">
-          {role.description.map((section, sectionIndex) => (
-            <div key={`${role.title}${sectionIndex}`} className="space-y-2">
-              {section.heading && (
-                <h4 className="text-sm sm:text-[0.95rem] font-semibold text-slate-800 dark:text-slate-100 pl-3 border-l-2 border-(--primary-color) dark:border-(--primary-light) leading-snug">
+        <div className="space-y-4 border-t border-slate-200/80 pt-4 dark:border-slate-800/80">
+          {role.description.map((section) => (
+            <div
+              key={`${role.title}-${section.heading ?? section.items[0] ?? 'section'}`}
+              className="space-y-2"
+            >
+              {section.heading ? (
+                <h4 className="border-l-2 border-(--primary-color) pl-3 text-sm/snug font-semibold text-slate-800 sm:text-[0.95rem] dark:border-(--primary-light) dark:text-slate-100">
                   {section.heading}
                 </h4>
-              )}
-              <ul className="list-disc pl-5 space-y-1.5 text-sm sm:text-[0.925rem] leading-relaxed text-slate-600 dark:text-slate-300 marker:text-(--primary-color) dark:marker:text-(--primary-light)">
+              ) : null}
+              <ul className="list-disc space-y-1.5 pl-5 text-sm/relaxed text-slate-600 marker:text-(--primary-color) sm:text-[0.925rem] dark:text-slate-300 dark:marker:text-(--primary-light)">
                 {section.items.map((item) => (
                   <li key={item}>{item}</li>
                 ))}

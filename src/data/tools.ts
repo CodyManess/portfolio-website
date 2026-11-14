@@ -1,4 +1,4 @@
-import { Tool } from '@/types/project'
+import type { Tool } from '@/types/project'
 
 const Tools = {
   React: {

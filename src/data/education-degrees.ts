@@ -1,4 +1,5 @@
-import { Degree, CourseType } from '@/types/education'
+import type { Degree } from '@/types/education'
+import { CourseType } from '@/types/education'
 
 export const degrees: Degree[] = [
   {

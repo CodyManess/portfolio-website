@@ -5,18 +5,18 @@ import DegreeCard from './school-card'
 import CertBadge from './cert-badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
-import { EducationData } from '@/types/education'
+import type { EducationData } from '@/types/education'
 
 const CredsSkeleton = () => (
   <div aria-busy="true" aria-label="Loading education data">
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+    <div className="my-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {[0, 1, 2].map((i) => (
         <Skeleton key={i} className="h-77.5 w-full rounded-2xl bg-white/15" />
       ))}
     </div>
-    <div className="flex justify-around mt-8">
+    <div className="mt-8 flex justify-around">
       {[0, 1].map((i) => (
-        <Skeleton key={i} className="w-40 h-40 rounded-full bg-white/15" />
+        <Skeleton key={i} className="size-40 rounded-full bg-white/15" />
       ))}
     </div>
   </div>
@@ -76,12 +76,12 @@ const Creds = () => {
 
   let sectionBody = (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+      <div className="my-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {educationData?.degrees.map((degree) => (
           <DegreeCard key={degree.title} {...degree} />
         ))}
       </div>
-      <div className="flex justify-around mt-8">
+      <div className="mt-8 flex justify-around">
         {educationData?.certs.map((cert) => (
           <CertBadge
             key={cert.name}
@@ -105,7 +105,7 @@ const Creds = () => {
         role="alert"
         className="my-8 flex flex-col items-center gap-3 rounded-2xl border border-white/20 bg-slate-950/30 p-6 text-center text-white"
       >
-        <p className="text-sm sm:text-base font-medium">{error}</p>
+        <p className="text-sm font-medium sm:text-base">{error}</p>
         <Button
           type="button"
           variant="outline"
@@ -122,7 +122,7 @@ const Creds = () => {
   return (
     <section
       id="credentials"
-      className="py-16 flex justify-center bg-(--section-background) text-white [&_a]:text-white"
+      className="flex justify-center bg-(--section-background) py-16 text-white [&_a]:text-white"
     >
       <div className="container mx-auto px-4 lg:px-6">
         <h2 className="mb-6 sm:mb-8">Education</h2>

@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
 import DegreeModal from '@/components/credentials/degree-modal'
-import { CourseType, Degree } from '@/types/education'
+import type { Degree } from '@/types/education'
+import { CourseType } from '@/types/education'
 
 describe('DegreeModal', () => {
   const mockDegree: Degree = {

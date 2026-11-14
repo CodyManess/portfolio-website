@@ -15,16 +15,16 @@ export default function GlobalError({
 
   return (
     <html lang="en">
-      <body className="min-h-screen flex items-center justify-center bg-[#020617] text-white px-4">
-        <div className="max-w-md w-full rounded-3xl border border-slate-800 bg-slate-900 p-8 text-center shadow-xl space-y-4">
+      <body className="flex min-h-screen items-center justify-center bg-[#020617] px-4 text-white">
+        <div className="w-full max-w-md space-y-4 rounded-3xl border border-slate-800 bg-slate-900 p-8 text-center shadow-xl">
           <h1 className="text-2xl font-bold">Something went wrong</h1>
-          <p className="text-sm text-slate-300 leading-relaxed">
+          <p className="text-sm/relaxed text-slate-300">
             A critical application error occurred. Please try again.
           </p>
           <button
             type="button"
             onClick={() => retry()}
-            className="inline-flex items-center justify-center rounded-lg bg-[#007ab8] px-4 py-2 text-sm font-medium text-white hover:bg-[#196db2] transition-colors cursor-pointer"
+            className="inline-flex cursor-pointer items-center justify-center rounded-lg bg-[#007ab8] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#196db2]"
           >
             Try again
           </button>

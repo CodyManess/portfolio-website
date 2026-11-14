@@ -65,13 +65,13 @@ const Pagination = ({
     <nav
       aria-label="Pagination Navigation"
       className={cn(
-        'flex flex-col sm:flex-row items-center justify-between gap-4 mt-12 mb-6',
+        'mt-12 mb-6 flex flex-col items-center justify-between gap-4 sm:flex-row',
         className
       )}
     >
       {/* Item count summary */}
       {typeof totalItems === 'number' && (
-        <p className="text-xs text-muted-foreground order-2 sm:order-1 text-center sm:text-left">
+        <p className="order-2 text-center text-xs text-muted-foreground sm:order-1 sm:text-left">
           Showing{' '}
           <span className="font-semibold text-foreground">
             {startIndex !== undefined ? startIndex + 1 : 1}
@@ -88,39 +88,41 @@ const Pagination = ({
       )}
 
       {/* Pagination Controls */}
-      <div className="flex items-center gap-1.5 order-1 sm:order-2">
+      <div className="order-1 flex items-center gap-1.5 sm:order-2">
         {/* Previous Button */}
         <button
           type="button"
           onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
           disabled={currentPage === 1}
           aria-label="Go to previous page"
-          className="inline-flex items-center gap-1 px-3 py-2 text-xs font-medium rounded-xl border border-slate-200/80 dark:border-slate-800/40 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 disabled:opacity-40 disabled:pointer-events-none transition-all duration-200 hover:border-(--primary-color)/30 hover:text-(--primary-color) dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light) cursor-pointer"
+          className="inline-flex cursor-pointer items-center gap-1 rounded-xl border border-slate-200/80 bg-slate-50/60 px-3 py-2 text-xs font-medium text-slate-600 transition-all duration-200 hover:border-(--primary-color)/30 hover:text-(--primary-color) disabled:pointer-events-none disabled:opacity-40 dark:border-slate-800/40 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light)"
         >
           <FaChevronLeft className="size-3" />
           <span className="hidden sm:inline">Prev</span>
         </button>
 
         {/* Mobile: Compact Page Indicator (visible only on small mobile screens < 640px) */}
-        <div className="flex sm:hidden items-center px-3 py-1.5 text-xs font-medium text-muted-foreground bg-muted/40 rounded-lg border border-border/50">
+        <div className="flex items-center rounded-lg border border-border/50 bg-muted/40 px-3 py-1.5 text-xs font-medium text-muted-foreground sm:hidden">
           Page{' '}
-          <span className="font-semibold text-foreground mx-1">
+          <span className="mx-1 font-semibold text-foreground">
             {currentPage}
           </span>{' '}
           of{' '}
-          <span className="font-semibold text-foreground ml-1">
+          <span className="ml-1 font-semibold text-foreground">
             {totalPages}
           </span>
         </div>
 
         {/* Desktop / Tablet: Numbered Buttons (hidden on mobile < 640px) */}
-        <div className="hidden sm:flex items-center gap-1.5">
+        <div className="hidden items-center gap-1.5 sm:flex">
           {pages.map((item, idx) => {
             if (item === 'ellipsis') {
               return (
                 <span
-                  key={`ellipsis-${idx}`}
-                  className="w-9 h-9 flex items-center justify-center text-muted-foreground"
+                  key={
+                    idx < pages.length / 2 ? 'ellipsis-start' : 'ellipsis-end'
+                  }
+                  className="flex size-9 items-center justify-center text-muted-foreground"
                   aria-hidden="true"
                 >
                   <FaEllipsis className="size-3 opacity-60" />
@@ -139,10 +141,10 @@ const Pagination = ({
                 aria-current={isActive ? 'page' : undefined}
                 aria-label={`Page ${pageNum}`}
                 className={cn(
-                  'w-9 h-9 flex items-center justify-center text-xs font-semibold rounded-xl border transition-all duration-200 cursor-pointer',
+                  'flex size-9 cursor-pointer items-center justify-center rounded-xl border text-xs font-semibold transition-all duration-200',
                   isActive
-                    ? 'bg-(--primary-color) border-(--primary-color) text-white shadow-[0_0_12px_rgba(0,122,184,0.3)]'
-                    : 'border-slate-200/80 dark:border-slate-800/40 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 hover:border-(--primary-color)/30 hover:text-(--primary-color) dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light)'
+                    ? 'border-(--primary-color) bg-(--primary-color) text-white shadow-[0_0_12px_rgba(0,122,184,0.3)]'
+                    : 'border-slate-200/80 bg-slate-50/60 text-slate-600 hover:border-(--primary-color)/30 hover:text-(--primary-color) dark:border-slate-800/40 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light)'
                 )}
               >
                 {pageNum}
@@ -157,7 +159,7 @@ const Pagination = ({
           onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
           disabled={currentPage === totalPages}
           aria-label="Go to next page"
-          className="inline-flex items-center gap-1 px-3 py-2 text-xs font-medium rounded-xl border border-slate-200/80 dark:border-slate-800/40 bg-slate-50/60 dark:bg-slate-900/40 text-slate-600 dark:text-slate-300 disabled:opacity-40 disabled:pointer-events-none transition-all duration-200 hover:border-(--primary-color)/30 hover:text-(--primary-color) dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light) cursor-pointer"
+          className="inline-flex cursor-pointer items-center gap-1 rounded-xl border border-slate-200/80 bg-slate-50/60 px-3 py-2 text-xs font-medium text-slate-600 transition-all duration-200 hover:border-(--primary-color)/30 hover:text-(--primary-color) disabled:pointer-events-none disabled:opacity-40 dark:border-slate-800/40 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light)"
         >
           <span className="hidden sm:inline">Next</span>
           <FaChevronRight className="size-3" />

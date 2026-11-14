@@ -1,4 +1,4 @@
-import Role from '@/types/role'
+import type Role from '@/types/role'
 import cignaLogo from '@public/work-icons/cigna.webp'
 import mtsuLogo from '@public/work-icons/mtsu.webp'
 import expressScriptsLogo from '@public/work-icons/express-scripts.png'

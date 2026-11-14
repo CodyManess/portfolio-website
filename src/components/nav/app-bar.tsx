@@ -90,18 +90,18 @@ const PortfolioAppBar = () => {
       id="navbar"
       aria-label="Main"
       data-hidden={isHidden}
-      onFocus={() => setScrollState({ hidden: false, path: pathname })}
       className={cn(
-        'hidden sm:flex shadow-(--surface-shadow) bg-(--toolbar-background)/90 backdrop-blur-md transition-transform duration-300 fixed z-1100 top-0 right-0 flex-col w-full',
+        'fixed top-0 right-0 z-1100 hidden w-full flex-col bg-(--toolbar-background)/90 shadow-(--surface-shadow) backdrop-blur-md transition-transform duration-300 sm:flex',
         isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
     >
-      <ul className="flex justify-center list-none py-8 m-0">
+      <ul className="m-0 flex list-none justify-center py-8">
         {navLinks.map((page) => (
           <li key={page.title}>
             <Link
-              className="text-xl font-medium m-4 text-(--white) underline-offset-4 decoration-[rgba(25,118,210,0.4)] hover:decoration-inherit"
+              className="m-4 text-xl font-medium text-(--white) decoration-[rgba(25,118,210,0.4)] underline-offset-4 hover:decoration-inherit"
               href={`/#${page.title.toLowerCase()}`}
+              onFocus={() => setScrollState({ hidden: false, path: pathname })}
             >
               {page.title}
             </Link>
