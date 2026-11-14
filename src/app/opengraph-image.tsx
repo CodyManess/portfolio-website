@@ -68,7 +68,6 @@ export default async function Image() {
               border: '4px solid #007AB8',
             }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={imageDataUrl}
               alt="Cody Maness"

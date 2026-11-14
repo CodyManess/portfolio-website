@@ -97,10 +97,11 @@ We utilize a standard `src/` directory layout:
 - Runtime uses Node 22 LTS pinned in `.tool-versions` (`mise`).
 - All unit tests live in `__tests__/`. `jest.setup.js` resets `global.fetch` before each test to reject unmocked network calls, and `jest.config.mjs` enables `clearMocks: true` and `restoreMocks: true`.
 - Before completing any task, verify docs are synced and run:
-  - Combined check: `npm run check` (runs `format:check`, `lint`, `typecheck`, and `test`)
+  - Combined check: `npm run check` (runs `typegen`, `format:check`, `lint`, `tsc --noEmit`, and `test`)
   - Or individually:
+    - `npm run typegen` (generates `next-env.d.ts` and `.next/types/` on fresh checkouts before `lint` / `typecheck`)
     - `npm run format:check` (and `npm run format` when needed)
     - `npm run lint` (`eslint . --max-warnings=0`, including type-checked TypeScript, `jsx-a11y`, `testing-library`, and `jest-dom` rules)
-    - `npm run typecheck` (`tsc --noEmit` with `noUncheckedIndexedAccess` and `noImplicitOverride`)
+    - `npm run typecheck` (`next typegen && tsc --noEmit` with `noUncheckedIndexedAccess` and `noImplicitOverride`)
     - `npm test` (or `npm run test`)
   - Production build: `npm run build` (note: in restricted Windows sandboxes where Turbopack cannot spawn PostCSS subprocesses, validate compilation with `npx next build --webpack` or run `npm run build` locally)

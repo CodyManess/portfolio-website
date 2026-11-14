@@ -85,11 +85,12 @@ Visit the live site at **[codymaness.com](https://codymaness.com)**.
 | `npm run build`        | Creates an optimized production build (`next build`).                        |
 | `npm start`            | Starts the production server (`next start`).                                 |
 | `npm run lint`         | Runs strict ESLint checks across the project (`--max-warnings=0`).           |
-| `npm run typecheck`    | Runs strict TypeScript type checking (`tsc --noEmit`).                       |
+| `npm run typegen`      | Generates Next.js route and `next-env.d.ts` global image/route types.        |
+| `npm run typecheck`    | Generates Next.js types and runs TypeScript type checking (`tsc --noEmit`).  |
 | `npm test`             | Runs the Jest unit test suite in `__tests__/`.                               |
 | `npm run format`       | Formats files across the repository with Prettier (`prettier --write .`).    |
 | `npm run format:check` | Checks repository formatting without modifying files (`prettier --check .`). |
-| `npm run check`        | Runs `format:check`, `lint`, `typecheck`, and `test` sequentially.           |
+| `npm run check`        | Runs `typegen`, `format:check`, `lint`, `tsc --noEmit`, and `test`.          |
 
 ---
 

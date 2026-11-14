@@ -85,6 +85,18 @@ export default defineConfig(
       },
     },
   },
+  // `@next/next/no-img-element` handles Windows backslashes inconsistently,
+  // causing inline disable comments to be flagged as unused on Linux CI.
+  {
+    files: [
+      'src/app/**/opengraph-image.{js,jsx,ts,tsx}',
+      'src/app/**/twitter-image.{js,jsx,ts,tsx}',
+      'src/app/**/icon.{js,jsx,ts,tsx}',
+    ],
+    rules: {
+      '@next/next/no-img-element': 'off',
+    },
+  },
   // Keep last to disable formatting rules that conflict with Prettier.
   prettier
 )

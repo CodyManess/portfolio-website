@@ -92,7 +92,7 @@ const PortfolioAppBar = () => {
       data-hidden={isHidden}
       onFocus={() => setScrollState({ hidden: false, path: pathname })}
       className={cn(
-        'hidden sm:flex shadow-[var(--surface-shadow)] bg-[var(--toolbar-background)]/90 backdrop-blur-md transition-transform duration-300 fixed z-[1100] top-0 right-0 flex-col w-full',
+        'hidden sm:flex shadow-(--surface-shadow) bg-(--toolbar-background)/90 backdrop-blur-md transition-transform duration-300 fixed z-1100 top-0 right-0 flex-col w-full',
         isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
     >
@@ -100,7 +100,7 @@ const PortfolioAppBar = () => {
         {navLinks.map((page) => (
           <li key={page.title}>
             <Link
-              className="text-xl font-medium m-4 text-[var(--white)] underline-offset-4 decoration-[rgba(25,118,210,0.4)] hover:decoration-inherit"
+              className="text-xl font-medium m-4 text-(--white) underline-offset-4 decoration-[rgba(25,118,210,0.4)] hover:decoration-inherit"
               href={`/#${page.title.toLowerCase()}`}
             >
               {page.title}
