@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import {
   FaLaptopCode,
   FaHeart,
@@ -157,7 +156,7 @@ const About: React.FC = () => {
                     const safeUrl = getSafeExternalUrl(media.url)
                     if (!safeUrl) return null
                     return (
-                      <Link
+                      <a
                         key={media.name}
                         href={safeUrl}
                         target="_blank"
@@ -183,7 +182,7 @@ const About: React.FC = () => {
                             {media.category}
                           </span>
                         </div>
-                      </Link>
+                      </a>
                     )
                   })}
                 </div>

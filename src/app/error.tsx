@@ -17,7 +17,11 @@ export default function Error({
   }, [error])
 
   return (
-    <main className="flex min-h-[70vh] items-center justify-center px-4 py-16">
+    <main
+      id="main-content"
+      tabIndex={-1}
+      className="flex min-h-[70vh] items-center justify-center px-4 py-16 outline-none"
+    >
       <div className="w-full max-w-md space-y-4 rounded-3xl border border-slate-200/80 bg-(--surface-background) p-8 text-center shadow-lg dark:border-slate-800/60">
         <h1 className="text-2xl font-bold text-foreground sm:text-3xl">
           Something went wrong

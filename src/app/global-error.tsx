@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import './globals.css'
 
 export default function GlobalError({
   error,
@@ -15,10 +16,10 @@ export default function GlobalError({
 
   return (
     <html lang="en">
-      <body className="flex min-h-screen items-center justify-center bg-[#020617] px-4 text-white">
-        <div className="w-full max-w-md space-y-4 rounded-3xl border border-slate-800 bg-slate-900 p-8 text-center shadow-xl">
+      <body className="flex min-h-screen items-center justify-center bg-slate-50 px-4 text-slate-950 dark:bg-[#020617] dark:text-white">
+        <main className="w-full max-w-md space-y-4 rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-xl dark:border-slate-800 dark:bg-slate-900">
           <h1 className="text-2xl font-bold">Something went wrong</h1>
-          <p className="text-sm/relaxed text-slate-300">
+          <p className="text-sm/relaxed text-slate-600 dark:text-slate-300">
             A critical application error occurred. Please try again.
           </p>
           <button
@@ -28,7 +29,7 @@ export default function GlobalError({
           >
             Try again
           </button>
-        </div>
+        </main>
       </body>
     </html>
   )

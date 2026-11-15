@@ -78,9 +78,40 @@ describe('DegreeModal', () => {
     expect(
       screen.getByText('Intro to Artificial Intelligence')
     ).toBeInTheDocument()
+
+    // Switch back to All
+    const allTab = screen.getByRole('button', { name: /All \(2\)/i })
+    fireEvent.click(allTab)
+    expect(allTab).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByText('Database Management Systems')).toBeInTheDocument()
   })
 
-  it('calls handleClose when close button is clicked', () => {
+  it('renders empty state and omits optional subtitle, honors, and program link when absent', () => {
+    const minimalDegree: Degree = {
+      schoolName: '',
+      title: 'Certificate Program',
+      subtitle: '',
+      schoolLink: 'javascript:alert(1)',
+      awards: [],
+      courses: [],
+    }
+
+    render(
+      <DegreeModal degree={minimalDegree} open={true} handleClose={jest.fn()} />
+    )
+
+    expect(screen.getByText('Certificate Program')).toBeInTheDocument()
+    expect(
+      screen.getByText(/no coursework details available/i)
+    ).toBeInTheDocument()
+    expect(screen.getByText('0 Total Courses')).toBeInTheDocument()
+    expect(screen.queryByText(/honors:/i)).not.toBeInTheDocument()
+    expect(
+      screen.queryByRole('link', { name: /Program Website/i })
+    ).not.toBeInTheDocument()
+  })
+
+  it('calls handleClose when close button is clicked or Escape is pressed', () => {
     const handleClose = jest.fn()
     render(
       <DegreeModal degree={mockDegree} open={true} handleClose={handleClose} />
@@ -91,6 +122,8 @@ describe('DegreeModal', () => {
     if (!closeButton) return
     fireEvent.click(closeButton)
 
-    expect(handleClose).toHaveBeenCalledTimes(1)
+    fireEvent.keyDown(screen.getByRole('dialog'), { key: 'Escape' })
+
+    expect(handleClose).toHaveBeenCalled()
   })
 })

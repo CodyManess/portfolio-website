@@ -75,6 +75,31 @@ describe('ProjectModal', () => {
       screen.queryByText(/Key Contributions & Achievements/i)
     ).not.toBeInTheDocument()
     expect(screen.getByText('React')).toBeInTheDocument()
+    expect(screen.getByText('1 Technology')).toBeInTheDocument()
+  })
+
+  it('omits Technologies Used section when tools array is empty and closes on Escape', () => {
+    const handleClose = jest.fn()
+    const emptyToolsProject: Project = {
+      title: 'Minimal Project',
+      description: 'Short overview.',
+      achievements: [],
+      tools: [],
+    }
+
+    render(
+      <ProjectModal
+        project={emptyToolsProject}
+        open={true}
+        handleClose={handleClose}
+      />
+    )
+
+    expect(screen.queryByText(/Technologies Used/i)).not.toBeInTheDocument()
+    expect(screen.getByText('0 Technologies')).toBeInTheDocument()
+
+    fireEvent.keyDown(screen.getByRole('dialog'), { key: 'Escape' })
+    expect(handleClose).toHaveBeenCalledTimes(1)
   })
 
   it('calls handleClose when close button is clicked', () => {

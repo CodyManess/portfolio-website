@@ -97,7 +97,7 @@ const Pagination = ({
           aria-label="Go to previous page"
           className="inline-flex cursor-pointer items-center gap-1 rounded-xl border border-slate-200/80 bg-slate-50/60 px-3 py-2 text-xs font-medium text-slate-600 transition-all duration-200 hover:border-(--primary-color)/30 hover:text-(--primary-color) disabled:pointer-events-none disabled:opacity-40 dark:border-slate-800/40 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light)"
         >
-          <FaChevronLeft className="size-3" />
+          <FaChevronLeft className="size-3" aria-hidden="true" />
           <span className="hidden sm:inline">Prev</span>
         </button>
 
@@ -162,7 +162,7 @@ const Pagination = ({
           className="inline-flex cursor-pointer items-center gap-1 rounded-xl border border-slate-200/80 bg-slate-50/60 px-3 py-2 text-xs font-medium text-slate-600 transition-all duration-200 hover:border-(--primary-color)/30 hover:text-(--primary-color) disabled:pointer-events-none disabled:opacity-40 dark:border-slate-800/40 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light)"
         >
           <span className="hidden sm:inline">Next</span>
-          <FaChevronRight className="size-3" />
+          <FaChevronRight className="size-3" aria-hidden="true" />
         </button>
       </div>
     </nav>

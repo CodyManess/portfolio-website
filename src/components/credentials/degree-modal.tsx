@@ -11,7 +11,6 @@ import {
 } from '@/components/ui/dialog'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import Link from 'next/link'
 import { FaAward, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 import { cn, getSafeExternalUrl } from '@/lib/utils'
 
@@ -99,7 +98,10 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                   key={award}
                   className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-800 dark:text-amber-300"
                 >
-                  <FaAward className="size-3 shrink-0 text-amber-500" />
+                  <FaAward
+                    className="size-3 shrink-0 text-amber-500"
+                    aria-hidden="true"
+                  />
                   {award}
                 </span>
               ))}
@@ -109,7 +111,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
           )}
 
           {safeSchoolLink ? (
-            <Link
+            <a
               href={safeSchoolLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -119,8 +121,11 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
               )}
             >
               Program Website{' '}
-              <FaArrowUpRightFromSquare className="ml-1.5 size-3" />
-            </Link>
+              <FaArrowUpRightFromSquare
+                className="ml-1.5 size-3"
+                aria-hidden="true"
+              />
+            </a>
           ) : null}
         </div>
 
@@ -130,9 +135,15 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
             <>
               {/* Category Filter Tabs */}
               {availableCategories.length > 1 && (
-                <div className="flex w-fit flex-wrap items-center gap-1.5 rounded-lg border border-border/50 bg-muted/50 p-1">
+                // eslint-disable-next-line jsx-a11y/prefer-tag-over-role -- Toolbar of toggle buttons is not a form <fieldset>
+                <div
+                  role="group"
+                  aria-label="Filter coursework by category"
+                  className="flex w-fit flex-wrap items-center gap-1.5 rounded-lg border border-border/50 bg-muted/50 p-1"
+                >
                   <button
                     type="button"
+                    aria-pressed={activeTab === 'ALL'}
                     onClick={() => setActiveTab('ALL')}
                     className={cn(
                       'cursor-pointer rounded-md px-3 py-1 text-xs font-medium transition-all',
@@ -149,6 +160,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                       <button
                         key={type}
                         type="button"
+                        aria-pressed={activeTab === type}
                         onClick={() => setActiveTab(type)}
                         className={cn(
                           'cursor-pointer rounded-md px-3 py-1 text-xs font-medium transition-all',

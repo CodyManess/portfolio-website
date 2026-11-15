@@ -34,7 +34,7 @@ const TechnologyFilter = ({
           'inline-flex cursor-pointer items-center rounded-full border px-3.5 py-1.5 text-xs font-semibold shadow-xs transition-all duration-300 ease-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
           selectedTool === null
             ? '-translate-y-0.5 border-(--primary-color) bg-(--primary-color) text-white shadow-sm ring-2 ring-(--primary-color)/30'
-            : 'border-slate-200/80 bg-slate-50/60 text-slate-600 hover:-translate-y-0.5 hover:border-(--primary-color)/40 hover:text-(--primary-color) dark:border-slate-800/50 dark:bg-slate-900/40 dark:text-slate-300'
+            : 'border-slate-200/80 bg-slate-50/60 text-slate-700 hover:-translate-y-0.5 hover:border-(--primary-color)/40 hover:text-(--primary-color) dark:border-slate-800/50 dark:bg-slate-900/40 dark:text-slate-200'
         )}
       >
         <span>All</span>
@@ -64,17 +64,15 @@ const TechnologyFilter = ({
             className={cn(
               'inline-flex cursor-pointer items-center rounded-full border px-3 py-1.5 text-xs font-semibold shadow-xs transition-all duration-300 ease-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
               isSelected
-                ? '-translate-y-0.5 border-(--tool-color) bg-(--tool-bg) text-(--tool-text) shadow-sm ring-2 ring-(--tool-color)/30'
-                : 'border-slate-200/80 bg-slate-50/60 text-slate-600 hover:-translate-y-0.5 hover:border-(--hover-border) hover:bg-(--hover-bg) hover:text-(--hover-text) dark:border-slate-800/50 dark:bg-slate-900/40 dark:text-slate-300'
+                ? '-translate-y-0.5 border-(--tool-color) bg-(--tool-bg) text-slate-900 shadow-sm ring-2 ring-(--tool-color)/30 dark:text-white'
+                : 'border-slate-200/80 bg-slate-50/60 text-slate-700 hover:-translate-y-0.5 hover:border-(--hover-border) hover:bg-(--hover-bg) hover:text-slate-900 dark:border-slate-800/50 dark:bg-slate-900/40 dark:text-slate-200 dark:hover:text-white'
             )}
             style={
               {
                 '--tool-color': tool.iconColor,
                 '--tool-bg': `${tool.iconColor}18`,
-                '--tool-text': tool.iconColor,
                 '--hover-border': `${tool.iconColor}50`,
                 '--hover-bg': `${tool.iconColor}12`,
-                '--hover-text': tool.iconColor,
               } as React.CSSProperties
             }
           >

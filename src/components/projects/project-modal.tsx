@@ -11,7 +11,6 @@ import { Button, buttonVariants } from '@/components/ui/button'
 import { FaCircleCheck, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 import type Project from '@/types/project'
 import ToolChip from '@/components/shared/tool-chip'
-import Link from 'next/link'
 import { cn, getSafeExternalUrl } from '@/lib/utils'
 
 interface Props {
@@ -44,7 +43,7 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
           </DialogHeader>
 
           {safeLink ? (
-            <Link
+            <a
               href={safeLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -54,8 +53,11 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
               )}
             >
               Visit Project{' '}
-              <FaArrowUpRightFromSquare className="ml-1.5 size-3" />
-            </Link>
+              <FaArrowUpRightFromSquare
+                className="ml-1.5 size-3"
+                aria-hidden="true"
+              />
+            </a>
           ) : null}
         </div>
 
@@ -64,9 +66,9 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
           {/* Tech Stack Banner */}
           {project.tools.length > 0 ? (
             <div className="space-y-2">
-              <h4 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+              <h3 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
                 Technologies Used
-              </h4>
+              </h3>
               <div className="flex flex-wrap gap-2">
                 {project.tools.map((tool) => (
                   <ToolChip key={tool.title} tool={tool} />
@@ -77,9 +79,9 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
 
           {/* Description Section */}
           <div className="space-y-2">
-            <h4 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+            <h3 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
               Overview
-            </h4>
+            </h3>
             <p className="text-sm/relaxed whitespace-pre-line text-foreground/90">
               {project.description}
             </p>
@@ -88,9 +90,9 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
           {/* Key Achievements & Impact Section */}
           {project.achievements.length > 0 ? (
             <div className="space-y-3">
-              <h4 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+              <h3 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
                 Key Contributions & Achievements
-              </h4>
+              </h3>
               <div className="space-y-2.5">
                 {project.achievements.map((achievement) => (
                   <div
