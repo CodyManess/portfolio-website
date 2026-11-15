@@ -11,22 +11,24 @@ Please adhere to the following architecture, framework conventions, security/acc
 We utilize a standard `src/` directory layout:
 
 ```text
-├── __tests__/           # Centralized unit test suite (Jest & React Testing Library)
-├── public/              # Static assets (campus photos, badges, company logos, etc.)
+├── __tests__/               # Centralized unit test suite (Jest & React Testing Library)
+├── public/                  # Static assets (campus photos, badges, company logos, etc.)
 └── src/
-    ├── app/             # Next.js App Router pages, static API routes, metadata & styles
-    ├── components/      # Modular React UI components
-    │   ├── about/       # About Me bento grid section
-    │   ├── credentials/ # Education cards, degree coursework modal, and cert badges
-    │   ├── experience/  # Work experience section
-    │   ├── intro/       # Hero section and intro card
-    │   ├── nav/         # Navigation components (AppBar, BottomNav, Footer)
-    │   ├── projects/    # Project list, technology filter, cards, and detail modal
-    │   ├── shared/      # Shared UI components (Accordion, ContactMe, Pagination, ToolChip, WorkTimeline)
-    │   └── ui/          # shadcn/ui & Base UI primitive components (Badge, Button, Card, Dialog, Skeleton)
-    ├── data/            # Structured local data (about, degrees, certs, experience, links, projects, tools)
-    ├── lib/             # Shared utilities (`utils.ts` for `cn`/`CARD_CLASSNAME`/`getSafeExternalUrl`, `tool-icons.ts` for `toolIconMap`)
-    └── types/           # Core TypeScript interfaces and enums
+    ├── app/                 # Next.js App Router pages, static API routes, metadata & styles
+    ├── components/          # Modular React UI components
+    │   ├── layout/          # Page chrome & navigation (AppBar, BottomNav, Footer)
+    │   ├── sections/        # Page section components
+    │   │   ├── credentials/ # Education section, degree cards, coursework modal, and cert badges
+    │   │   ├── intro/       # Hero section and intro card
+    │   │   ├── projects/    # Projects section, list, technology filter, tool chip, cards, and modal
+    │   │   ├── about.tsx    # About Me bento grid section
+    │   │   └── experience.tsx # Work experience section
+    │   ├── shared/          # Cross-section shared components (Accordion, ContactMe, Pagination, WorkTimeline)
+    │   └── ui/              # shadcn/ui & Base UI primitive components (Badge, Button, Card, Dialog, Skeleton)
+    ├── config/              # Centralized site configuration, SEO metadata defaults, and schema data (`site.ts`)
+    ├── data/                # Structured local data (about, degrees, certs, experience, links, projects, tools)
+    ├── lib/                 # Shared utilities (`utils.ts` for `cn`/`getSafeExternalUrl`, `tool-icons.ts` for `toolIconMap`/`ToolIconName`)
+    └── types/               # Core TypeScript interfaces and enums
 ```
 
 ### Scoped Rules & Workspace Skills
@@ -64,9 +66,10 @@ We utilize a standard `src/` directory layout:
 ## Naming & Formatting Conventions
 
 - **Directories & Files**: All file and directory names must use **kebab-case** (lowercase separated by hyphens).
-  - _Correct_: `src/components/credentials/school-card.tsx`
-  - _Incorrect_: `src/components/Credentials/schoolCard.tsx`
+  - _Correct_: `src/components/sections/credentials/degree-card.tsx`
+  - _Incorrect_: `src/components/Credentials/degreeCard.tsx`
 - **React Components**: Use PascalCase for React component names internally, while keeping the file name in kebab-case.
+- **Named Type Exports**: Use named `export interface` / `export enum` exports in `src/types/` for consistency across imports.
 - **Prettier Formatting**: Configured in `package.json` (`semi: false`, `singleQuote: true`, `tabWidth: 2`, `trailingComma: "es5"`) with `.prettierignore`. Run `npm run format` to format files across the repository.
 
 ---
@@ -78,7 +81,7 @@ We utilize a standard `src/` directory layout:
   - `--primary-dark` (`#196db2`) - Darker blue hover states.
   - `--primary-light` (`#5fb5f6`) - Light accent blue.
   - `--background`, `--foreground`, etc., are mapped to shadcn variables and adapt automatically via `@media (prefers-color-scheme: dark)`.
-- **Shared Card Styling & Micro-animations**: Use `CARD_CLASSNAME` from `@/lib/utils` for interactive cards to keep borders, gradients, shadows, and smooth hover animations (`transition-all duration-300 ease-out hover:-translate-y-1.5`) consistent.
+- **Shared Card Styling & Micro-animations**: Use `<Card variant="interactive">` (or `interactiveCardVariants` from `@/components/ui/card` for non-`Card` wrappers like `Accordion`) to keep borders, gradients, shadows, and smooth hover animations (`transition-all duration-300 ease-out hover:-translate-y-1.5`) consistent.
 - **Icons**:
   - **Technology & Brand Logos**: Utilize `react-icons` (`react-icons/si` or `react-icons/fa6`) and register new tool icons centrally in `toolIconMap` (`@/lib/tool-icons`) whenever adding a tool to `src/data/tools.ts`.
   - **General UI Icons**: Utilize `lucide-react` for UI controls (close buttons, chevrons, external links, etc.).

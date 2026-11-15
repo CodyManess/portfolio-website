@@ -1,17 +1,18 @@
 import type { MetadataRoute } from 'next'
+import { siteConfig } from '@/config/site'
 
-const SITE_LAST_MODIFIED = new Date('2026-11-14')
+const SITE_LAST_MODIFIED = new Date(siteConfig.lastModified)
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://codymaness.com',
+      url: siteConfig.url,
       lastModified: SITE_LAST_MODIFIED,
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
-      url: 'https://codymaness.com/extended',
+      url: `${siteConfig.url}/extended`,
       lastModified: SITE_LAST_MODIFIED,
       changeFrequency: 'monthly',
       priority: 0.8,

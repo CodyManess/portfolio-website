@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react'
-import Experience from '@/components/experience/experience'
+import Experience from '@/components/sections/experience'
 import WorkTimeline from '@/components/shared/work-timeline/work-timeline'
 import { roles, extendedRoles } from '@/data/experience'
 

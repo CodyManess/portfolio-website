@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import type Role from '@/types/role'
+import type { Role } from '@/types/role'
 import RoleCard from './role-card'
 import { FaBriefcase } from 'react-icons/fa6'
 import { cn } from '@/lib/utils'

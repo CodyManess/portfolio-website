@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { usePathname } from 'next/navigation'
-import BottomNav from '@/components/nav/bottom-nav'
+import BottomNav from '@/components/layout/bottom-nav'
 import { navLinks } from '@/data/links'
 
 jest.mock('next/navigation', () => ({

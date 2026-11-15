@@ -5,7 +5,6 @@ import type { Degree } from '@/types/education'
 import DegreeModal from './degree-modal'
 import type { StaticImageData } from 'next/image'
 import Image from 'next/image'
-import { cn, CARD_CLASSNAME } from '@/lib/utils'
 
 import mtsucampus from '@public/credentials/mtsucampus.webp'
 import mtsucampus2 from '@public/credentials/mtsucampus2.webp'
@@ -43,14 +42,12 @@ const DegreeCard = (degree: Degree) => {
     <>
       {/* eslint-disable-next-line jsx-a11y/prefer-tag-over-role -- Card contains block headings/paragraphs invalid inside <button> */}
       <Card
+        variant="interactive"
         tabIndex={0}
         role="button"
         aria-label={`View coursework for ${title}`}
         onKeyDown={handleKeyDown}
-        className={cn(
-          CARD_CLASSNAME,
-          'flex flex-col overflow-hidden py-0 focus-visible:ring-2 focus-visible:ring-(--primary-light) focus-visible:outline-none'
-        )}
+        className="flex flex-col overflow-hidden py-0 focus-visible:ring-2 focus-visible:ring-(--primary-light) focus-visible:outline-none"
         onClick={handleOpen}
       >
         <div className="relative h-45 w-full">
@@ -67,7 +64,7 @@ const DegreeCard = (degree: Degree) => {
           <p className="mb-1 text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-slate-400">
             {schoolName}
           </p>
-          <h3 className="my-1 text-lg font-semibold text-(--foreground) transition-colors duration-300 group-hover:text-(--primary-color) dark:group-hover:text-(--primary-light)">
+          <h3 className="my-1 text-lg font-semibold text-foreground transition-colors duration-300 group-hover:text-(--primary-color) dark:group-hover:text-(--primary-light)">
             {title}
           </h3>
           {subtitle ? (

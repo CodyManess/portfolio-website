@@ -1,11 +1,14 @@
 import '@testing-library/jest-dom'
 import { act, fireEvent, render, screen } from '@testing-library/react'
-import PortfolioAppBar from '@/components/nav/app-bar'
+import { usePathname } from 'next/navigation'
+import PortfolioAppBar from '@/components/layout/app-bar'
 import { navLinks } from '@/data/links'
 
 jest.mock('next/navigation', () => ({
   usePathname: jest.fn(() => '/'),
 }))
+
+const mockedUsePathname = usePathname as jest.MockedFunction<typeof usePathname>
 
 describe('PortfolioAppBar', () => {
   const originalMatchMedia = Object.getOwnPropertyDescriptor(
@@ -22,8 +25,14 @@ describe('PortfolioAppBar', () => {
   )
 
   beforeEach(() => {
+    mockedUsePathname.mockReturnValue('/')
     Object.defineProperty(window, 'scrollY', {
       value: 0,
+      writable: true,
+      configurable: true,
+    })
+    Object.defineProperty(window, 'innerHeight', {
+      value: 800,
       writable: true,
       configurable: true,
     })
@@ -69,7 +78,7 @@ describe('PortfolioAppBar', () => {
     restoreProperty('cancelAnimationFrame', originalCancelRAF)
   })
 
-  it('renders navigation links, hides on scroll down, shows on scroll up, and reveals on focus', () => {
+  it('renders navigation links, ignores small scroll deltas, hides on scroll down, shows on scroll up, and reveals on focus', () => {
     render(<PortfolioAppBar />)
 
     const nav = screen.getByRole('navigation', { name: /main/i })
@@ -79,6 +88,27 @@ describe('PortfolioAppBar', () => {
       expect(screen.getByRole('link', { name: link.title })).toBeInTheDocument()
     })
 
+    // Scrolling within the top offset (<= 64px) keeps the navbar visible
+    act(() => {
+      Object.defineProperty(window, 'scrollY', {
+        value: 50,
+        configurable: true,
+      })
+      window.dispatchEvent(new Event('scroll'))
+    })
+    expect(nav).toHaveAttribute('data-hidden', 'false')
+
+    // Small downward scroll (< 10px delta) does not hide the navbar
+    act(() => {
+      Object.defineProperty(window, 'scrollY', {
+        value: 55,
+        configurable: true,
+      })
+      window.dispatchEvent(new Event('scroll'))
+    })
+    expect(nav).toHaveAttribute('data-hidden', 'false')
+
+    // Scrolling past offset and delta threshold hides the navbar
     act(() => {
       Object.defineProperty(window, 'scrollY', {
         value: 200,
@@ -110,5 +140,45 @@ describe('PortfolioAppBar', () => {
       window.dispatchEvent(new Event('scroll'))
     })
     expect(nav).toHaveAttribute('data-hidden', 'false')
+  })
+
+  it('highlights the active section on scroll, click, and /extended route', () => {
+    const homeSection = document.createElement('section')
+    homeSection.id = 'home'
+    homeSection.getBoundingClientRect = () =>
+      ({ top: -300, bottom: -100 }) as DOMRect
+
+    const projectsSection = document.createElement('section')
+    projectsSection.id = 'projects'
+    projectsSection.getBoundingClientRect = () =>
+      ({ top: 100, bottom: 600 }) as DOMRect
+
+    document.body.appendChild(homeSection)
+    document.body.appendChild(projectsSection)
+
+    try {
+      const { rerender } = render(<PortfolioAppBar />)
+
+      expect(screen.getByRole('link', { name: 'Projects' })).toHaveAttribute(
+        'aria-current',
+        'location'
+      )
+
+      fireEvent.click(screen.getByRole('link', { name: 'About' }))
+      expect(screen.getByRole('link', { name: 'About' })).toHaveAttribute(
+        'aria-current',
+        'location'
+      )
+
+      mockedUsePathname.mockReturnValue('/extended')
+      rerender(<PortfolioAppBar />)
+      expect(screen.getByRole('link', { name: 'Experience' })).toHaveAttribute(
+        'aria-current',
+        'location'
+      )
+    } finally {
+      homeSection.remove()
+      projectsSection.remove()
+    }
   })
 })

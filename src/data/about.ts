@@ -1,8 +1,8 @@
 import { SiLetterboxd, SiGoodreads, SiYoutubemusic } from 'react-icons/si'
 import { FaGamepad } from 'react-icons/fa6'
-import type { TechInterest, PersonalInterest, MediaLink } from '@/types/about'
+import type { Interest, MediaLink } from '@/types/about'
 
-export const techInterests: TechInterest[] = [
+export const techInterests: Interest[] = [
   { name: 'Web Development', emoji: '💻' },
   { name: 'Native & Cross-Platform Mobile', emoji: '📱' },
   { name: 'Accessibility (a11y)', emoji: '♿' },
@@ -11,7 +11,7 @@ export const techInterests: TechInterest[] = [
   { name: 'Open Source', emoji: '🌐' },
 ]
 
-export const personalInterests: PersonalInterest[] = [
+export const personalInterests: Interest[] = [
   { name: 'Pet Care', emoji: '🐕 🐈' },
   { name: 'Politics & News', emoji: '📰' },
   { name: 'Exploring Food', emoji: '🍜' },

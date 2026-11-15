@@ -99,22 +99,24 @@ Visit the live site at **[codymaness.com](https://codymaness.com)**.
 All source code and test files follow standard Next.js App Router conventions with **kebab-case** file and directory naming:
 
 ```text
-├── __tests__/           # Centralized unit test suite (Jest & React Testing Library)
-├── public/              # Static assets (campus photos, badges, company logos, etc.)
+├── __tests__/               # Centralized unit test suite (Jest & React Testing Library)
+├── public/                  # Static assets (campus photos, badges, company logos, etc.)
 └── src/
-    ├── app/             # Next.js App Router pages, static API routes, metadata & styles
-    ├── components/      # Modular React UI components
-    │   ├── about/       # About Me bento grid section
-    │   ├── credentials/ # Education cards, degree coursework modal, and cert badges
-    │   ├── experience/  # Work experience section
-    │   ├── intro/       # Hero section and intro card
-    │   ├── nav/         # Navigation components (AppBar, BottomNav, Footer)
-    │   ├── projects/    # Project list, technology filter, cards, and detail modal
-    │   ├── shared/      # Shared UI components (Accordion, ContactMe, Pagination, ToolChip, WorkTimeline)
-    │   └── ui/          # shadcn/ui & Base UI primitive components (Badge, Button, Card, Dialog, Skeleton)
-    ├── data/            # Structured local data (about, degrees, certs, experience, links, projects, tools)
-    ├── lib/             # Shared utilities (`cn`, card styles, and technology icon mappings)
-    └── types/           # Core TypeScript interfaces and enums
+    ├── app/                 # Next.js App Router pages, static API routes, metadata & styles
+    ├── components/          # Modular React UI components
+    │   ├── layout/          # Page chrome & navigation (AppBar, BottomNav, Footer)
+    │   ├── sections/        # Page section components
+    │   │   ├── credentials/ # Education section, degree cards, coursework modal, and cert badges
+    │   │   ├── intro/       # Hero section and intro card
+    │   │   ├── projects/    # Projects section, list, technology filter, tool chip, cards, and modal
+    │   │   ├── about.tsx    # About Me bento grid section
+    │   │   └── experience.tsx # Work experience section
+    │   ├── shared/          # Cross-section shared components (Accordion, ContactMe, Pagination, WorkTimeline)
+    │   └── ui/              # shadcn/ui & Base UI primitive components (Badge, Button, Card, Dialog, Skeleton)
+    ├── config/              # Centralized site configuration, SEO metadata defaults, and JSON-LD schema data
+    ├── data/                # Structured local data (about, degrees, certs, experience, links, projects, tools)
+    ├── lib/                 # Shared utilities (`cn`, `getSafeExternalUrl`, and technology icon mappings)
+    └── types/               # Core TypeScript interfaces and enums
 ```
 
 ### Import Aliases

@@ -16,7 +16,7 @@ import { FaJava } from 'react-icons/fa6'
  * Shared by every component that renders technology icons so the mapping only
  * needs to be updated in one place when a new tool is added.
  */
-export const toolIconMap: Record<string, IconType> = {
+export const toolIconMap = {
   SiReact,
   SiSwift,
   SiNodedotjs,
@@ -26,4 +26,6 @@ export const toolIconMap: Record<string, IconType> = {
   SiPhp,
   SiTypescript,
   FaJava,
-}
+} satisfies Record<string, IconType>
+
+export type ToolIconName = keyof typeof toolIconMap

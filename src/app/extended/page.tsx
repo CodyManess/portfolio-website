@@ -4,26 +4,24 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { extendedRoles } from '@/data/experience'
 import WorkTimeline from '@/components/shared/work-timeline/work-timeline'
+import { siteConfig } from '@/config/site'
 
 export const metadata: Metadata = {
-  title: 'Cody Maness | Extended Work History',
-  description:
-    'An extra page within my portfolio detailing past jobs worked before and during college.',
+  title: siteConfig.extendedTitle,
+  description: siteConfig.extendedDescription,
   alternates: {
     canonical: '/extended',
   },
   openGraph: {
-    title: 'Cody Maness | Extended Work History',
-    description:
-      'An extra page within my portfolio detailing past jobs worked before and during college.',
-    url: 'https://codymaness.com/extended',
+    title: siteConfig.extendedTitle,
+    description: siteConfig.extendedDescription,
+    url: `${siteConfig.url}/extended`,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cody Maness | Extended Work History',
-    description:
-      'An extra page within my portfolio detailing past jobs worked before and during college.',
-    images: ['/opengraph-image'],
+    title: siteConfig.extendedTitle,
+    description: siteConfig.extendedDescription,
+    images: [siteConfig.ogImagePath],
   },
 }
 

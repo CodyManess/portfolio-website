@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
-import About from '@/components/about/about'
+import About from '@/components/sections/about'
 import { techInterests, personalInterests, mediaLinks } from '@/data/about'
 
 describe('About component', () => {

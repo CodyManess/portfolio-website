@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
-import ProjectList from '@/components/projects/project-list'
-import type Project from '@/types/project'
+import ProjectList from '@/components/sections/projects/project-list'
+import type { Project } from '@/types/project'
 
 describe('ProjectList with TechnologyFilter', () => {
   const mockProjects: Project[] = [

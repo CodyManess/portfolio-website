@@ -7,6 +7,8 @@ import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 const DESKTOP_MEDIA_QUERY = '(min-width: 640px)'
+const SCROLL_DELTA_THRESHOLD = 10
+const HIDE_SCROLL_OFFSET = 64
 
 const PortfolioAppBar = () => {
   const pathname = usePathname()
@@ -14,9 +16,11 @@ const PortfolioAppBar = () => {
     hidden: false,
     path: pathname,
   })
+  const [value, setValue] = useState(navLinks[0]?.title.toLowerCase() ?? 'home')
   const prevScrollPosRef = useRef(0)
 
   const isHidden = scrollState.path === pathname ? scrollState.hidden : false
+  const activeValue = pathname.startsWith('/extended') ? 'experience' : value
 
   useEffect(() => {
     prevScrollPosRef.current = Math.max(window.scrollY, 0)
@@ -26,21 +30,45 @@ const PortfolioAppBar = () => {
         ? window.matchMedia(DESKTOP_MEDIA_QUERY)
         : null
 
+    const sectionIds = navLinks.map((page) => page.title.toLowerCase())
+
     let rafId: number | undefined
     let isScheduled = false
     let isListening = false
 
-    const updateVisibility = () => {
-      const currentScrollPos = Math.max(window.scrollY, 0)
-      const prevScrollPos = prevScrollPosRef.current
+    const updateActiveSection = () => {
+      if (pathname.startsWith('/extended')) return
 
-      if (currentScrollPos <= 0 || prevScrollPos > currentScrollPos) {
-        setScrollState({ hidden: false, path: pathname })
-      } else if (currentScrollPos > prevScrollPos) {
-        setScrollState({ hidden: true, path: pathname })
+      const triggerLine = window.innerHeight * 0.35
+      let currentSection = sectionIds[0] ?? 'home'
+
+      for (const id of sectionIds) {
+        const element = document.getElementById(id)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          if (rect.top <= triggerLine) {
+            currentSection = id
+          }
+        }
       }
 
-      prevScrollPosRef.current = currentScrollPos
+      setValue(currentSection)
+    }
+
+    const updateOnScroll = () => {
+      const currentScrollPos = Math.max(window.scrollY, 0)
+      const prevScrollPos = prevScrollPosRef.current
+      const delta = currentScrollPos - prevScrollPos
+
+      if (currentScrollPos <= HIDE_SCROLL_OFFSET) {
+        setScrollState({ hidden: false, path: pathname })
+        prevScrollPosRef.current = currentScrollPos
+      } else if (Math.abs(delta) >= SCROLL_DELTA_THRESHOLD) {
+        setScrollState({ hidden: delta > 0, path: pathname })
+        prevScrollPosRef.current = currentScrollPos
+      }
+
+      updateActiveSection()
     }
 
     const onScroll = () => {
@@ -49,7 +77,7 @@ const PortfolioAppBar = () => {
       rafId = window.requestAnimationFrame(() => {
         isScheduled = false
         rafId = undefined
-        updateVisibility()
+        updateOnScroll()
       })
     }
 
@@ -57,10 +85,13 @@ const PortfolioAppBar = () => {
       const isDesktop = mql ? mql.matches : true
       if (isDesktop && !isListening) {
         prevScrollPosRef.current = Math.max(window.scrollY, 0)
+        updateActiveSection()
         window.addEventListener('scroll', onScroll, { passive: true })
+        window.addEventListener('hashchange', onScroll)
         isListening = true
       } else if (!isDesktop && isListening) {
         window.removeEventListener('scroll', onScroll)
+        window.removeEventListener('hashchange', onScroll)
         if (rafId !== undefined) {
           window.cancelAnimationFrame(rafId)
           rafId = undefined
@@ -78,6 +109,7 @@ const PortfolioAppBar = () => {
       mql?.removeEventListener('change', syncListener)
       if (isListening) {
         window.removeEventListener('scroll', onScroll)
+        window.removeEventListener('hashchange', onScroll)
       }
       if (rafId !== undefined) {
         window.cancelAnimationFrame(rafId)
@@ -96,17 +128,30 @@ const PortfolioAppBar = () => {
       )}
     >
       <ul className="m-0 flex list-none justify-center py-8">
-        {navLinks.map((page) => (
-          <li key={page.title}>
-            <Link
-              className="m-4 text-xl font-medium text-(--white) decoration-[rgba(25,118,210,0.4)] underline-offset-4 hover:decoration-inherit"
-              href={`/#${page.title.toLowerCase()}`}
-              onFocus={() => setScrollState({ hidden: false, path: pathname })}
-            >
-              {page.title}
-            </Link>
-          </li>
-        ))}
+        {navLinks.map((page) => {
+          const id = page.title.toLowerCase()
+          const isActive = activeValue === id
+          return (
+            <li key={page.title}>
+              <Link
+                aria-current={isActive ? 'location' : undefined}
+                className={cn(
+                  'm-4 text-xl underline-offset-8 transition-colors duration-200',
+                  isActive
+                    ? 'font-semibold text-(--primary-light) underline decoration-(--primary-light) decoration-2'
+                    : 'font-medium text-(--white) decoration-[rgba(25,118,210,0.4)] hover:text-(--primary-light) hover:underline'
+                )}
+                href={`/#${id}`}
+                onClick={() => setValue(id)}
+                onFocus={() =>
+                  setScrollState({ hidden: false, path: pathname })
+                }
+              >
+                {page.title}
+              </Link>
+            </li>
+          )
+        })}
       </ul>
     </nav>
   )

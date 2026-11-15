@@ -1,5 +1,6 @@
 import React from 'react'
 import ContactMe from '@/components/shared/contact-me'
+import { siteConfig } from '@/config/site'
 
 const Footer: React.FC = () => {
   // Extra bottom padding on mobile keeps content clear of the fixed BottomNav
@@ -22,13 +23,14 @@ const Footer: React.FC = () => {
         <div className="flex flex-col items-center justify-between gap-6 border-t border-slate-900 pt-8 text-xs text-slate-400 md:flex-row">
           <div className="text-center md:text-left">
             <p className="mb-2">
-              Built by Cody Maness using Next.js, Tailwind CSS, and TypeScript.
+              Built by {siteConfig.name} using Next.js, Tailwind CSS, and
+              TypeScript.
             </p>
             <p>Please consider supporting open source projects.</p>
           </div>
           <div className="text-center md:text-right">
             <p className="mb-2">
-              Copyright © {new Date().getFullYear()} Cody Maness
+              Copyright © {new Date().getFullYear()} {siteConfig.name}
             </p>
             <p>Various trademarks held by their respective owners.</p>
           </div>

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
-import PortfolioAppBar from '@/components/nav/app-bar'
-import BottomNav from '@/components/nav/bottom-nav'
-import Footer from '@/components/nav/footer'
+import PortfolioAppBar from '@/components/layout/app-bar'
+import BottomNav from '@/components/layout/bottom-nav'
+import Footer from '@/components/layout/footer'
+import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 
 const inter = localFont({
@@ -23,28 +24,25 @@ const robotoMono = localFont({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://codymaness.com'),
+  metadataBase: new URL(siteConfig.url),
   alternates: {
     canonical: '/',
   },
-  title: 'Cody Maness | Full-Stack Developer',
-  description:
-    'Full-Stack Web & Mobile Developer building accessible, scalable, and engaging digital experiences.',
+  title: siteConfig.title,
+  description: siteConfig.description,
   openGraph: {
-    title: 'Cody Maness | Full-Stack Developer',
-    description:
-      'Full-Stack Web & Mobile Developer building accessible, scalable, and engaging digital experiences.',
-    siteName: 'Cody Maness | Full-Stack Developer',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    siteName: siteConfig.title,
     locale: 'en_US',
     type: 'website',
-    url: 'https://codymaness.com',
+    url: siteConfig.url,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cody Maness | Full-Stack Developer',
-    description:
-      'Full-Stack Web & Mobile Developer building accessible, scalable, and engaging digital experiences.',
-    images: ['/opengraph-image'],
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [siteConfig.ogImagePath],
   },
 }
 

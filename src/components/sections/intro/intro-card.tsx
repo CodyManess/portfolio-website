@@ -1,5 +1,6 @@
 import React from 'react'
 import ContactMe from '@/components/shared/contact-me'
+import { siteConfig } from '@/config/site'
 import Image from 'next/image'
 import profilePic from '@public/intro/portfolio-picture.webp'
 
@@ -23,7 +24,7 @@ const IntroCard = () => {
               src={profilePic}
               // The avatar is always rendered in a fixed 160px (w-40) frame
               sizes="160px"
-              alt="Cody Maness"
+              alt={siteConfig.name}
               className="object-cover transition-transform duration-500 hover:scale-105"
             />
           </div>
@@ -31,15 +32,14 @@ const IntroCard = () => {
       </div>
 
       <h1 className="mt-6 flex flex-col items-center bg-linear-to-b from-slate-900 via-slate-800 to-slate-950 bg-clip-text text-center text-4xl font-bold tracking-tight text-transparent md:text-5xl dark:from-white dark:via-slate-100 dark:to-slate-300">
-        Cody Maness
+        {siteConfig.name}
         <span className="mt-2 block text-sm font-semibold tracking-wider text-(--primary-color) uppercase dark:text-(--primary-light)">
-          Web & Mobile Developer
+          {siteConfig.role}
         </span>
       </h1>
 
       <p className="mt-2 mb-6 max-w-xs text-center text-sm/relaxed text-slate-700 md:text-base dark:text-slate-200">
-        Mobile and Web Developer with a love for creating engaging, accessible,
-        and user-friendly applications.
+        {siteConfig.shortDescription}
       </p>
 
       <div className="flex w-full justify-center border-t border-slate-200/60 pt-6 dark:border-white/5">

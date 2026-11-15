@@ -11,7 +11,7 @@ const Experience = () => {
         <WorkTimeline roles={roles} />
         <div className="mt-6 flex justify-center">
           <Link
-            className="group inline-flex items-center gap-3 rounded-full border border-slate-200/90 bg-linear-to-br from-white to-slate-50/80 px-6 py-3 text-sm font-semibold text-(--foreground) shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-(--primary-color)/40 hover:text-(--primary-color) hover:shadow-[0_10px_25px_rgba(0,122,184,0.14)] sm:text-base dark:border-slate-800/80 dark:from-slate-900/70 dark:to-slate-950/90 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light)"
+            className="group inline-flex items-center gap-3 rounded-full border border-slate-200/90 bg-linear-to-br from-white to-slate-50/80 px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-(--primary-color)/40 hover:text-(--primary-color) hover:shadow-[0_10px_25px_rgba(0,122,184,0.14)] sm:text-base dark:border-slate-800/80 dark:from-slate-900/70 dark:to-slate-950/90 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light)"
             href="/extended"
           >
             <FaClockRotateLeft

@@ -1,10 +1,10 @@
-import type Role from '@/types/role'
+import type { Role } from '@/types/role'
 import {
   Accordion,
   AccordionBody,
   AccordionHeader,
 } from '@/components/shared/accordion'
-import { CARD_CLASSNAME } from '@/lib/utils'
+import { interactiveCardVariants } from '@/components/ui/card'
 
 interface RoleCardProps {
   role: Role
@@ -16,7 +16,7 @@ interface RoleCardProps {
 const RoleCard = ({ role, setExpanded, expanded, index }: RoleCardProps) => {
   return (
     <Accordion
-      className={CARD_CLASSNAME}
+      className={interactiveCardVariants()}
       index={index}
       expanded={expanded}
       setExpanded={setExpanded}

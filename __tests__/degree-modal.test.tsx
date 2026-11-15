@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
-import DegreeModal from '@/components/credentials/degree-modal'
+import DegreeModal from '@/components/sections/credentials/degree-modal'
 import type { Degree } from '@/types/education'
 import { CourseType } from '@/types/education'
 

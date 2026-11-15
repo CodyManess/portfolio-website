@@ -1,13 +1,13 @@
 'use client'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import DegreeCard from './school-card'
+import DegreeCard from './degree-card'
 import CertBadge from './cert-badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
 import type { EducationData } from '@/types/education'
 
-const CredsSkeleton = () => (
+const CredentialsSkeleton = () => (
   <div aria-busy="true" aria-label="Loading education data">
     <div className="my-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {[0, 1, 2].map((i) => (
@@ -28,7 +28,7 @@ const isValidEducationData = (data: unknown): data is EducationData => {
   return Array.isArray(record.degrees) && Array.isArray(record.certs)
 }
 
-const Creds = () => {
+const Credentials = () => {
   const [educationData, setEducationData] = useState<EducationData | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
@@ -96,7 +96,7 @@ const Creds = () => {
   )
 
   if (isLoading) {
-    sectionBody = <CredsSkeleton />
+    sectionBody = <CredentialsSkeleton />
   }
 
   if (error) {
@@ -132,4 +132,4 @@ const Creds = () => {
   )
 }
 
-export default Creds
+export default Credentials

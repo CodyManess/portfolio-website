@@ -2,11 +2,11 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import * as React from 'react'
-import type Project from '@/types/project'
+import type { Project } from '@/types/project'
 import ProjectModal from './project-modal'
-import ToolChip from '@/components/shared/tool-chip'
+import ToolChip from './tool-chip'
 import { FaArrowRight, FaArrowUpRightFromSquare, FaStar } from 'react-icons/fa6'
-import { cn, CARD_CLASSNAME, getSafeExternalUrl } from '@/lib/utils'
+import { getSafeExternalUrl } from '@/lib/utils'
 
 /**
  * Props for the ProjectCard component.
@@ -29,14 +29,12 @@ const ProjectCard = (project: Project) => {
     <>
       {/* eslint-disable-next-line jsx-a11y/prefer-tag-over-role -- Card contains block headings/paragraphs invalid inside <button> */}
       <Card
+        variant="interactive"
         tabIndex={0}
         role="button"
         aria-label={`View details for ${project.title}`}
         onKeyDown={handleKeyDown}
-        className={cn(
-          CARD_CLASSNAME,
-          'pb-3 focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none'
-        )}
+        className="pb-3 focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none"
         onClick={handleOpen}
       >
         <CardHeader className="pb-2">

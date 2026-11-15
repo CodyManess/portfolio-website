@@ -1,48 +1,29 @@
-import Intro from '@/components/intro/intro'
-import Experience from '@/components/experience/experience'
-import Creds from '@/components/credentials/creds'
-import Projects from '@/components/projects/projects'
-import About from '@/components/about/about'
+import Intro from '@/components/sections/intro/intro'
+import Experience from '@/components/sections/experience'
+import Credentials from '@/components/sections/credentials/credentials'
+import Projects from '@/components/sections/projects/projects'
+import About from '@/components/sections/about'
+import { siteConfig } from '@/config/site'
 
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Cody Maness',
-  jobTitle: 'Web & Mobile Developer',
-  url: 'https://codymaness.com',
-  image: 'https://codymaness.com/opengraph-image',
-  sameAs: [
-    'https://github.com/CodyManess',
-    'https://www.linkedin.com/in/cody-maness/',
-  ],
+  name: siteConfig.name,
+  jobTitle: siteConfig.role,
+  url: siteConfig.url,
+  image: `${siteConfig.url}${siteConfig.ogImagePath}`,
+  sameAs: [...siteConfig.sameAs],
   worksFor: {
     '@type': 'Organization',
-    name: 'The Cigna Group',
+    name: siteConfig.employer,
   },
-  alumniOf: [
-    {
-      '@type': 'CollegeOrUniversity',
-      name: 'Middle Tennessee State University',
-      url: 'https://www.mtsu.edu/',
-    },
-    {
-      '@type': 'CollegeOrUniversity',
-      name: 'Louisiana State University Shreveport',
-      url: 'https://www.lsus.edu/',
-    },
-  ],
-  knowsAbout: [
-    'React',
-    'Next.js',
-    'TypeScript',
-    'React Native',
-    'Kotlin',
-    'Swift',
-    'Angular',
-    'Node.js',
-  ],
-  description:
-    'Mobile and Web Developer with a love for creating engaging, accessible, and user-friendly applications.',
+  alumniOf: siteConfig.alumniOf.map((school) => ({
+    '@type': 'CollegeOrUniversity',
+    name: school.name,
+    url: school.url,
+  })),
+  knowsAbout: [...siteConfig.knowsAbout],
+  description: siteConfig.shortDescription,
 }
 
 export default function Home() {
@@ -60,7 +41,7 @@ export default function Home() {
 
       <Experience />
 
-      <Creds />
+      <Credentials />
 
       <Projects />
     </main>

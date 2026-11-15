@@ -1,7 +1,7 @@
 'use client'
 import RoleItem from './role-item'
 import React from 'react'
-import type Role from '@/types/role'
+import type { Role } from '@/types/role'
 
 interface WorkTimelineProps {
   roles: Role[]

@@ -19,14 +19,12 @@ const ToolChip: React.FC<ToolChipProps> = ({ tool }) => {
         } as React.CSSProperties
       }
     >
-      {IconComponent ? (
-        <IconComponent
-          className="mr-1.5 transition-transform duration-300"
-          size="0.875rem"
-          color={tool.iconColor}
-          aria-hidden="true"
-        />
-      ) : null}
+      <IconComponent
+        className="mr-1.5 transition-transform duration-300"
+        size="0.875rem"
+        color={tool.iconColor}
+        aria-hidden="true"
+      />
       <span>{tool.title}</span>
     </div>
   )

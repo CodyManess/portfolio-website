@@ -9,8 +9,8 @@ import {
 } from '@/components/ui/dialog'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { FaCircleCheck, FaArrowUpRightFromSquare } from 'react-icons/fa6'
-import type Project from '@/types/project'
-import ToolChip from '@/components/shared/tool-chip'
+import type { Project } from '@/types/project'
+import ToolChip from './tool-chip'
 import { cn, getSafeExternalUrl } from '@/lib/utils'
 
 interface Props {

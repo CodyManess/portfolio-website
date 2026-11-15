@@ -1,6 +1,6 @@
 import type { StaticImageData } from 'next/image'
 
-export default interface Role {
+export interface Role {
   date: string
   title: string
   companyName: string

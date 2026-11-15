@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
-import Footer from '@/components/nav/footer'
+import Footer from '@/components/layout/footer'
 import { socialLinks } from '@/data/links'
 
 describe('Footer', () => {

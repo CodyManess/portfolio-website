@@ -1,11 +1,6 @@
 import type { IconType } from 'react-icons'
 
-export interface TechInterest {
-  name: string
-  emoji: string
-}
-
-export interface PersonalInterest {
+export interface Interest {
   name: string
   emoji: string
 }

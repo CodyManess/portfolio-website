@@ -10,11 +10,11 @@ description: >-
 
 Follow these steps to add a project or new technology chip safely and consistently:
 
-1. **Check or add tools in `src/data/tools.ts`**:
+1. **Register the tool icon in `src/lib/tool-icons.ts`**:
+   - Import the brand icon from `react-icons/si` or `react-icons/fa6` and add it to `toolIconMap` (`Tool.iconName` is typed as `ToolIconName = keyof typeof toolIconMap`, so TypeScript enforces a valid key).
+2. **Check or add tools in `src/data/tools.ts`**:
    - Reuse an existing `Tools.<Key>` entry when possible.
-   - If adding a new tool, add it to the `Tools` object (keeping `} satisfies Record<string, Tool>`) with `title`, `iconName`, and `iconColor`.
-2. **Register the tool icon in `src/lib/tool-icons.ts`**:
-   - Import the brand icon from `react-icons/si` or `react-icons/fa6` and add it to `toolIconMap` using the exact `iconName` key set in `src/data/tools.ts`.
+   - If adding a new tool, add it to the `Tools` object (keeping `} satisfies Record<string, Tool>`) with `title`, `iconName` (matching `ToolIconName`), and `iconColor`.
 3. **Add the project in `src/data/projects.ts`**:
    - Match the `Project` interface (`title`, `description`, optional `link`, `achievements`, `tools`).
    - Only use `https://` URLs for `link` (components validate URLs through `getSafeExternalUrl`).

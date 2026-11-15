@@ -1,9 +1,10 @@
 import { ImageResponse } from 'next/og'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { siteConfig } from '@/config/site'
 
 // Image metadata
-export const alt = 'Profile of Cody Maness'
+export const alt = `Profile of ${siteConfig.name}`
 
 export const size = {
   width: 1200,
@@ -70,7 +71,7 @@ export default async function Image() {
           >
             <img
               src={imageDataUrl}
-              alt="Cody Maness"
+              alt={siteConfig.name}
               style={{
                 width: '100%',
                 height: '100%',
@@ -92,7 +93,7 @@ export default async function Image() {
             color: '#ffffff',
           }}
         >
-          Cody Maness
+          {siteConfig.name}
           <span
             style={{
               display: 'block',
@@ -105,7 +106,7 @@ export default async function Image() {
               letterSpacing: '1.5px',
             }}
           >
-            Web & Mobile Developer
+            {siteConfig.role}
           </span>
         </h1>
         <p
@@ -118,7 +119,7 @@ export default async function Image() {
             lineHeight: '1.6',
           }}
         >
-          Creating accessible, scalable, and engaging web & mobile applications.
+          {siteConfig.ogTagline}
         </p>
         <div
           style={{

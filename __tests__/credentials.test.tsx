@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
-import Creds from '@/components/credentials/creds'
+import Credentials from '@/components/sections/credentials/credentials'
 import type { EducationData } from '@/types/education'
 import { IconType } from '@/types/education'
 
-describe('Creds', () => {
+describe('Credentials', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
@@ -38,7 +38,7 @@ describe('Creds', () => {
       })
     ) as jest.Mock
 
-    render(<Creds />)
+    render(<Credentials />)
 
     // Wait for the component to render the mocked data
     const degreeElement = await screen.findByText(/University of Mocking/i)
@@ -70,7 +70,7 @@ describe('Creds', () => {
           json: () => Promise.resolve({ degrees: [], certs: [] }),
         })
 
-      render(<Creds />)
+      render(<Credentials />)
 
       const alert = await screen.findByRole('alert')
       expect(alert).toHaveTextContent(/Failed to load education data/i)
@@ -95,7 +95,7 @@ describe('Creds', () => {
         })
       ) as jest.Mock
 
-      render(<Creds />)
+      render(<Credentials />)
 
       const alert = await screen.findByRole('alert')
       expect(alert).toHaveTextContent(/Failed to load education data/i)
@@ -108,7 +108,7 @@ describe('Creds', () => {
     const abortSpy = jest.spyOn(AbortController.prototype, 'abort')
     global.fetch = jest.fn(() => new Promise(() => {})) as jest.Mock
 
-    const { unmount } = render(<Creds />)
+    const { unmount } = render(<Credentials />)
     unmount()
 
     expect(abortSpy).toHaveBeenCalledTimes(1)

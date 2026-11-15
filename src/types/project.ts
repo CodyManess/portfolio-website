@@ -1,4 +1,6 @@
-export default interface Project {
+import type { ToolIconName } from '@/lib/tool-icons'
+
+export interface Project {
   title: string
   description: string
   link?: string
@@ -8,6 +10,6 @@ export default interface Project {
 
 export interface Tool {
   title: string
-  iconName: string
+  iconName: ToolIconName
   iconColor: string
 }
