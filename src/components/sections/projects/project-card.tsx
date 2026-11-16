@@ -27,10 +27,10 @@ const ProjectCard = (project: Project) => {
 
   return (
     <>
-      {/* eslint-disable-next-line jsx-a11y/prefer-tag-over-role -- Card contains block headings/paragraphs invalid inside <button> */}
       <Card
         variant="interactive"
         tabIndex={0}
+        // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- Card contains block headings/paragraphs invalid inside <button>
         role="button"
         aria-label={`View details for ${project.title}`}
         onKeyDown={handleKeyDown}

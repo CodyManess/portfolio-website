@@ -135,8 +135,8 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
             <>
               {/* Category Filter Tabs */}
               {availableCategories.length > 1 && (
-                // eslint-disable-next-line jsx-a11y/prefer-tag-over-role -- Toolbar of toggle buttons is not a form <fieldset>
                 <div
+                  // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- Toolbar of toggle buttons is not a form <fieldset>
                   role="group"
                   aria-label="Filter coursework by category"
                   className="flex w-fit flex-wrap items-center gap-1.5 rounded-lg border border-border/50 bg-muted/50 p-1"

@@ -20,9 +20,9 @@ const TechnologyFilter = ({
   totalCount,
 }: Props) => {
   return (
-    // eslint-disable-next-line jsx-a11y/prefer-tag-over-role -- Toolbar of toggle buttons is not a form <fieldset>
     <div
       className="mb-8 flex flex-wrap items-center justify-center gap-2"
+      // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- Toolbar of toggle buttons is not a form <fieldset>
       role="group"
       aria-label="Filter projects by technology"
     >

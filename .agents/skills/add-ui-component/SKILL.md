@@ -16,7 +16,7 @@ This repository uses shadcn/ui (`base-nova` style) powered by `@base-ui/react` p
 2. **Follow naming and styling conventions**:
    - Use kebab-case filenames under `src/components/` and PascalCase component symbols.
    - Reuse `cn` from `@/lib/utils`, `<Card variant="interactive">` / `interactiveCardVariants` from `@/components/ui/card`, and theme tokens in `src/app/globals.css` (`--primary-color`, `--primary-dark`, `--primary-light`, `--surface-background`).
-   - Honor `prefers-reduced-motion` (`motion-reduce:`) and preserve keyboard focus and accessible names (`eslint-plugin-jsx-a11y` recommended rules are enforced as errors).
+   - Honor `prefers-reduced-motion` (`motion-reduce:`) and preserve keyboard focus and accessible names (`jsx-a11y` rules are enforced as errors in `.oxlintrc.json`).
 3. **Add unit tests and verify**:
    - Add a matching kebab-case test file under `__tests__/` following `__tests__/AGENTS.md`.
    - Run `npm run check`.

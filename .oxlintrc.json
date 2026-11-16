@@ -1,0 +1,153 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "options": {
+    "typeAware": true,
+    "denyWarnings": true,
+    "reportUnusedDisableDirectives": "error"
+  },
+  "plugins": [
+    "eslint",
+    "typescript",
+    "unicorn",
+    "oxc",
+    "react",
+    "jsx-a11y",
+    "nextjs",
+    "import",
+    "promise"
+  ],
+  "jsPlugins": [
+    "eslint-plugin-better-tailwindcss",
+    "eslint-plugin-testing-library",
+    "eslint-plugin-jest-dom"
+  ],
+  "env": {
+    "browser": true,
+    "es2024": true,
+    "node": true
+  },
+  "ignorePatterns": [
+    ".next/**",
+    "out/**",
+    "build/**",
+    "coverage/**",
+    "next-env.d.ts"
+  ],
+  "settings": {
+    "jsx-a11y": {
+      "components": {
+        "Image": "img"
+      }
+    },
+    "better-tailwindcss": {
+      "entryPoint": "src/app/globals.css"
+    }
+  },
+  "rules": {
+    "better-tailwindcss/enforce-consistent-class-order": "error",
+    "better-tailwindcss/no-deprecated-classes": "error",
+    "better-tailwindcss/no-duplicate-classes": "error",
+    "better-tailwindcss/no-unnecessary-whitespace": "error",
+    "better-tailwindcss/enforce-canonical-classes": "error",
+    "better-tailwindcss/no-concatenated-classes": "error",
+    "better-tailwindcss/no-conflicting-classes": "error",
+    "better-tailwindcss/no-unknown-classes": "error",
+    "jsx-a11y/alt-text": [
+      "error",
+      {
+        "elements": ["img"],
+        "img": ["Image"]
+      }
+    ],
+    "jsx-a11y/anchor-ambiguous-text": "error",
+    "jsx-a11y/prefer-tag-over-role": "error",
+    "react/exhaustive-deps": "error",
+    "react/button-has-type": "error",
+    "react/jsx-no-target-blank": "error",
+    "react/jsx-no-useless-fragment": "error",
+    "react/no-array-index-key": "error",
+    "react/self-closing-comp": "error",
+    "import/first": "error",
+    "import/no-cycle": "error",
+    "import/no-duplicates": "error",
+    "import/no-mutable-exports": "error",
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      { "prefer": "type-imports", "fixStyle": "separate-type-imports" }
+    ],
+    "@typescript-eslint/no-confusing-void-expression": [
+      "error",
+      { "ignoreArrowShorthand": true }
+    ],
+    "@typescript-eslint/no-import-type-side-effects": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+    ],
+    "@typescript-eslint/no-unused-expressions": "error",
+    "@typescript-eslint/restrict-template-expressions": [
+      "error",
+      { "allowNumber": true }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["__tests__/**/*.{ts,tsx}", "**/*.{spec,test}.{js,jsx,ts,tsx}"],
+      "plugins": ["jest"],
+      "env": {
+        "jest": true
+      },
+      "rules": {
+        "testing-library/await-async-events": "error",
+        "testing-library/await-async-queries": "error",
+        "testing-library/await-async-utils": "error",
+        "testing-library/no-await-sync-events": "error",
+        "testing-library/no-await-sync-queries": "error",
+        "testing-library/no-container": "error",
+        "testing-library/no-debugging-utils": "error",
+        "testing-library/no-dom-import": ["error", "react"],
+        "testing-library/no-global-regexp-flag-in-query": "error",
+        "testing-library/no-node-access": "error",
+        "testing-library/no-promise-in-fire-event": "error",
+        "testing-library/no-render-in-lifecycle": "error",
+        "testing-library/no-unnecessary-act": "error",
+        "testing-library/no-wait-for-multiple-assertions": "error",
+        "testing-library/no-wait-for-side-effects": "error",
+        "testing-library/no-wait-for-snapshot": "error",
+        "testing-library/prefer-find-by": "error",
+        "testing-library/prefer-presence-queries": "error",
+        "testing-library/prefer-query-by-disappearance": "error",
+        "testing-library/prefer-screen-queries": "error",
+        "testing-library/render-result-naming-convention": "error",
+        "jest-dom/prefer-checked": "error",
+        "jest-dom/prefer-empty": "error",
+        "jest-dom/prefer-enabled-disabled": "error",
+        "jest-dom/prefer-focus": "error",
+        "jest-dom/prefer-in-document": "error",
+        "jest-dom/prefer-required": "error",
+        "jest-dom/prefer-to-have-attribute": "error",
+        "jest-dom/prefer-to-have-class": "error",
+        "jest-dom/prefer-to-have-style": "error",
+        "jest-dom/prefer-to-have-text-content": "error",
+        "jest-dom/prefer-to-have-value": "error"
+      }
+    },
+    {
+      "files": ["jest.setup.js"],
+      "env": {
+        "jest": true
+      }
+    },
+    {
+      "files": [
+        "src/app/**/opengraph-image.{js,jsx,ts,tsx}",
+        "src/app/**/twitter-image.{js,jsx,ts,tsx}",
+        "src/app/**/icon.{js,jsx,ts,tsx}"
+      ],
+      "rules": {
+        "@next/next/no-img-element": "off"
+      }
+    }
+  ]
+}

@@ -70,7 +70,7 @@ We utilize a standard `src/` directory layout:
   - _Incorrect_: `src/components/Credentials/degreeCard.tsx`
 - **React Components**: Use PascalCase for React component names internally, while keeping the file name in kebab-case.
 - **Named Type Exports**: Use named `export interface` / `export enum` exports in `src/types/` for consistency across imports.
-- **Prettier Formatting**: Configured in `package.json` (`semi: false`, `singleQuote: true`, `tabWidth: 2`, `trailingComma: "es5"`) with `.prettierignore`. Run `npm run format` to format files across the repository.
+- **Oxfmt Formatting**: Configured in `.oxfmtrc.json` (`semi: false`, `singleQuote: true`, `tabWidth: 2`, `trailingComma: "es5"`, `printWidth: 80`). Run `npm run format` to format files across the repository.
 
 ---
 
@@ -100,11 +100,11 @@ We utilize a standard `src/` directory layout:
 - Runtime uses Node 22 LTS pinned in `.tool-versions` (`mise`).
 - All unit tests live in `__tests__/`. `jest.setup.js` resets `global.fetch` before each test to reject unmocked network calls, and `jest.config.mjs` enables `clearMocks: true` and `restoreMocks: true`.
 - Before completing any task, verify docs are synced and run:
-  - Combined check: `npm run check` (runs `typegen`, `format:check`, `lint`, `tsc --noEmit`, and `test`)
+  - Combined check: `npm run check` (runs `typegen`, `format:check`, `lint`, TypeScript 7.1 native `--noEmit`, and `test`)
   - Or individually:
     - `npm run typegen` (generates `next-env.d.ts` and `.next/types/` on fresh checkouts before `lint` / `typecheck`)
     - `npm run format:check` (and `npm run format` when needed)
-    - `npm run lint` (`eslint . --max-warnings=0`, including strict type-checked TypeScript, strict `jsx-a11y`, `better-tailwindcss`, `eslint-comments`, `testing-library`, and `jest-dom` rules)
-    - `npm run typecheck` (`next typegen && tsc --noEmit` with `noUncheckedIndexedAccess` and `noImplicitOverride`)
+    - `npm run lint` (`oxlint` configured in `.oxlintrc.json` with `typeAware: true`, `denyWarnings: true`, `jsx-a11y`, `nextjs`, `react`, `import`, `better-tailwindcss`, `testing-library`, and `jest-dom` rules)
+    - `npm run typecheck` (`next typegen && node node_modules/@typescript/native/lib/tsc.js --noEmit` with `noUncheckedIndexedAccess` and `noImplicitOverride`)
     - `npm test` (or `npm run test`)
   - Production build: `npm run build` (note: in restricted Windows sandboxes where Turbopack cannot spawn PostCSS subprocesses, validate compilation with `npx next build --webpack` or run `npm run build` locally)

@@ -2,6 +2,8 @@ import React from 'react'
 import ContactMe from '@/components/shared/contact-me'
 import { siteConfig } from '@/config/site'
 
+const currentYear = new Date().getFullYear()
+
 const Footer: React.FC = () => {
   // Extra bottom padding on mobile keeps content clear of the fixed BottomNav
   return (
@@ -30,7 +32,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="text-center md:text-right">
             <p className="mb-2">
-              Copyright © {new Date().getFullYear()} {siteConfig.name}
+              Copyright © {currentYear} {siteConfig.name}
             </p>
             <p>Various trademarks held by their respective owners.</p>
           </div>

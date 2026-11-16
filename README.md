@@ -79,18 +79,18 @@ Visit the live site at **[codymaness.com](https://codymaness.com)**.
 
 ### Available Scripts
 
-| Command                | Description                                                                  |
-| ---------------------- | ---------------------------------------------------------------------------- |
-| `npm run dev`          | Starts the local Next.js development server.                                 |
-| `npm run build`        | Creates an optimized production build (`next build`).                        |
-| `npm start`            | Starts the production server (`next start`).                                 |
-| `npm run lint`         | Runs strict ESLint checks across the project (`--max-warnings=0`).           |
-| `npm run typegen`      | Generates Next.js route and `next-env.d.ts` global image/route types.        |
-| `npm run typecheck`    | Generates Next.js types and runs TypeScript type checking (`tsc --noEmit`).  |
-| `npm test`             | Runs the Jest unit test suite in `__tests__/`.                               |
-| `npm run format`       | Formats files across the repository with Prettier (`prettier --write .`).    |
-| `npm run format:check` | Checks repository formatting without modifying files (`prettier --check .`). |
-| `npm run check`        | Runs `typegen`, `format:check`, `lint`, `tsc --noEmit`, and `test`.          |
+| Command                | Description                                                                      |
+| ---------------------- | -------------------------------------------------------------------------------- |
+| `npm run dev`          | Starts the local Next.js development server.                                     |
+| `npm run build`        | Creates an optimized production build (`next build`).                            |
+| `npm start`            | Starts the production server (`next start`).                                     |
+| `npm run lint`         | Runs strict Oxlint checks across the project (`oxlint` with `typeAware: true`).  |
+| `npm run typegen`      | Generates Next.js route and `next-env.d.ts` global image/route types.            |
+| `npm run typecheck`    | Generates Next.js types and runs TypeScript 7.1 native type checking.            |
+| `npm test`             | Runs the Jest unit test suite in `__tests__/`.                                   |
+| `npm run format`       | Formats files across the repository with Oxfmt (`oxfmt`).                        |
+| `npm run format:check` | Checks repository formatting without modifying files (`oxfmt --check`).          |
+| `npm run check`        | Runs `typegen`, `format:check`, `lint`, `typecheck` (TS 7.1 native), and `test`. |
 
 ---
 

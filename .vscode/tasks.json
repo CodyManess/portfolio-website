@@ -20,9 +20,9 @@
     {
       "type": "npm",
       "script": "lint",
-      "problemMatcher": ["$eslint-stylish"],
+      "problemMatcher": [],
       "label": "npm: lint",
-      "detail": "eslint . --max-warnings=0"
+      "detail": "oxlint"
     },
     {
       "type": "npm",
@@ -51,14 +51,14 @@
       "script": "format",
       "problemMatcher": [],
       "label": "npm: format",
-      "detail": "prettier --write ."
+      "detail": "oxfmt"
     },
     {
       "type": "npm",
       "script": "format:check",
       "problemMatcher": [],
       "label": "npm: format:check",
-      "detail": "prettier --check ."
+      "detail": "oxfmt --check"
     },
     {
       "type": "npm",
