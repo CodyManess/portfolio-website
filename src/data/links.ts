@@ -1,10 +1,10 @@
 import {
-  FaHome,
+  FaHouse,
   FaSchool,
   FaSuitcase,
   FaInfo,
-  FaProjectDiagram,
-} from 'react-icons/fa'
+  FaDiagramProject,
+} from 'react-icons/fa6'
 
 export const socialLinks = {
   GitHub: 'https://github.com/CodyManess',
@@ -15,7 +15,7 @@ export const socialLinks = {
 export const navLinks = [
   {
     title: 'Home',
-    icon: FaHome,
+    icon: FaHouse,
   },
   {
     title: 'About',
@@ -31,6 +31,6 @@ export const navLinks = [
   },
   {
     title: 'Projects',
-    icon: FaProjectDiagram,
+    icon: FaDiagramProject,
   },
 ]

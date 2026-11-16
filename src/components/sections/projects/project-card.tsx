@@ -14,8 +14,12 @@ import { getSafeExternalUrl } from '@/lib/utils'
  */
 const ProjectCard = (project: Project) => {
   const [open, setOpen] = React.useState(false)
+  const [hasOpened, setHasOpened] = React.useState(false)
   const safeLink = getSafeExternalUrl(project.link)
-  const handleOpen = () => setOpen(true)
+  const handleOpen = () => {
+    setHasOpened(true)
+    setOpen(true)
+  }
   const handleClose = () => setOpen(false)
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -92,7 +96,9 @@ const ProjectCard = (project: Project) => {
         </CardContent>
       </Card>
 
-      <ProjectModal project={project} open={open} handleClose={handleClose} />
+      {hasOpened ? (
+        <ProjectModal project={project} open={open} handleClose={handleClose} />
+      ) : null}
     </>
   )
 }

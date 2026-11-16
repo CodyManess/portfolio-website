@@ -13,7 +13,11 @@ const DegreeCard = (degree: Degree) => {
   const { schoolName, title, subtitle, photo } = degree
 
   const [open, setOpen] = React.useState(false)
-  const handleOpen = () => setOpen(true)
+  const [hasOpened, setHasOpened] = React.useState(false)
+  const handleOpen = () => {
+    setHasOpened(true)
+    setOpen(true)
+  }
   const handleClose = () => setOpen(false)
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -61,7 +65,9 @@ const DegreeCard = (degree: Degree) => {
         </CardContent>
       </Card>
 
-      <DegreeModal degree={degree} open={open} handleClose={handleClose} />
+      {hasOpened ? (
+        <DegreeModal degree={degree} open={open} handleClose={handleClose} />
+      ) : null}
     </>
   )
 }
