@@ -97,7 +97,7 @@ We utilize a standard `src/` directory layout:
 
 ## Testing & Validation
 
-- Runtime uses Node 22 LTS pinned in `.tool-versions` (`mise`).
+- Runtime uses Node 26 LTS pinned in `.tool-versions` (`mise`).
 - All unit tests live in `__tests__/`. `jest.setup.js` resets `global.fetch` before each test to reject unmocked network calls, and `jest.config.mjs` enables `clearMocks: true` and `restoreMocks: true`.
 - Before completing any task, verify docs are synced and run:
   - Combined check: `npm run check` (runs `typegen`, `format:check`, `lint`, TypeScript 7.1 native `--noEmit`, and `test`)

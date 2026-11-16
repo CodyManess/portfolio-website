@@ -56,7 +56,7 @@ Visit the live site at **[codymaness.com](https://codymaness.com)**.
 
 ### Prerequisites
 
-- **Node.js** `>=20.9.0` (Node 22 LTS pinned in [.tool-versions](.tool-versions))
+- **Node.js** `>=22.0.0` (Node 26 LTS pinned in [.tool-versions](.tool-versions))
 - **npm** (or a compatible package manager)
 
 ### Installation & Local Development
