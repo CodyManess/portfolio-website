@@ -8,6 +8,16 @@ describe('Home', () => {
     global.fetch = jest.fn((url: string | URL | Request) => {
       const urlStr =
         typeof url === 'string' ? url : url instanceof URL ? url.href : url.url
+      if (urlStr.includes('/api/experience')) {
+        return Promise.resolve({
+          ok: true,
+          json: () =>
+            Promise.resolve({
+              roles: [],
+              extendedRoles: [],
+            }),
+        })
+      }
       if (urlStr.includes('/api/education')) {
         return Promise.resolve({
           ok: true,
@@ -37,7 +47,7 @@ describe('Home', () => {
     const main = await screen.findByRole('main')
     expect(main).toBeInTheDocument()
 
-    // Wait for the Creds component to finish loading
+    // Wait for the Credentials component to finish loading
     const educationHeading = await screen.findByRole('heading', {
       name: /education/i,
     })

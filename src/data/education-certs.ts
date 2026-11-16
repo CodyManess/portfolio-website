@@ -1,15 +1,17 @@
 import type { Cert } from '@/types/education'
 import { IconType } from '@/types/education'
+import awsBadge from '@public/credentials/aws-developer-badge.png'
+import deepLearningLogo from '@public/credentials/deep-learning-logo.png'
 
 export const certs: Cert[] = [
   {
-    icon: '/credentials/aws-developer-badge.png',
+    icon: awsBadge,
     iconType: IconType.Badge,
     name: 'AWS Certified Developer - Associate Badge',
     org: 'Amazon Web Services',
   },
   {
-    icon: '/credentials/deep-learning-logo.png',
+    icon: deepLearningLogo,
     iconType: IconType.Logo,
     name: 'Gen AI for Software Development',
     org: 'DeepLearning.ai',

@@ -1,7 +1,9 @@
 import { GET as getEducation } from '@/app/api/education/route'
+import { GET as getExperience } from '@/app/api/experience/route'
 import { GET as getProjects } from '@/app/api/projects/route'
 import { certs } from '@/data/education-certs'
 import { degrees } from '@/data/education-degrees'
+import { roles, extendedRoles } from '@/data/experience'
 import projects from '@/data/projects'
 
 jest.mock('next/server', () => ({
@@ -24,6 +26,18 @@ describe('Static API Route Handlers', () => {
     expect(response.status).toBe(200)
     expect(payload.certs).toEqual(certs)
     expect(payload.degrees).toEqual(degrees)
+  })
+
+  it('returns experience roles and extendedRoles payload', async () => {
+    const response = getExperience()
+    const payload = (await response.json()) as {
+      roles: typeof roles
+      extendedRoles: typeof extendedRoles
+    }
+
+    expect(response.status).toBe(200)
+    expect(payload.roles).toEqual(roles)
+    expect(payload.extendedRoles).toEqual(extendedRoles)
   })
 
   it('returns projects array payload', async () => {

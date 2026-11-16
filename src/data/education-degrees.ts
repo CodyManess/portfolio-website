@@ -1,5 +1,8 @@
 import type { Degree } from '@/types/education'
 import { CourseType } from '@/types/education'
+import mtsucampus from '@public/credentials/mtsucampus.webp'
+import mtsucampus2 from '@public/credentials/mtsucampus2.webp'
+import lsuscampus from '@public/credentials/lsuscampus.webp'
 
 export const degrees: Degree[] = [
   {
@@ -7,6 +10,7 @@ export const degrees: Degree[] = [
     schoolLink: 'https://www.mtsu.edu/program/computer-science-m-s/',
     title: 'Master of Science in Computer Science',
     subtitle: '',
+    photo: mtsucampus,
     awards: ["Accelerated Bachelor's to Master's Program"],
     courses: [
       {
@@ -73,6 +77,7 @@ export const degrees: Degree[] = [
       'https://www.lsus.edu/academics/graduate-studies/master-of-business-administration',
     title: 'Master of Business Administration',
     subtitle: 'Concentrating in Finance',
+    photo: lsuscampus,
     awards: [],
     courses: [
       {
@@ -138,6 +143,7 @@ export const degrees: Degree[] = [
       'https://www.mtsu.edu/program/computer-science-professional-computer-science-concentration-b-s/',
     title: 'Bachelor of Science in Computer Science',
     subtitle: 'Minoring in Communications and Mathematics',
+    photo: mtsucampus2,
     awards: [
       'Summa Cum Laude',
       'University Honors with Distinction',

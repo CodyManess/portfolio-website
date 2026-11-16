@@ -2,7 +2,6 @@ import React from 'react'
 import { FaArrowLeft } from 'react-icons/fa6'
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { extendedRoles } from '@/data/experience'
 import WorkTimeline from '@/components/shared/work-timeline/work-timeline'
 import { siteConfig } from '@/config/site'
 
@@ -51,7 +50,7 @@ const Page: React.FC = () => {
             you can see some of the ambition and hard work that helped me get to
             where I am today.
           </p>
-          <WorkTimeline roles={extendedRoles} />
+          <WorkTimeline variant="extended" />
         </div>
       </section>
     </main>

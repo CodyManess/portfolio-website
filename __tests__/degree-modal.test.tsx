@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import DegreeModal from '@/components/sections/credentials/degree-modal'
 import type { Degree } from '@/types/education'
 import { CourseType } from '@/types/education'
+import mtsucampus from '@public/credentials/mtsucampus.webp'
 
 describe('DegreeModal', () => {
   const mockDegree: Degree = {
@@ -10,6 +11,7 @@ describe('DegreeModal', () => {
     title: 'Master of Science in Computer Science',
     subtitle: 'Accelerated Program',
     schoolLink: 'https://www.mtsu.edu',
+    photo: mtsucampus,
     awards: ["Dean's List", 'Summa Cum Laude'],
     courses: [
       {
@@ -92,6 +94,7 @@ describe('DegreeModal', () => {
       title: 'Certificate Program',
       subtitle: '',
       schoolLink: 'javascript:alert(1)',
+      photo: mtsucampus,
       awards: [],
       courses: [],
     }

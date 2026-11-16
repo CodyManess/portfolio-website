@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import Credentials from '@/components/sections/credentials/credentials'
 import type { EducationData } from '@/types/education'
 import { IconType } from '@/types/education'
+import mtsucampus from '@public/credentials/mtsucampus.webp'
 
 describe('Credentials', () => {
   beforeEach(() => {
@@ -17,6 +18,7 @@ describe('Credentials', () => {
           title: 'Bachelor of Science in Computer Science',
           subtitle: 'Concentration in Software Engineering',
           schoolLink: 'https://www.mock.edu',
+          photo: mtsucampus,
           awards: ["Dean's List"],
           courses: [],
         },

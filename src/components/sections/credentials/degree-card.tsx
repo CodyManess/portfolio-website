@@ -3,29 +3,14 @@ import { Card, CardContent } from '@/components/ui/card'
 import * as React from 'react'
 import type { Degree } from '@/types/education'
 import DegreeModal from './degree-modal'
-import type { StaticImageData } from 'next/image'
 import Image from 'next/image'
-
-import mtsucampus from '@public/credentials/mtsucampus.webp'
-import mtsucampus2 from '@public/credentials/mtsucampus2.webp'
-import lsuscampus from '@public/credentials/lsuscampus.webp'
-
-/**
- * Campus photos keyed by degree title. Falls back to `mtsucampus` when a
- * degree has no dedicated photo.
- */
-const schoolPhotos: Record<string, StaticImageData> = {
-  'Master of Science in Computer Science': mtsucampus,
-  'Bachelor of Science in Computer Science': mtsucampus2,
-  'Master of Business Administration': lsuscampus,
-}
 
 /**
  * Props for the DegreeCard component.
  * @param degree - The degree data object to display.
  */
 const DegreeCard = (degree: Degree) => {
-  const { schoolName, title, subtitle } = degree
+  const { schoolName, title, subtitle, photo } = degree
 
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => setOpen(true)
@@ -53,8 +38,8 @@ const DegreeCard = (degree: Degree) => {
         <div className="relative h-45 w-full">
           <Image
             fill
-            placeholder="blur"
-            src={schoolPhotos[title] ?? mtsucampus}
+            placeholder={typeof photo === 'string' ? 'empty' : 'blur'}
+            src={photo}
             alt={schoolName}
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="aspect-video object-cover"

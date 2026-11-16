@@ -1,10 +1,24 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import ExtendedPage, { metadata } from '@/app/extended/page'
-import { extendedRoles } from '@/data/experience'
+import { roles, extendedRoles } from '@/data/experience'
 
 describe('Extended Work History Page', () => {
-  it('renders a main landmark, back link, heading, and all extended roles', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+    global.fetch = jest.fn(() =>
+      Promise.resolve({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            roles,
+            extendedRoles,
+          }),
+      })
+    ) as jest.Mock
+  })
+
+  it('renders a main landmark, back link, heading, and all extended roles', async () => {
     render(<ExtendedPage />)
 
     expect(screen.getByRole('main')).toBeInTheDocument()
@@ -14,6 +28,16 @@ describe('Extended Work History Page', () => {
 
     const backLink = screen.getByRole('link', { name: /back to portfolio/i })
     expect(backLink).toHaveAttribute('href', '/#experience')
+
+    const firstExtended = extendedRoles[0]
+    expect(firstExtended).toBeDefined()
+    if (!firstExtended) return
+    expect(
+      await screen.findByRole('heading', {
+        level: 3,
+        name: firstExtended.title,
+      })
+    ).toBeInTheDocument()
 
     extendedRoles.forEach((role) => {
       expect(
