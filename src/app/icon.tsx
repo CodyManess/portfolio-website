@@ -13,8 +13,10 @@ export default function Icon() {
     // ImageResponse JSX element
     <div
       style={{
-        fontSize: 16,
-        background: '#196db2',
+        fontSize: 15,
+        fontWeight: 700,
+        letterSpacing: '-0.5px',
+        background: 'linear-gradient(135deg, #196db2 0%, #007ab8 100%)',
         width: '100%',
         height: '100%',
         color: 'white',

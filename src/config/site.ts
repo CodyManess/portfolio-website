@@ -9,13 +9,11 @@ export const siteConfig = {
     'Full-Stack Web & Mobile Developer building accessible, scalable, and engaging digital experiences.',
   shortDescription:
     'Mobile and Web Developer with a love for creating engaging, accessible, and user-friendly applications.',
-  ogTagline:
-    'Creating accessible, scalable, and engaging web & mobile applications.',
   ogImagePath: '/opengraph-image',
   extendedTitle: 'Cody Maness | Extended Work History',
   extendedDescription:
     'An extra page within my portfolio detailing past jobs worked before and during college.',
-  lastModified: '2026-11-14',
+  lastModified: '2026-11-16',
   sameAs: [socialLinks.GitHub, socialLinks.LinkedIn],
   employer: 'The Cigna Group',
   alumniOf: [

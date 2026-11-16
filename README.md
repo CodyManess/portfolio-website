@@ -134,6 +134,12 @@ All source code and test files follow standard Next.js App Router conventions wi
 - [x] Migrate UI to Tailwind CSS v4 & shadcn/ui (Base UI)
 - [x] Next.js 16 Static Prerendering & Image Optimizations
 - [x] Improve Keyboard & Screen Reader Accessibility
+- [x] Active Section Scroll-Spy Navigation
+- [ ] Theme Switcher (Light / Dark / System)
+- [ ] Command Palette (`Ctrl+K` / `⌘K`)
+- [ ] Shareable URL State for Project Filters & Modals
+- [ ] Project Previews & Architecture Diagrams
+- [ ] Lighthouse CI & Playwright E2E Checks
 - [ ] Further Visual & Micro-Interaction Enhancements
 
 ---
