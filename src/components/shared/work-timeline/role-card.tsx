@@ -30,7 +30,7 @@ const RoleCard = ({ role, setExpanded, expanded, index }: RoleCardProps) => {
             <p className="text-xs font-semibold text-slate-600 sm:text-[0.95rem] dark:text-slate-300">
               {role.companyName}
             </p>
-            <p className="rounded-full border border-slate-200/80 bg-slate-100 px-2.5 py-0.5 font-mono text-[11px] font-medium text-(--primary-color) md:hidden dark:border-slate-700/70 dark:bg-slate-800/90 dark:text-(--primary-light)">
+            <p className="rounded-full border border-slate-200/80 bg-slate-100 px-2.5 py-0.5 font-mono text-[11px] font-medium text-(--primary-dark) md:hidden dark:border-slate-700/70 dark:bg-slate-800/90 dark:text-(--primary-light)">
               {role.date}
             </p>
           </div>

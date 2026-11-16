@@ -29,8 +29,8 @@ export default function RoleItem({
           className={cn(
             'z-10 inline-flex items-center rounded-full border px-3.5 py-1.5 font-mono text-xs font-medium whitespace-nowrap shadow-2xs transition-all duration-300 lg:text-sm',
             isExpanded
-              ? 'border-(--primary-color)/35 bg-(--primary-color)/10 text-(--primary-color) dark:border-(--primary-light)/40 dark:bg-(--primary-light)/15 dark:text-(--primary-light)'
-              : 'border-slate-200/90 bg-slate-100/90 text-slate-600 group-hover/item:border-(--primary-color)/30 group-hover/item:text-(--primary-color) dark:border-slate-800 dark:bg-slate-900/90 dark:text-slate-300 dark:group-hover/item:border-(--primary-light)/35 dark:group-hover/item:text-(--primary-light)'
+              ? 'border-(--primary-color)/35 bg-(--primary-color)/10 text-(--primary-dark) dark:border-(--primary-light)/40 dark:bg-(--primary-light)/15 dark:text-(--primary-light)'
+              : 'border-slate-200/90 bg-slate-100/90 text-slate-600 group-hover/item:border-(--primary-color)/30 group-hover/item:text-(--primary-dark) dark:border-slate-800 dark:bg-slate-900/90 dark:text-slate-300 dark:group-hover/item:border-(--primary-light)/35 dark:group-hover/item:text-(--primary-light)'
           )}
         >
           {role.date}
