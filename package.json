@@ -72,5 +72,9 @@
   },
   "overrides": {
     "postcss": "$postcss"
+  },
+  "allowScripts": {
+    "@parcel/watcher": false,
+    "unrs-resolver": false
   }
 }

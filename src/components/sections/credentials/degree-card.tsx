@@ -38,11 +38,12 @@ const DegreeCard = (degree: Degree) => {
         <div className="relative h-45 w-full">
           <Image
             fill
+            quality={75}
             placeholder={typeof photo === 'string' ? 'empty' : 'blur'}
             src={photo}
             alt={schoolName}
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="aspect-video object-cover"
+            sizes="(max-width: 768px) calc(100vw - 2rem), (max-width: 1024px) calc(50vw - 2rem), 384px"
+            className="object-cover"
           />
         </div>
         <CardContent className="mr-auto flex flex-1 flex-col p-4">

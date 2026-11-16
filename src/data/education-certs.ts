@@ -1,7 +1,7 @@
 import type { Cert } from '@/types/education'
 import { IconType } from '@/types/education'
-import awsBadge from '@public/credentials/aws-developer-badge.png'
-import deepLearningLogo from '@public/credentials/deep-learning-logo.png'
+import awsBadge from '@public/credentials/aws-developer-badge.webp'
+import deepLearningLogo from '@public/credentials/deep-learning-logo.webp'
 
 export const certs: Cert[] = [
   {
