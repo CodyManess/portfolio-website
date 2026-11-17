@@ -119,4 +119,95 @@ describe('ProjectModal', () => {
 
     expect(handleClose).toHaveBeenCalledTimes(1)
   })
+
+  it('renders a single project photo with caption and omits gallery controls', () => {
+    const projectWithSinglePhoto: Project = {
+      ...mockProjectWithoutLinkOrAchievements,
+      photos: [
+        {
+          src: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+          alt: 'Component documentation view',
+          caption: 'Interactive button tokens preview',
+        },
+      ],
+    }
+
+    render(
+      <ProjectModal
+        project={projectWithSinglePhoto}
+        open={true}
+        handleClose={jest.fn()}
+      />
+    )
+
+    expect(screen.getByText('Project Showcase')).toBeInTheDocument()
+    expect(
+      screen.getByRole('img', { name: 'Component documentation view' })
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText('Interactive button tokens preview')
+    ).toBeInTheDocument()
+    expect(
+      screen.queryByRole('button', { name: /Next photo/i })
+    ).not.toBeInTheDocument()
+    expect(
+      screen.queryByRole('button', { name: /Previous photo/i })
+    ).not.toBeInTheDocument()
+  })
+
+  it('supports navigating multiple project photos via next, previous, and thumbnails', () => {
+    const projectWithGallery: Project = {
+      ...mockProjectWithAchievements,
+      photos: [
+        {
+          src: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+          alt: 'Dashboard overview',
+          caption: 'Main dashboard view',
+        },
+        {
+          src: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+          alt: 'Job board screen',
+          caption: 'Internal job listings page',
+        },
+      ],
+    }
+
+    render(
+      <ProjectModal
+        project={projectWithGallery}
+        open={true}
+        handleClose={jest.fn()}
+      />
+    )
+
+    expect(screen.getByText('1 / 2')).toBeInTheDocument()
+    expect(
+      screen.getByRole('img', { name: 'Dashboard overview' })
+    ).toBeInTheDocument()
+    expect(screen.getByText('Main dashboard view')).toBeInTheDocument()
+
+    // Click Next photo
+    fireEvent.click(screen.getByRole('button', { name: /Next photo/i }))
+    expect(screen.getByText('2 / 2')).toBeInTheDocument()
+    expect(
+      screen.getByRole('img', { name: 'Job board screen' })
+    ).toBeInTheDocument()
+    expect(screen.getByText('Internal job listings page')).toBeInTheDocument()
+
+    // Click Next again to wrap around to first photo
+    fireEvent.click(screen.getByRole('button', { name: /Next photo/i }))
+    expect(screen.getByText('1 / 2')).toBeInTheDocument()
+
+    // Click Previous to wrap to last photo
+    fireEvent.click(screen.getByRole('button', { name: /Previous photo/i }))
+    expect(screen.getByText('2 / 2')).toBeInTheDocument()
+
+    // Select first thumbnail directly
+    const firstThumb = screen.getByRole('button', {
+      name: /View photo 1: Dashboard overview/i,
+    })
+    fireEvent.click(firstThumb)
+    expect(screen.getByText('1 / 2')).toBeInTheDocument()
+    expect(firstThumb).toHaveAttribute('aria-pressed', 'true')
+  })
 })

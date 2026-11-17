@@ -47,7 +47,7 @@ Visit the live site at **[codymaness.com](https://codymaness.com)**.
 - **About Me (Bento Grid)**: Showcases background story, core mission statement, technical & personal interests, and external cultural shelf links (Letterboxd, Goodreads, Backloggd, YouTube Music).
 - **Work Experience & Extended Timeline**: Interactive timeline on the home page (`/#experience`) and dedicated extended work history route (`/extended`) powered by accessible, CSS-grid animated accordions.
 - **Education & Certifications**: Degree cards with keyboard-accessible coursework modals (category tabs for Core Requirements, Concentration, and Supporting Courses, plus academic honors and program links) alongside interactive certification badges that open detail modals with overviews, key skills, metadata, and external links.
-- **Filterable & Paginated Projects**: Project showcase with technology filter chips (including per-tool project counts), client-side pagination, keyboard-accessible cards, and detail modals highlighting tech stacks and key contributions.
+- **Filterable & Paginated Projects**: Project showcase with technology filter chips (including per-tool project counts), client-side pagination, keyboard-accessible cards, and detail modals featuring photo showcase galleries, tech stacks, and key contributions.
 - **Responsive Navigation & Theme Support**: Auto-hiding desktop app bar, mobile bottom navigation bar with safe-area support, and automatic light/dark mode theming via CSS custom properties.
 
 ---

@@ -15,9 +15,12 @@ Follow these steps to add a project or new technology chip safely and consistent
 2. **Check or add tools in `src/data/tools.ts`**:
    - Reuse an existing `Tools.<Key>` entry when possible.
    - If adding a new tool, add it to the `Tools` object (keeping `} satisfies Record<string, Tool>`) with `title`, `iconName` (matching `ToolIconName`), and `iconColor`.
-3. **Add the project in `src/data/projects.ts`**:
-   - Match the `Project` interface (`title`, `description`, optional `link`, `achievements`, `tools`).
+3. **Add optional project photos under `public/projects/`**:
+   - Place project screenshots/photos (`.webp`) in `public/projects/` and import them via `@public/projects/...` in `src/data/projects.ts`.
+   - Use `<Image quality={75} />` or `[25, 50, 75, 100]` values (`next.config.mjs`).
+4. **Add the project in `src/data/projects.ts`**:
+   - Match the `Project` interface (`title`, `description`, optional `link`, optional `photos` array of `{ src, alt, caption? }`, `achievements`, `tools`).
    - Only use `https://` URLs for `link` (components validate URLs through `getSafeExternalUrl`).
-4. **Update tests if needed and validate**:
+5. **Update tests if needed and validate**:
    - Check `__tests__/project-list.test.tsx`, `__tests__/project-card.test.tsx`, and `__tests__/project-modal.test.tsx` if expectations depend on project counts or fields.
    - Run `npm run check` (`format:check`, `lint`, `typecheck`, and `test`).
