@@ -81,15 +81,9 @@ const Credentials = () => {
           <DegreeCard key={degree.title} {...degree} />
         ))}
       </div>
-      <div className="mt-8 flex justify-around">
+      <div className="mt-8 flex flex-wrap justify-around gap-6">
         {educationData?.certs.map((cert) => (
-          <CertBadge
-            key={cert.name}
-            icon={cert.icon}
-            iconType={cert.iconType}
-            name={cert.name}
-            org={cert.org}
-          />
+          <CertBadge key={cert.name} {...cert} />
         ))}
       </div>
     </>

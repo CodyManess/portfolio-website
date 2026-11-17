@@ -46,7 +46,7 @@ Visit the live site at **[codymaness.com](https://codymaness.com)**.
 - **Hero & SEO Metadata**: Responsive intro card with preloaded profile imagery, JSON-LD `Person` structured data, statically generated OpenGraph & app icons (`next/og`), `sitemap.xml`, `robots.txt`, and HTTP security headers.
 - **About Me (Bento Grid)**: Showcases background story, core mission statement, technical & personal interests, and external cultural shelf links (Letterboxd, Goodreads, Backloggd, YouTube Music).
 - **Work Experience & Extended Timeline**: Interactive timeline on the home page (`/#experience`) and dedicated extended work history route (`/extended`) powered by accessible, CSS-grid animated accordions.
-- **Education & Certifications**: Degree cards with keyboard-accessible coursework modals (category tabs for Core Requirements, Concentration, and Supporting Courses, plus academic honors and program links) alongside certification badges.
+- **Education & Certifications**: Degree cards with keyboard-accessible coursework modals (category tabs for Core Requirements, Concentration, and Supporting Courses, plus academic honors and program links) alongside interactive certification badges that open detail modals with overviews, key skills, metadata, and external links.
 - **Filterable & Paginated Projects**: Project showcase with technology filter chips (including per-tool project counts), client-side pagination, keyboard-accessible cards, and detail modals highlighting tech stacks and key contributions.
 - **Responsive Navigation & Theme Support**: Auto-hiding desktop app bar, mobile bottom navigation bar with safe-area support, and automatic light/dark mode theming via CSS custom properties.
 
@@ -106,7 +106,7 @@ All source code and test files follow standard Next.js App Router conventions wi
     ├── components/          # Modular React UI components
     │   ├── layout/          # Page chrome & navigation (AppBar, BottomNav, Footer)
     │   ├── sections/        # Page section components
-    │   │   ├── credentials/ # Education section, degree cards, coursework modal, and cert badges
+    │   │   ├── credentials/ # Education section, degree cards, coursework modal, cert badges, and cert modal
     │   │   ├── intro/       # Hero section and intro card
     │   │   ├── projects/    # Projects section, list, technology filter, tool chip, cards, and modal
     │   │   ├── about.tsx    # About Me bento grid section

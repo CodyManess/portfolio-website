@@ -37,4 +37,11 @@ export interface Cert {
   iconType: IconType
   name: string
   org: string
+  description?: string
+  skills?: string[]
+  issueDate?: string
+  expirationDate?: string
+  credentialId?: string
+  credentialUrl?: string
+  programUrl?: string
 }

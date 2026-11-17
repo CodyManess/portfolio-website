@@ -29,6 +29,8 @@ describe('Credentials', () => {
           org: 'Mocking Inc.',
           icon: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
           iconType: IconType.Logo,
+          description: 'Mock certification overview.',
+          skills: ['Cloud Testing'],
         },
       ],
     }
@@ -55,6 +57,19 @@ describe('Credentials', () => {
     })
     fireEvent.keyDown(degreeCard, { key: 'Enter' })
     expect(screen.getByRole('dialog')).toBeInTheDocument()
+
+    // Close degree modal
+    fireEvent.keyDown(screen.getByRole('dialog'), { key: 'Escape' })
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+
+    // Cert badge should be clickable and open the certification modal
+    const certButton = screen.getByRole('button', {
+      name: /View details for Mock Certified Developer from Mocking Inc\./i,
+    })
+    fireEvent.click(certButton)
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    expect(screen.getByText('Mock certification overview.')).toBeInTheDocument()
+    expect(screen.getByText('Cloud Testing')).toBeInTheDocument()
   })
 
   it('renders an error message and supports retry when fetch fails', async () => {

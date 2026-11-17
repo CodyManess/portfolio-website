@@ -18,7 +18,7 @@ We utilize a standard `src/` directory layout:
     ├── components/          # Modular React UI components
     │   ├── layout/          # Page chrome & navigation (AppBar, BottomNav, Footer)
     │   ├── sections/        # Page section components
-    │   │   ├── credentials/ # Education section, degree cards, coursework modal, and cert badges
+    │   │   ├── credentials/ # Education section, degree cards, coursework modal, cert badges, and cert modal
     │   │   ├── intro/       # Hero section and intro card
     │   │   ├── projects/    # Projects section, list, technology filter, tool chip, cards, and modal
     │   │   ├── about.tsx    # About Me bento grid section
