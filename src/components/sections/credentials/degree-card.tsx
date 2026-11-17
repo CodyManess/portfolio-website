@@ -10,7 +10,7 @@ import Image from 'next/image'
  * @param degree - The degree data object to display.
  */
 const DegreeCard = (degree: Degree) => {
-  const { schoolName, title, subtitle, photo } = degree
+  const { schoolName, title, subtitle, date, photo } = degree
 
   const [open, setOpen] = React.useState(false)
   const [hasOpened, setHasOpened] = React.useState(false)
@@ -50,10 +50,17 @@ const DegreeCard = (degree: Degree) => {
             className="object-cover"
           />
         </div>
-        <CardContent className="mr-auto flex flex-1 flex-col p-4">
-          <p className="mb-1 text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-slate-400">
-            {schoolName}
-          </p>
+        <CardContent className="flex flex-1 flex-col p-4">
+          <div className="mb-1 flex flex-wrap items-center justify-between gap-2">
+            <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-slate-400">
+              {schoolName}
+            </p>
+            {date ? (
+              <span className="font-mono text-[11px] font-medium text-(--primary-color) dark:text-(--primary-light)">
+                {date}
+              </span>
+            ) : null}
+          </div>
           <h3 className="my-1 text-lg font-semibold text-foreground transition-colors duration-300 group-hover:text-(--primary-color) dark:group-hover:text-(--primary-light)">
             {title}
           </h3>

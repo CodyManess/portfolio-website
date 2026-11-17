@@ -2,6 +2,7 @@ import React from 'react'
 import ContactMe from '@/components/shared/contact-me'
 import { siteConfig } from '@/config/site'
 import Image from 'next/image'
+import { FaLocationDot } from 'react-icons/fa6'
 import profilePic from '@public/intro/portfolio-picture.webp'
 
 const IntroCard = () => {
@@ -38,7 +39,15 @@ const IntroCard = () => {
         </span>
       </h1>
 
-      <p className="mt-2 mb-6 max-w-xs text-center text-sm/relaxed text-slate-700 md:text-base dark:text-slate-200">
+      <p className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-slate-600 dark:text-slate-300">
+        <FaLocationDot
+          className="size-3 text-(--primary-color) dark:text-(--primary-light)"
+          aria-hidden="true"
+        />
+        <span>{siteConfig.location}</span>
+      </p>
+
+      <p className="mt-3 mb-6 max-w-xs text-center text-sm/relaxed text-slate-700 md:text-base dark:text-slate-200">
         {siteConfig.shortDescription}
       </p>
 

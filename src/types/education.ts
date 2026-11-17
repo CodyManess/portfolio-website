@@ -10,6 +10,7 @@ export interface Degree {
   schoolLink: string
   title: string
   subtitle: string
+  date?: string
   photo: StaticImageData | string
   awards: string[]
   courses: Course[]

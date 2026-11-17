@@ -5,22 +5,23 @@ import expressScriptsLogo from '@public/work-icons/express-scripts.webp'
 
 export const roles: Array<Role> = [
   {
-    date: 'Mar 2024',
+    date: 'Mar 2024 - Present',
     title: 'Software Engineering Advisor',
     companyName: 'The Cigna Group',
     companyLogo: cignaLogo,
     description: [
       {
         items: [
-          'I worked as a Full-Stack Angular Developer on the myCigna Coverages team.',
-          'Assisted with the resolution of various accessibility issues and contributed to guides to help improve accessibility standards in code.',
-          'Added new features including enhanced ID card sharing options, presentation of small group coverage details, and various bug fixes.',
+          'Engineering and maintaining full-stack solutions for the myCigna Coverages web platform (Angular frontend, Kotlin/Node.js backend) and the myCigna Mobile application, improving access to coverage information for over 19 million medical customers.',
+          'Championed an enterprise accessibility initiative to adhere to W3C WCAG standards, resolving 100+ accessibility issues and contributing to accessibility guides.',
+          'Spearheaded technical analysis for an enterprise React component library across accessibility, design, and engineering stakeholders, and helped lead the migration of the legacy myCigna mobile app to React Native/TypeScript.',
+          'Added new features including enhanced ID card sharing options, presentation of small group coverage details, and ongoing bug fixes.',
         ],
       },
     ],
   },
   {
-    date: 'Jun 2023',
+    date: 'Jun 2023 - Mar 2024',
     title: 'TECDP Lead Advisor',
     companyName: 'The Cigna Group',
     companyLogo: cignaLogo,
@@ -36,7 +37,7 @@ export const roles: Array<Role> = [
     ],
   },
   {
-    date: 'Jun 2021',
+    date: 'Jun 2021 - Jun 2023',
     title: 'TECDP Senior Advisor',
     companyName: 'The Cigna Group',
     companyLogo: cignaLogo,
@@ -70,7 +71,7 @@ export const roles: Array<Role> = [
     ],
   },
   {
-    date: 'Mar 2021',
+    date: 'Mar 2021 - Sep 2022',
     title: 'Android Student Developer',
     companyName: 'Middle Tennessee State University',
     companyLogo: mtsuLogo,
@@ -86,7 +87,7 @@ export const roles: Array<Role> = [
     ],
   },
   {
-    date: 'Jun 2020',
+    date: 'May 2020 - May 2021',
     title: 'Front-end Intern',
     companyName: 'Express Scripts',
     companyLogo: expressScriptsLogo,

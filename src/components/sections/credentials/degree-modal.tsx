@@ -35,7 +35,8 @@ const CourseItem = ({ course }: { course: Course }) => (
 )
 
 const DegreeModal = ({ degree, open, handleClose }: Props) => {
-  const { schoolName, title, subtitle, schoolLink, awards, courses } = degree
+  const { schoolName, title, subtitle, date, schoolLink, awards, courses } =
+    degree
   const [activeTab, setActiveTab] = React.useState<CourseType | 'ALL'>('ALL')
   const safeSchoolLink = getSafeExternalUrl(schoolLink)
 
@@ -71,10 +72,12 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
       <DialogContent className="flex max-h-[90vh] flex-col gap-0 overflow-hidden p-6 sm:max-w-200">
         {/* Header Section */}
         <DialogHeader className="space-y-1 pr-8 text-left">
-          {schoolName ? (
-            <p className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-              {schoolName}
-            </p>
+          {schoolName || date ? (
+            <div className="flex flex-wrap items-center gap-2 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+              {schoolName ? <span>{schoolName}</span> : null}
+              {schoolName && date ? <span aria-hidden="true">·</span> : null}
+              {date ? <span className="font-mono">{date}</span> : null}
+            </div>
           ) : null}
           <DialogTitle className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
             {title}

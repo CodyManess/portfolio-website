@@ -10,6 +10,7 @@ export const degrees: Degree[] = [
     schoolLink: 'https://www.mtsu.edu/program/computer-science-m-s/',
     title: 'Master of Science in Computer Science',
     subtitle: '',
+    date: 'May 2021 - Dec 2022',
     photo: mtsucampus,
     awards: ["Accelerated Bachelor's to Master's Program"],
     courses: [
@@ -77,6 +78,7 @@ export const degrees: Degree[] = [
       'https://www.lsus.edu/academics/graduate-studies/master-of-business-administration',
     title: 'Master of Business Administration',
     subtitle: 'Concentrating in Finance',
+    date: 'May 2023 - Aug 2024',
     photo: lsuscampus,
     awards: [],
     courses: [
@@ -143,6 +145,7 @@ export const degrees: Degree[] = [
       'https://www.mtsu.edu/program/computer-science-professional-computer-science-concentration-b-s/',
     title: 'Bachelor of Science in Computer Science',
     subtitle: 'Minoring in Communications and Mathematics',
+    date: 'Aug 2017 - May 2021',
     photo: mtsucampus2,
     awards: [
       'Summa Cum Laude',

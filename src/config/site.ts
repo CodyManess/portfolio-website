@@ -3,17 +3,18 @@ import { socialLinks } from '@/data/links'
 export const siteConfig = {
   url: 'https://codymaness.com',
   name: 'Cody Maness',
-  role: 'Web & Mobile Developer',
+  role: 'Full-Stack Developer',
+  location: 'Raleigh, NC',
   title: 'Cody Maness | Full-Stack Developer',
   description:
-    'Full-Stack Web & Mobile Developer building accessible, scalable, and engaging digital experiences.',
+    'Full-Stack Developer with 5+ years of experience building accessible, scalable web and mobile applications.',
   shortDescription:
-    'Mobile and Web Developer with a love for creating engaging, accessible, and user-friendly applications.',
+    'Full-Stack Developer with 5+ years of experience building engaging, accessible web and mobile applications.',
   ogImagePath: '/opengraph-image',
   extendedTitle: 'Cody Maness | Extended Work History',
   extendedDescription:
     'An extra page within my portfolio detailing past jobs worked before and during college.',
-  lastModified: '2026-11-16',
+  lastModified: '2026-11-17',
   sameAs: [socialLinks.GitHub, socialLinks.LinkedIn],
   employer: 'The Cigna Group',
   alumniOf: [
@@ -31,9 +32,12 @@ export const siteConfig = {
     'Next.js',
     'TypeScript',
     'React Native',
+    'Tailwind CSS',
     'Kotlin',
     'Swift',
     'Angular',
     'Node.js',
+    'AWS',
+    'Accessibility',
   ],
 } as const

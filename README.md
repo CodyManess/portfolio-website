@@ -44,7 +44,7 @@ Visit the live site at **[codymaness.com](https://codymaness.com)**.
 ## Features & Highlights
 
 - **Hero & SEO Metadata**: Responsive intro card with preloaded profile imagery, JSON-LD `Person` structured data, statically generated OpenGraph & app icons (`next/og`), `sitemap.xml`, `robots.txt`, and HTTP security headers.
-- **About Me (Bento Grid)**: Showcases background story, core mission statement, technical & personal interests, and external cultural shelf links (Letterboxd, Goodreads, Backloggd, YouTube Music).
+- **About Me (Flippable Bento Grid)**: Interactive 3D-flippable bento section switching between a **Professional** view (core mission statement, tech interests, and categorized Technical Skills matrix) and a **Personal** view (background story, personal interests, and external cultural shelf links for Letterboxd, Goodreads, Backloggd, and YouTube Music).
 - **Work Experience & Extended Timeline**: Interactive timeline on the home page (`/#experience`) and dedicated extended work history route (`/extended`) powered by accessible, CSS-grid animated accordions.
 - **Education & Certifications**: Degree cards with keyboard-accessible coursework modals (category tabs for Core Requirements, Concentration, and Supporting Courses, plus academic honors and program links) alongside interactive certification badges that open detail modals with overviews, key skills, metadata, and external links.
 - **Filterable & Paginated Projects**: Project showcase with technology filter chips (including per-tool project counts), client-side pagination, keyboard-accessible cards, and detail modals featuring photo showcase galleries, tech stacks, and key contributions.

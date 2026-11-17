@@ -10,6 +10,7 @@ describe('DegreeModal', () => {
     schoolName: 'Middle Tennessee State University',
     title: 'Master of Science in Computer Science',
     subtitle: 'Accelerated Program',
+    date: 'May 2021 - Dec 2022',
     schoolLink: 'https://www.mtsu.edu',
     photo: mtsucampus,
     awards: ["Dean's List", 'Summa Cum Laude'],
@@ -35,6 +36,7 @@ describe('DegreeModal', () => {
     expect(
       screen.getByText('Middle Tennessee State University')
     ).toBeInTheDocument()
+    expect(screen.getByText('May 2021 - Dec 2022')).toBeInTheDocument()
     expect(
       screen.getByText('Master of Science in Computer Science')
     ).toBeInTheDocument()

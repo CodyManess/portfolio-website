@@ -11,3 +11,8 @@ export interface MediaLink {
   url: string
   icon: IconType
 }
+
+export interface SkillGroup {
+  category: string
+  skills: string[]
+}

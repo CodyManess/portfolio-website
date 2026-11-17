@@ -13,6 +13,10 @@ const personSchema = {
   url: siteConfig.url,
   image: `${siteConfig.url}${siteConfig.ogImagePath}`,
   sameAs: [...siteConfig.sameAs],
+  homeLocation: {
+    '@type': 'Place',
+    name: siteConfig.location,
+  },
   worksFor: {
     '@type': 'Organization',
     name: siteConfig.employer,

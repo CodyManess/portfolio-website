@@ -17,6 +17,7 @@ describe('Credentials', () => {
           schoolName: 'University of Mocking',
           title: 'Bachelor of Science in Computer Science',
           subtitle: 'Concentration in Software Engineering',
+          date: 'Aug 2017 - May 2021',
           schoolLink: 'https://www.mock.edu',
           photo: mtsucampus,
           awards: ["Dean's List"],
@@ -49,6 +50,7 @@ describe('Credentials', () => {
     const certElement = await screen.findByText(/Mock Certified Developer/i)
 
     expect(degreeElement).toBeInTheDocument()
+    expect(screen.getByText('Aug 2017 - May 2021')).toBeInTheDocument()
     expect(certElement).toBeInTheDocument()
 
     // Degree card should be keyboard-activatable and open the degree modal

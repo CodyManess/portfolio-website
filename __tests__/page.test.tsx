@@ -46,6 +46,8 @@ describe('Home', () => {
 
     const main = await screen.findByRole('main')
     expect(main).toBeInTheDocument()
+    expect(screen.getByText('Full-Stack Developer')).toBeInTheDocument()
+    expect(screen.getByText('Raleigh, NC')).toBeInTheDocument()
 
     // Wait for the Credentials component to finish loading
     const educationHeading = await screen.findByRole('heading', {

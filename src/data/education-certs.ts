@@ -7,7 +7,7 @@ export const certs: Cert[] = [
   {
     icon: awsBadge,
     iconType: IconType.Badge,
-    name: 'AWS Certified Developer - Associate Badge',
+    name: 'AWS Certified Developer - Associate',
     org: 'Amazon Web Services',
     description:
       'Validates proficiency in developing, testing, deploying, and debugging cloud-based applications on AWS using core services, serverless architectures, SDKs, and CI/CD workflows.',
