@@ -23,10 +23,10 @@ We utilize a standard `src/` directory layout:
     │   │   ├── projects/    # Projects section, list, technology filter, tool chip, cards, and modal
     │   │   ├── about.tsx    # About Me bento grid section
     │   │   └── experience.tsx # Work experience section
-    │   ├── shared/          # Cross-section shared components (Accordion, ContactMe, Pagination, WorkTimeline)
+    │   ├── shared/          # Cross-section shared components (Accordion, ContactMe, Pagination, PortfolioLinkProvider, WorkTimeline)
     │   └── ui/              # shadcn/ui & Base UI primitive components (Badge, Button, Card, Dialog, Skeleton)
     ├── config/              # Centralized site configuration, SEO metadata defaults, and schema data (`site.ts`)
-    ├── data/                # Structured local data (about, degrees, certs, experience, links, projects, tools)
+    ├── data/                # Structured local data (about, cross-links, degrees, certs, experience, links, projects, tools)
     ├── lib/                 # Shared utilities (`utils.ts` for `cn`/`getSafeExternalUrl`, `tool-icons.ts` for `toolIconMap`/`ToolIconName`)
     └── types/               # Core TypeScript interfaces and enums
 ```

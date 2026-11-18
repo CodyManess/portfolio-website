@@ -6,23 +6,26 @@ import { cn } from '@/lib/utils'
 
 interface RoleItemProps {
   role: Role
-  setExpanded: (index: number | false) => void
-  expanded: number | false
+  isExpanded: boolean
+  onToggle: () => void
   index: number
   isLast: boolean
+  isHighlighted?: boolean
 }
 
 export default function RoleItem({
   role,
-  setExpanded,
-  expanded,
+  isExpanded,
+  onToggle,
   index,
   isLast,
+  isHighlighted = false,
 }: RoleItemProps) {
-  const isExpanded = expanded === index
-
   return (
-    <div className="group/item relative flex w-full pb-4 last:pb-0 sm:pb-5 md:col-span-3 md:grid md:grid-cols-subgrid">
+    <div
+      id={role.id ? `role-${role.id}` : undefined}
+      className="group/item relative flex w-full scroll-mt-28 pb-4 last:pb-0 sm:pb-5 md:col-span-3 md:grid md:grid-cols-subgrid"
+    >
       {/* Date Column (Hidden on mobile) */}
       <div className="relative hidden items-start justify-end pt-7.25 pr-4 md:flex">
         <span
@@ -97,9 +100,10 @@ export default function RoleItem({
         />
         <RoleCard
           role={role}
-          setExpanded={setExpanded}
-          expanded={expanded}
+          isExpanded={isExpanded}
+          onToggle={onToggle}
           index={index}
+          isHighlighted={isHighlighted}
         />
       </div>
     </div>

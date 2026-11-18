@@ -21,6 +21,24 @@ function TestAccordion() {
   )
 }
 
+function ControlledAccordion() {
+  const [isOpen, setIsOpen] = useState(false)
+  return (
+    <Accordion
+      index={0}
+      isOpen={isOpen}
+      onToggle={() => setIsOpen((prev) => !prev)}
+    >
+      <AccordionHeader>
+        <span>Controlled Section</span>
+      </AccordionHeader>
+      <AccordionBody>
+        <p>Controlled Body</p>
+      </AccordionBody>
+    </Accordion>
+  )
+}
+
 describe('Accordion', () => {
   it('toggles expanded state and preserves button focus on collapse', () => {
     render(<TestAccordion />)
@@ -37,5 +55,17 @@ describe('Accordion', () => {
     fireEvent.click(toggleButton)
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
     expect(toggleButton).toHaveFocus()
+  })
+
+  it('supports controlled isOpen and onToggle props', () => {
+    render(<ControlledAccordion />)
+
+    const toggleButton = screen.getByRole('button', {
+      name: /controlled section/i,
+    })
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
+
+    fireEvent.click(toggleButton)
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'true')
   })
 })

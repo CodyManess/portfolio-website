@@ -10,19 +10,23 @@ import {
 } from '@/components/ui/dialog'
 import { Button, buttonVariants } from '@/components/ui/button'
 import {
+  FaArrowRight,
   FaArrowUpRightFromSquare,
   FaChevronLeft,
   FaChevronRight,
   FaCircleCheck,
+  FaSuitcase,
 } from 'react-icons/fa6'
 import type { Project } from '@/types/project'
 import ToolChip from './tool-chip'
 import { cn, getSafeExternalUrl } from '@/lib/utils'
+import { usePortfolioLinks } from '@/components/shared/portfolio-link-context'
 
 interface Props {
   project: Project
   open: boolean
   handleClose: () => void
+  onSelectRole?: (roleId: string) => void
 }
 
 const getPhotoKey = (
@@ -34,10 +38,18 @@ const getPhotoKey = (
   return `${srcKey}-${alt}-${caption ?? ''}`
 }
 
-const ProjectModal = ({ project, open, handleClose }: Props) => {
+const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
+  const linkContext = usePortfolioLinks()
   const safeLink = getSafeExternalUrl(project.link)
   const photos = project.photos ?? []
+  const relatedRoles = project.relatedRoles ?? []
   const [activePhotoIndex, setActivePhotoIndex] = React.useState(0)
+
+  const handleRoleSelect = (roleId: string) => {
+    handleModalClose()
+    const navigate = onSelectRole ?? linkContext?.navigateToRole
+    navigate?.(roleId)
+  }
 
   const clampedIndex =
     photos.length > 0 ? Math.min(activePhotoIndex, photos.length - 1) : 0
@@ -199,6 +211,43 @@ const ProjectModal = ({ project, open, handleClose }: Props) => {
                   })}
                 </div>
               ) : null}
+            </div>
+          ) : null}
+
+          {/* Associated Roles Cross-Link Section */}
+          {relatedRoles.length > 0 ? (
+            <div className="space-y-2">
+              <h3 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+                Associated Role{relatedRoles.length === 1 ? '' : 's'}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {relatedRoles.map((role) => (
+                  <button
+                    key={role.id}
+                    type="button"
+                    onClick={() => handleRoleSelect(role.id)}
+                    aria-label={`View ${role.title} at ${role.companyName} in Experience section`}
+                    className="group/role inline-flex cursor-pointer items-center gap-2 rounded-xl border border-border/80 bg-card px-3 py-2 text-left text-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-(--primary-color)/50 hover:bg-(--primary-color)/8 focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none dark:hover:border-(--primary-light)/50 dark:hover:bg-(--primary-light)/10"
+                  >
+                    <FaSuitcase
+                      className="size-3.5 shrink-0 text-(--primary-color) dark:text-(--primary-light)"
+                      aria-hidden="true"
+                    />
+                    <span className="flex flex-col">
+                      <span className="font-semibold text-foreground transition-colors group-hover/role:text-(--primary-color) dark:group-hover/role:text-(--primary-light)">
+                        {role.title}
+                      </span>
+                      <span className="text-[11px] text-muted-foreground">
+                        {role.companyName} · {role.date}
+                      </span>
+                    </span>
+                    <FaArrowRight
+                      className="ml-1 size-2.5 shrink-0 text-muted-foreground transition-transform duration-200 group-hover/role:translate-x-0.5 group-hover/role:text-(--primary-color) dark:group-hover/role:text-(--primary-light)"
+                      aria-hidden="true"
+                    />
+                  </button>
+                ))}
+              </div>
             </div>
           ) : null}
 

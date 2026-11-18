@@ -40,6 +40,30 @@ describe('ProjectCard Component', () => {
     expect(screen.queryByText(/Highlights/i)).not.toBeInTheDocument()
   })
 
+  it('renders associated company names when relatedRoles are provided', () => {
+    const projectWithRoles: Project = {
+      ...mockInternalProject,
+      relatedRoles: [
+        {
+          id: 'cigna-tecdp-lead-advisor',
+          title: 'TECDP Lead Advisor',
+          companyName: 'The Cigna Group',
+          date: 'Jun 2023 - Mar 2024',
+        },
+        {
+          id: 'cigna-tecdp-senior-advisor',
+          title: 'TECDP Senior Advisor',
+          companyName: 'The Cigna Group',
+          date: 'Jun 2021 - Jun 2023',
+        },
+      ],
+    }
+
+    render(<ProjectCard {...projectWithRoles} />)
+
+    expect(screen.getByText('The Cigna Group')).toBeInTheDocument()
+  })
+
   it('opens modal on click', () => {
     render(<ProjectCard {...mockProject} />)
 

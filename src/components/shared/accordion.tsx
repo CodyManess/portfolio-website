@@ -5,8 +5,10 @@ import { cn } from '@/lib/utils'
 
 interface AccordionProps {
   index: number
-  expanded: number | false
-  setExpanded: (index: number | false) => void
+  expanded?: number | false
+  setExpanded?: (index: number | false) => void
+  isOpen?: boolean
+  onToggle?: () => void
   children: React.ReactNode
   className?: string
 }
@@ -21,13 +23,18 @@ export function Accordion(props: AccordionProps) {
   const id = useId()
   const headerId = `${id}-header`
   const panelId = `${id}-panel`
-  const isOpen = props.expanded === props.index
+  const isOpen =
+    props.isOpen !== undefined ? props.isOpen : props.expanded === props.index
 
   let header: React.ReactElement | undefined
   let body: React.ReactElement | undefined
 
   const toggleAccordion = () => {
-    props.setExpanded(isOpen ? false : props.index)
+    if (props.onToggle) {
+      props.onToggle()
+      return
+    }
+    props.setExpanded?.(isOpen ? false : props.index)
   }
 
   React.Children.forEach(props.children, (child) => {

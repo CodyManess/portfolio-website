@@ -3,6 +3,7 @@ import Experience from '@/components/sections/experience'
 import Credentials from '@/components/sections/credentials/credentials'
 import Projects from '@/components/sections/projects/projects'
 import About from '@/components/sections/about'
+import { PortfolioLinkProvider } from '@/components/shared/portfolio-link-context'
 import { siteConfig } from '@/config/site'
 
 const personSchema = {
@@ -39,15 +40,17 @@ export default function Home() {
           __html: JSON.stringify(personSchema).replace(/</g, '\\u003c'),
         }}
       />
-      <Intro />
+      <PortfolioLinkProvider>
+        <Intro />
 
-      <About />
+        <About />
 
-      <Experience />
+        <Experience />
 
-      <Credentials />
+        <Credentials />
 
-      <Projects />
+        <Projects />
+      </PortfolioLinkProvider>
     </main>
   )
 }

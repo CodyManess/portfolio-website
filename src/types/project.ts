@@ -7,13 +7,22 @@ export interface ProjectPhoto {
   caption?: string
 }
 
+export interface ProjectRoleLink {
+  id: string
+  title: string
+  companyName: string
+  date: string
+}
+
 export interface Project {
+  id?: string
   title: string
   description: string
   link?: string
   photos?: ProjectPhoto[]
   achievements: string[]
   tools: Tool[]
+  relatedRoles?: ProjectRoleLink[]
 }
 
 export interface Tool {

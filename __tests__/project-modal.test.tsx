@@ -58,6 +58,42 @@ describe('ProjectModal', () => {
     ).toBeInTheDocument()
   })
 
+  it('renders associated roles and triggers navigation callback on click', () => {
+    const handleClose = jest.fn()
+    const onSelectRole = jest.fn()
+    const projectWithRoles: Project = {
+      ...mockProjectWithoutLinkOrAchievements,
+      relatedRoles: [
+        {
+          id: 'cigna-software-engineering-advisor',
+          title: 'Software Engineering Advisor',
+          companyName: 'The Cigna Group',
+          date: 'Mar 2024 - Present',
+        },
+      ],
+    }
+
+    render(
+      <ProjectModal
+        project={projectWithRoles}
+        open={true}
+        handleClose={handleClose}
+        onSelectRole={onSelectRole}
+      />
+    )
+
+    expect(screen.getByText('Associated Role')).toBeInTheDocument()
+    const roleButton = screen.getByRole('button', {
+      name: /View Software Engineering Advisor at The Cigna Group in Experience section/i,
+    })
+    fireEvent.click(roleButton)
+
+    expect(handleClose).toHaveBeenCalledTimes(1)
+    expect(onSelectRole).toHaveBeenCalledWith(
+      'cigna-software-engineering-advisor'
+    )
+  })
+
   it('does not render link or achievements section when they are empty', () => {
     render(
       <ProjectModal

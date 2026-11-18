@@ -1,15 +1,32 @@
 'use client'
 
 import * as React from 'react'
-import { useEffect, useState, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ProjectCard from './project-card'
 import TechnologyFilter from './technology-filter'
 import Pagination from '@/components/shared/pagination'
 import type { Project, Tool } from '@/types/project'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
+import {
+  scrollElementIntoView,
+  usePortfolioLinks,
+  useTemporaryHighlight,
+} from '@/components/shared/portfolio-link-context'
 
 const PROJECTS_PER_PAGE = 6
+
+const getProjectKey = (project: Project): string => project.id ?? project.title
+
+const filterProjectsByTool = (
+  projects: Project[],
+  selectedTool: string | null
+): Project[] => {
+  if (!selectedTool) return projects
+  return projects.filter((project) =>
+    project.tools.some((tool) => tool.title === selectedTool)
+  )
+}
 
 const ProjectListSkeleton = () => (
   <div aria-busy="true" aria-label="Loading project data">
@@ -37,6 +54,71 @@ const ProjectList = () => {
   const [retryCount, setRetryCount] = useState(0)
   const [selectedTool, setSelectedTool] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
+  const [openProjectKey, setOpenProjectKey] = useState<string | null>(null)
+  const [highlightedProjectId, triggerProjectHighlight] =
+    useTemporaryHighlight()
+  const [scrollTick, setScrollTick] = useState(0)
+  const pendingScrollProjectIdRef = useRef<string | null>(null)
+  const linkContext = usePortfolioLinks()
+  const registerProjectNavigator = linkContext?.registerProjectNavigator
+  const consumePendingProject = linkContext?.consumePendingProject
+
+  const safeProjects = useMemo(
+    () => (Array.isArray(projects) ? projects : []),
+    [projects]
+  )
+
+  const filteredProjects = useMemo(
+    () => filterProjectsByTool(safeProjects, selectedTool),
+    [safeProjects, selectedTool]
+  )
+
+  const focusAndOpenProject = useCallback(
+    (
+      projectId: string,
+      sourceProjects: Project[],
+      activeTool: string | null
+    ) => {
+      const targetProject = sourceProjects.find(
+        (project) => project.id === projectId
+      )
+      if (!targetProject) return
+
+      const matchesFilter =
+        !activeTool ||
+        targetProject.tools.some((tool) => tool.title === activeTool)
+      const listForPagination = matchesFilter
+        ? filterProjectsByTool(sourceProjects, activeTool)
+        : sourceProjects
+
+      if (!matchesFilter) {
+        setSelectedTool(null)
+      }
+
+      const targetIndex = listForPagination.indexOf(targetProject)
+      if (targetIndex !== -1) {
+        setCurrentPage(Math.floor(targetIndex / PROJECTS_PER_PAGE) + 1)
+      }
+
+      pendingScrollProjectIdRef.current = projectId
+      triggerProjectHighlight(projectId)
+      setOpenProjectKey(getProjectKey(targetProject))
+      setScrollTick((tick) => tick + 1)
+    },
+    [triggerProjectHighlight]
+  )
+
+  useEffect(() => {
+    if (!registerProjectNavigator) return
+    return registerProjectNavigator((projectId) => {
+      focusAndOpenProject(projectId, safeProjects, selectedTool)
+    })
+  }, [
+    registerProjectNavigator,
+    focusAndOpenProject,
+    safeProjects,
+    selectedTool,
+  ])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -53,8 +135,13 @@ const ProjectList = () => {
         if (!Array.isArray(data)) {
           throw new Error('Invalid project data format')
         }
-        setProjects(data as Project[])
+        const loadedProjects = data as Project[]
+        setProjects(loadedProjects)
         setError(null)
+        const pendingId = consumePendingProject?.()
+        if (pendingId) {
+          focusAndOpenProject(pendingId, loadedProjects, null)
+        }
       } catch (err) {
         if (err instanceof Error && err.name === 'AbortError') return
         setError('Failed to load project data.')
@@ -70,18 +157,24 @@ const ProjectList = () => {
     return () => {
       controller.abort()
     }
-  }, [retryCount])
+  }, [retryCount, consumePendingProject, focusAndOpenProject])
+
+  useEffect(() => {
+    const targetId = pendingScrollProjectIdRef.current
+    if (!targetId) return
+
+    const element = document.getElementById(`project-${targetId}`)
+    if (!element) return
+
+    pendingScrollProjectIdRef.current = null
+    scrollElementIntoView(element, { instant: true, block: 'center' })
+  }, [scrollTick, currentPage, selectedTool, safeProjects])
 
   const handleRetry = () => {
     setIsLoading(true)
     setError(null)
     setRetryCount((count) => count + 1)
   }
-
-  const safeProjects = useMemo(
-    () => (Array.isArray(projects) ? projects : []),
-    [projects]
-  )
 
   const { availableTools, toolCounts } = useMemo(() => {
     const toolMap = new Map<string, Tool>()
@@ -106,15 +199,6 @@ const ProjectList = () => {
     setSelectedTool(toolTitle)
     setCurrentPage(1)
   }
-
-  const filteredProjects = useMemo(() => {
-    if (!selectedTool) {
-      return safeProjects
-    }
-    return safeProjects.filter((project) =>
-      project.tools.some((tool) => tool.title === selectedTool)
-    )
-  }, [safeProjects, selectedTool])
 
   if (isLoading) {
     return <ProjectListSkeleton />
@@ -158,7 +242,20 @@ const ProjectList = () => {
       {currentProjects.length > 0 ? (
         <div className="my-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {currentProjects.map((project) => {
-            return <ProjectCard key={project.title} {...project} />
+            const projectKey = getProjectKey(project)
+            return (
+              <ProjectCard
+                key={projectKey}
+                {...project}
+                isOpen={openProjectKey === projectKey}
+                onOpenChange={(nextOpen) =>
+                  setOpenProjectKey(nextOpen ? projectKey : null)
+                }
+                isHighlighted={Boolean(
+                  project.id && highlightedProjectId === project.id
+                )}
+              />
+            )
           })}
         </div>
       ) : (

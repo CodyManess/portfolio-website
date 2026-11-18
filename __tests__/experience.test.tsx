@@ -40,12 +40,14 @@ describe('Experience section & WorkTimeline', () => {
     ).toBeInTheDocument()
   })
 
-  it('renders all primary experience roles and expands/collapses accordion items', async () => {
+  it('default-expands the latest primary role, toggles roles independently, and supports Expand All / Collapse All', async () => {
     render(<Experience />)
 
     const firstRole = roles[0]
+    const secondRole = roles[1]
     expect(firstRole).toBeDefined()
-    if (!firstRole) return
+    expect(secondRole).toBeDefined()
+    if (!firstRole || !secondRole) return
 
     expect(
       await screen.findByRole('heading', { level: 3, name: firstRole.title })
@@ -57,16 +59,84 @@ describe('Experience section & WorkTimeline', () => {
       ).toBeInTheDocument()
     })
 
+    // Latest role starts expanded; older roles start collapsed
     const firstRoleButton = screen.getByRole('button', {
       name: new RegExp(firstRole.title, 'i'),
     })
-    expect(firstRoleButton).toHaveAttribute('aria-expanded', 'false')
-
-    fireEvent.click(firstRoleButton)
+    const secondRoleButton = screen.getByRole('button', {
+      name: new RegExp(secondRole.title, 'i'),
+    })
     expect(firstRoleButton).toHaveAttribute('aria-expanded', 'true')
+    expect(secondRoleButton).toHaveAttribute('aria-expanded', 'false')
+    expect(
+      screen.getByText(`1 of ${roles.length} roles expanded`)
+    ).toBeInTheDocument()
 
+    // Expanding a second role keeps the first expanded
+    fireEvent.click(secondRoleButton)
+    expect(firstRoleButton).toHaveAttribute('aria-expanded', 'true')
+    expect(secondRoleButton).toHaveAttribute('aria-expanded', 'true')
+    expect(
+      screen.getByText(`2 of ${roles.length} roles expanded`)
+    ).toBeInTheDocument()
+
+    // Expand All opens every role and toggles button to Collapse All
+    fireEvent.click(screen.getByRole('button', { name: /expand all/i }))
+    for (const role of roles) {
+      const btn = screen.getByRole('button', {
+        name: new RegExp(role.title, 'i'),
+      })
+      expect(btn).toHaveAttribute('aria-expanded', 'true')
+    }
+    expect(
+      screen.getByText(`${roles.length} of ${roles.length} roles expanded`)
+    ).toBeInTheDocument()
+
+    // Collapse All closes every role
+    fireEvent.click(screen.getByRole('button', { name: /collapse all/i }))
+    for (const role of roles) {
+      const btn = screen.getByRole('button', {
+        name: new RegExp(role.title, 'i'),
+      })
+      expect(btn).toHaveAttribute('aria-expanded', 'false')
+    }
+  })
+
+  it('renders employmentType and location metadata when provided', async () => {
+    render(<Experience />)
+
+    expect(await screen.findByText('Internship')).toBeInTheDocument()
+    expect(screen.getByText('Murfreesboro, TN')).toBeInTheDocument()
+  })
+
+  it('renders related project pills inside an expanded role when provided', () => {
+    const onSelectProject = jest.fn()
+    const firstRole = roles[0]
+    expect(firstRole).toBeDefined()
+    if (!firstRole) return
+
+    const rolesWithLinks = [
+      {
+        ...firstRole,
+        relatedProjects: [
+          { id: 'digital-platform-library', title: 'Digital Platform Library' },
+        ],
+      },
+    ]
+
+    render(<WorkTimeline roles={rolesWithLinks} />)
+
+    const firstRoleButton = screen.getByRole('button', {
+      name: new RegExp(firstRole.title, 'i'),
+    })
     fireEvent.click(firstRoleButton)
-    expect(firstRoleButton).toHaveAttribute('aria-expanded', 'false')
+
+    expect(screen.getByText('Related Projects')).toBeInTheDocument()
+    const projectButton = screen.getByRole('button', {
+      name: /View Digital Platform Library in Projects section/i,
+    })
+    expect(projectButton).toBeInTheDocument()
+    expect(onSelectProject).not.toHaveBeenCalled()
   })
 
   it('renders extended roles including roles without company logos', () => {

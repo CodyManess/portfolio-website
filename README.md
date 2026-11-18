@@ -45,9 +45,9 @@ Visit the live site at **[codymaness.com](https://codymaness.com)**.
 
 - **Hero & SEO Metadata**: Responsive intro card with preloaded profile imagery, JSON-LD `Person` structured data, statically generated OpenGraph & app icons (`next/og`), `sitemap.xml`, `robots.txt`, and HTTP security headers.
 - **About Me (Flippable Bento Grid)**: Interactive 3D-flippable bento section switching between a **Professional** view (core mission statement, tech interests, and categorized Technical Skills matrix) and a **Personal** view (background story, personal interests, and external cultural shelf links for Letterboxd, Goodreads, Backloggd, and YouTube Music).
-- **Work Experience & Extended Timeline**: Interactive timeline on the home page (`/#experience`) and dedicated extended work history route (`/extended`) powered by accessible, CSS-grid animated accordions.
+- **Work Experience & Extended Timeline**: Interactive timeline on the home page (`/#experience`) and dedicated extended work history route (`/extended`) powered by accessible, CSS-grid animated accordions with cross-links to related projects.
 - **Education & Certifications**: Degree cards with keyboard-accessible coursework modals (category tabs for Core Requirements, Concentration, and Supporting Courses, plus academic honors and program links) alongside interactive certification badges that open detail modals with overviews, key skills, metadata, and external links.
-- **Filterable & Paginated Projects**: Project showcase with technology filter chips (including per-tool project counts), client-side pagination, keyboard-accessible cards, and detail modals featuring photo showcase galleries, tech stacks, and key contributions.
+- **Filterable & Paginated Projects**: Project showcase with technology filter chips (including per-tool project counts), client-side pagination, keyboard-accessible cards, and detail modals featuring photo showcase galleries, tech stacks, key contributions, and cross-links back to associated work roles.
 - **Responsive Navigation & Theme Support**: Auto-hiding desktop app bar, mobile bottom navigation bar with safe-area support, and automatic light/dark mode theming via CSS custom properties.
 
 ---
@@ -111,10 +111,10 @@ All source code and test files follow standard Next.js App Router conventions wi
     │   │   ├── projects/    # Projects section, list, technology filter, tool chip, cards, and modal
     │   │   ├── about.tsx    # About Me bento grid section
     │   │   └── experience.tsx # Work experience section
-    │   ├── shared/          # Cross-section shared components (Accordion, ContactMe, Pagination, WorkTimeline)
+    │   ├── shared/          # Cross-section shared components (Accordion, ContactMe, Pagination, PortfolioLinkProvider, WorkTimeline)
     │   └── ui/              # shadcn/ui & Base UI primitive components (Badge, Button, Card, Dialog, Skeleton)
     ├── config/              # Centralized site configuration, SEO metadata defaults, and JSON-LD schema data
-    ├── data/                # Structured local data (about, degrees, certs, experience, links, projects, tools)
+    ├── data/                # Structured local data (about, cross-links, degrees, certs, experience, links, projects, tools)
     ├── lib/                 # Shared utilities (`cn`, `getSafeExternalUrl`, and technology icon mappings)
     └── types/               # Core TypeScript interfaces and enums
 ```

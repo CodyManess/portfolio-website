@@ -5,9 +5,11 @@ import expressScriptsLogo from '@public/work-icons/express-scripts.webp'
 
 export const roles: Array<Role> = [
   {
+    id: 'cigna-software-engineering-advisor',
     date: 'Mar 2024 - Present',
     title: 'Software Engineering Advisor',
     companyName: 'The Cigna Group',
+    employmentType: 'Full-time',
     companyLogo: cignaLogo,
     description: [
       {
@@ -21,9 +23,11 @@ export const roles: Array<Role> = [
     ],
   },
   {
+    id: 'cigna-tecdp-lead-advisor',
     date: 'Jun 2023 - Mar 2024',
     title: 'TECDP Lead Advisor',
     companyName: 'The Cigna Group',
+    employmentType: 'Full-time',
     companyLogo: cignaLogo,
     description: [
       {
@@ -37,9 +41,11 @@ export const roles: Array<Role> = [
     ],
   },
   {
+    id: 'cigna-tecdp-senior-advisor',
     date: 'Jun 2021 - Jun 2023',
     title: 'TECDP Senior Advisor',
     companyName: 'The Cigna Group',
+    employmentType: 'Full-time',
     companyLogo: cignaLogo,
     description: [
       {
@@ -71,9 +77,12 @@ export const roles: Array<Role> = [
     ],
   },
   {
+    id: 'mtsu-android-student-developer',
     date: 'Mar 2021 - Sep 2022',
     title: 'Android Student Developer',
     companyName: 'Middle Tennessee State University',
+    location: 'Murfreesboro, TN',
+    employmentType: 'Part-time',
     companyLogo: mtsuLogo,
     description: [
       {
@@ -87,9 +96,11 @@ export const roles: Array<Role> = [
     ],
   },
   {
+    id: 'express-scripts-front-end-intern',
     date: 'May 2020 - May 2021',
     title: 'Front-end Intern',
     companyName: 'Express Scripts',
+    employmentType: 'Internship',
     companyLogo: expressScriptsLogo,
     description: [
       {
@@ -107,6 +118,8 @@ export const extendedRoles: Array<Role> = [
     date: 'May 2020 - Mar 2021',
     title: 'Computer Science Tutor',
     companyName: 'Middle Tennessee State University',
+    location: 'Murfreesboro, TN',
+    employmentType: 'Part-time',
     companyLogo: mtsuLogo,
     description: [
       {
@@ -121,6 +134,7 @@ export const extendedRoles: Array<Role> = [
     date: 'May 2019 - Aug 2019',
     title: 'Seasonal Sales Associate',
     companyName: 'American Eagle Outfitters',
+    employmentType: 'Part-time · Seasonal',
     companyLogo: undefined,
     description: [
       {
@@ -135,6 +149,8 @@ export const extendedRoles: Array<Role> = [
     date: 'Jan 2019 - Jul 2020',
     title: 'Student Technology Assistant',
     companyName: 'Middle Tennessee State University',
+    location: 'Murfreesboro, TN',
+    employmentType: 'Part-time',
     companyLogo: mtsuLogo,
     description: [
       {
@@ -150,6 +166,7 @@ export const extendedRoles: Array<Role> = [
     date: 'Apr 2018 - Jan 2019',
     title: 'Crew Member',
     companyName: "McDonald's",
+    employmentType: 'Seasonal',
     companyLogo: undefined,
     description: [
       {
@@ -166,6 +183,8 @@ export const extendedRoles: Array<Role> = [
     date: 'Aug 2017 - Dec 2019',
     title: 'Desk Assistant',
     companyName: 'Middle Tennessee State University',
+    location: 'Murfreesboro, TN',
+    employmentType: 'Part-time',
     companyLogo: mtsuLogo,
     description: [
       {
@@ -180,6 +199,7 @@ export const extendedRoles: Array<Role> = [
     date: 'Mar 2016 - Apr 2019',
     title: 'Store Associate',
     companyName: "Goody's",
+    employmentType: 'Part-time',
     companyLogo: undefined,
     description: [
       {
@@ -195,6 +215,7 @@ export const extendedRoles: Array<Role> = [
     date: 'Apr 2015 - Mar 2016',
     title: 'Dishwasher & Waiter',
     companyName: "Patty's Restaurant",
+    employmentType: 'Part-time',
     companyLogo: undefined,
     description: [
       {
