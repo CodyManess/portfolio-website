@@ -98,13 +98,13 @@ We utilize a standard `src/` directory layout:
 ## Testing & Validation
 
 - Runtime uses Node 26 LTS pinned in `.tool-versions` (`mise`).
-- All unit tests live in `__tests__/`. `jest.setup.js` resets `global.fetch` before each test to reject unmocked network calls, and `jest.config.mjs` enables `clearMocks: true` and `restoreMocks: true`.
+- All unit tests live in `__tests__/`. `jest.setup.ts` resets `global.fetch` before each test to reject unmocked network calls, and `jest.config.mjs` enables `clearMocks: true` and `restoreMocks: true`.
 - Before completing any task, verify docs are synced and run:
   - Combined check: `npm run check` (runs `typegen`, `format:check`, `lint`, TypeScript 7.1 native `--noEmit`, and `test`)
   - Or individually:
     - `npm run typegen` (generates `next-env.d.ts` and `.next/types/` on fresh checkouts before `lint` / `typecheck`)
     - `npm run format:check` (and `npm run format` when needed)
     - `npm run lint` (`oxlint` configured in `.oxlintrc.json` with `typeAware: true`, `denyWarnings: true`, `jsx-a11y`, `nextjs`, `react`, `import`, `better-tailwindcss`, `testing-library`, and `jest-dom` rules)
-    - `npm run typecheck` (`next typegen && node node_modules/@typescript/native/lib/tsc.js --noEmit` with `noUncheckedIndexedAccess` and `noImplicitOverride`)
+    - `npm run typecheck` (`next typegen && node node_modules/@typescript/native/lib/tsc.js --noEmit` with `verbatimModuleSyntax`, `noUncheckedIndexedAccess`, `noImplicitOverride`, `noFallthroughCasesInSwitch`, and `noUncheckedSideEffectImports`)
     - `npm test` (or `npm run test`)
   - Production build: `npm run build` (note: in restricted Windows sandboxes where Turbopack cannot spawn PostCSS subprocesses, validate compilation with `npx next build --webpack` or run `npm run build` locally)

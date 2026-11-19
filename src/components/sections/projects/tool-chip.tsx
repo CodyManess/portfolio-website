@@ -1,14 +1,14 @@
-import React from 'react'
+import type { CSSProperties } from 'react'
 import type { Tool } from '@/types/project'
 import { toolIconMap } from '@/lib/tool-icons'
 
-type CssVariableStyle = React.CSSProperties & Record<`--${string}`, string>
+type CssVariableStyle = CSSProperties & Record<`--${string}`, string>
 
 interface ToolChipProps {
   tool: Tool
 }
 
-const ToolChip: React.FC<ToolChipProps> = ({ tool }) => {
+const ToolChip = ({ tool }: ToolChipProps) => {
   const IconComponent = toolIconMap[tool.iconName]
   const chipStyle: CssVariableStyle = {
     '--hover-border': `${tool.iconColor}40`,

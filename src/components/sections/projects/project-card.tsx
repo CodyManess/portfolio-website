@@ -1,7 +1,7 @@
 'use client'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import * as React from 'react'
+import { useMemo, useState, type KeyboardEvent } from 'react'
 import type { Project } from '@/types/project'
 import ProjectModal from './project-modal'
 import ToolChip from './tool-chip'
@@ -30,13 +30,13 @@ const ProjectCard = ({
   isHighlighted = false,
   ...project
 }: ProjectCardProps) => {
-  const [internalOpen, setInternalOpen] = React.useState(false)
-  const [hasOpened, setHasOpened] = React.useState(false)
+  const [internalOpen, setInternalOpen] = useState(false)
+  const [hasOpened, setHasOpened] = useState(false)
   const isControlled = isOpen !== undefined
   const open = isControlled ? isOpen : internalOpen
   const safeLink = getSafeExternalUrl(project.link)
 
-  const companyNames = React.useMemo(() => {
+  const companyNames = useMemo(() => {
     const roles = project.relatedRoles ?? []
     return Array.from(new Set(roles.map((role) => role.companyName)))
   }, [project.relatedRoles])
@@ -59,7 +59,7 @@ const ProjectCard = ({
 
   const shouldRenderModal = hasOpened || open
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       handleOpen()
@@ -77,7 +77,7 @@ const ProjectCard = ({
         aria-label={`View details for ${project.title}`}
         onKeyDown={handleKeyDown}
         className={cn(
-          'scroll-mt-28 pb-3 focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none',
+          'scroll-mt-28 pb-3 focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none dark:focus-visible:ring-(--primary-light)',
           isHighlighted && HIGHLIGHT_RING_CLASS
         )}
         onClick={handleOpen}

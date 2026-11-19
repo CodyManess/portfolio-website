@@ -1,4 +1,3 @@
-import * as React from 'react'
 import IntroCard from './intro-card'
 import { FaAngleDown } from 'react-icons/fa6'
 

@@ -2,7 +2,7 @@
 import nextJest from 'next/jest.js'
 
 const createJestConfig = nextJest({
-  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  // Provide the path to your Next.js app to load next.config.ts and .env files in your test environment
   dir: './',
 })
 
@@ -10,8 +10,9 @@ const createJestConfig = nextJest({
 /** @type {import('jest').Config} */
 const config = {
   // Add more setup options before each test is run
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 
+  coverageProvider: 'v8',
   testEnvironment: 'jest-environment-jsdom',
   clearMocks: true,
   restoreMocks: true,

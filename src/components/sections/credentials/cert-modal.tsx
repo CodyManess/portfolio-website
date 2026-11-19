@@ -1,5 +1,4 @@
 'use client'
-import * as React from 'react'
 import Image from 'next/image'
 import type { Cert } from '@/types/education'
 import { IconType } from '@/types/education'
@@ -72,7 +71,7 @@ const CertModal = ({ cert, open, handleClose }: Props) => {
           >
             <Image
               src={icon}
-              alt={`${name} emblem`}
+              alt=""
               width={56}
               height={56}
               sizes="56px"

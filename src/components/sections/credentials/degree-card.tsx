@@ -1,6 +1,6 @@
 'use client'
 import { Card, CardContent } from '@/components/ui/card'
-import * as React from 'react'
+import { useState, type KeyboardEvent } from 'react'
 import type { Degree } from '@/types/education'
 import DegreeModal from './degree-modal'
 import Image from 'next/image'
@@ -12,15 +12,15 @@ import Image from 'next/image'
 const DegreeCard = (degree: Degree) => {
   const { schoolName, title, subtitle, date, photo } = degree
 
-  const [open, setOpen] = React.useState(false)
-  const [hasOpened, setHasOpened] = React.useState(false)
+  const [open, setOpen] = useState(false)
+  const [hasOpened, setHasOpened] = useState(false)
   const handleOpen = () => {
     setHasOpened(true)
     setOpen(true)
   }
   const handleClose = () => setOpen(false)
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       handleOpen()
@@ -45,7 +45,7 @@ const DegreeCard = (degree: Degree) => {
             quality={75}
             placeholder={typeof photo === 'string' ? 'empty' : 'blur'}
             src={photo}
-            alt={schoolName}
+            alt={`${schoolName} campus`}
             sizes="(max-width: 768px) calc(100vw - 2rem), (max-width: 1024px) calc(50vw - 2rem), 384px"
             className="object-cover"
           />

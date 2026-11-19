@@ -1,5 +1,5 @@
 'use client'
-import * as React from 'react'
+import { useState, type KeyboardEvent } from 'react'
 import Image from 'next/image'
 import {
   Dialog,
@@ -43,7 +43,7 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
   const safeLink = getSafeExternalUrl(project.link)
   const photos = project.photos ?? []
   const relatedRoles = project.relatedRoles ?? []
-  const [activePhotoIndex, setActivePhotoIndex] = React.useState(0)
+  const [activePhotoIndex, setActivePhotoIndex] = useState(0)
 
   const handleRoleSelect = (roleId: string) => {
     handleModalClose()
@@ -76,7 +76,7 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
     setActivePhotoIndex((prev) => (prev + 1) % photos.length)
   }
 
-  const handleGalleryKeyDown = (e: React.KeyboardEvent) => {
+  const handleGalleryKeyDown = (e: KeyboardEvent) => {
     if (photos.length <= 1) return
     if (e.key === 'ArrowLeft') {
       e.preventDefault()
@@ -207,7 +207,7 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
                         onClick={() => setActivePhotoIndex(index)}
                         onKeyDown={handleGalleryKeyDown}
                         className={cn(
-                          'relative h-12 w-20 cursor-pointer overflow-hidden rounded-lg border bg-muted/40 transition-all focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none',
+                          'relative h-12 w-20 cursor-pointer overflow-hidden rounded-lg border bg-muted/40 transition-all focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none dark:focus-visible:ring-(--primary-light)',
                           isSelected
                             ? 'border-(--primary-color) ring-2 ring-(--primary-color)/30'
                             : 'border-border/70 opacity-70 hover:opacity-100'

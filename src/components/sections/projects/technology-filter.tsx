@@ -1,10 +1,10 @@
 'use client'
-import * as React from 'react'
+import type { CSSProperties } from 'react'
 import type { Tool } from '@/types/project'
 import { cn } from '@/lib/utils'
 import { toolIconMap } from '@/lib/tool-icons'
 
-type CssVariableStyle = React.CSSProperties & Record<`--${string}`, string>
+type CssVariableStyle = CSSProperties & Record<`--${string}`, string>
 
 interface Props {
   tools: Tool[]

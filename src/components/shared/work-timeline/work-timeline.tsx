@@ -1,5 +1,4 @@
 'use client'
-import * as React from 'react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { FaAnglesDown, FaAnglesUp } from 'react-icons/fa6'
 import RoleItem from './role-item'
@@ -272,7 +271,6 @@ export default function WorkTimeline({
           return (
             <RoleItem
               key={roleKey}
-              index={index}
               role={role}
               isExpanded={expandedKeySet.has(roleKey)}
               onToggle={() => handleToggleRole(roleKey)}

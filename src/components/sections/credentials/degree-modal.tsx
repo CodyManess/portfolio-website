@@ -1,5 +1,5 @@
 'use client'
-import * as React from 'react'
+import { useMemo, useState } from 'react'
 import type { Course, Degree } from '@/types/education'
 import { CourseType } from '@/types/education'
 import {
@@ -37,7 +37,7 @@ const CourseItem = ({ course }: { course: Course }) => (
 const DegreeModal = ({ degree, open, handleClose }: Props) => {
   const { schoolName, title, subtitle, date, schoolLink, awards, courses } =
     degree
-  const [activeTab, setActiveTab] = React.useState<CourseType | 'ALL'>('ALL')
+  const [activeTab, setActiveTab] = useState<CourseType | 'ALL'>('ALL')
   const safeSchoolLink = getSafeExternalUrl(schoolLink)
 
   const handleModalClose = () => {
@@ -51,7 +51,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
     }
   }
 
-  const { availableCategories, coursesByCategory } = React.useMemo(() => {
+  const { availableCategories, coursesByCategory } = useMemo(() => {
     const grouped = new Map<CourseType, Course[]>()
     for (const course of courses) {
       const list = grouped.get(course.courseType)
@@ -230,6 +230,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
             {courses.length} Total Course{courses.length === 1 ? '' : 's'}
           </span>
           <Button
+            type="button"
             variant="ghost"
             onClick={handleModalClose}
             className="text-xs font-semibold tracking-wider text-(--primary-color) uppercase hover:bg-transparent hover:text-(--primary-dark) dark:text-(--primary-light) dark:hover:text-white"

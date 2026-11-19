@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import ExtendedPage, { metadata } from '@/app/extended/page'
 import { extendedRoles } from '@/data/experience'

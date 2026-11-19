@@ -8,7 +8,6 @@
 
 :root {
   --white: #ffffff;
-  --grey: #403c3c;
   --dark-grey: #0f172a;
   --black: #020617;
 
@@ -21,7 +20,6 @@
 
   --section-background: var(--primary-color);
   --surface-background: var(--white);
-  --surface-background-transparent: rgba(255, 255, 255, 0.8);
   --surface-shadow:
     0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
   --toolbar-background: var(--primary-color);
@@ -39,7 +37,7 @@
   --muted-foreground: #475569;
   --accent: #f1f5f9;
   --accent-foreground: #0f172a;
-  --destructive: #ef4444;
+  --destructive: #b91c1c;
   --destructive-foreground: #f8fafc;
   --border: #e2e8f0;
   --input: #e2e8f0;
@@ -54,7 +52,6 @@
 
     --section-background: var(--dark-grey);
     --surface-background: var(--dark-grey);
-    --surface-background-transparent: rgba(30, 41, 59, 0.8);
     --toolbar-background: var(--dark-grey);
 
     /* shadcn mappings dark */
@@ -70,8 +67,8 @@
     --muted-foreground: #94a3b8;
     --accent: #1e293b;
     --accent-foreground: #f8fafc;
-    --destructive: #7f1d1d;
-    --destructive-foreground: #f8fafc;
+    --destructive: #f87171;
+    --destructive-foreground: #020617;
     --border: #334155;
     --input: #334155;
     --ring: var(--primary-light);

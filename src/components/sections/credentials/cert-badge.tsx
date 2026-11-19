@@ -1,5 +1,5 @@
 'use client'
-import * as React from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import type { Cert } from '@/types/education'
 import { IconType } from '@/types/education'
@@ -12,8 +12,8 @@ import CertModal from './cert-modal'
 const CertBadge = (cert: Cert) => {
   const { icon, iconType, name, org } = cert
 
-  const [open, setOpen] = React.useState(false)
-  const [hasOpened, setHasOpened] = React.useState(false)
+  const [open, setOpen] = useState(false)
+  const [hasOpened, setHasOpened] = useState(false)
 
   const handleOpen = () => {
     setHasOpened(true)
@@ -32,7 +32,7 @@ const CertBadge = (cert: Cert) => {
         {iconType === IconType.Badge ? (
           <Image
             src={icon}
-            alt={`${name} Cert`}
+            alt=""
             width={160}
             height={160}
             sizes="160px"
@@ -43,7 +43,7 @@ const CertBadge = (cert: Cert) => {
             <span className="mb-1 flex size-14 shrink-0 items-center justify-center">
               <Image
                 src={icon}
-                alt={name}
+                alt=""
                 width={56}
                 height={56}
                 sizes="56px"

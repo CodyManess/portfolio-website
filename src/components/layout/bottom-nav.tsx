@@ -1,5 +1,5 @@
 'use client'
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { navLinks, type NavSectionId } from '@/data/links'
@@ -10,12 +10,12 @@ const MOBILE_MEDIA_QUERY = '(max-width: 639px)'
 
 const BottomNav = () => {
   const pathname = usePathname()
-  const [value, setValue] = React.useState<NavSectionId>('home')
+  const [value, setValue] = useState<NavSectionId>('home')
   const activeValue: NavSectionId = pathname.startsWith('/extended')
     ? 'experience'
     : value
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (pathname.startsWith('/extended')) return
 
     const mql =

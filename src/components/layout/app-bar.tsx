@@ -1,5 +1,4 @@
 'use client'
-import * as React from 'react'
 import { navLinks, type NavSectionId } from '@/data/links'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'

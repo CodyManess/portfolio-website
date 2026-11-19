@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
 import Credentials from '@/components/sections/credentials/credentials'
 import type { EducationData } from '@/types/education'

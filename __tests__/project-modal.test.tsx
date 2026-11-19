@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
 import ProjectModal from '@/components/sections/projects/project-modal'
 import type { Project } from '@/types/project'

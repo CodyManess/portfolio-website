@@ -1,10 +1,9 @@
-import React from 'react'
 import ContactMe from '@/components/shared/contact-me'
 import { siteConfig } from '@/config/site'
 
 const currentYear = new Date().getFullYear()
 
-const Footer: React.FC = () => {
+const Footer = () => {
   // Extra bottom padding on mobile keeps content clear of the fixed BottomNav
   return (
     <footer className="border-t border-slate-900 bg-[#0b0f19] pt-16 pb-28 text-center text-slate-400 sm:pb-10">

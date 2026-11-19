@@ -8,7 +8,6 @@ interface RoleItemProps {
   role: Role
   isExpanded: boolean
   onToggle: () => void
-  index: number
   isLast: boolean
   isHighlighted?: boolean
 }
@@ -17,7 +16,6 @@ export default function RoleItem({
   role,
   isExpanded,
   onToggle,
-  index,
   isLast,
   isHighlighted = false,
 }: RoleItemProps) {
@@ -66,7 +64,7 @@ export default function RoleItem({
               <Image
                 className="size-full object-contain"
                 src={role.companyLogo}
-                alt={`${role.companyName} Logo`}
+                alt=""
                 sizes="44px"
               />
             </div>
@@ -102,7 +100,6 @@ export default function RoleItem({
           role={role}
           isExpanded={isExpanded}
           onToggle={onToggle}
-          index={index}
           isHighlighted={isHighlighted}
         />
       </div>

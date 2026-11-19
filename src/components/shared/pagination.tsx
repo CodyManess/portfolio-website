@@ -1,5 +1,4 @@
 'use client'
-import * as React from 'react'
 import { FaChevronLeft, FaChevronRight, FaEllipsis } from 'react-icons/fa6'
 import { cn } from '@/lib/utils'
 

@@ -1,6 +1,5 @@
 'use client'
 
-import * as React from 'react'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ProjectCard from './project-card'
 import TechnologyFilter from './technology-filter'
@@ -383,6 +382,7 @@ const ProjectList = ({ initialProjects }: ProjectListProps) => {
             No projects found matching the selected technology.
           </p>
           <Button
+            type="button"
             variant="outline"
             size="sm"
             onClick={() => handleSelectTool(null)}

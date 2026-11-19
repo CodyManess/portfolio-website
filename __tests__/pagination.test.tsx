@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
 import Pagination from '@/components/shared/pagination'
 
@@ -79,6 +78,34 @@ describe('Pagination Component', () => {
     expect(screen.getByRole('button', { name: 'Page 4' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Page 5' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Page 6' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Page 10' })).toBeInTheDocument()
+  })
+
+  it('renders near-start and near-end pagination ranges cleanly for > 5 pages', () => {
+    const { rerender } = render(
+      <Pagination currentPage={2} totalPages={10} onPageChange={jest.fn()} />
+    )
+
+    expect(screen.getByRole('button', { name: 'Page 1' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Page 2' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Page 3' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Page 4' })).toBeInTheDocument()
+    expect(
+      screen.queryByRole('button', { name: 'Page 5' })
+    ).not.toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Page 10' })).toBeInTheDocument()
+
+    rerender(
+      <Pagination currentPage={9} totalPages={10} onPageChange={jest.fn()} />
+    )
+
+    expect(screen.getByRole('button', { name: 'Page 1' })).toBeInTheDocument()
+    expect(
+      screen.queryByRole('button', { name: 'Page 6' })
+    ).not.toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Page 7' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Page 8' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Page 9' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Page 10' })).toBeInTheDocument()
   })
 

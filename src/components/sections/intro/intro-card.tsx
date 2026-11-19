@@ -1,4 +1,3 @@
-import React from 'react'
 import ContactMe from '@/components/shared/contact-me'
 import { siteConfig } from '@/config/site'
 import Image from 'next/image'

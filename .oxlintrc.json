@@ -144,7 +144,7 @@
       }
     },
     {
-      "files": ["jest.setup.js"],
+      "files": ["jest.setup.ts"],
       "env": {
         "jest": true
       }

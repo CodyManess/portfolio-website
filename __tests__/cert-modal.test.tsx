@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
 import CertModal from '@/components/sections/credentials/cert-modal'
 import type { Cert } from '@/types/education'

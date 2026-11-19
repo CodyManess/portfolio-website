@@ -1,12 +1,13 @@
 'use client'
-import * as React from 'react'
 import {
   createContext,
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useRef,
   useState,
+  type ReactNode,
 } from 'react'
 
 type NavigatorHandler = (target: string) => void
@@ -102,16 +103,12 @@ export function scrollElementIntoView(
   })
 }
 
-export function PortfolioLinkProvider({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export function PortfolioLinkProvider({ children }: { children: ReactNode }) {
   const roleChannel = useNavigatorChannel()
   const projectChannel = useNavigatorChannel()
   const toolChannel = useNavigatorChannel()
 
-  const value = React.useMemo<PortfolioLinkContextValue>(
+  const value = useMemo<PortfolioLinkContextValue>(
     () => ({
       registerRoleNavigator: roleChannel.register,
       registerProjectNavigator: projectChannel.register,
@@ -136,11 +133,7 @@ export function PortfolioLinkProvider({
     ]
   )
 
-  return (
-    <PortfolioLinkContext.Provider value={value}>
-      {children}
-    </PortfolioLinkContext.Provider>
-  )
+  return <PortfolioLinkContext value={value}>{children}</PortfolioLinkContext>
 }
 
 export function usePortfolioLinks(): PortfolioLinkContextValue | null {

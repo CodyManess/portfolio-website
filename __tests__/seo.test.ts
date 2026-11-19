@@ -1,3 +1,4 @@
+import { readFile } from 'node:fs/promises'
 import robots from '@/app/robots'
 import sitemap from '@/app/sitemap'
 import manifest from '@/app/manifest'
@@ -22,6 +23,18 @@ jest.mock('next/font/local', () => () => ({
   className: 'mock-font',
   variable: '--mock-font',
 }))
+
+jest.mock('node:fs/promises', () => {
+  const actual = jest.requireActual<{ readFile: typeof readFile }>(
+    'node:fs/promises'
+  )
+  return {
+    ...actual,
+    readFile: jest.fn(actual.readFile),
+  }
+})
+
+const mockedReadFile = readFile as jest.MockedFunction<typeof readFile>
 
 jest.mock('next/og', () => ({
   ImageResponse: class MockImageResponse {
@@ -122,5 +135,19 @@ describe('SEO Metadata Routes', () => {
         },
       ],
     })
+  })
+
+  it('falls back gracefully when the OpenGraph profile photo cannot be read', async () => {
+    mockedReadFile.mockRejectedValueOnce(new Error('ENOENT'))
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
+
+    const ogResponse = await OgImage()
+
+    expect(ogResponse).toBeDefined()
+    expect(mockedReadFile).toHaveBeenCalledTimes(1)
+    expect(warnSpy).toHaveBeenCalledWith(
+      'Unable to load public/opengraph-image.jpg:',
+      expect.any(Error)
+    )
   })
 })

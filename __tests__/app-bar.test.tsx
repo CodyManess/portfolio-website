@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom'
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { usePathname } from 'next/navigation'
 import PortfolioAppBar from '@/components/layout/app-bar'
@@ -181,5 +180,69 @@ describe('PortfolioAppBar', () => {
       homeSection.remove()
       projectsSection.remove()
     }
+  })
+
+  it('detaches scroll listener and resets hidden state when transitioning from desktop to mobile viewport', () => {
+    let isDesktop = true
+    let changeListener: (() => void) | undefined
+
+    Object.defineProperty(window, 'matchMedia', {
+      value: jest.fn().mockImplementation((query: string) => ({
+        get matches() {
+          return isDesktop
+        },
+        media: query,
+        addEventListener: jest.fn((event: string, listener: () => void) => {
+          if (event === 'change') {
+            changeListener = listener
+          }
+        }),
+        removeEventListener: jest.fn(),
+      })),
+      writable: true,
+      configurable: true,
+    })
+
+    render(<PortfolioAppBar />)
+    const nav = screen.getByRole('navigation', { name: /main/i })
+
+    act(() => {
+      Object.defineProperty(window, 'scrollY', {
+        value: 200,
+        configurable: true,
+      })
+      window.dispatchEvent(new Event('scroll'))
+    })
+    expect(nav).toHaveAttribute('data-hidden', 'true')
+
+    // Transition to mobile: resets hidden state and detaches scroll listener
+    act(() => {
+      isDesktop = false
+      changeListener?.()
+    })
+    expect(nav).toHaveAttribute('data-hidden', 'false')
+
+    act(() => {
+      Object.defineProperty(window, 'scrollY', {
+        value: 400,
+        configurable: true,
+      })
+      window.dispatchEvent(new Event('scroll'))
+    })
+    expect(nav).toHaveAttribute('data-hidden', 'false')
+
+    // Transition back to desktop: re-attaches listener and tracks scroll again
+    act(() => {
+      isDesktop = true
+      changeListener?.()
+    })
+    act(() => {
+      Object.defineProperty(window, 'scrollY', {
+        value: 600,
+        configurable: true,
+      })
+      window.dispatchEvent(new Event('scroll'))
+    })
+    expect(nav).toHaveAttribute('data-hidden', 'true')
   })
 })

@@ -1,13 +1,15 @@
 import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa6'
 import { socialLinks } from '@/data/links'
-import { cn } from '@/lib/utils'
+import { cn, getSafeExternalUrl } from '@/lib/utils'
 
 interface ContactMeProps {
   /** Use `'dark'` when rendered on an always-dark surface such as the footer. */
   surface?: 'adaptive' | 'dark'
 }
 
-const ContactMe: React.FC<ContactMeProps> = ({ surface = 'adaptive' }) => {
+const ContactMe = ({ surface = 'adaptive' }: ContactMeProps) => {
+  const safeGitHubUrl = getSafeExternalUrl(socialLinks.GitHub)
+  const safeLinkedInUrl = getSafeExternalUrl(socialLinks.LinkedIn)
   const baseButtonClasses =
     surface === 'dark'
       ? 'border-white/20 bg-white/10 text-white! hover:bg-white/20 focus-visible:ring-white focus-visible:ring-offset-[#0b0f19]'
@@ -15,36 +17,40 @@ const ContactMe: React.FC<ContactMeProps> = ({ surface = 'adaptive' }) => {
 
   return (
     <div className="flex w-full justify-center gap-6 md:gap-8">
-      <a
-        href={socialLinks.GitHub}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub (opens in new tab)"
-        className={cn(
-          'group flex size-16 items-center justify-center rounded-full border backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(15,23,42,0.16)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none dark:hover:shadow-[0_10px_20px_rgba(255,255,255,0.15)]',
-          baseButtonClasses
-        )}
-      >
-        <FaGithub
-          className="size-7 transition-transform duration-300 group-hover:scale-110"
-          aria-hidden="true"
-        />
-      </a>
-      <a
-        href={socialLinks.LinkedIn}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn (opens in new tab)"
-        className={cn(
-          'group flex size-16 items-center justify-center rounded-full border backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#0a66c2] hover:bg-[#0a66c2] hover:text-white! hover:shadow-[0_10px_20px_rgba(10,102,194,0.35)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
-          baseButtonClasses
-        )}
-      >
-        <FaLinkedin
-          className="size-7 transition-transform duration-300 group-hover:scale-110"
-          aria-hidden="true"
-        />
-      </a>
+      {safeGitHubUrl ? (
+        <a
+          href={safeGitHubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub (opens in new tab)"
+          className={cn(
+            'group flex size-16 items-center justify-center rounded-full border backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(15,23,42,0.16)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none dark:hover:shadow-[0_10px_20px_rgba(255,255,255,0.15)]',
+            baseButtonClasses
+          )}
+        >
+          <FaGithub
+            className="size-7 transition-transform duration-300 group-hover:scale-110"
+            aria-hidden="true"
+          />
+        </a>
+      ) : null}
+      {safeLinkedInUrl ? (
+        <a
+          href={safeLinkedInUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn (opens in new tab)"
+          className={cn(
+            'group flex size-16 items-center justify-center rounded-full border backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#0a66c2] hover:bg-[#0a66c2] hover:text-white! hover:shadow-[0_10px_20px_rgba(10,102,194,0.35)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
+            baseButtonClasses
+          )}
+        >
+          <FaLinkedin
+            className="size-7 transition-transform duration-300 group-hover:scale-110"
+            aria-hidden="true"
+          />
+        </a>
+      ) : null}
       <a
         href={socialLinks.Email}
         aria-label="Email"

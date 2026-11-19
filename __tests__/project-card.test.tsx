@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
 import ProjectCard from '@/components/sections/projects/project-card'
 import type { Project } from '@/types/project'

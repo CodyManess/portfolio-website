@@ -1,5 +1,4 @@
 'use client'
-import * as React from 'react'
 import { useState } from 'react'
 import {
   FaArrowRight,
@@ -27,7 +26,7 @@ import {
 
 type AboutMode = 'professional' | 'personal'
 
-const About: React.FC = () => {
+const About = () => {
   const [mode, setMode] = useState<AboutMode>('professional')
   const linkContext = usePortfolioLinks()
   const isPersonal = mode === 'personal'
@@ -362,7 +361,7 @@ const About: React.FC = () => {
                         href={safeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex flex-col justify-between rounded-2xl border border-white/20 bg-slate-950/25 p-3.5 text-white transition-all duration-200 hover:-translate-y-1 hover:border-white/35 hover:bg-slate-950/40 hover:shadow-md dark:border-white/15 dark:bg-white/10 dark:hover:bg-white/20"
+                        className="group flex flex-col justify-between rounded-2xl border border-white/20 bg-slate-950/25 p-3.5 text-white transition-all duration-200 hover:-translate-y-1 hover:border-white/35 hover:bg-slate-950/40 hover:shadow-md focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none dark:border-white/15 dark:bg-white/10 dark:hover:bg-white/20"
                         aria-label={`${media.name} - ${media.category} (opens in new tab)`}
                       >
                         <div className="mb-2 flex items-center justify-between">

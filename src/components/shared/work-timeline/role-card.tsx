@@ -18,7 +18,6 @@ interface RoleCardProps {
   role: Role
   isExpanded: boolean
   onToggle: () => void
-  index: number
   isHighlighted?: boolean
 }
 
@@ -26,7 +25,6 @@ const RoleCard = ({
   role,
   isExpanded,
   onToggle,
-  index,
   isHighlighted = false,
 }: RoleCardProps) => {
   const linkContext = usePortfolioLinks()
@@ -48,7 +46,6 @@ const RoleCard = ({
         interactiveCardVariants(),
         isHighlighted && HIGHLIGHT_RING_CLASS
       )}
-      index={index}
       isOpen={isExpanded}
       onToggle={onToggle}
     >

@@ -1,4 +1,3 @@
-import React from 'react'
 import { FaArrowLeft } from 'react-icons/fa6'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -36,7 +35,7 @@ export const metadata: Metadata = {
   },
 }
 
-const Page: React.FC = () => {
+const Page = () => {
   return (
     <main id="main-content" tabIndex={-1} className="outline-none">
       <section id="extended-experience" className="py-8 sm:mt-[12vh] sm:py-12">

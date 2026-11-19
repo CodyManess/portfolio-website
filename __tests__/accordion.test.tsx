@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { useState } from 'react'
 import {
@@ -7,28 +6,10 @@ import {
   AccordionHeader,
 } from '@/components/shared/accordion'
 
-function TestAccordion() {
-  const [expanded, setExpanded] = useState<number | false>(false)
-  return (
-    <Accordion index={0} expanded={expanded} setExpanded={setExpanded}>
-      <AccordionHeader>
-        <span>Section Title</span>
-      </AccordionHeader>
-      <AccordionBody>
-        <p>Section Body</p>
-      </AccordionBody>
-    </Accordion>
-  )
-}
-
 function ControlledAccordion() {
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <Accordion
-      index={0}
-      isOpen={isOpen}
-      onToggle={() => setIsOpen((prev) => !prev)}
-    >
+    <Accordion isOpen={isOpen} onToggle={() => setIsOpen((prev) => !prev)}>
       <AccordionHeader>
         <span>Controlled Section</span>
       </AccordionHeader>
@@ -40,32 +21,29 @@ function ControlledAccordion() {
 }
 
 describe('Accordion', () => {
-  it('toggles expanded state and preserves button focus on collapse', () => {
-    render(<TestAccordion />)
-
-    const toggleButton = screen.getByRole('button', { name: /section title/i })
-    toggleButton.focus()
-    expect(toggleButton).toHaveFocus()
-    expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
-
-    fireEvent.click(toggleButton)
-    expect(toggleButton).toHaveAttribute('aria-expanded', 'true')
-    expect(toggleButton).toHaveFocus()
-
-    fireEvent.click(toggleButton)
-    expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
-    expect(toggleButton).toHaveFocus()
-  })
-
-  it('supports controlled isOpen and onToggle props', () => {
+  it('toggles controlled isOpen state, updates panel inert state, and preserves button focus on collapse', () => {
     render(<ControlledAccordion />)
 
     const toggleButton = screen.getByRole('button', {
       name: /controlled section/i,
     })
+    const panel = screen.getByRole('region', {
+      name: /controlled section/i,
+    })
+
+    toggleButton.focus()
+    expect(toggleButton).toHaveFocus()
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
+    expect(panel).toHaveAttribute('inert')
 
     fireEvent.click(toggleButton)
     expect(toggleButton).toHaveAttribute('aria-expanded', 'true')
+    expect(panel).not.toHaveAttribute('inert')
+    expect(toggleButton).toHaveFocus()
+
+    fireEvent.click(toggleButton)
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
+    expect(panel).toHaveAttribute('inert')
+    expect(toggleButton).toHaveFocus()
   })
 })

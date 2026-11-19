@@ -1,5 +1,4 @@
 'use client'
-import * as React from 'react'
 import { useEffect, useRef, useState } from 'react'
 import DegreeCard from './degree-card'
 import CertBadge from './cert-badge'
