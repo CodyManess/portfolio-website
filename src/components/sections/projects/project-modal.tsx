@@ -76,6 +76,17 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
     setActivePhotoIndex((prev) => (prev + 1) % photos.length)
   }
 
+  const handleGalleryKeyDown = (e: React.KeyboardEvent) => {
+    if (photos.length <= 1) return
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault()
+      handlePrevPhoto()
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault()
+      handleNextPhoto()
+    }
+  }
+
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="flex max-h-[90vh] flex-col gap-0 overflow-hidden p-6 sm:max-w-200">
@@ -97,10 +108,11 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: 'outline', size: 'sm' }),
-                'text-xs font-medium transition-colors hover:border-(--primary-color) hover:text-(--primary-color) focus-visible:outline-none'
+                'text-xs font-medium transition-colors hover:border-(--primary-color) hover:text-(--primary-color) focus-visible:outline-none dark:hover:border-(--primary-light) dark:hover:text-(--primary-light)'
               )}
             >
-              Visit Project{' '}
+              Visit Project
+              <span className="sr-only"> (opens in new tab)</span>{' '}
               <FaArrowUpRightFromSquare
                 className="ml-1.5 size-3"
                 aria-hidden="true"
@@ -119,7 +131,10 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
                   Project Showcase
                 </h3>
                 {photos.length > 1 ? (
-                  <span className="font-mono text-xs text-muted-foreground">
+                  <span
+                    aria-live="polite"
+                    className="font-mono text-xs text-muted-foreground"
+                  >
                     {clampedIndex + 1} / {photos.length}
                   </span>
                 ) : null}
@@ -148,6 +163,7 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
                       size="icon-sm"
                       aria-label="Previous photo"
                       onClick={handlePrevPhoto}
+                      onKeyDown={handleGalleryKeyDown}
                       className="absolute top-1/2 left-2 -translate-y-1/2 rounded-full border border-border/60 bg-background/85 text-foreground shadow-sm backdrop-blur-xs hover:bg-background"
                     >
                       <FaChevronLeft className="size-3.5" aria-hidden="true" />
@@ -158,6 +174,7 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
                       size="icon-sm"
                       aria-label="Next photo"
                       onClick={handleNextPhoto}
+                      onKeyDown={handleGalleryKeyDown}
                       className="absolute top-1/2 right-2 -translate-y-1/2 rounded-full border border-border/60 bg-background/85 text-foreground shadow-sm backdrop-blur-xs hover:bg-background"
                     >
                       <FaChevronRight className="size-3.5" aria-hidden="true" />
@@ -188,6 +205,7 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
                         aria-label={`View photo ${index + 1}: ${photo.alt}`}
                         aria-pressed={isSelected}
                         onClick={() => setActivePhotoIndex(index)}
+                        onKeyDown={handleGalleryKeyDown}
                         className={cn(
                           'relative h-12 w-20 cursor-pointer overflow-hidden rounded-lg border bg-muted/40 transition-all focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none',
                           isSelected
@@ -288,7 +306,7 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
                     className="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-3 text-sm transition-colors hover:border-(--primary-color)/30 hover:bg-muted/30"
                   >
                     <FaCircleCheck
-                      className="mt-0.5 size-4 shrink-0 text-(--primary-color)"
+                      className="mt-0.5 size-4 shrink-0 text-(--primary-color) dark:text-(--primary-light)"
                       aria-hidden="true"
                     />
                     <span className="leading-snug text-foreground">
@@ -311,7 +329,7 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
             type="button"
             variant="ghost"
             onClick={handleModalClose}
-            className="text-xs font-semibold tracking-wider text-(--primary-color) uppercase hover:bg-transparent hover:text-(--primary-dark)"
+            className="text-xs font-semibold tracking-wider text-(--primary-color) uppercase hover:bg-transparent hover:text-(--primary-dark) dark:text-(--primary-light) dark:hover:text-white"
           >
             Close
           </Button>

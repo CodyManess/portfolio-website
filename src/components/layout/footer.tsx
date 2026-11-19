@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
           opportunities to be part of your vision.
         </p>
 
-        <ContactMe />
+        <ContactMe surface="dark" />
       </div>
 
       <div className="container mx-auto px-4 lg:px-6">

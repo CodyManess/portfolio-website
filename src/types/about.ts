@@ -1,4 +1,5 @@
 import type { IconType } from 'react-icons'
+import type { Tool } from '@/types/project'
 
 export interface Interest {
   name: string
@@ -12,7 +13,12 @@ export interface MediaLink {
   icon: IconType
 }
 
+export interface Skill {
+  label: string
+  tool?: Tool
+}
+
 export interface SkillGroup {
   category: string
-  skills: string[]
+  skills: Skill[]
 }

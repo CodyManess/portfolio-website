@@ -9,7 +9,7 @@ import {
   useState,
 } from 'react'
 
-type NavigatorHandler = (id: string) => void
+type NavigatorHandler = (target: string) => void
 
 export const HIGHLIGHT_RING_CLASS =
   'ring-2 ring-(--primary-color) ring-offset-2 ring-offset-background dark:ring-(--primary-light)'
@@ -32,13 +32,47 @@ export function useTemporaryHighlight(
   return [highlightedId, setHighlightedId]
 }
 
+function useNavigatorChannel() {
+  const handlerRef = useRef<NavigatorHandler | null>(null)
+  const pendingRef = useRef<string | null>(null)
+
+  const register = useCallback((handler: NavigatorHandler) => {
+    handlerRef.current = handler
+    return () => {
+      if (handlerRef.current === handler) {
+        handlerRef.current = null
+      }
+    }
+  }, [])
+
+  const navigate = useCallback((target: string) => {
+    if (handlerRef.current) {
+      pendingRef.current = null
+      handlerRef.current(target)
+    } else {
+      pendingRef.current = target
+    }
+  }, [])
+
+  const consumePending = useCallback(() => {
+    const target = pendingRef.current
+    pendingRef.current = null
+    return target
+  }, [])
+
+  return { register, navigate, consumePending }
+}
+
 interface PortfolioLinkContextValue {
   registerRoleNavigator: (handler: NavigatorHandler) => () => void
   registerProjectNavigator: (handler: NavigatorHandler) => () => void
+  registerToolFilterNavigator: (handler: NavigatorHandler) => () => void
   navigateToRole: (roleId: string) => void
   navigateToProject: (projectId: string) => void
+  navigateToTool: (toolTitle: string) => void
   consumePendingRole: () => string | null
   consumePendingProject: () => string | null
+  consumePendingTool: () => string | null
 }
 
 const PortfolioLinkContext = createContext<PortfolioLinkContextValue | null>(
@@ -73,75 +107,32 @@ export function PortfolioLinkProvider({
 }: {
   children: React.ReactNode
 }) {
-  const roleNavigatorRef = useRef<NavigatorHandler | null>(null)
-  const projectNavigatorRef = useRef<NavigatorHandler | null>(null)
-  const pendingRoleIdRef = useRef<string | null>(null)
-  const pendingProjectIdRef = useRef<string | null>(null)
-
-  const registerRoleNavigator = useCallback((handler: NavigatorHandler) => {
-    roleNavigatorRef.current = handler
-    return () => {
-      if (roleNavigatorRef.current === handler) {
-        roleNavigatorRef.current = null
-      }
-    }
-  }, [])
-
-  const registerProjectNavigator = useCallback((handler: NavigatorHandler) => {
-    projectNavigatorRef.current = handler
-    return () => {
-      if (projectNavigatorRef.current === handler) {
-        projectNavigatorRef.current = null
-      }
-    }
-  }, [])
-
-  const navigateToRole = useCallback((roleId: string) => {
-    if (roleNavigatorRef.current) {
-      pendingRoleIdRef.current = null
-      roleNavigatorRef.current(roleId)
-    } else {
-      pendingRoleIdRef.current = roleId
-    }
-  }, [])
-
-  const navigateToProject = useCallback((projectId: string) => {
-    if (projectNavigatorRef.current) {
-      pendingProjectIdRef.current = null
-      projectNavigatorRef.current(projectId)
-    } else {
-      pendingProjectIdRef.current = projectId
-    }
-  }, [])
-
-  const consumePendingRole = useCallback(() => {
-    const id = pendingRoleIdRef.current
-    pendingRoleIdRef.current = null
-    return id
-  }, [])
-
-  const consumePendingProject = useCallback(() => {
-    const id = pendingProjectIdRef.current
-    pendingProjectIdRef.current = null
-    return id
-  }, [])
+  const roleChannel = useNavigatorChannel()
+  const projectChannel = useNavigatorChannel()
+  const toolChannel = useNavigatorChannel()
 
   const value = React.useMemo<PortfolioLinkContextValue>(
     () => ({
-      registerRoleNavigator,
-      registerProjectNavigator,
-      navigateToRole,
-      navigateToProject,
-      consumePendingRole,
-      consumePendingProject,
+      registerRoleNavigator: roleChannel.register,
+      registerProjectNavigator: projectChannel.register,
+      registerToolFilterNavigator: toolChannel.register,
+      navigateToRole: roleChannel.navigate,
+      navigateToProject: projectChannel.navigate,
+      navigateToTool: toolChannel.navigate,
+      consumePendingRole: roleChannel.consumePending,
+      consumePendingProject: projectChannel.consumePending,
+      consumePendingTool: toolChannel.consumePending,
     }),
     [
-      registerRoleNavigator,
-      registerProjectNavigator,
-      navigateToRole,
-      navigateToProject,
-      consumePendingRole,
-      consumePendingProject,
+      roleChannel.register,
+      roleChannel.navigate,
+      roleChannel.consumePending,
+      projectChannel.register,
+      projectChannel.navigate,
+      projectChannel.consumePending,
+      toolChannel.register,
+      toolChannel.navigate,
+      toolChannel.consumePending,
     ]
   )
 

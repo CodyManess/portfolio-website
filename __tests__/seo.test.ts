@@ -1,7 +1,9 @@
 import robots from '@/app/robots'
 import sitemap from '@/app/sitemap'
-import { metadata as rootMetadata } from '@/app/layout'
+import manifest from '@/app/manifest'
+import { metadata as rootMetadata, viewport } from '@/app/layout'
 import { metadata as extendedMetadata } from '@/app/extended/page'
+import { metadata as notFoundMetadata } from '@/app/not-found'
 import OgImage, {
   alt as ogAlt,
   size as ogSize,
@@ -11,6 +13,10 @@ import Icon, {
   size as iconSize,
   contentType as iconContentType,
 } from '@/app/icon'
+import AppleIcon, {
+  size as appleIconSize,
+  contentType as appleIconContentType,
+} from '@/app/apple-icon'
 
 jest.mock('next/font/local', () => () => ({
   className: 'mock-font',
@@ -66,6 +72,26 @@ describe('SEO Metadata Routes', () => {
     expect(iconContentType).toBe('image/png')
     const iconResponse = Icon()
     expect(iconResponse).toBeDefined()
+
+    expect(appleIconSize).toEqual({ width: 180, height: 180 })
+    expect(appleIconContentType).toBe('image/png')
+    const appleIconResponse = AppleIcon()
+    expect(appleIconResponse).toBeDefined()
+
+    expect(viewport.colorScheme).toBe('light dark')
+    expect(viewport.themeColor).toEqual([
+      { media: '(prefers-color-scheme: light)', color: '#007ab8' },
+      { media: '(prefers-color-scheme: dark)', color: '#020617' },
+    ])
+
+    expect(manifest()).toMatchObject({
+      name: 'Cody Maness | Full-Stack Developer',
+      short_name: 'Cody Maness',
+      start_url: '/',
+      display: 'standalone',
+    })
+
+    expect(notFoundMetadata.title).toBe('Page Not Found | Cody Maness')
 
     expect(rootMetadata.openGraph).toMatchObject({
       siteName: 'Cody Maness | Full-Stack Developer',

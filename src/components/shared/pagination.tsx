@@ -28,7 +28,7 @@ const Pagination = ({
   if (totalPages <= 1) return null
 
   // Generate pagination items for desktop
-  const getPageNumbers = () => {
+  const getPageNumbers = (): Array<number | 'ellipsis'> => {
     if (totalPages <= 5) {
       return Array.from({ length: totalPages }, (_, i) => i + 1)
     }
@@ -95,7 +95,7 @@ const Pagination = ({
           onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
           disabled={currentPage === 1}
           aria-label="Go to previous page"
-          className="inline-flex cursor-pointer items-center gap-1 rounded-xl border border-slate-200/80 bg-slate-50/60 px-3 py-2 text-xs font-medium text-slate-600 transition-all duration-200 hover:border-(--primary-color)/30 hover:text-(--primary-color) disabled:pointer-events-none disabled:opacity-40 dark:border-slate-800/40 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light)"
+          className="inline-flex cursor-pointer items-center gap-1 rounded-xl border border-slate-200/80 bg-slate-50/60 px-3 py-2 text-xs font-medium text-slate-600 transition-all duration-200 hover:border-(--primary-color)/30 hover:text-(--primary-color) focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40 dark:border-slate-800/40 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light) dark:focus-visible:ring-(--primary-light)"
         >
           <FaChevronLeft className="size-3" aria-hidden="true" />
           <span className="hidden sm:inline">Prev</span>
@@ -130,7 +130,7 @@ const Pagination = ({
               )
             }
 
-            const pageNum = item as number
+            const pageNum = item
             const isActive = currentPage === pageNum
 
             return (
@@ -141,7 +141,7 @@ const Pagination = ({
                 aria-current={isActive ? 'page' : undefined}
                 aria-label={`Page ${pageNum}`}
                 className={cn(
-                  'flex size-9 cursor-pointer items-center justify-center rounded-xl border text-xs font-semibold transition-all duration-200',
+                  'flex size-9 cursor-pointer items-center justify-center rounded-xl border text-xs font-semibold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none dark:focus-visible:ring-(--primary-light)',
                   isActive
                     ? 'border-(--primary-color) bg-(--primary-color) text-white shadow-[0_0_12px_rgba(0,122,184,0.3)]'
                     : 'border-slate-200/80 bg-slate-50/60 text-slate-600 hover:border-(--primary-color)/30 hover:text-(--primary-color) dark:border-slate-800/40 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light)'
@@ -159,7 +159,7 @@ const Pagination = ({
           onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
           disabled={currentPage === totalPages}
           aria-label="Go to next page"
-          className="inline-flex cursor-pointer items-center gap-1 rounded-xl border border-slate-200/80 bg-slate-50/60 px-3 py-2 text-xs font-medium text-slate-600 transition-all duration-200 hover:border-(--primary-color)/30 hover:text-(--primary-color) disabled:pointer-events-none disabled:opacity-40 dark:border-slate-800/40 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light)"
+          className="inline-flex cursor-pointer items-center gap-1 rounded-xl border border-slate-200/80 bg-slate-50/60 px-3 py-2 text-xs font-medium text-slate-600 transition-all duration-200 hover:border-(--primary-color)/30 hover:text-(--primary-color) focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40 dark:border-slate-800/40 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light) dark:focus-visible:ring-(--primary-light)"
         >
           <span className="hidden sm:inline">Next</span>
           <FaChevronRight className="size-3" aria-hidden="true" />

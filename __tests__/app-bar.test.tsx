@@ -10,6 +10,17 @@ jest.mock('next/navigation', () => ({
 
 const mockedUsePathname = usePathname as jest.MockedFunction<typeof usePathname>
 
+const restoreWindowProperty = (
+  key: string,
+  descriptor: PropertyDescriptor | undefined
+) => {
+  if (descriptor) {
+    Object.defineProperty(window, key, descriptor)
+  } else {
+    Reflect.deleteProperty(window, key)
+  }
+}
+
 describe('PortfolioAppBar', () => {
   const originalMatchMedia = Object.getOwnPropertyDescriptor(
     window,
@@ -62,25 +73,15 @@ describe('PortfolioAppBar', () => {
   })
 
   afterEach(() => {
-    const restoreProperty = (
-      key: string,
-      descriptor: PropertyDescriptor | undefined
-    ) => {
-      if (descriptor) {
-        Object.defineProperty(window, key, descriptor)
-      } else {
-        Reflect.deleteProperty(window, key)
-      }
-    }
-
-    restoreProperty('matchMedia', originalMatchMedia)
-    restoreProperty('requestAnimationFrame', originalRAF)
-    restoreProperty('cancelAnimationFrame', originalCancelRAF)
+    restoreWindowProperty('matchMedia', originalMatchMedia)
+    restoreWindowProperty('requestAnimationFrame', originalRAF)
+    restoreWindowProperty('cancelAnimationFrame', originalCancelRAF)
   })
 
-  it('renders navigation links, ignores small scroll deltas, hides on scroll down, shows on scroll up, and reveals on focus', () => {
+  it('renders a banner landmark, navigation links, ignores small scroll deltas, hides on scroll down, shows on scroll up, and reveals on focus', () => {
     render(<PortfolioAppBar />)
 
+    expect(screen.getByRole('banner')).toBeInTheDocument()
     const nav = screen.getByRole('navigation', { name: /main/i })
     expect(nav).toHaveAttribute('data-hidden', 'false')
 

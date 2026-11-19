@@ -16,5 +16,5 @@ Follow these steps to keep credential data, images, and UI mappings synchronized
    - For degrees/coursework, import the campus photo (`@public/credentials/...`) in `src/data/education-degrees.ts` and add or update the `Degree` entry (`photo`, optional `date`, `Course`, `CourseType`: `CourseType.Core`, `CourseType.Concentration`, `CourseType.SupportCourses`). Use `https://` URLs for `schoolLink`.
    - For certifications, import the badge/logo (`@public/credentials/...`) in `src/data/education-certs.ts` and add or update the `Cert` entry (`icon`, `IconType.Badge` or `IconType.Logo`, plus optional `description`, `skills`, `issueDate`, `expirationDate`, `credentialId`, `credentialUrl`, and `programUrl` using `https://` URLs).
 3. **Verify**:
-   - Ensure `<Image quality={...} />` uses `[25, 50, 75, 100]` if specified (`next.config.mjs`).
+   - Ensure `<Image quality={...} />` uses `[25, 50, 75, 100]` if specified (`next.config.ts`).
    - Run `npm run check` (`format:check`, `lint`, `typecheck`, and `test`).

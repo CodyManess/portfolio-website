@@ -1,6 +1,8 @@
 import { SiLetterboxd, SiGoodreads, SiYoutubemusic } from 'react-icons/si'
 import { FaGamepad } from 'react-icons/fa6'
-import type { Interest, MediaLink, SkillGroup } from '@/types/about'
+import type { Interest, MediaLink } from '@/types/about'
+
+export { skillGroups } from './tools'
 
 export const techInterests: Interest[] = [
   { name: 'Web Development', emoji: '💻' },
@@ -45,55 +47,5 @@ export const mediaLinks: MediaLink[] = [
     category: 'Playlists & Tunes',
     url: 'https://music.youtube.com/channel/UC6zBwn_RPU5-MfYKbkg6BBA?si=syL9spZjwEp_v0cK',
     icon: SiYoutubemusic,
-  },
-]
-
-export const skillGroups: SkillGroup[] = [
-  {
-    category: 'Frontend & Mobile',
-    skills: [
-      'React',
-      'Next.js',
-      'React Native',
-      'TypeScript',
-      'JavaScript',
-      'Angular',
-      'Tailwind CSS',
-      'HTML & CSS',
-      'Swift / SwiftUI',
-      'Kotlin / Jetpack Compose',
-      'Flutter',
-    ],
-  },
-  {
-    category: 'Backend, Cloud & Data',
-    skills: [
-      'Node.js',
-      'Java',
-      'Spring Boot',
-      'PHP',
-      'Ruby',
-      'SQL / MySQL',
-      'AWS',
-      'Google Cloud',
-      'Firebase',
-    ],
-  },
-  {
-    category: 'Testing & Dev Tooling',
-    skills: [
-      'Jest',
-      'React Testing Library',
-      'Storybook',
-      'Git / GitHub / GitLab',
-      'GitLab CI/CD',
-      'Cursor',
-      'GitHub Copilot',
-      'Bruno',
-    ],
-  },
-  {
-    category: 'Practices & Collaboration',
-    skills: ['Accessibility (W3C WCAG)', 'Agile & Scrum', 'Jira', 'Confluence'],
   },
 ]

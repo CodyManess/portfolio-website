@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react'
+import About from '@/components/sections/about'
 import Experience from '@/components/sections/experience'
 import Projects from '@/components/sections/projects/projects'
 import { PortfolioLinkProvider } from '@/components/shared/portfolio-link-context'
@@ -102,5 +103,45 @@ describe('Experience & Projects cross-linking', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     expect(internButton).toHaveAttribute('aria-expanded', 'true')
     expect(advisorButton).toHaveAttribute('aria-expanded', 'true')
+  })
+
+  it('filters Projects when clicking a tool-linked skill pill in About', async () => {
+    render(
+      <PortfolioLinkProvider>
+        <About />
+        <Projects />
+      </PortfolioLinkProvider>
+    )
+
+    // Wait for Projects fetch to resolve
+    const springBootFilter = await screen.findByRole('button', {
+      name: /Spring Boot \d+/i,
+    })
+    expect(springBootFilter).toHaveAttribute('aria-pressed', 'false')
+
+    // Click Spring Boot in About Technical Skills
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Filter projects by Spring Boot' })
+    )
+
+    // Projects filter should activate Spring Boot and display Keystone
+    expect(springBootFilter).toHaveAttribute('aria-pressed', 'true')
+    expect(
+      screen.getByText('Keystone Adult Daycare Donation Database')
+    ).toBeInTheDocument()
+    expect(
+      screen.queryByText('Digital Platform Library')
+    ).not.toBeInTheDocument()
+
+    // Also verify aliased About labels like "Swift / SwiftUI" filter by "Swift"
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Filter projects by Swift' })
+    )
+    const swiftFilter = screen.getByRole('button', { name: /Swift \d+/i })
+    expect(swiftFilter).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByText('myCigna Mobile App')).toBeInTheDocument()
+    expect(
+      screen.queryByText('Keystone Adult Daycare Donation Database')
+    ).not.toBeInTheDocument()
   })
 })

@@ -1,3 +1,5 @@
+import type { NextConfig } from 'next'
+
 const isDev = process.env.NODE_ENV === 'development'
 
 const cspHeader = `
@@ -55,10 +57,10 @@ const securityHeaders = [
   },
 ]
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   // Don't advertise the framework via the `X-Powered-By` response header
   poweredByHeader: false,
+  typedRoutes: true,
   images: {
     formats: ['image/avif', 'image/webp'],
     qualities: [25, 50, 75, 100],

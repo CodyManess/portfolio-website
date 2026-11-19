@@ -1,9 +1,10 @@
 'use client'
 import * as React from 'react'
-import { navLinks } from '@/data/links'
+import { navLinks, type NavSectionId } from '@/data/links'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
+import { getActiveSectionId } from '@/lib/navigation'
 import { cn } from '@/lib/utils'
 
 const DESKTOP_MEDIA_QUERY = '(min-width: 640px)'
@@ -16,11 +17,13 @@ const PortfolioAppBar = () => {
     hidden: false,
     path: pathname,
   })
-  const [value, setValue] = useState(navLinks[0]?.title.toLowerCase() ?? 'home')
+  const [value, setValue] = useState<NavSectionId>('home')
   const prevScrollPosRef = useRef(0)
 
   const isHidden = scrollState.path === pathname ? scrollState.hidden : false
-  const activeValue = pathname.startsWith('/extended') ? 'experience' : value
+  const activeValue: NavSectionId = pathname.startsWith('/extended')
+    ? 'experience'
+    : value
 
   useEffect(() => {
     prevScrollPosRef.current = Math.max(window.scrollY, 0)
@@ -30,29 +33,13 @@ const PortfolioAppBar = () => {
         ? window.matchMedia(DESKTOP_MEDIA_QUERY)
         : null
 
-    const sectionIds = navLinks.map((page) => page.title.toLowerCase())
-
     let rafId: number | undefined
     let isScheduled = false
     let isListening = false
 
     const updateActiveSection = () => {
       if (pathname.startsWith('/extended')) return
-
-      const triggerLine = window.innerHeight * 0.35
-      let currentSection = sectionIds[0] ?? 'home'
-
-      for (const id of sectionIds) {
-        const element = document.getElementById(id)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          if (rect.top <= triggerLine) {
-            currentSection = id
-          }
-        }
-      }
-
-      setValue(currentSection)
+      setValue(getActiveSectionId())
     }
 
     const updateOnScroll = () => {
@@ -118,42 +105,43 @@ const PortfolioAppBar = () => {
   }, [pathname])
 
   return (
-    <nav
-      id="navbar"
-      aria-label="Main"
-      data-hidden={isHidden}
-      className={cn(
-        'fixed top-0 right-0 z-1100 hidden w-full flex-col bg-(--toolbar-background)/90 shadow-(--surface-shadow) backdrop-blur-md transition-transform duration-300 sm:flex',
-        isHidden ? '-translate-y-full' : 'translate-y-0'
-      )}
-    >
-      <ul className="m-0 flex list-none justify-center py-8">
-        {navLinks.map((page) => {
-          const id = page.title.toLowerCase()
-          const isActive = activeValue === id
-          return (
-            <li key={page.title}>
-              <Link
-                aria-current={isActive ? 'location' : undefined}
-                className={cn(
-                  'm-4 text-xl underline-offset-8 transition-colors duration-200',
-                  isActive
-                    ? 'font-semibold text-(--primary-light) underline decoration-(--primary-light) decoration-2'
-                    : 'font-medium text-(--white) decoration-[rgba(25,118,210,0.4)] hover:text-(--primary-light) hover:underline'
-                )}
-                href={`/#${id}`}
-                onClick={() => setValue(id)}
-                onFocus={() =>
-                  setScrollState({ hidden: false, path: pathname })
-                }
-              >
-                {page.title}
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
-    </nav>
+    <header>
+      <nav
+        id="navbar"
+        aria-label="Main"
+        data-hidden={isHidden}
+        className={cn(
+          'fixed top-0 right-0 z-1100 hidden w-full flex-col bg-(--toolbar-background)/95 shadow-(--surface-shadow) backdrop-blur-md transition-transform duration-300 sm:flex',
+          isHidden ? '-translate-y-full' : 'translate-y-0'
+        )}
+      >
+        <ul className="m-0 flex list-none justify-center py-6">
+          {navLinks.map((page) => {
+            const isActive = activeValue === page.id
+            return (
+              <li key={page.id}>
+                <Link
+                  aria-current={isActive ? 'location' : undefined}
+                  className={cn(
+                    'mx-2 inline-block rounded-md px-3 py-2 text-xl underline-offset-8 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-(--toolbar-background) focus-visible:outline-none',
+                    isActive
+                      ? 'font-semibold text-white underline decoration-white decoration-2 dark:text-(--primary-light) dark:decoration-(--primary-light)'
+                      : 'font-medium text-white/90 decoration-white/60 hover:text-white hover:underline dark:hover:text-(--primary-light) dark:hover:decoration-(--primary-light)/70'
+                  )}
+                  href={page.href}
+                  onClick={() => setValue(page.id)}
+                  onFocus={() =>
+                    setScrollState({ hidden: false, path: pathname })
+                  }
+                >
+                  {page.title}
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
+      </nav>
+    </header>
   )
 }
 

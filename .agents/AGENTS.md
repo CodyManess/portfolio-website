@@ -27,7 +27,7 @@ We utilize a standard `src/` directory layout:
     │   └── ui/              # shadcn/ui & Base UI primitive components (Badge, Button, Card, Dialog, Skeleton)
     ├── config/              # Centralized site configuration, SEO metadata defaults, and schema data (`site.ts`)
     ├── data/                # Structured local data (about, cross-links, degrees, certs, experience, links, projects, tools)
-    ├── lib/                 # Shared utilities (`utils.ts` for `cn`/`getSafeExternalUrl`, `tool-icons.ts` for `toolIconMap`/`ToolIconName`)
+    ├── lib/                 # Shared utilities (`utils.ts` for `cn`/`getSafeExternalUrl`, `navigation.ts` for scroll-spy, `tool-icons.ts` for `toolIconMap`/`ToolIconName`)
     └── types/               # Core TypeScript interfaces and enums
 ```
 
@@ -48,8 +48,8 @@ We utilize a standard `src/` directory layout:
 
 - **Base UI (`@base-ui/react`), NOT Radix UI**: UI primitives in `src/components/ui/` use shadcn's `"base-nova"` style on top of `@base-ui/react`. Use Base UI's `render` prop for element composition rather than Radix's `asChild`, and do not install `@radix-ui/*` packages.
 - **Tailwind CSS v4 (CSS-first config)**: Tailwind v4 is configured directly in `src/app/globals.css` via `@import "tailwindcss";`, `@theme inline`, and `@custom-variant dark (@media (prefers-color-scheme: dark));`. There is **no** `tailwind.config.js` or `tailwind.config.ts`.
-- **Next.js 16 Image Qualities**: `next.config.mjs` restricts `next/image` `qualities` to `[25, 50, 75, 100]`. Any `<Image quality={...} />` prop must use one of those configured values.
-- **Static Data & API Routes**: Structured portfolio content lives in `src/data/` typed against interfaces in `src/types/`. Route handlers under `src/app/api/` use `export const dynamic = 'force-static'` so they prerender statically at build time.
+- **Next.js 16 Config & Typed Routes**: `next.config.ts` uses native ESM TypeScript config, enables `typedRoutes: true` for compile-time `<Link>` validation, and restricts `next/image` `qualities` to `[25, 50, 75, 100]`. Any `<Image quality={...} />` prop must use one of those configured values.
+- **Static Prerendering & API Routes**: Structured portfolio content lives in `src/data/` typed against interfaces in `src/types/`. Server Component pages (`src/app/page.tsx`, `src/app/extended/page.tsx`) pass initial static data directly to interactive sections so prerendered HTML contains full SEO-indexable content with zero loading skeleton flash, while standalone components retain client `/api/*` fallback fetching. Route handlers under `src/app/api/` use `export const dynamic = 'force-static'` so they prerender statically at build time.
 - **Fonts**: Inter and Roboto Mono variable fonts are bundled locally in `src/app/fonts/` via `next/font/local` so builds and CSP stay self-contained without network font requests.
 
 ---
@@ -58,7 +58,7 @@ We utilize a standard `src/` directory layout:
 
 - **External URL Sanitization**: Pass all external URLs rendered in `href` or `window.open` through `getSafeExternalUrl()` (`@/lib/utils`), which allows only `http:` and `https:` schemes.
 - **JSON-LD Escaping**: Any inline `<script type="application/ld+json">` payload must escape `<` (`JSON.stringify(...).replace(/</g, '\\u003c')`).
-- **Security Headers & CSP**: `next.config.mjs` enforces CSP (`default-src 'self'`, `font-src 'self'`, `img-src 'self' blob: data:`, `frame-ancestors 'none'`), `Cross-Origin-Resource-Policy: same-origin`, `Cross-Origin-Opener-Policy: same-origin`, `X-Frame-Options: DENY`, and `poweredByHeader: false`. Do not add remote script/font/image origins without updating CSP intentionally.
+- **Security Headers & CSP**: `next.config.ts` enforces CSP (`default-src 'self'`, `font-src 'self'`, `img-src 'self' blob: data:`, `frame-ancestors 'none'`), `Cross-Origin-Resource-Policy: same-origin`, `Cross-Origin-Opener-Policy: same-origin`, `X-Frame-Options: DENY`, and `poweredByHeader: false`. Do not add remote script/font/image origins without updating CSP intentionally.
 - **Reduced Motion & Focus Preservation**: Gate animations and smooth scrolling behind `motion-reduce:` / `prefers-reduced-motion`, and never blur interactive triggers programmatically on collapse or modal close.
 
 ---

@@ -105,7 +105,7 @@ const CertModal = ({ cert, open, handleClose }: Props) => {
                   className="h-auto gap-1.5 rounded-full bg-muted/50 px-3 py-1 text-xs font-medium text-foreground"
                 >
                   <FaCalendarCheck
-                    className="size-3 shrink-0 text-(--primary-color)"
+                    className="size-3 shrink-0 text-(--primary-color) dark:text-(--primary-light)"
                     aria-hidden="true"
                   />
                   Issued: {issueDate}
@@ -125,7 +125,7 @@ const CertModal = ({ cert, open, handleClose }: Props) => {
                   className="h-auto gap-1.5 rounded-full bg-muted/50 px-3 py-1 font-mono text-xs font-medium text-foreground"
                 >
                   <FaIdBadge
-                    className="size-3 shrink-0 text-(--primary-color)"
+                    className="size-3 shrink-0 text-(--primary-color) dark:text-(--primary-light)"
                     aria-hidden="true"
                   />
                   ID: {credentialId}
@@ -144,7 +144,8 @@ const CertModal = ({ cert, open, handleClose }: Props) => {
                     'text-xs font-medium focus-visible:outline-none'
                   )}
                 >
-                  Verify Credential{' '}
+                  Verify Credential
+                  <span className="sr-only"> (opens in new tab)</span>{' '}
                   <FaArrowUpRightFromSquare
                     className="ml-1.5 size-3"
                     aria-hidden="true"
@@ -158,10 +159,11 @@ const CertModal = ({ cert, open, handleClose }: Props) => {
                   rel="noopener noreferrer"
                   className={cn(
                     buttonVariants({ variant: 'outline', size: 'sm' }),
-                    'text-xs font-medium transition-colors hover:border-(--primary-color) hover:text-(--primary-color) focus-visible:outline-none'
+                    'text-xs font-medium transition-colors hover:border-(--primary-color) hover:text-(--primary-color) focus-visible:outline-none dark:hover:border-(--primary-light) dark:hover:text-(--primary-light)'
                   )}
                 >
-                  Program Website{' '}
+                  Program Website
+                  <span className="sr-only"> (opens in new tab)</span>{' '}
                   <FaArrowUpRightFromSquare
                     className="ml-1.5 size-3"
                     aria-hidden="true"
@@ -202,7 +204,7 @@ const CertModal = ({ cert, open, handleClose }: Props) => {
                         className="h-auto gap-1.5 rounded-lg border-border/70 bg-card px-3 py-1.5 text-xs font-medium text-foreground"
                       >
                         <FaCircleCheck
-                          className="size-3 shrink-0 text-(--primary-color)"
+                          className="size-3 shrink-0 text-(--primary-color) dark:text-(--primary-light)"
                           aria-hidden="true"
                         />
                         {skill}
@@ -230,7 +232,7 @@ const CertModal = ({ cert, open, handleClose }: Props) => {
             type="button"
             variant="ghost"
             onClick={handleClose}
-            className="text-xs font-semibold tracking-wider text-(--primary-color) uppercase hover:bg-transparent hover:text-(--primary-dark)"
+            className="text-xs font-semibold tracking-wider text-(--primary-color) uppercase hover:bg-transparent hover:text-(--primary-dark) dark:text-(--primary-light) dark:hover:text-white"
           >
             Close
           </Button>

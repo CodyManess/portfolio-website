@@ -43,8 +43,8 @@ Visit the live site at **[codymaness.com](https://codymaness.com)**.
 
 ## Features & Highlights
 
-- **Hero & SEO Metadata**: Responsive intro card with preloaded profile imagery, JSON-LD `Person` structured data, statically generated OpenGraph & app icons (`next/og`), `sitemap.xml`, `robots.txt`, and HTTP security headers.
-- **About Me (Flippable Bento Grid)**: Interactive 3D-flippable bento section switching between a **Professional** view (core mission statement, tech interests, and categorized Technical Skills matrix) and a **Personal** view (background story, personal interests, and external cultural shelf links for Letterboxd, Goodreads, Backloggd, and YouTube Music).
+- **Hero & SEO Metadata**: Responsive intro card with preloaded profile imagery, JSON-LD `Person` structured data, statically generated OpenGraph, app & Apple touch icons (`next/og`), web app `manifest.webmanifest`, `viewport` theme colors, `sitemap.xml`, `robots.txt`, and HTTP security headers.
+- **About Me (Flippable Bento Grid)**: Interactive 3D-flippable bento section switching between a **Professional** view (core mission statement, tech interests, and categorized Technical Skills matrix whose project-linked skills filter `#projects`) and a **Personal** view (background story, personal interests, and external cultural shelf links for Letterboxd, Goodreads, Backloggd, and YouTube Music).
 - **Work Experience & Extended Timeline**: Interactive timeline on the home page (`/#experience`) and dedicated extended work history route (`/extended`) powered by accessible, CSS-grid animated accordions with cross-links to related projects.
 - **Education & Certifications**: Degree cards with keyboard-accessible coursework modals (category tabs for Core Requirements, Concentration, and Supporting Courses, plus academic honors and program links) alongside interactive certification badges that open detail modals with overviews, key skills, metadata, and external links.
 - **Filterable & Paginated Projects**: Project showcase with technology filter chips (including per-tool project counts), client-side pagination, keyboard-accessible cards, and detail modals featuring photo showcase galleries, tech stacks, key contributions, and cross-links back to associated work roles.
@@ -56,7 +56,7 @@ Visit the live site at **[codymaness.com](https://codymaness.com)**.
 
 ### Prerequisites
 
-- **Node.js** `>=22.0.0` (Node 26 LTS pinned in [.tool-versions](.tool-versions))
+- **Node.js** `>=22.12.0` (Node 26 LTS pinned in [.tool-versions](.tool-versions))
 - **npm** (or a compatible package manager)
 
 ### Installation & Local Development
@@ -79,18 +79,20 @@ Visit the live site at **[codymaness.com](https://codymaness.com)**.
 
 ### Available Scripts
 
-| Command                | Description                                                                      |
-| ---------------------- | -------------------------------------------------------------------------------- |
-| `npm run dev`          | Starts the local Next.js development server.                                     |
-| `npm run build`        | Creates an optimized production build (`next build`).                            |
-| `npm start`            | Starts the production server (`next start`).                                     |
-| `npm run lint`         | Runs strict Oxlint checks across the project (`oxlint` with `typeAware: true`).  |
-| `npm run typegen`      | Generates Next.js route and `next-env.d.ts` global image/route types.            |
-| `npm run typecheck`    | Generates Next.js types and runs TypeScript 7.1 native type checking.            |
-| `npm test`             | Runs the Jest unit test suite in `__tests__/`.                                   |
-| `npm run format`       | Formats files across the repository with Oxfmt (`oxfmt`).                        |
-| `npm run format:check` | Checks repository formatting without modifying files (`oxfmt --check`).          |
-| `npm run check`        | Runs `typegen`, `format:check`, `lint`, `typecheck` (TS 7.1 native), and `test`. |
+| Command                 | Description                                                                      |
+| ----------------------- | -------------------------------------------------------------------------------- |
+| `npm run dev`           | Starts the local Next.js development server.                                     |
+| `npm run build`         | Creates an optimized production build (`next build`).                            |
+| `npm start`             | Starts the production server (`next start`).                                     |
+| `npm run lint`          | Runs strict Oxlint checks across the project (`oxlint` with `typeAware: true`).  |
+| `npm run lint:fix`      | Auto-fixes Oxlint issues across the repository (`oxlint --fix`).                 |
+| `npm run typegen`       | Generates Next.js route and `next-env.d.ts` global image/route types.            |
+| `npm run typecheck`     | Generates Next.js types and runs TypeScript 7.1 native type checking.            |
+| `npm test`              | Runs the Jest unit test suite in `__tests__/`.                                   |
+| `npm run test:coverage` | Runs the Jest unit test suite with code coverage reporting.                      |
+| `npm run format`        | Formats files across the repository with Oxfmt (`oxfmt`).                        |
+| `npm run format:check`  | Checks repository formatting without modifying files (`oxfmt --check`).          |
+| `npm run check`         | Runs `typegen`, `format:check`, `lint`, `typecheck` (TS 7.1 native), and `test`. |
 
 ---
 
@@ -115,7 +117,7 @@ All source code and test files follow standard Next.js App Router conventions wi
     │   └── ui/              # shadcn/ui & Base UI primitive components (Badge, Button, Card, Dialog, Skeleton)
     ├── config/              # Centralized site configuration, SEO metadata defaults, and JSON-LD schema data
     ├── data/                # Structured local data (about, cross-links, degrees, certs, experience, links, projects, tools)
-    ├── lib/                 # Shared utilities (`cn`, `getSafeExternalUrl`, and technology icon mappings)
+    ├── lib/                 # Shared utilities (`cn`, `getSafeExternalUrl`, scroll-spy navigation, and technology icon mappings)
     └── types/               # Core TypeScript interfaces and enums
 ```
 

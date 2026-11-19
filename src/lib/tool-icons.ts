@@ -2,12 +2,13 @@ import type { IconType } from 'react-icons'
 import {
   SiReact,
   SiSwift,
-  SiNodedotjs,
   SiAngular,
   SiKotlin,
   SiFirebase,
   SiPhp,
   SiTypescript,
+  SiSpringboot,
+  SiMysql,
 } from 'react-icons/si'
 import { FaJava } from 'react-icons/fa6'
 
@@ -19,12 +20,13 @@ import { FaJava } from 'react-icons/fa6'
 export const toolIconMap = {
   SiReact,
   SiSwift,
-  SiNodedotjs,
   SiAngular,
   SiKotlin,
   SiFirebase,
   SiPhp,
   SiTypescript,
+  SiSpringboot,
+  SiMysql,
   FaJava,
 } satisfies Record<string, IconType>
 

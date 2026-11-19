@@ -34,8 +34,26 @@ const WorkTimelineSkeleton = () => (
 
 const isValidExperienceData = (data: unknown): data is ExperienceData => {
   if (!data || typeof data !== 'object') return false
-  const record = data as Record<string, unknown>
-  return Array.isArray(record.roles) && Array.isArray(record.extendedRoles)
+  return (
+    'roles' in data &&
+    Array.isArray(data.roles) &&
+    'extendedRoles' in data &&
+    Array.isArray(data.extendedRoles)
+  )
+}
+
+const fetchExperienceData = async (
+  signal: AbortSignal
+): Promise<ExperienceData> => {
+  const response = await fetch('/api/experience', { signal })
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`)
+  }
+  const data: unknown = await response.json()
+  if (!isValidExperienceData(data)) {
+    throw new Error('Invalid experience data format')
+  }
+  return data
 }
 
 export default function WorkTimeline({
@@ -50,8 +68,8 @@ export default function WorkTimeline({
     initialRoles === undefined
   )
   const [error, setError] = useState<string | null>(null)
-  const [retryCount, setRetryCount] = useState<number>(0)
   const pendingScrollRoleIdRef = useRef<string | null>(null)
+  const abortControllerRef = useRef<AbortController | null>(null)
   const linkContext = usePortfolioLinks()
   const registerRoleNavigator = linkContext?.registerRoleNavigator
   const consumePendingRole = linkContext?.consumePendingRole
@@ -93,21 +111,11 @@ export default function WorkTimeline({
 
   useEffect(() => {
     if (initialRoles !== undefined) return
-
     const controller = new AbortController()
+    abortControllerRef.current = controller
 
-    const fetchExperience = async () => {
-      try {
-        const response = await fetch('/api/experience', {
-          signal: controller.signal,
-        })
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        const data: unknown = await response.json()
-        if (!isValidExperienceData(data)) {
-          throw new Error('Invalid experience data format')
-        }
+    fetchExperienceData(controller.signal)
+      .then((data) => {
         const loadedRoles =
           variant === 'extended' ? data.extendedRoles : data.roles
         setFetchedRoles(loadedRoles)
@@ -118,28 +126,22 @@ export default function WorkTimeline({
             focusAndExpandRole(pendingId, loadedRoles)
           }
         }
-      } catch (err) {
+      })
+      .catch((err: unknown) => {
         if (err instanceof Error && err.name === 'AbortError') return
         setError('Failed to load experience data.')
         console.error('Error fetching experience data:', err)
-      } finally {
+      })
+      .finally(() => {
         if (!controller.signal.aborted) {
           setIsLoading(false)
         }
-      }
-    }
+      })
 
-    void fetchExperience()
     return () => {
-      controller.abort()
+      abortControllerRef.current?.abort()
     }
-  }, [
-    initialRoles,
-    variant,
-    retryCount,
-    consumePendingRole,
-    focusAndExpandRole,
-  ])
+  }, [initialRoles, variant, consumePendingRole, focusAndExpandRole])
 
   useEffect(() => {
     const targetId = pendingScrollRoleIdRef.current
@@ -162,9 +164,35 @@ export default function WorkTimeline({
   }, [scrollTick, roles])
 
   const handleRetry = () => {
+    abortControllerRef.current?.abort()
+    const controller = new AbortController()
+    abortControllerRef.current = controller
     setIsLoading(true)
     setError(null)
-    setRetryCount((count) => count + 1)
+
+    fetchExperienceData(controller.signal)
+      .then((data) => {
+        const loadedRoles =
+          variant === 'extended' ? data.extendedRoles : data.roles
+        setFetchedRoles(loadedRoles)
+        setError(null)
+        if (variant === 'primary') {
+          const pendingId = consumePendingRole?.()
+          if (pendingId) {
+            focusAndExpandRole(pendingId, loadedRoles)
+          }
+        }
+      })
+      .catch((err: unknown) => {
+        if (err instanceof Error && err.name === 'AbortError') return
+        setError('Failed to load experience data.')
+        console.error('Error fetching experience data:', err)
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) {
+          setIsLoading(false)
+        }
+      })
   }
 
   if (initialRoles === undefined && isLoading) {

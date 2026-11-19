@@ -5,6 +5,7 @@ import { certs } from '@/data/education-certs'
 import { degrees } from '@/data/education-degrees'
 import { roles, extendedRoles } from '@/data/experience'
 import projects from '@/data/projects'
+import Tools, { skillGroups } from '@/data/tools'
 import {
   enrichProjectsWithRoles,
   enrichRolesWithProjects,
@@ -66,6 +67,26 @@ describe('Static API Route Handlers', () => {
       for (const projectId of relation.projectIds) {
         expect(projectIds.has(projectId)).toBe(true)
       }
+    }
+  })
+
+  it('keeps skillGroups tool links synchronized with Tools and projects', () => {
+    const usedProjectTools = new Set(
+      projects.flatMap((project) => project.tools.map((tool) => tool.title))
+    )
+    const linkedSkillTools = new Set(
+      skillGroups.flatMap((group) =>
+        group.skills.flatMap((skill) => (skill.tool ? [skill.tool.title] : []))
+      )
+    )
+
+    for (const tool of Object.values(Tools)) {
+      expect(linkedSkillTools.has(tool.title)).toBe(true)
+      expect(usedProjectTools.has(tool.title)).toBe(true)
+    }
+
+    for (const linkedTitle of linkedSkillTools) {
+      expect(usedProjectTools.has(linkedTitle)).toBe(true)
     }
   })
 })

@@ -10,6 +10,17 @@ jest.mock('next/navigation', () => ({
 
 const mockedUsePathname = usePathname as jest.MockedFunction<typeof usePathname>
 
+const restoreWindowProperty = (
+  key: string,
+  descriptor: PropertyDescriptor | undefined
+) => {
+  if (descriptor) {
+    Object.defineProperty(window, key, descriptor)
+  } else {
+    Reflect.deleteProperty(window, key)
+  }
+}
+
 describe('BottomNav', () => {
   const originalMatchMedia = Object.getOwnPropertyDescriptor(
     window,
@@ -51,21 +62,10 @@ describe('BottomNav', () => {
   })
 
   afterEach(() => {
-    const restoreProperty = (
-      key: string,
-      descriptor: PropertyDescriptor | undefined
-    ) => {
-      if (descriptor) {
-        Object.defineProperty(window, key, descriptor)
-      } else {
-        Reflect.deleteProperty(window, key)
-      }
-    }
-
-    restoreProperty('matchMedia', originalMatchMedia)
-    restoreProperty('requestAnimationFrame', originalRAF)
-    restoreProperty('cancelAnimationFrame', originalCancelRAF)
-    restoreProperty('innerHeight', originalInnerHeight)
+    restoreWindowProperty('matchMedia', originalMatchMedia)
+    restoreWindowProperty('requestAnimationFrame', originalRAF)
+    restoreWindowProperty('cancelAnimationFrame', originalCancelRAF)
+    restoreWindowProperty('innerHeight', originalInnerHeight)
   })
 
   it('renders all mobile navigation links and updates active state on click', () => {

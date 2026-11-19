@@ -33,11 +33,19 @@
     "coverage/**",
     "next-env.d.ts"
   ],
+  "categories": {
+    "correctness": "error",
+    "perf": "error"
+  },
   "settings": {
     "jsx-a11y": {
       "components": {
-        "Image": "img"
+        "Image": "img",
+        "Link": "a"
       }
+    },
+    "react": {
+      "linkComponents": ["Link"]
     },
     "better-tailwindcss": {
       "entryPoint": "src/app/globals.css"
@@ -71,6 +79,8 @@
     "import/no-cycle": "error",
     "import/no-duplicates": "error",
     "import/no-mutable-exports": "error",
+    "unicorn/consistent-function-scoping": "error",
+    "unicorn/no-array-sort": "error",
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "@typescript-eslint/consistent-type-imports": [
       "error",
@@ -140,10 +150,17 @@
       }
     },
     {
+      "files": ["src/**/*.{ts,tsx}"],
+      "rules": {
+        "@typescript-eslint/no-unsafe-type-assertion": "error"
+      }
+    },
+    {
       "files": [
         "src/app/**/opengraph-image.{js,jsx,ts,tsx}",
         "src/app/**/twitter-image.{js,jsx,ts,tsx}",
-        "src/app/**/icon.{js,jsx,ts,tsx}"
+        "src/app/**/icon.{js,jsx,ts,tsx}",
+        "src/app/**/apple-icon.{js,jsx,ts,tsx}"
       ],
       "rules": {
         "@next/next/no-img-element": "off"

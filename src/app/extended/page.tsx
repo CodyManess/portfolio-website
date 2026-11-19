@@ -4,6 +4,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import WorkTimeline from '@/components/shared/work-timeline/work-timeline'
 import { siteConfig } from '@/config/site'
+import { extendedRoles } from '@/data/experience'
 
 export const metadata: Metadata = {
   title: siteConfig.extendedTitle,
@@ -41,7 +42,7 @@ const Page: React.FC = () => {
       <section id="extended-experience" className="py-8 sm:mt-[12vh] sm:py-12">
         <div className="container mx-auto px-4 lg:px-6">
           <Link
-            className="group mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-slate-100/70 px-4 py-2 text-sm font-semibold transition-all duration-200 hover:border-(--primary-color)/40 sm:text-base dark:border-slate-800/80 dark:bg-slate-900/70 dark:hover:border-(--primary-light)/40"
+            className="group mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-slate-100/70 px-4 py-2 text-sm font-semibold transition-all duration-200 hover:border-(--primary-color)/40 focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none sm:text-base dark:border-slate-800/80 dark:bg-slate-900/70 dark:hover:border-(--primary-light)/40 dark:focus-visible:ring-(--primary-light)"
             href="/#experience"
           >
             <FaArrowLeft
@@ -61,7 +62,8 @@ const Page: React.FC = () => {
             you can see some of the ambition and hard work that helped me get to
             where I am today.
           </p>
-          <WorkTimeline variant="extended" />
+          <h2 className="sr-only">Past Roles</h2>
+          <WorkTimeline roles={extendedRoles} variant="extended" />
         </div>
       </section>
     </main>

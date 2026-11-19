@@ -5,6 +5,18 @@ import Projects from '@/components/sections/projects/projects'
 import About from '@/components/sections/about'
 import { PortfolioLinkProvider } from '@/components/shared/portfolio-link-context'
 import { siteConfig } from '@/config/site'
+import { certs } from '@/data/education-certs'
+import { degrees } from '@/data/education-degrees'
+import { roles } from '@/data/experience'
+import projects from '@/data/projects'
+import {
+  enrichProjectsWithRoles,
+  enrichRolesWithProjects,
+} from '@/data/cross-links'
+
+const initialRoles = enrichRolesWithProjects(roles, projects)
+const initialEducation = { degrees, certs }
+const initialProjects = enrichProjectsWithRoles(projects, roles)
 
 const personSchema = {
   '@context': 'https://schema.org',
@@ -45,11 +57,11 @@ export default function Home() {
 
         <About />
 
-        <Experience />
+        <Experience initialRoles={initialRoles} />
 
-        <Credentials />
+        <Credentials initialData={initialEducation} />
 
-        <Projects />
+        <Projects initialProjects={initialProjects} />
       </PortfolioLinkProvider>
     </main>
   )

@@ -25,7 +25,7 @@ export default function GlobalError({
           <button
             type="button"
             onClick={() => retry()}
-            className="inline-flex cursor-pointer items-center justify-center rounded-lg bg-[#007ab8] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#196db2]"
+            className="inline-flex cursor-pointer items-center justify-center rounded-lg bg-[#007ab8] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#196db2] focus-visible:ring-2 focus-visible:ring-[#007ab8] focus-visible:ring-offset-2 focus-visible:outline-none dark:focus-visible:ring-[#5fb5f6] dark:focus-visible:ring-offset-slate-900"
           >
             Try again
           </button>

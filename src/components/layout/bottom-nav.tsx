@@ -2,17 +2,18 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { navLinks } from '@/data/links'
+import { navLinks, type NavSectionId } from '@/data/links'
+import { getActiveSectionId } from '@/lib/navigation'
 import { cn } from '@/lib/utils'
 
 const MOBILE_MEDIA_QUERY = '(max-width: 639px)'
 
 const BottomNav = () => {
   const pathname = usePathname()
-  const [value, setValue] = React.useState(
-    navLinks[0]?.title.toLowerCase() ?? 'home'
-  )
-  const activeValue = pathname.startsWith('/extended') ? 'experience' : value
+  const [value, setValue] = React.useState<NavSectionId>('home')
+  const activeValue: NavSectionId = pathname.startsWith('/extended')
+    ? 'experience'
+    : value
 
   React.useEffect(() => {
     if (pathname.startsWith('/extended')) return
@@ -21,25 +22,6 @@ const BottomNav = () => {
       typeof window.matchMedia === 'function'
         ? window.matchMedia(MOBILE_MEDIA_QUERY)
         : null
-
-    const sectionIds = navLinks.map((page) => page.title.toLowerCase())
-
-    const updateActiveSection = () => {
-      const triggerLine = window.innerHeight * 0.35
-      let currentSection = sectionIds[0] ?? 'home'
-
-      for (const id of sectionIds) {
-        const element = document.getElementById(id)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          if (rect.top <= triggerLine) {
-            currentSection = id
-          }
-        }
-      }
-
-      setValue(currentSection)
-    }
 
     let rafId: number | undefined
     let isScheduled = false
@@ -51,7 +33,7 @@ const BottomNav = () => {
       rafId = window.requestAnimationFrame(() => {
         isScheduled = false
         rafId = undefined
-        updateActiveSection()
+        setValue(getActiveSectionId())
       })
     }
 
@@ -96,16 +78,15 @@ const BottomNav = () => {
     >
       <div className="grid h-16 grid-cols-5 items-center px-1">
         {navLinks.map((page) => {
-          const id = page.title.toLowerCase()
-          const isActive = activeValue === id
+          const isActive = activeValue === page.id
           return (
             <Link
-              key={id}
-              href={`/#${id}`}
-              onClick={() => setValue(id)}
+              key={page.id}
+              href={page.href}
+              onClick={() => setValue(page.id)}
               aria-current={isActive ? 'location' : undefined}
               className={cn(
-                'group flex h-full min-w-0 flex-col items-center justify-center gap-1 px-1 transition-colors duration-200',
+                'group flex h-full min-w-0 flex-col items-center justify-center gap-1 rounded-lg px-1 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none focus-visible:ring-inset dark:focus-visible:ring-(--primary-light)',
                 isActive
                   ? 'font-semibold text-(--primary-dark) dark:text-(--primary-light)'
                   : 'font-medium text-slate-600 hover:text-(--primary-dark) dark:text-slate-400 dark:hover:text-(--primary-light)'

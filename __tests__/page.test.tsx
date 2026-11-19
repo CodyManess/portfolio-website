@@ -1,58 +1,39 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import Home from '@/app/page'
+import { degrees } from '@/data/education-degrees'
+import { roles } from '@/data/experience'
+import projects from '@/data/projects'
 
 describe('Home', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-    global.fetch = jest.fn((url: string | URL | Request) => {
-      const urlStr =
-        typeof url === 'string' ? url : url instanceof URL ? url.href : url.url
-      if (urlStr.includes('/api/experience')) {
-        return Promise.resolve({
-          ok: true,
-          json: () =>
-            Promise.resolve({
-              roles: [],
-              extendedRoles: [],
-            }),
-        })
-      }
-      if (urlStr.includes('/api/education')) {
-        return Promise.resolve({
-          ok: true,
-          json: () =>
-            Promise.resolve({
-              degrees: [],
-              certs: [],
-            }),
-        })
-      }
-      if (urlStr.includes('/api/projects')) {
-        return Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve([]),
-        })
-      }
-      return Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve({}),
-      })
-    }) as jest.Mock
-  })
-
-  it('renders a main landmark and waits for async components', async () => {
+  it('renders a main landmark with server-provided portfolio content and zero client fetch calls', () => {
     render(<Home />)
 
-    const main = await screen.findByRole('main')
-    expect(main).toBeInTheDocument()
+    expect(screen.getByRole('main')).toBeInTheDocument()
     expect(screen.getByText('Full-Stack Developer')).toBeInTheDocument()
     expect(screen.getByText('Raleigh, NC')).toBeInTheDocument()
 
-    // Wait for the Credentials component to finish loading
-    const educationHeading = await screen.findByRole('heading', {
-      name: /education/i,
-    })
-    expect(educationHeading).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { level: 2, name: /education/i })
+    ).toBeInTheDocument()
+
+    const firstRole = roles[0]
+    const firstDegree = degrees[0]
+    const firstProject = projects[0]
+    expect(firstRole).toBeDefined()
+    expect(firstDegree).toBeDefined()
+    expect(firstProject).toBeDefined()
+    if (!firstRole || !firstDegree || !firstProject) return
+
+    expect(
+      screen.getByRole('heading', { level: 3, name: firstRole.title })
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { level: 3, name: firstDegree.title })
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { level: 3, name: firstProject.title })
+    ).toBeInTheDocument()
+    expect(global.fetch).not.toHaveBeenCalled()
   })
 })

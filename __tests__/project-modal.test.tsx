@@ -245,5 +245,11 @@ describe('ProjectModal', () => {
     fireEvent.click(firstThumb)
     expect(screen.getByText('1 / 2')).toBeInTheDocument()
     expect(firstThumb).toHaveAttribute('aria-pressed', 'true')
+
+    // Arrow key navigation moves forward and backward through the gallery
+    fireEvent.keyDown(firstThumb, { key: 'ArrowRight' })
+    expect(screen.getByText('2 / 2')).toBeInTheDocument()
+    fireEvent.keyDown(firstThumb, { key: 'ArrowLeft' })
+    expect(screen.getByText('1 / 2')).toBeInTheDocument()
   })
 })

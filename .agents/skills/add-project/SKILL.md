@@ -17,7 +17,7 @@ Follow these steps to add a project or new technology chip safely and consistent
    - If adding a new tool, add it to the `Tools` object (keeping `} satisfies Record<string, Tool>`) with `title`, `iconName` (matching `ToolIconName`), and `iconColor`.
 3. **Add optional project photos under `public/projects/`**:
    - Place project screenshots/photos (`.webp`) in `public/projects/` and import them via `@public/projects/...` in `src/data/projects.ts`.
-   - Use `<Image quality={75} />` or `[25, 50, 75, 100]` values (`next.config.mjs`).
+   - Use `<Image quality={75} />` or `[25, 50, 75, 100]` values (`next.config.ts`).
 4. **Add the project in `src/data/projects.ts`**:
    - Match the `Project` interface (`title`, `description`, optional `link`, optional `photos` array of `{ src, alt, caption? }`, `achievements`, `tools`).
    - Only use `https://` URLs for `link` (components validate URLs through `getSafeExternalUrl`).

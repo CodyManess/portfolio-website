@@ -16,6 +16,13 @@ import {
 
 const PROJECTS_PER_PAGE = 6
 
+interface PendingScrollTarget {
+  elementId: string
+  instant: boolean
+  block: ScrollLogicalPosition
+  focusActiveFilter?: boolean
+}
+
 const getProjectKey = (project: Project): string => project.id ?? project.title
 
 const filterProjectsByTool = (
@@ -47,21 +54,56 @@ const ProjectListSkeleton = () => (
   </div>
 )
 
-const ProjectList = () => {
-  const [projects, setProjects] = useState<Project[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+interface ProjectListProps {
+  initialProjects?: Project[]
+}
+
+const isValidProject = (item: unknown): item is Project => {
+  if (!item || typeof item !== 'object') return false
+  return (
+    'title' in item &&
+    typeof item.title === 'string' &&
+    'description' in item &&
+    typeof item.description === 'string' &&
+    'achievements' in item &&
+    Array.isArray(item.achievements) &&
+    'tools' in item &&
+    Array.isArray(item.tools)
+  )
+}
+
+const isValidProjectList = (data: unknown): data is Project[] =>
+  Array.isArray(data) && data.every(isValidProject)
+
+const fetchProjectsData = async (signal: AbortSignal): Promise<Project[]> => {
+  const response = await fetch('/api/projects', { signal })
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`)
+  }
+  const data: unknown = await response.json()
+  if (!isValidProjectList(data)) {
+    throw new Error('Invalid project data format')
+  }
+  return data
+}
+
+const ProjectList = ({ initialProjects }: ProjectListProps) => {
+  const [projects, setProjects] = useState<Project[]>(initialProjects ?? [])
+  const [isLoading, setIsLoading] = useState(initialProjects === undefined)
   const [error, setError] = useState<string | null>(null)
-  const [retryCount, setRetryCount] = useState(0)
   const [selectedTool, setSelectedTool] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
   const [openProjectKey, setOpenProjectKey] = useState<string | null>(null)
   const [highlightedProjectId, triggerProjectHighlight] =
     useTemporaryHighlight()
   const [scrollTick, setScrollTick] = useState(0)
-  const pendingScrollProjectIdRef = useRef<string | null>(null)
+  const pendingScrollTargetRef = useRef<PendingScrollTarget | null>(null)
+  const abortControllerRef = useRef<AbortController | null>(null)
   const linkContext = usePortfolioLinks()
   const registerProjectNavigator = linkContext?.registerProjectNavigator
+  const registerToolFilterNavigator = linkContext?.registerToolFilterNavigator
   const consumePendingProject = linkContext?.consumePendingProject
+  const consumePendingTool = linkContext?.consumePendingTool
 
   const safeProjects = useMemo(
     () => (Array.isArray(projects) ? projects : []),
@@ -100,12 +142,35 @@ const ProjectList = () => {
         setCurrentPage(Math.floor(targetIndex / PROJECTS_PER_PAGE) + 1)
       }
 
-      pendingScrollProjectIdRef.current = projectId
+      pendingScrollTargetRef.current = {
+        elementId: `project-${projectId}`,
+        instant: true,
+        block: 'center',
+      }
       triggerProjectHighlight(projectId)
       setOpenProjectKey(getProjectKey(targetProject))
       setScrollTick((tick) => tick + 1)
     },
     [triggerProjectHighlight]
+  )
+
+  const filterByToolAndScroll = useCallback(
+    (toolTitle: string, sourceProjects: Project[]) => {
+      const hasMatchingProject = sourceProjects.some((project) =>
+        project.tools.some((tool) => tool.title === toolTitle)
+      )
+      setSelectedTool(hasMatchingProject ? toolTitle : null)
+      setCurrentPage(1)
+      setOpenProjectKey(null)
+      pendingScrollTargetRef.current = {
+        elementId: 'projects',
+        instant: false,
+        block: 'start',
+        focusActiveFilter: hasMatchingProject,
+      }
+      setScrollTick((tick) => tick + 1)
+    },
+    []
   )
 
   useEffect(() => {
@@ -121,59 +186,107 @@ const ProjectList = () => {
   ])
 
   useEffect(() => {
-    const controller = new AbortController()
+    if (!registerToolFilterNavigator) return
+    return registerToolFilterNavigator((toolTitle) => {
+      filterByToolAndScroll(toolTitle, safeProjects)
+    })
+  }, [registerToolFilterNavigator, filterByToolAndScroll, safeProjects])
 
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch('/api/projects', {
-          signal: controller.signal,
-        })
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        const data: unknown = await response.json()
-        if (!Array.isArray(data)) {
-          throw new Error('Invalid project data format')
-        }
-        const loadedProjects = data as Project[]
-        setProjects(loadedProjects)
+  useEffect(() => {
+    if (initialProjects !== undefined) return
+    const controller = new AbortController()
+    abortControllerRef.current = controller
+
+    fetchProjectsData(controller.signal)
+      .then((data) => {
+        setProjects(data)
         setError(null)
-        const pendingId = consumePendingProject?.()
-        if (pendingId) {
-          focusAndOpenProject(pendingId, loadedProjects, null)
+        const pendingProjectId = consumePendingProject?.()
+        const pendingToolTitle = consumePendingTool?.()
+        if (pendingProjectId) {
+          focusAndOpenProject(pendingProjectId, data, null)
+        } else if (pendingToolTitle) {
+          filterByToolAndScroll(pendingToolTitle, data)
         }
-      } catch (err) {
+      })
+      .catch((err: unknown) => {
         if (err instanceof Error && err.name === 'AbortError') return
         setError('Failed to load project data.')
         console.error('Error fetching project data:', err)
-      } finally {
+      })
+      .finally(() => {
         if (!controller.signal.aborted) {
           setIsLoading(false)
         }
-      }
-    }
+      })
 
-    void fetchProjects()
     return () => {
-      controller.abort()
+      abortControllerRef.current?.abort()
     }
-  }, [retryCount, consumePendingProject, focusAndOpenProject])
+  }, [
+    initialProjects,
+    consumePendingProject,
+    consumePendingTool,
+    focusAndOpenProject,
+    filterByToolAndScroll,
+  ])
 
   useEffect(() => {
-    const targetId = pendingScrollProjectIdRef.current
-    if (!targetId) return
+    const target = pendingScrollTargetRef.current
+    if (!target) return
 
-    const element = document.getElementById(`project-${targetId}`)
+    const element = document.getElementById(target.elementId)
     if (!element) return
 
-    pendingScrollProjectIdRef.current = null
-    scrollElementIntoView(element, { instant: true, block: 'center' })
+    pendingScrollTargetRef.current = null
+    scrollElementIntoView(element, {
+      instant: target.instant,
+      block: target.block,
+    })
+
+    if (!target.focusActiveFilter) return
+    const rafId = window.requestAnimationFrame(() => {
+      const activeButton = element.querySelector<HTMLButtonElement>(
+        '[aria-label="Filter projects by technology"] button[aria-pressed="true"]'
+      )
+      if (activeButton && typeof activeButton.focus === 'function') {
+        activeButton.focus({ preventScroll: true })
+      }
+    })
+    return () => {
+      window.cancelAnimationFrame(rafId)
+    }
   }, [scrollTick, currentPage, selectedTool, safeProjects])
 
   const handleRetry = () => {
+    abortControllerRef.current?.abort()
+    const controller = new AbortController()
+    abortControllerRef.current = controller
     setIsLoading(true)
     setError(null)
-    setRetryCount((count) => count + 1)
+
+    fetchProjectsData(controller.signal)
+      .then((data) => {
+        setProjects(data)
+        setError(null)
+        const pendingProjectId = consumePendingProject?.()
+        const pendingToolTitle = consumePendingTool?.()
+        if (pendingProjectId) {
+          focusAndOpenProject(pendingProjectId, data, null)
+        } else if (pendingToolTitle) {
+          filterByToolAndScroll(pendingToolTitle, data)
+        }
+      })
+      .catch((err: unknown) => {
+        if (err instanceof Error && err.name === 'AbortError') return
+        setError('Failed to load project data.')
+        console.error('Error fetching project data:', err)
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) {
+          setIsLoading(false)
+        }
+      })
   }
 
   const { availableTools, toolCounts } = useMemo(() => {
@@ -188,7 +301,7 @@ const ProjectList = () => {
       })
     })
     return {
-      availableTools: Array.from(toolMap.values()).sort((a, b) =>
+      availableTools: Array.from(toolMap.values()).toSorted((a, b) =>
         a.title.localeCompare(b.title)
       ),
       toolCounts: counts,
@@ -238,6 +351,12 @@ const ProjectList = () => {
           totalCount={safeProjects.length}
         />
       )}
+
+      <output aria-live="polite" className="sr-only">
+        {selectedTool
+          ? `Showing ${filteredProjects.length} project${filteredProjects.length === 1 ? '' : 's'} filtered by ${selectedTool}.`
+          : `Showing ${filteredProjects.length} project${filteredProjects.length === 1 ? '' : 's'}.`}
+      </output>
 
       {currentProjects.length > 0 ? (
         <div className="my-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

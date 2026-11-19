@@ -1,11 +1,15 @@
 'use client'
 import * as React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import DegreeCard from './degree-card'
 import CertBadge from './cert-badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
 import type { EducationData } from '@/types/education'
+
+interface CredentialsProps {
+  initialData?: EducationData
+}
 
 const CredentialsSkeleton = () => (
   <div aria-busy="true" aria-label="Loading education data">
@@ -24,54 +28,84 @@ const CredentialsSkeleton = () => (
 
 const isValidEducationData = (data: unknown): data is EducationData => {
   if (!data || typeof data !== 'object') return false
-  const record = data as Record<string, unknown>
-  return Array.isArray(record.degrees) && Array.isArray(record.certs)
+  return (
+    'degrees' in data &&
+    Array.isArray(data.degrees) &&
+    'certs' in data &&
+    Array.isArray(data.certs)
+  )
 }
 
-const Credentials = () => {
-  const [educationData, setEducationData] = useState<EducationData | null>(null)
-  const [isLoading, setIsLoading] = useState<boolean>(true)
+const fetchEducationData = async (
+  signal: AbortSignal
+): Promise<EducationData> => {
+  const response = await fetch('/api/education', { signal })
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`)
+  }
+  const data: unknown = await response.json()
+  if (!isValidEducationData(data)) {
+    throw new Error('Invalid education data format')
+  }
+  return data
+}
+
+const Credentials = ({ initialData }: CredentialsProps) => {
+  const [educationData, setEducationData] = useState<EducationData | null>(
+    initialData ?? null
+  )
+  const [isLoading, setIsLoading] = useState<boolean>(initialData === undefined)
   const [error, setError] = useState<string | null>(null)
-  const [retryCount, setRetryCount] = useState<number>(0)
+  const abortControllerRef = useRef<AbortController | null>(null)
 
   useEffect(() => {
+    if (initialData !== undefined) return
     const controller = new AbortController()
+    abortControllerRef.current = controller
 
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/education', {
-          signal: controller.signal,
-        })
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        const data: unknown = await response.json()
-        if (!isValidEducationData(data)) {
-          throw new Error('Invalid education data format')
-        }
+    fetchEducationData(controller.signal)
+      .then((data) => {
         setEducationData(data)
         setError(null)
-      } catch (err) {
+      })
+      .catch((err: unknown) => {
         if (err instanceof Error && err.name === 'AbortError') return
         setError('Failed to load education data.')
         console.error('Error fetching education data:', err)
-      } finally {
+      })
+      .finally(() => {
         if (!controller.signal.aborted) {
           setIsLoading(false)
         }
-      }
-    }
+      })
 
-    void fetchData()
     return () => {
-      controller.abort()
+      abortControllerRef.current?.abort()
     }
-  }, [retryCount])
+  }, [initialData])
 
   const handleRetry = () => {
+    abortControllerRef.current?.abort()
+    const controller = new AbortController()
+    abortControllerRef.current = controller
     setIsLoading(true)
     setError(null)
-    setRetryCount((count) => count + 1)
+
+    fetchEducationData(controller.signal)
+      .then((data) => {
+        setEducationData(data)
+        setError(null)
+      })
+      .catch((err: unknown) => {
+        if (err instanceof Error && err.name === 'AbortError') return
+        setError('Failed to load education data.')
+        console.error('Error fetching education data:', err)
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) {
+          setIsLoading(false)
+        }
+      })
   }
 
   let sectionBody = (

@@ -40,8 +40,19 @@ describe('About component', () => {
         screen.getByRole('heading', { level: 4, name: group.category })
       ).toBeInTheDocument()
       group.skills.forEach((skill) => {
-        expect(screen.getByText(skill)).toBeInTheDocument()
+        expect(screen.getByText(skill.label)).toBeInTheDocument()
       })
+    })
+
+    const linkedToolTitles = skillGroups.flatMap((group) =>
+      group.skills.flatMap((skill) => (skill.tool ? [skill.tool.title] : []))
+    )
+    linkedToolTitles.forEach((toolTitle) => {
+      expect(
+        screen.getByRole('button', {
+          name: `Filter projects by ${toolTitle}`,
+        })
+      ).toBeInTheDocument()
     })
   })
 

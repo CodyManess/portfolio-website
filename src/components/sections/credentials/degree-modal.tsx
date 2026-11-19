@@ -120,10 +120,11 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: 'outline', size: 'sm' }),
-                'text-xs font-medium transition-colors hover:border-(--primary-color) hover:text-(--primary-color) focus-visible:outline-none'
+                'text-xs font-medium transition-colors hover:border-(--primary-color) hover:text-(--primary-color) focus-visible:outline-none dark:hover:border-(--primary-light) dark:hover:text-(--primary-light)'
               )}
             >
-              Program Website{' '}
+              Program Website
+              <span className="sr-only"> (opens in new tab)</span>{' '}
               <FaArrowUpRightFromSquare
                 className="ml-1.5 size-3"
                 aria-hidden="true"
@@ -149,7 +150,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                     aria-pressed={activeTab === 'ALL'}
                     onClick={() => setActiveTab('ALL')}
                     className={cn(
-                      'cursor-pointer rounded-md px-3 py-1 text-xs font-medium transition-all',
+                      'cursor-pointer rounded-md px-3 py-1 text-xs font-medium transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
                       activeTab === 'ALL'
                         ? 'bg-background font-semibold text-foreground shadow-xs'
                         : 'text-muted-foreground hover:text-foreground'
@@ -166,7 +167,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                         aria-pressed={activeTab === type}
                         onClick={() => setActiveTab(type)}
                         className={cn(
-                          'cursor-pointer rounded-md px-3 py-1 text-xs font-medium transition-all',
+                          'cursor-pointer rounded-md px-3 py-1 text-xs font-medium transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
                           activeTab === type
                             ? 'bg-background font-semibold text-foreground shadow-xs'
                             : 'text-muted-foreground hover:text-foreground'
@@ -231,7 +232,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
           <Button
             variant="ghost"
             onClick={handleModalClose}
-            className="text-xs font-semibold tracking-wider text-(--primary-color) uppercase hover:bg-transparent hover:text-(--primary-dark)"
+            className="text-xs font-semibold tracking-wider text-(--primary-color) uppercase hover:bg-transparent hover:text-(--primary-dark) dark:text-(--primary-light) dark:hover:text-white"
           >
             Close
           </Button>
