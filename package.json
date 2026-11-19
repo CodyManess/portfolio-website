@@ -73,7 +73,17 @@
     "typescript": "^6.0.3"
   },
   "overrides": {
-    "postcss": "$postcss"
+    "postcss": "$postcss",
+    "glob": "^14.0.2",
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.1"
+    },
+    "@ts-morph/common": {
+      "minimatch": "^11.0.1"
+    },
+    "test-exclude": {
+      "minimatch": "^11.0.1"
+    }
   },
   "allowScripts": {
     "@parcel/watcher": false,
