@@ -4,13 +4,14 @@ import { useState, type KeyboardEvent } from 'react'
 import type { Degree } from '@/types/education'
 import DegreeModal from './degree-modal'
 import Image from 'next/image'
+import { FaAward } from 'react-icons/fa6'
 
 /**
  * Props for the DegreeCard component.
  * @param degree - The degree data object to display.
  */
 const DegreeCard = (degree: Degree) => {
-  const { schoolName, title, subtitle, date, photo } = degree
+  const { schoolName, title, subtitle, date, photo, awards } = degree
 
   const [open, setOpen] = useState(false)
   const [hasOpened, setHasOpened] = useState(false)
@@ -50,7 +51,7 @@ const DegreeCard = (degree: Degree) => {
             className="object-cover"
           />
         </div>
-        <CardContent className="flex flex-1 flex-col p-4">
+        <CardContent className="flex flex-1 flex-col px-4 pb-4">
           <div className="mb-1 flex flex-wrap items-center justify-between gap-2">
             <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-slate-400">
               {schoolName}
@@ -68,6 +69,22 @@ const DegreeCard = (degree: Degree) => {
             <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
               {subtitle}
             </p>
+          ) : null}
+          {awards.length > 0 ? (
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              {awards.map((award) => (
+                <span
+                  key={award}
+                  className="inline-flex items-center gap-1 rounded-full border border-amber-500/25 bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-medium text-amber-800 dark:border-amber-400/25 dark:bg-amber-400/10 dark:text-amber-300"
+                >
+                  <FaAward
+                    className="size-2.5 shrink-0 text-amber-600 dark:text-amber-400"
+                    aria-hidden="true"
+                  />
+                  <span>{award}</span>
+                </span>
+              ))}
+            </div>
           ) : null}
         </CardContent>
       </Card>

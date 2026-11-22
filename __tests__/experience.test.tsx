@@ -31,6 +31,12 @@ describe('Experience section & WorkTimeline', () => {
     expect(extendedLink).toBeInTheDocument()
     expect(extendedLink).toHaveAttribute('href', '/extended')
 
+    const resumeLink = screen.getByRole('link', {
+      name: /printable resume/i,
+    })
+    expect(resumeLink).toBeInTheDocument()
+    expect(resumeLink).toHaveAttribute('href', '/resume')
+
     const firstRole = roles[0]
     expect(firstRole).toBeDefined()
     if (!firstRole) return
@@ -106,6 +112,8 @@ describe('Experience section & WorkTimeline', () => {
 
     expect(await screen.findByText('Internship')).toBeInTheDocument()
     expect(screen.getByText('Murfreesboro, TN')).toBeInTheDocument()
+    expect(screen.getByText('Nashville, TN')).toBeInTheDocument()
+    expect(screen.getAllByText('Remote')).toHaveLength(3)
   })
 
   it('renders related project pills inside an expanded role when provided', () => {

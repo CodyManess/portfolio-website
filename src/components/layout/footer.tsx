@@ -6,7 +6,7 @@ const currentYear = new Date().getFullYear()
 const Footer = () => {
   // Extra bottom padding on mobile keeps content clear of the fixed BottomNav
   return (
-    <footer className="border-t border-slate-900 bg-[#0b0f19] pt-16 pb-28 text-center text-slate-400 sm:pb-10">
+    <footer className="border-t border-slate-900 bg-[#0b0f19] pt-16 pb-28 text-center text-slate-400 sm:pb-10 print:hidden">
       <div className="container mx-auto mb-12 flex flex-col items-center px-4 lg:px-6">
         <h2 className="pb-6 text-3xl font-semibold text-white md:text-4xl">
           Thank you for visiting!

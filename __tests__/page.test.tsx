@@ -11,6 +11,10 @@ describe('Home', () => {
     expect(screen.getByRole('main')).toBeInTheDocument()
     expect(screen.getByText('Full-Stack Developer')).toBeInTheDocument()
     expect(screen.getByText('Raleigh, NC')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /view resume/i })).toHaveAttribute(
+      'href',
+      '/resume'
+    )
 
     expect(
       screen.getByRole('heading', { level: 2, name: /education/i })

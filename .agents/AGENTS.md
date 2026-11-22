@@ -21,6 +21,7 @@ We utilize a standard `src/` directory layout:
     │   │   ├── credentials/ # Education section, degree cards, coursework modal, cert badges, and cert modal
     │   │   ├── intro/       # Hero section and intro card
     │   │   ├── projects/    # Projects section, list, technology filter, tool chip, cards, and modal
+    │   │   ├── resume/      # Printable resume controls (`PrintResumeButton`)
     │   │   ├── about.tsx    # About Me bento grid section
     │   │   └── experience.tsx # Work experience section
     │   ├── shared/          # Cross-section shared components (Accordion, ContactMe, Pagination, PortfolioLinkProvider, WorkTimeline)
@@ -49,7 +50,7 @@ We utilize a standard `src/` directory layout:
 - **Base UI (`@base-ui/react`), NOT Radix UI**: UI primitives in `src/components/ui/` use shadcn's `"base-nova"` style on top of `@base-ui/react`. Use Base UI's `render` prop for element composition rather than Radix's `asChild`, and do not install `@radix-ui/*` packages.
 - **Tailwind CSS v4 (CSS-first config)**: Tailwind v4 is configured directly in `src/app/globals.css` via `@import "tailwindcss";`, `@theme inline`, and `@custom-variant dark (@media (prefers-color-scheme: dark));`. There is **no** `tailwind.config.js` or `tailwind.config.ts`.
 - **Next.js 16 Config & Typed Routes**: `next.config.ts` uses native ESM TypeScript config, enables `typedRoutes: true` for compile-time `<Link>` validation, and restricts `next/image` `qualities` to `[25, 50, 75, 100]`. Any `<Image quality={...} />` prop must use one of those configured values.
-- **Static Prerendering & API Routes**: Structured portfolio content lives in `src/data/` typed against interfaces in `src/types/`. Server Component pages (`src/app/page.tsx`, `src/app/extended/page.tsx`) pass initial static data directly to interactive sections so prerendered HTML contains full SEO-indexable content with zero loading skeleton flash, while standalone components retain client `/api/*` fallback fetching. Route handlers under `src/app/api/` use `export const dynamic = 'force-static'` so they prerender statically at build time.
+- **Static Prerendering & API Routes**: Structured portfolio content lives in `src/data/` typed against interfaces in `src/types/`. Server Component pages (`src/app/page.tsx`, `src/app/extended/page.tsx`, `src/app/resume/page.tsx`) pass initial static data directly to interactive sections so prerendered HTML contains full SEO-indexable content with zero loading skeleton flash, while standalone components retain client `/api/*` fallback fetching. Route handlers under `src/app/api/` use `export const dynamic = 'force-static'` so they prerender statically at build time.
 - **Fonts**: Inter and Roboto Mono variable fonts are bundled locally in `src/app/fonts/` via `next/font/local` so builds and CSP stay self-contained without network font requests.
 
 ---

@@ -87,6 +87,10 @@ describe('PortfolioAppBar', () => {
     navLinks.forEach((link) => {
       expect(screen.getByRole('link', { name: link.title })).toBeInTheDocument()
     })
+    expect(screen.getByRole('link', { name: 'Resume' })).toHaveAttribute(
+      'href',
+      '/resume'
+    )
 
     // Scrolling within the top offset (<= 64px) keeps the navbar visible
     act(() => {
@@ -176,6 +180,18 @@ describe('PortfolioAppBar', () => {
         'aria-current',
         'location'
       )
+
+      mockedUsePathname.mockReturnValue('/resume')
+      rerender(<PortfolioAppBar />)
+      expect(screen.getByRole('link', { name: 'Resume' })).toHaveAttribute(
+        'aria-current',
+        'page'
+      )
+      navLinks.forEach((link) => {
+        expect(
+          screen.getByRole('link', { name: link.title })
+        ).not.toHaveAttribute('aria-current')
+      })
     } finally {
       homeSection.remove()
       projectsSection.remove()

@@ -4,6 +4,7 @@ import sitemap from '@/app/sitemap'
 import manifest from '@/app/manifest'
 import { metadata as rootMetadata, viewport } from '@/app/layout'
 import { metadata as extendedMetadata } from '@/app/extended/page'
+import { metadata as resumeMetadata } from '@/app/resume/page'
 import { metadata as notFoundMetadata } from '@/app/not-found'
 import OgImage, {
   alt as ogAlt,
@@ -59,15 +60,19 @@ describe('SEO Metadata Routes', () => {
     expect(result.host).toBe('https://codymaness.com')
   })
 
-  it('generates sitemap entries for home and extended routes', () => {
+  it('generates sitemap entries for home, resume, and extended routes', () => {
     const entries = sitemap()
 
-    expect(entries).toHaveLength(2)
+    expect(entries).toHaveLength(3)
     expect(entries[0]).toMatchObject({
       url: 'https://codymaness.com',
       priority: 1,
     })
     expect(entries[1]).toMatchObject({
+      url: 'https://codymaness.com/resume',
+      priority: 0.9,
+    })
+    expect(entries[2]).toMatchObject({
       url: 'https://codymaness.com/extended',
       priority: 0.8,
     })
@@ -126,6 +131,21 @@ describe('SEO Metadata Routes', () => {
       locale: 'en_US',
       type: 'website',
       url: 'https://codymaness.com/extended',
+      images: [
+        {
+          url: '/opengraph-image',
+          width: 1200,
+          height: 630,
+          alt: 'Profile of Cody Maness',
+        },
+      ],
+    })
+
+    expect(resumeMetadata.openGraph).toMatchObject({
+      siteName: 'Cody Maness | Full-Stack Developer',
+      locale: 'en_US',
+      type: 'website',
+      url: 'https://codymaness.com/resume',
       images: [
         {
           url: '/opengraph-image',

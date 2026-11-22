@@ -97,6 +97,17 @@ describe('BottomNav', () => {
     )
   })
 
+  it('clears active section highlighting when on the /resume route', () => {
+    mockedUsePathname.mockReturnValue('/resume')
+    render(<BottomNav />)
+
+    navLinks.forEach((link) => {
+      expect(
+        screen.getByRole('link', { name: new RegExp(link.title, 'i') })
+      ).not.toHaveAttribute('aria-current')
+    })
+  })
+
   it('updates active link on scroll and responds to viewport media changes', () => {
     let matches = true
     let changeHandler: (() => void) | undefined

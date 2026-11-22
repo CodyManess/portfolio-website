@@ -11,12 +11,18 @@ const MOBILE_MEDIA_QUERY = '(max-width: 639px)'
 const BottomNav = () => {
   const pathname = usePathname()
   const [value, setValue] = useState<NavSectionId>('home')
-  const activeValue: NavSectionId = pathname.startsWith('/extended')
+  const isExtendedPage = pathname.startsWith('/extended')
+  const isResumePage = pathname.startsWith('/resume')
+  const activeValue: NavSectionId | null = isExtendedPage
     ? 'experience'
-    : value
+    : isResumePage
+      ? null
+      : value
 
   useEffect(() => {
-    if (pathname.startsWith('/extended')) return
+    if (pathname.startsWith('/extended') || pathname.startsWith('/resume')) {
+      return
+    }
 
     const mql =
       typeof window.matchMedia === 'function'
@@ -74,7 +80,7 @@ const BottomNav = () => {
   return (
     <nav
       aria-label="Mobile"
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200/80 bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] backdrop-blur-xl sm:hidden dark:border-slate-800/80 dark:bg-slate-900/95"
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200/80 bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] backdrop-blur-xl sm:hidden dark:border-slate-800/80 dark:bg-slate-900/95 print:hidden"
     >
       <div className="grid h-16 grid-cols-5 items-center px-1">
         {navLinks.map((page) => {

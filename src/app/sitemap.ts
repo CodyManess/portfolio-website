@@ -12,6 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: `${siteConfig.url}/resume`,
+      lastModified: SITE_LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${siteConfig.url}/extended`,
       lastModified: SITE_LAST_MODIFIED,
       changeFrequency: 'monthly',

@@ -50,6 +50,7 @@ describe('Credentials', () => {
 
     expect(degreeElement).toBeInTheDocument()
     expect(screen.getByText('Aug 2017 - May 2021')).toBeInTheDocument()
+    expect(screen.getByText("Dean's List")).toBeInTheDocument()
     expect(certElement).toBeInTheDocument()
 
     // Degree card should be keyboard-activatable and open the degree modal
@@ -131,5 +132,34 @@ describe('Credentials', () => {
 
     expect(abortSpy).toHaveBeenCalledTimes(1)
     abortSpy.mockRestore()
+  })
+
+  it('renders degrees without honors cleanly when awards array is empty', () => {
+    const initialData: EducationData = {
+      degrees: [
+        {
+          schoolName: 'State University',
+          title: 'Master of Business Administration',
+          subtitle: 'Concentrating in Finance',
+          date: 'May 2023 - Aug 2024',
+          schoolLink: 'https://www.state.edu',
+          photo: mtsucampus,
+          awards: [],
+          courses: [],
+        },
+      ],
+      certs: [],
+    }
+
+    render(<Credentials initialData={initialData} />)
+
+    expect(
+      screen.getByRole('heading', {
+        level: 3,
+        name: 'Master of Business Administration',
+      })
+    ).toBeInTheDocument()
+    expect(screen.getByText('Concentrating in Finance')).toBeInTheDocument()
+    expect(global.fetch).not.toHaveBeenCalled()
   })
 })

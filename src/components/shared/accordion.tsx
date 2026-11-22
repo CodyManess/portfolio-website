@@ -77,7 +77,7 @@ export function Accordion({
         // keeps the height correct when the content reflows (e.g. on resize).
         <section
           className={cn(
-            'grid transition-[grid-template-rows] duration-300 ease-in-out',
+            'grid transition-[grid-template-rows] duration-300 ease-in-out print:grid-rows-[1fr]',
             isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
           )}
           id={panelId}

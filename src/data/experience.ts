@@ -9,6 +9,7 @@ export const roles: Array<Role> = [
     date: 'Mar 2024 - Present',
     title: 'Software Engineering Advisor',
     companyName: 'The Cigna Group',
+    location: 'Remote',
     employmentType: 'Full-time',
     companyLogo: cignaLogo,
     description: [
@@ -27,6 +28,7 @@ export const roles: Array<Role> = [
     date: 'Jun 2023 - Mar 2024',
     title: 'TECDP Lead Advisor',
     companyName: 'The Cigna Group',
+    location: 'Nashville, TN',
     employmentType: 'Full-time',
     companyLogo: cignaLogo,
     description: [
@@ -45,6 +47,7 @@ export const roles: Array<Role> = [
     date: 'Jun 2021 - Jun 2023',
     title: 'TECDP Senior Advisor',
     companyName: 'The Cigna Group',
+    location: 'Remote',
     employmentType: 'Full-time',
     companyLogo: cignaLogo,
     description: [
@@ -100,6 +103,7 @@ export const roles: Array<Role> = [
     date: 'May 2020 - May 2021',
     title: 'Front-end Intern',
     companyName: 'Express Scripts',
+    location: 'Remote',
     employmentType: 'Internship',
     companyLogo: expressScriptsLogo,
     description: [

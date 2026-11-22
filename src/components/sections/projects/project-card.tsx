@@ -82,7 +82,7 @@ const ProjectCard = ({
         )}
         onClick={handleOpen}
       >
-        <CardHeader className="pb-2">
+        <CardHeader>
           {/* Top Metadata Row */}
           <div className="mb-2 flex items-center justify-between gap-2">
             {safeLink ? (
@@ -126,7 +126,7 @@ const ProjectCard = ({
           </p>
         </CardHeader>
 
-        <CardContent className="flex flex-1 flex-col justify-between pt-2">
+        <CardContent className="flex flex-1 flex-col justify-between">
           <div className="mb-4 flex flex-wrap gap-1.5">
             {project.tools.map((tool) => {
               return <ToolChip key={tool.title} tool={tool} />

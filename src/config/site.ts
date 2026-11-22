@@ -14,6 +14,9 @@ export const siteConfig = {
   extendedTitle: 'Cody Maness | Extended Work History',
   extendedDescription:
     'An extra page within my portfolio detailing past jobs worked before and during college.',
+  resumeTitle: 'Cody Maness | Resume',
+  resumeDescription:
+    'Printable full-stack software engineering resume for Cody Maness covering work experience, technical skills, education, certifications, and selected projects.',
   lastModified: '2026-11-17',
   sameAs: [socialLinks.GitHub, socialLinks.LinkedIn],
   employer: 'The Cigna Group',

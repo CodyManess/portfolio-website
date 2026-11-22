@@ -222,3 +222,50 @@
     @apply border-border outline-ring/50;
   }
 }
+
+@page {
+  size: letter;
+  margin: 0.5in;
+}
+
+@media print {
+  :root {
+    color-scheme: light;
+    --background: #ffffff;
+    --foreground: #0f172a;
+    --surface-background: #ffffff;
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+    --muted: #f8fafc;
+    --muted-foreground: #334155;
+    --border: #cbd5e1;
+    --primary-color: #005b8a;
+    --primary-dark: #005b8a;
+    --primary-light: #005b8a;
+  }
+
+  @layer base {
+    html,
+    body {
+      background: #ffffff;
+      color: #0f172a;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+  }
+}

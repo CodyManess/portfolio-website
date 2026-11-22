@@ -19,10 +19,14 @@ const PortfolioAppBar = () => {
   const [value, setValue] = useState<NavSectionId>('home')
   const prevScrollPosRef = useRef(0)
 
+  const isExtendedPage = pathname.startsWith('/extended')
+  const isResumePage = pathname.startsWith('/resume')
   const isHidden = scrollState.path === pathname ? scrollState.hidden : false
-  const activeValue: NavSectionId = pathname.startsWith('/extended')
+  const activeValue: NavSectionId | null = isExtendedPage
     ? 'experience'
-    : value
+    : isResumePage
+      ? null
+      : value
 
   useEffect(() => {
     prevScrollPosRef.current = Math.max(window.scrollY, 0)
@@ -37,7 +41,9 @@ const PortfolioAppBar = () => {
     let isListening = false
 
     const updateActiveSection = () => {
-      if (pathname.startsWith('/extended')) return
+      if (pathname.startsWith('/extended') || pathname.startsWith('/resume')) {
+        return
+      }
       setValue(getActiveSectionId())
     }
 
@@ -104,7 +110,7 @@ const PortfolioAppBar = () => {
   }, [pathname])
 
   return (
-    <header>
+    <header className="print:hidden">
       <nav
         id="navbar"
         aria-label="Main"
@@ -138,6 +144,21 @@ const PortfolioAppBar = () => {
               </li>
             )
           })}
+          <li>
+            <Link
+              aria-current={isResumePage ? 'page' : undefined}
+              className={cn(
+                'mx-2 inline-block rounded-md px-3 py-2 text-xl underline-offset-8 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-(--toolbar-background) focus-visible:outline-none',
+                isResumePage
+                  ? 'font-semibold text-white underline decoration-white decoration-2 dark:text-(--primary-light) dark:decoration-(--primary-light)'
+                  : 'font-medium text-white/90 decoration-white/60 hover:text-white hover:underline dark:hover:text-(--primary-light) dark:hover:decoration-(--primary-light)/70'
+              )}
+              href="/resume"
+              onFocus={() => setScrollState({ hidden: false, path: pathname })}
+            >
+              Resume
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
