@@ -4,11 +4,11 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 const interactiveCardVariants = cva(
-  'group flex h-full cursor-pointer flex-col justify-between rounded-2xl border border-slate-200/80 bg-linear-to-br from-white to-slate-50/50 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-(--primary-color)/30 hover:shadow-[0_12px_30px_rgba(0,122,184,0.12)] dark:border-slate-800/40 dark:from-slate-900/60 dark:to-slate-950/80 dark:hover:border-(--primary-light)/40'
+  'group flex h-full cursor-pointer flex-col justify-between rounded-2xl border border-border/80 bg-linear-to-br from-white to-slate-50/50 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-brand/35 hover:shadow-card-hover motion-reduce:hover:translate-y-0 dark:border-border/50 dark:from-slate-900/60 dark:to-slate-950/80'
 )
 
 const cardVariants = cva(
-  'group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-xl bg-(--surface-background) py-(--card-spacing) text-sm text-(--foreground) [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl',
+  'group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-xl bg-card py-(--card-spacing) text-sm text-card-foreground [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl',
   {
     variants: {
       variant: {

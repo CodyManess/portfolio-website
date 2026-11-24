@@ -130,4 +130,32 @@ describe('DegreeModal', () => {
 
     expect(handleClose).toHaveBeenCalled()
   })
+
+  it('resets active category tab to All when footer Close button is clicked', () => {
+    const handleClose = jest.fn()
+    render(
+      <DegreeModal degree={mockDegree} open={true} handleClose={handleClose} />
+    )
+
+    fireEvent.click(screen.getByRole('button', { name: /Core Requirements/i }))
+    expect(
+      screen.queryByText('Intro to Artificial Intelligence')
+    ).not.toBeInTheDocument()
+
+    const footerCloseButton = screen.getAllByRole('button', {
+      name: /close/i,
+    })[1]
+    expect(footerCloseButton).toBeInTheDocument()
+    if (!footerCloseButton) return
+    fireEvent.click(footerCloseButton)
+
+    expect(handleClose).toHaveBeenCalledTimes(1)
+    expect(screen.getByRole('button', { name: /All \(2\)/i })).toHaveAttribute(
+      'aria-pressed',
+      'true'
+    )
+    expect(
+      screen.getByText('Intro to Artificial Intelligence')
+    ).toBeInTheDocument()
+  })
 })

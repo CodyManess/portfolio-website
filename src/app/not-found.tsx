@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import StatusPageCard from '@/components/shared/status-page-card'
 import { buttonVariants } from '@/components/ui/button'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
@@ -11,27 +12,21 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main
-      id="main-content"
-      tabIndex={-1}
-      className="flex min-h-[70vh] items-center justify-center px-4 py-16 outline-none"
-    >
-      <div className="w-full max-w-md space-y-4 rounded-3xl border border-slate-200/80 bg-(--surface-background) p-8 text-center shadow-lg dark:border-slate-800/60">
-        <p className="text-xs font-semibold tracking-wider text-(--primary-color) uppercase dark:text-(--primary-light)">
-          404
-        </p>
-        <h1 className="text-2xl font-bold text-foreground sm:text-3xl">
-          Page Not Found
-        </h1>
-        <p className="text-sm/relaxed text-muted-foreground">
-          The page you are looking for does not exist or may have been moved.
-        </p>
-        <div className="pt-2">
-          <Link href="/" className={cn(buttonVariants())}>
-            Return Home
-          </Link>
-        </div>
-      </div>
-    </main>
+    <StatusPageCard
+      eyebrow="404"
+      title="Page Not Found"
+      description="The page you are looking for does not exist or may have been moved."
+      actions={
+        <Link
+          href="/"
+          className={cn(
+            buttonVariants({ size: 'lg' }),
+            'h-10 rounded-full px-5 font-semibold'
+          )}
+        >
+          Return Home
+        </Link>
+      }
+    />
   )
 }

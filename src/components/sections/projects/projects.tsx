@@ -1,4 +1,5 @@
 import type { Project } from '@/types/project'
+import { PageSection, SectionHeading } from '@/components/shared/page-section'
 import ProjectList from './project-list'
 
 interface ProjectsProps {
@@ -7,12 +8,10 @@ interface ProjectsProps {
 
 const Projects = ({ initialProjects }: ProjectsProps) => {
   return (
-    <section id="projects" className="flex justify-center py-16">
-      <div className="container mx-auto px-4 lg:px-6">
-        <h2 className="mb-6 sm:mb-8">Projects</h2>
-        <ProjectList initialProjects={initialProjects} />
-      </div>
-    </section>
+    <PageSection id="projects">
+      <SectionHeading className="mb-6 sm:mb-8">Projects</SectionHeading>
+      <ProjectList initialProjects={initialProjects} />
+    </PageSection>
   )
 }
 

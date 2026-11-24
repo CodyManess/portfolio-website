@@ -76,10 +76,10 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={cn('font-sans', inter.variable, robotoMono.variable)}
     >
-      <body className="font-sans antialiased">
+      <body className="font-sans">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-1300 focus:rounded-lg focus:bg-(--primary-color) focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-(--primary-color) focus:outline-none print:hidden"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-60 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary focus:outline-none print:hidden"
         >
           Skip to main content
         </a>

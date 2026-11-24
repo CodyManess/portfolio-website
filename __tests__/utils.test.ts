@@ -1,4 +1,15 @@
-import { getSafeExternalUrl } from '@/lib/utils'
+import { cn, getSafeExternalUrl } from '@/lib/utils'
+
+describe('cn', () => {
+  it('merges custom @theme shadow classes with built-in Tailwind shadows', () => {
+    expect(cn('shadow-surface', 'shadow-lg')).toBe('shadow-lg')
+    expect(cn('shadow-card-hover', 'shadow-none')).toBe('shadow-none')
+    expect(cn('shadow-brand-sm', 'shadow-brand-glow')).toBe('shadow-brand-glow')
+    expect(cn('shadow-sm', 'hover:shadow-card-hover')).toBe(
+      'shadow-sm hover:shadow-card-hover'
+    )
+  })
+})
 
 describe('getSafeExternalUrl', () => {
   it('accepts valid http and https URLs', () => {

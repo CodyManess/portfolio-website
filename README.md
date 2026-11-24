@@ -115,7 +115,7 @@ All source code and test files follow standard Next.js App Router conventions wi
     │   │   ├── resume/      # Printable resume controls (`PrintResumeButton`)
     │   │   ├── about.tsx    # About Me bento grid section
     │   │   └── experience.tsx # Work experience section
-    │   ├── shared/          # Cross-section shared components (Accordion, ContactMe, Pagination, PortfolioLinkProvider, WorkTimeline)
+    │   ├── shared/          # Cross-section shared components (Accordion, BackLink, ContactMe, ExternalActionLink, PageSection, Pagination, PortfolioLinkProvider, SectionErrorAlert, StatusPageCard, WorkTimeline)
     │   └── ui/              # shadcn/ui & Base UI primitive components (Badge, Button, Card, Dialog, Skeleton)
     ├── config/              # Centralized site configuration, SEO metadata defaults, and JSON-LD schema data
     ├── data/                # Structured local data (about, cross-links, degrees, certs, experience, links, projects, tools)

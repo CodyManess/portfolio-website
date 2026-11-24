@@ -24,7 +24,7 @@ We utilize a standard `src/` directory layout:
     │   │   ├── resume/      # Printable resume controls (`PrintResumeButton`)
     │   │   ├── about.tsx    # About Me bento grid section
     │   │   └── experience.tsx # Work experience section
-    │   ├── shared/          # Cross-section shared components (Accordion, ContactMe, Pagination, PortfolioLinkProvider, WorkTimeline)
+    │   ├── shared/          # Cross-section shared components (Accordion, BackLink, ContactMe, ExternalActionLink, PageSection, Pagination, PortfolioLinkProvider, SectionErrorAlert, StatusPageCard, WorkTimeline)
     │   └── ui/              # shadcn/ui & Base UI primitive components (Badge, Button, Card, Dialog, Skeleton)
     ├── config/              # Centralized site configuration, SEO metadata defaults, and schema data (`site.ts`)
     ├── data/                # Structured local data (about, cross-links, degrees, certs, experience, links, projects, tools)
@@ -77,12 +77,13 @@ We utilize a standard `src/` directory layout:
 
 ## Styling, Shared Helpers & Icons
 
-- **Tailwind & Custom Colors**: Use custom styling tokens defined in `src/app/globals.css` to maintain brand consistency:
-  - `--primary-color` (`#007ab8`) - Main brand blue.
-  - `--primary-dark` (`#196db2`) - Darker blue hover states.
-  - `--primary-light` (`#5fb5f6`) - Light accent blue.
-  - `--background`, `--foreground`, etc., are mapped to shadcn variables and adapt automatically via `@media (prefers-color-scheme: dark)`.
-- **Shared Card Styling & Micro-animations**: Use `<Card variant="interactive">` (or `interactiveCardVariants` from `@/components/ui/card` for non-`Card` wrappers like `Accordion`) to keep borders, gradients, shadows, and smooth hover animations (`transition-all duration-300 ease-out hover:-translate-y-1.5`) consistent.
+- **Tailwind & Semantic Design Tokens**: Use the semantic Tailwind v4 tokens defined in `@theme inline` (`src/app/globals.css`) rather than arbitrary CSS variable references or raw hex colors:
+  - Raw palette tokens: `--primary-color` (`#007ab8`), `--primary-dark` (`#196db2`), `--primary-light` (`#5fb5f6`).
+  - Adaptive brand tokens: `brand` (resolves to `--primary-color` in light mode, `--primary-light` in dark mode, `#005b8a` in print), `brand-strong` (`--primary-dark` light / `--primary-light` dark for AA contrast on tinted pills), `brand-dark`, and `brand-light`. Keep `--primary` (`bg-primary`) as `--primary-color` in both modes so filled buttons with `text-primary-foreground` maintain contrast.
+  - Surface & layout tokens: `section`, `surface`, `toolbar`, `footer` (`#0b0f19`), alongside shadcn tokens (`background`, `foreground`, `card`, `muted`, `border`, `ring`) mapped via `@media (prefers-color-scheme: dark)`.
+  - Typography & elevation tokens: `text-2xs` (`0.6875rem` / `1rem`), `shadow-surface`, `shadow-card-hover`, `shadow-brand-sm`, and `shadow-brand-glow` (registered with `extendTailwindMerge` in `src/lib/utils.ts`).
+- **Standardized Z-Index Scale**: `z-30` for navigation chrome (`AppBar`, `BottomNav`), `z-40` for modal overlays (`DialogOverlay`), `z-50` for modal popups (`DialogContent`), and `z-60` for the skip-to-content link.
+- **Shared Section & Card Helpers**: Use `PageSection`, `SectionHeading`, `Overline`, `BackLink`, `ExternalActionLink`, `SectionErrorAlert`, and `StatusPageCard` under `src/components/shared/`, and `<Card variant="interactive">` (or `interactiveCardVariants` from `@/components/ui/card` for non-`Card` wrappers like `Accordion`) to keep borders, gradients, shadows, and smooth hover animations (`transition-all duration-300 ease-out hover:-translate-y-1.5 motion-reduce:hover:translate-y-0`) consistent.
 - **Icons**:
   - **Technology & Brand Logos**: Utilize `react-icons` (`react-icons/si` or `react-icons/fa6`) and register new tool icons centrally in `toolIconMap` (`@/lib/tool-icons`) whenever adding a tool to `src/data/tools.ts`.
   - **General UI Icons**: Utilize `lucide-react` for UI controls (close buttons, chevrons, external links, etc.).

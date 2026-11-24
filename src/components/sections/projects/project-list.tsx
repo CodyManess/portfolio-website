@@ -7,6 +7,7 @@ import Pagination from '@/components/shared/pagination'
 import type { Project, Tool } from '@/types/project'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
+import SectionErrorAlert from '@/components/shared/section-error-alert'
 import {
   scrollElementIntoView,
   usePortfolioLinks,
@@ -317,19 +318,7 @@ const ProjectList = ({ initialProjects }: ProjectListProps) => {
   }
 
   if (error) {
-    return (
-      <div
-        role="alert"
-        className="my-8 flex flex-col items-center gap-3 rounded-2xl border border-destructive/30 bg-destructive/5 p-6 text-center"
-      >
-        <p className="text-sm font-medium text-destructive sm:text-base">
-          {error}
-        </p>
-        <Button type="button" variant="outline" size="sm" onClick={handleRetry}>
-          Retry
-        </Button>
-      </div>
-    )
+    return <SectionErrorAlert message={error} onRetry={handleRetry} />
   }
 
   const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE)
@@ -358,7 +347,7 @@ const ProjectList = ({ initialProjects }: ProjectListProps) => {
       </output>
 
       {currentProjects.length > 0 ? (
-        <div className="my-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {currentProjects.map((project) => {
             const projectKey = getProjectKey(project)
             return (

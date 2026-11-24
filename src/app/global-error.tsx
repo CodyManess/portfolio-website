@@ -16,16 +16,18 @@ export default function GlobalError({
 
   return (
     <html lang="en">
-      <body className="flex min-h-screen items-center justify-center bg-slate-50 px-4 text-slate-950 dark:bg-[#020617] dark:text-white">
-        <main className="w-full max-w-md space-y-4 rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-xl dark:border-slate-800 dark:bg-slate-900">
-          <h1 className="text-2xl font-bold">Something went wrong</h1>
-          <p className="text-sm/relaxed text-slate-600 dark:text-slate-300">
+      <body className="flex min-h-screen items-center justify-center bg-background px-4 text-foreground">
+        <main className="w-full max-w-md space-y-4 rounded-3xl border border-border/80 bg-card bg-linear-to-br from-white to-slate-50/50 p-8 text-center shadow-xl dark:border-border/50 dark:from-slate-900/80 dark:to-slate-950/90">
+          <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+            Something went wrong
+          </h1>
+          <p className="text-sm/relaxed text-muted-foreground">
             A critical application error occurred. Please try again.
           </p>
           <button
             type="button"
             onClick={() => retry()}
-            className="inline-flex cursor-pointer items-center justify-center rounded-lg bg-[#007ab8] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#196db2] focus-visible:ring-2 focus-visible:ring-[#007ab8] focus-visible:ring-offset-2 focus-visible:outline-none dark:focus-visible:ring-[#5fb5f6] dark:focus-visible:ring-offset-slate-900"
+            className="inline-flex h-10 cursor-pointer items-center justify-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-brand-dark focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card focus-visible:outline-none"
           >
             Try again
           </button>

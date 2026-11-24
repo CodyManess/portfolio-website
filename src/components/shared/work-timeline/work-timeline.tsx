@@ -5,6 +5,7 @@ import RoleItem from './role-item'
 import type { ExperienceData, Role } from '@/types/role'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
+import SectionErrorAlert from '@/components/shared/section-error-alert'
 import {
   scrollElementIntoView,
   usePortfolioLinks,
@@ -200,17 +201,11 @@ export default function WorkTimeline({
 
   if (initialRoles === undefined && error) {
     return (
-      <div
-        role="alert"
-        className="mx-auto my-8 flex w-full max-w-4xl flex-col items-center gap-3 rounded-2xl border border-destructive/30 bg-destructive/5 p-6 text-center"
-      >
-        <p className="text-sm font-medium text-destructive sm:text-base">
-          {error}
-        </p>
-        <Button type="button" variant="outline" size="sm" onClick={handleRetry}>
-          Retry
-        </Button>
-      </div>
+      <SectionErrorAlert
+        message={error}
+        onRetry={handleRetry}
+        className="mx-auto max-w-4xl"
+      />
     )
   }
 
@@ -245,10 +240,10 @@ export default function WorkTimeline({
           </p>
           <Button
             type="button"
-            variant="outline"
+            variant="brand-outline"
             size="sm"
             onClick={handleToggleAll}
-            className="gap-1.5 rounded-full text-xs font-semibold hover:border-(--primary-color)/50 hover:text-(--primary-color) dark:hover:border-(--primary-light)/50 dark:hover:text-(--primary-light)"
+            className="gap-1.5 rounded-full font-semibold"
           >
             {allExpanded ? (
               <>

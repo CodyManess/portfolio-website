@@ -77,7 +77,7 @@ const ProjectCard = ({
         aria-label={`View details for ${project.title}`}
         onKeyDown={handleKeyDown}
         className={cn(
-          'scroll-mt-28 pb-3 focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none dark:focus-visible:ring-(--primary-light)',
+          'scroll-mt-28 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
           isHighlighted && HIGHLIGHT_RING_CLASS
         )}
         onClick={handleOpen}
@@ -86,7 +86,7 @@ const ProjectCard = ({
           {/* Top Metadata Row */}
           <div className="mb-2 flex items-center justify-between gap-2">
             {safeLink ? (
-              <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-(--primary-color) dark:text-(--primary-light)">
+              <span className="inline-flex items-center gap-1 text-xs font-semibold text-brand">
                 Live Project{' '}
                 <FaArrowUpRightFromSquare
                   className="size-2.5"
@@ -94,34 +94,34 @@ const ProjectCard = ({
                 />
               </span>
             ) : (
-              <span className="text-[11px] font-medium tracking-wider text-muted-foreground uppercase">
+              <span className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
                 Internal Tool
               </span>
             )}
             {project.achievements.length > 0 ? (
-              <Badge
-                variant="outline"
-                className="gap-1 border-amber-500/30 bg-amber-500/10 px-1.5 py-0 text-[10px] font-medium text-amber-700 dark:text-amber-400"
-              >
-                <FaStar className="size-2 text-amber-500" aria-hidden="true" />
+              <Badge variant="highlight" className="gap-1">
+                <FaStar
+                  className="size-2.5 text-amber-600 dark:text-amber-400"
+                  aria-hidden="true"
+                />
                 {project.achievements.length} Highlight
                 {project.achievements.length === 1 ? '' : 's'}
               </Badge>
             ) : null}
           </div>
 
-          <h3 className="text-lg font-semibold text-foreground transition-colors duration-300 group-hover:text-(--primary-color) dark:group-hover:text-(--primary-light)">
+          <h3 className="text-lg/snug font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-brand">
             {project.title}
           </h3>
 
           {companyNames.length > 0 ? (
-            <p className="mt-0.5 inline-flex items-center gap-1.5 text-xs font-medium text-(--primary-color) dark:text-(--primary-light)">
+            <p className="mt-0.5 inline-flex items-center gap-1.5 text-xs font-medium text-brand">
               <FaSuitcase className="size-3 shrink-0" aria-hidden="true" />
               <span>{companyNames.join(', ')}</span>
             </p>
           ) : null}
 
-          <p className="mt-1 line-clamp-2 text-xs/relaxed text-muted-foreground">
+          <p className="mt-1 line-clamp-2 text-sm/relaxed text-muted-foreground">
             {project.description}
           </p>
         </CardHeader>
@@ -134,10 +134,10 @@ const ProjectCard = ({
           </div>
 
           {/* Interactive Footer CTA */}
-          <div className="mt-auto flex items-center justify-between border-t border-border/50 pt-3 text-xs font-medium text-muted-foreground transition-colors group-hover:text-(--primary-color) dark:group-hover:text-(--primary-light)">
+          <div className="mt-auto flex items-center justify-between border-t border-border/50 pt-3 text-xs font-medium text-muted-foreground transition-colors group-hover:text-brand">
             <span>View details</span>
             <FaArrowRight
-              className="size-3 transition-transform duration-300 group-hover:translate-x-1"
+              className="size-3 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0"
               aria-hidden="true"
             />
           </div>

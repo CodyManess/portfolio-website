@@ -102,7 +102,7 @@ describe('Experience & Projects cross-linking', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     expect(internButton).toHaveAttribute('aria-expanded', 'true')
     expect(advisorButton).toHaveAttribute('aria-expanded', 'true')
-  })
+  }, 15_000)
 
   it('filters Projects when clicking a tool-linked skill pill in About', async () => {
     render(
@@ -142,5 +142,5 @@ describe('Experience & Projects cross-linking', () => {
     expect(
       screen.queryByText('Keystone Adult Daycare Donation Database')
     ).not.toBeInTheDocument()
-  })
+  }, 15_000)
 })

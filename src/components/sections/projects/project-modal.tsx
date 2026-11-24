@@ -3,15 +3,18 @@ import { useState, type KeyboardEvent } from 'react'
 import Image from 'next/image'
 import {
   Dialog,
+  DialogBody,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import { Button, buttonVariants } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
+import ExternalActionLink from '@/components/shared/external-action-link'
+import { Overline } from '@/components/shared/page-section'
 import {
   FaArrowRight,
-  FaArrowUpRightFromSquare,
   FaChevronLeft,
   FaChevronRight,
   FaCircleCheck,
@@ -28,6 +31,9 @@ interface Props {
   handleClose: () => void
   onSelectRole?: (roleId: string) => void
 }
+
+const carouselNavButtonClass =
+  'absolute top-1/2 -translate-y-1/2 rounded-full border border-border/60 bg-background/85 text-foreground shadow-sm backdrop-blur-xs hover:bg-background'
 
 const getPhotoKey = (
   src: NonNullable<Project['photos']>[number]['src'],
@@ -93,43 +99,26 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
         {/* Header Section */}
         <div className="flex flex-wrap items-start justify-between gap-3 border-b border-border pr-8 pb-3">
           <DialogHeader className="space-y-1 text-left">
-            <DialogTitle className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-              {project.title}
-            </DialogTitle>
-            <DialogDescription className="text-xs text-muted-foreground">
+            <DialogTitle>{project.title}</DialogTitle>
+            <DialogDescription>
               Project Overview &amp; Technical Details
             </DialogDescription>
           </DialogHeader>
 
           {safeLink ? (
-            <a
-              href={safeLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                buttonVariants({ variant: 'outline', size: 'sm' }),
-                'text-xs font-medium transition-colors hover:border-(--primary-color) hover:text-(--primary-color) focus-visible:outline-none dark:hover:border-(--primary-light) dark:hover:text-(--primary-light)'
-              )}
-            >
+            <ExternalActionLink href={safeLink}>
               Visit Project
-              <span className="sr-only"> (opens in new tab)</span>{' '}
-              <FaArrowUpRightFromSquare
-                className="ml-1.5 size-3"
-                aria-hidden="true"
-              />
-            </a>
+            </ExternalActionLink>
           ) : null}
         </div>
 
         {/* Modal Scrollable Body */}
-        <div className="flex-1 space-y-6 overflow-y-auto py-4 pr-1">
+        <DialogBody className="space-y-6">
           {/* Project Photo Showcase */}
           {activePhoto ? (
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <h3 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-                  Project Showcase
-                </h3>
+                <Overline>Project Showcase</Overline>
                 {photos.length > 1 ? (
                   <span
                     aria-live="polite"
@@ -164,7 +153,7 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
                       aria-label="Previous photo"
                       onClick={handlePrevPhoto}
                       onKeyDown={handleGalleryKeyDown}
-                      className="absolute top-1/2 left-2 -translate-y-1/2 rounded-full border border-border/60 bg-background/85 text-foreground shadow-sm backdrop-blur-xs hover:bg-background"
+                      className={cn(carouselNavButtonClass, 'left-2')}
                     >
                       <FaChevronLeft className="size-3.5" aria-hidden="true" />
                     </Button>
@@ -175,7 +164,7 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
                       aria-label="Next photo"
                       onClick={handleNextPhoto}
                       onKeyDown={handleGalleryKeyDown}
-                      className="absolute top-1/2 right-2 -translate-y-1/2 rounded-full border border-border/60 bg-background/85 text-foreground shadow-sm backdrop-blur-xs hover:bg-background"
+                      className={cn(carouselNavButtonClass, 'right-2')}
                     >
                       <FaChevronRight className="size-3.5" aria-hidden="true" />
                     </Button>
@@ -207,9 +196,9 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
                         onClick={() => setActivePhotoIndex(index)}
                         onKeyDown={handleGalleryKeyDown}
                         className={cn(
-                          'relative h-12 w-20 cursor-pointer overflow-hidden rounded-lg border bg-muted/40 transition-all focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none dark:focus-visible:ring-(--primary-light)',
+                          'relative h-12 w-20 cursor-pointer overflow-hidden rounded-lg border bg-muted/40 transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
                           isSelected
-                            ? 'border-(--primary-color) ring-2 ring-(--primary-color)/30'
+                            ? 'border-brand ring-2 ring-brand/30'
                             : 'border-border/70 opacity-70 hover:opacity-100'
                         )}
                       >
@@ -235,9 +224,9 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
           {/* Associated Roles Cross-Link Section */}
           {relatedRoles.length > 0 ? (
             <div className="space-y-2">
-              <h3 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+              <Overline>
                 Associated Role{relatedRoles.length === 1 ? '' : 's'}
-              </h3>
+              </Overline>
               <div className="flex flex-wrap gap-2">
                 {relatedRoles.map((role) => (
                   <button
@@ -245,22 +234,22 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
                     type="button"
                     onClick={() => handleRoleSelect(role.id)}
                     aria-label={`View ${role.title} at ${role.companyName} in Experience section`}
-                    className="group/role inline-flex cursor-pointer items-center gap-2 rounded-xl border border-border/80 bg-card px-3 py-2 text-left text-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-(--primary-color)/50 hover:bg-(--primary-color)/8 focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none dark:hover:border-(--primary-light)/50 dark:hover:bg-(--primary-light)/10"
+                    className="group/role inline-flex cursor-pointer items-center gap-2 rounded-xl border border-border/80 bg-card px-3 py-2 text-left text-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-brand/50 hover:bg-brand/8 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none motion-reduce:hover:translate-y-0"
                   >
                     <FaSuitcase
-                      className="size-3.5 shrink-0 text-(--primary-color) dark:text-(--primary-light)"
+                      className="size-3.5 shrink-0 text-brand"
                       aria-hidden="true"
                     />
                     <span className="flex flex-col">
-                      <span className="font-semibold text-foreground transition-colors group-hover/role:text-(--primary-color) dark:group-hover/role:text-(--primary-light)">
+                      <span className="font-semibold text-foreground transition-colors group-hover/role:text-brand">
                         {role.title}
                       </span>
-                      <span className="text-[11px] text-muted-foreground">
+                      <span className="text-xs text-muted-foreground">
                         {role.companyName} · {role.date}
                       </span>
                     </span>
                     <FaArrowRight
-                      className="ml-1 size-2.5 shrink-0 text-muted-foreground transition-transform duration-200 group-hover/role:translate-x-0.5 group-hover/role:text-(--primary-color) dark:group-hover/role:text-(--primary-light)"
+                      className="ml-1 size-2.5 shrink-0 text-muted-foreground transition-transform duration-200 group-hover/role:translate-x-0.5 group-hover/role:text-brand motion-reduce:group-hover/role:translate-x-0"
                       aria-hidden="true"
                     />
                   </button>
@@ -272,9 +261,7 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
           {/* Tech Stack Banner */}
           {project.tools.length > 0 ? (
             <div className="space-y-2">
-              <h3 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-                Technologies Used
-              </h3>
+              <Overline>Technologies Used</Overline>
               <div className="flex flex-wrap gap-2">
                 {project.tools.map((tool) => (
                   <ToolChip key={tool.title} tool={tool} />
@@ -285,9 +272,7 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
 
           {/* Description Section */}
           <div className="space-y-2">
-            <h3 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-              Overview
-            </h3>
+            <Overline>Overview</Overline>
             <p className="text-sm/relaxed whitespace-pre-line text-foreground/90">
               {project.description}
             </p>
@@ -296,17 +281,15 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
           {/* Key Achievements & Impact Section */}
           {project.achievements.length > 0 ? (
             <div className="space-y-3">
-              <h3 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-                Key Contributions &amp; Achievements
-              </h3>
+              <Overline>Key Contributions &amp; Achievements</Overline>
               <div className="space-y-2.5">
                 {project.achievements.map((achievement) => (
                   <div
                     key={achievement}
-                    className="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-3 text-sm transition-colors hover:border-(--primary-color)/30 hover:bg-muted/30"
+                    className="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-3 text-sm transition-colors hover:border-brand/35 hover:bg-muted/30"
                   >
                     <FaCircleCheck
-                      className="mt-0.5 size-4 shrink-0 text-(--primary-color) dark:text-(--primary-light)"
+                      className="mt-0.5 size-4 shrink-0 text-brand"
                       aria-hidden="true"
                     />
                     <span className="leading-snug text-foreground">
@@ -317,23 +300,15 @@ const ProjectModal = ({ project, open, handleClose, onSelectRole }: Props) => {
               </div>
             </div>
           ) : null}
-        </div>
+        </DialogBody>
 
         {/* Footer Section */}
-        <div className="mt-auto flex items-center justify-between border-t border-border pt-3">
+        <DialogFooter showCloseButton>
           <span className="text-xs text-muted-foreground">
             {project.tools.length} Technolog
             {project.tools.length === 1 ? 'y' : 'ies'}
           </span>
-          <Button
-            type="button"
-            variant="ghost"
-            onClick={handleModalClose}
-            className="text-xs font-semibold tracking-wider text-(--primary-color) uppercase hover:bg-transparent hover:text-(--primary-dark) dark:text-(--primary-light) dark:hover:text-white"
-          >
-            Close
-          </Button>
-        </div>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   )

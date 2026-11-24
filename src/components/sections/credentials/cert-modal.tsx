@@ -4,19 +4,17 @@ import type { Cert } from '@/types/education'
 import { IconType } from '@/types/education'
 import {
   Dialog,
+  DialogBody,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import { Button, buttonVariants } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import {
-  FaArrowUpRightFromSquare,
-  FaCalendarCheck,
-  FaCircleCheck,
-  FaIdBadge,
-} from 'react-icons/fa6'
+import ExternalActionLink from '@/components/shared/external-action-link'
+import { Overline } from '@/components/shared/page-section'
+import { FaCalendarCheck, FaCircleCheck, FaIdBadge } from 'react-icons/fa6'
 import { cn, getSafeExternalUrl } from '@/lib/utils'
 
 interface Props {
@@ -66,7 +64,7 @@ const CertModal = ({ cert, open, handleClose }: Props) => {
             className={cn(
               'flex size-14 shrink-0 items-center justify-center overflow-hidden',
               iconType === IconType.Logo &&
-                'rounded-full border border-white/20 bg-linear-to-br from-(--primary-dark) to-(--primary-color) p-2.5 shadow-sm'
+                'rounded-full border border-white/20 bg-linear-to-br from-brand-dark to-primary p-2.5 shadow-sm'
             )}
           >
             <Image
@@ -80,15 +78,9 @@ const CertModal = ({ cert, open, handleClose }: Props) => {
           </div>
 
           <DialogHeader className="space-y-1 text-left">
-            {org ? (
-              <p className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-                {org}
-              </p>
-            ) : null}
-            <DialogTitle className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-              {name}
-            </DialogTitle>
-            <DialogDescription className="text-xs text-muted-foreground">
+            {org ? <Overline as="p">{org}</Overline> : null}
+            <DialogTitle>{name}</DialogTitle>
+            <DialogDescription>
               Certification Overview &amp; Key Skills
             </DialogDescription>
           </DialogHeader>
@@ -100,33 +92,26 @@ const CertModal = ({ cert, open, handleClose }: Props) => {
             <div className="flex flex-wrap items-center gap-2">
               {issueDate ? (
                 <Badge
-                  variant="outline"
-                  className="h-auto gap-1.5 rounded-full bg-muted/50 px-3 py-1 text-xs font-medium text-foreground"
+                  variant="subtle"
+                  size="md"
+                  className="gap-1.5 text-foreground"
                 >
-                  <FaCalendarCheck
-                    className="size-3 shrink-0 text-(--primary-color) dark:text-(--primary-light)"
-                    aria-hidden="true"
-                  />
+                  <FaCalendarCheck className="text-brand" aria-hidden="true" />
                   Issued: {issueDate}
                 </Badge>
               ) : null}
               {expirationDate ? (
-                <Badge
-                  variant="outline"
-                  className="h-auto gap-1.5 rounded-full bg-muted/50 px-3 py-1 text-xs font-medium text-foreground"
-                >
+                <Badge variant="subtle" size="md" className="text-foreground">
                   Expires: {expirationDate}
                 </Badge>
               ) : null}
               {credentialId ? (
                 <Badge
-                  variant="outline"
-                  className="h-auto gap-1.5 rounded-full bg-muted/50 px-3 py-1 font-mono text-xs font-medium text-foreground"
+                  variant="subtle"
+                  size="md"
+                  className="gap-1.5 font-mono text-foreground"
                 >
-                  <FaIdBadge
-                    className="size-3 shrink-0 text-(--primary-color) dark:text-(--primary-light)"
-                    aria-hidden="true"
-                  />
+                  <FaIdBadge className="text-brand" aria-hidden="true" />
                   ID: {credentialId}
                 </Badge>
               ) : null}
@@ -134,40 +119,14 @@ const CertModal = ({ cert, open, handleClose }: Props) => {
 
             <div className="flex flex-wrap items-center gap-2">
               {safeCredentialUrl ? (
-                <a
-                  href={safeCredentialUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(
-                    buttonVariants({ variant: 'default', size: 'sm' }),
-                    'text-xs font-medium focus-visible:outline-none'
-                  )}
-                >
+                <ExternalActionLink href={safeCredentialUrl} variant="default">
                   Verify Credential
-                  <span className="sr-only"> (opens in new tab)</span>{' '}
-                  <FaArrowUpRightFromSquare
-                    className="ml-1.5 size-3"
-                    aria-hidden="true"
-                  />
-                </a>
+                </ExternalActionLink>
               ) : null}
               {safeProgramUrl ? (
-                <a
-                  href={safeProgramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(
-                    buttonVariants({ variant: 'outline', size: 'sm' }),
-                    'text-xs font-medium transition-colors hover:border-(--primary-color) hover:text-(--primary-color) focus-visible:outline-none dark:hover:border-(--primary-light) dark:hover:text-(--primary-light)'
-                  )}
-                >
+                <ExternalActionLink href={safeProgramUrl}>
                   Program Website
-                  <span className="sr-only"> (opens in new tab)</span>{' '}
-                  <FaArrowUpRightFromSquare
-                    className="ml-1.5 size-3"
-                    aria-hidden="true"
-                  />
-                </a>
+                </ExternalActionLink>
               ) : null}
             </div>
           </div>
@@ -176,14 +135,12 @@ const CertModal = ({ cert, open, handleClose }: Props) => {
         )}
 
         {/* Modal Scrollable Body */}
-        <div className="flex-1 space-y-6 overflow-y-auto py-4 pr-1">
+        <DialogBody className="space-y-6">
           {hasBodyContent ? (
             <>
               {description ? (
                 <div className="space-y-2">
-                  <h3 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-                    Overview
-                  </h3>
+                  <Overline>Overview</Overline>
                   <p className="text-sm/relaxed whitespace-pre-line text-foreground/90">
                     {description}
                   </p>
@@ -192,18 +149,17 @@ const CertModal = ({ cert, open, handleClose }: Props) => {
 
               {skills.length > 0 ? (
                 <div className="space-y-3">
-                  <h3 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-                    Skills &amp; Key Topics
-                  </h3>
+                  <Overline>Skills &amp; Key Topics</Overline>
                   <div className="flex flex-wrap gap-2">
                     {skills.map((skill) => (
                       <Badge
                         key={skill}
                         variant="outline"
-                        className="h-auto gap-1.5 rounded-lg border-border/70 bg-card px-3 py-1.5 text-xs font-medium text-foreground"
+                        size="md"
+                        className="gap-1.5 rounded-lg border-border/70 bg-card"
                       >
                         <FaCircleCheck
-                          className="size-3 shrink-0 text-(--primary-color) dark:text-(--primary-light)"
+                          className="text-brand"
                           aria-hidden="true"
                         />
                         {skill}
@@ -218,24 +174,16 @@ const CertModal = ({ cert, open, handleClose }: Props) => {
               No additional certification details available.
             </p>
           )}
-        </div>
+        </DialogBody>
 
         {/* Footer Section */}
-        <div className="mt-auto flex items-center justify-between border-t border-border pt-3">
+        <DialogFooter showCloseButton>
           <span className="text-xs text-muted-foreground">
             {skills.length > 0
               ? `${skills.length} Key Skill${skills.length === 1 ? '' : 's'}`
               : org}
           </span>
-          <Button
-            type="button"
-            variant="ghost"
-            onClick={handleClose}
-            className="text-xs font-semibold tracking-wider text-(--primary-color) uppercase hover:bg-transparent hover:text-(--primary-dark) dark:text-(--primary-light) dark:hover:text-white"
-          >
-            Close
-          </Button>
-        </div>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   )

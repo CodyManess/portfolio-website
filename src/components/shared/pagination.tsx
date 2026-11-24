@@ -14,6 +14,14 @@ interface PaginationProps {
   className?: string
 }
 
+const paginationBaseButtonClass =
+  'inline-flex cursor-pointer items-center justify-center rounded-xl border border-border/80 bg-muted/40 text-xs text-muted-foreground transition-all duration-200 hover:border-brand/35 hover:text-brand focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none'
+
+const paginationNavButtonClass = cn(
+  paginationBaseButtonClass,
+  'gap-1 px-3 py-2 font-medium disabled:pointer-events-none disabled:opacity-40'
+)
+
 const Pagination = ({
   currentPage,
   totalPages,
@@ -94,7 +102,7 @@ const Pagination = ({
           onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
           disabled={currentPage === 1}
           aria-label="Go to previous page"
-          className="inline-flex cursor-pointer items-center gap-1 rounded-xl border border-slate-200/80 bg-slate-50/60 px-3 py-2 text-xs font-medium text-slate-600 transition-all duration-200 hover:border-(--primary-color)/30 hover:text-(--primary-color) focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40 dark:border-slate-800/40 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light) dark:focus-visible:ring-(--primary-light)"
+          className={paginationNavButtonClass}
         >
           <FaChevronLeft className="size-3" aria-hidden="true" />
           <span className="hidden sm:inline">Prev</span>
@@ -140,10 +148,10 @@ const Pagination = ({
                 aria-current={isActive ? 'page' : undefined}
                 aria-label={`Page ${pageNum}`}
                 className={cn(
-                  'flex size-9 cursor-pointer items-center justify-center rounded-xl border text-xs font-semibold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none dark:focus-visible:ring-(--primary-light)',
-                  isActive
-                    ? 'border-(--primary-color) bg-(--primary-color) text-white shadow-[0_0_12px_rgba(0,122,184,0.3)]'
-                    : 'border-slate-200/80 bg-slate-50/60 text-slate-600 hover:border-(--primary-color)/30 hover:text-(--primary-color) dark:border-slate-800/40 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light)'
+                  paginationBaseButtonClass,
+                  'size-9 font-semibold',
+                  isActive &&
+                    'border-primary bg-primary text-primary-foreground shadow-brand-glow hover:border-primary hover:text-primary-foreground'
                 )}
               >
                 {pageNum}
@@ -158,7 +166,7 @@ const Pagination = ({
           onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
           disabled={currentPage === totalPages}
           aria-label="Go to next page"
-          className="inline-flex cursor-pointer items-center gap-1 rounded-xl border border-slate-200/80 bg-slate-50/60 px-3 py-2 text-xs font-medium text-slate-600 transition-all duration-200 hover:border-(--primary-color)/30 hover:text-(--primary-color) focus-visible:ring-2 focus-visible:ring-(--primary-color) focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40 dark:border-slate-800/40 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light) dark:focus-visible:ring-(--primary-light)"
+          className={paginationNavButtonClass}
         >
           <span className="hidden sm:inline">Next</span>
           <FaChevronRight className="size-3" aria-hidden="true" />

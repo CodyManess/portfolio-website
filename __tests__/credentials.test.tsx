@@ -51,6 +51,7 @@ describe('Credentials', () => {
     expect(degreeElement).toBeInTheDocument()
     expect(screen.getByText('Aug 2017 - May 2021')).toBeInTheDocument()
     expect(screen.getByText("Dean's List")).toBeInTheDocument()
+    expect(screen.getByText('View coursework')).toBeInTheDocument()
     expect(certElement).toBeInTheDocument()
 
     // Degree card should be keyboard-activatable and open the degree modal
@@ -161,5 +162,53 @@ describe('Credentials', () => {
     ).toBeInTheDocument()
     expect(screen.getByText('Concentrating in Finance')).toBeInTheDocument()
     expect(global.fetch).not.toHaveBeenCalled()
+  })
+
+  it('caps degree card honors to the primary award plus an overflow count while showing all honors in the modal', () => {
+    const initialData: EducationData = {
+      degrees: [
+        {
+          schoolName: 'State University',
+          title: 'Bachelor of Science in Computer Science',
+          subtitle: 'Minoring in Mathematics',
+          date: 'Aug 2017 - May 2021',
+          schoolLink: 'https://www.state.edu',
+          photo: mtsucampus,
+          awards: [
+            'Summa Cum Laude',
+            'University Honors with Distinction',
+            "Accelerated Bachelor's to Master's Program",
+          ],
+          courses: [],
+        },
+      ],
+      certs: [],
+    }
+
+    render(<Credentials initialData={initialData} />)
+
+    expect(screen.getByText('Summa Cum Laude')).toBeInTheDocument()
+    expect(screen.getByText('+2 more')).toBeInTheDocument()
+    expect(
+      screen.queryByText('University Honors with Distinction')
+    ).not.toBeInTheDocument()
+    expect(
+      screen.queryByText("Accelerated Bachelor's to Master's Program")
+    ).not.toBeInTheDocument()
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /View coursework for Bachelor of Science in Computer Science/i,
+      })
+    )
+
+    const dialog = screen.getByRole('dialog')
+    expect(dialog).toBeInTheDocument()
+    expect(
+      screen.getByText('University Honors with Distinction')
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText("Accelerated Bachelor's to Master's Program")
+    ).toBeInTheDocument()
   })
 })

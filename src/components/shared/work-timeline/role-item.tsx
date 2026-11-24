@@ -12,6 +12,12 @@ interface RoleItemProps {
   isHighlighted?: boolean
 }
 
+const getConnectorLineClass = (isExpanded: boolean) =>
+  cn(
+    'h-0.5 transition-colors duration-300',
+    isExpanded ? 'bg-brand/50' : 'bg-border group-hover/item:bg-brand/35'
+  )
+
 export default function RoleItem({
   role,
   isExpanded,
@@ -30,8 +36,8 @@ export default function RoleItem({
           className={cn(
             'z-10 inline-flex items-center rounded-full border px-3.5 py-1.5 font-mono text-xs font-medium whitespace-nowrap shadow-2xs transition-all duration-300 lg:text-sm',
             isExpanded
-              ? 'border-(--primary-color)/35 bg-(--primary-color)/10 text-(--primary-dark) dark:border-(--primary-light)/40 dark:bg-(--primary-light)/15 dark:text-(--primary-light)'
-              : 'border-slate-200/90 bg-slate-100/90 text-slate-600 group-hover/item:border-(--primary-color)/30 group-hover/item:text-(--primary-dark) dark:border-slate-800 dark:bg-slate-900/90 dark:text-slate-300 dark:group-hover/item:border-(--primary-light)/35 dark:group-hover/item:text-(--primary-light)'
+              ? 'border-brand/35 bg-brand/10 text-brand-strong'
+              : 'border-border/90 bg-muted/90 text-muted-foreground group-hover/item:border-brand/30 group-hover/item:text-brand-strong'
           )}
         >
           {role.date}
@@ -39,10 +45,8 @@ export default function RoleItem({
         {/* Horizontal connector from Date Pill to Circle */}
         <div
           className={cn(
-            'absolute top-11.25 right-0 h-0.5 w-4 transition-colors duration-300',
-            isExpanded
-              ? 'bg-(--primary-color)/50 dark:bg-(--primary-light)/50'
-              : 'bg-slate-200 group-hover/item:bg-(--primary-color)/35 dark:bg-slate-800 dark:group-hover/item:bg-(--primary-light)/35'
+            'absolute top-11.25 right-0 w-4',
+            getConnectorLineClass(isExpanded)
           )}
           aria-hidden="true"
         />
@@ -53,10 +57,10 @@ export default function RoleItem({
         <div
           className={cn(
             'z-10 flex size-10 shrink-0 items-center justify-center rounded-full p-1.5 transition-all duration-300 sm:size-16 sm:p-2.5',
-            role.companyLogo ? 'bg-white' : 'bg-slate-50 dark:bg-slate-900',
+            role.companyLogo ? 'bg-white' : 'bg-muted',
             isExpanded
-              ? 'scale-105 border-2 border-(--primary-color) shadow-[0_0_20px_rgba(0,122,184,0.22)] ring-3 ring-(--primary-color)/20 sm:ring-4 dark:border-(--primary-light) dark:ring-(--primary-light)/25'
-              : 'border-2 border-slate-200 shadow-sm ring-3 ring-slate-100 group-hover/item:scale-105 group-hover/item:border-(--primary-color)/60 group-hover/item:ring-(--primary-color)/10 sm:ring-4 dark:border-slate-700 dark:ring-slate-800/60 dark:group-hover/item:border-(--primary-light)/60 dark:group-hover/item:ring-(--primary-light)/15'
+              ? 'scale-105 border-2 border-brand shadow-brand-glow ring-3 ring-brand/20 motion-reduce:scale-100 sm:ring-4'
+              : 'border-2 border-border shadow-sm ring-3 ring-muted group-hover/item:scale-105 group-hover/item:border-brand/60 group-hover/item:ring-brand/15 motion-reduce:group-hover/item:scale-100 sm:ring-4'
           )}
         >
           {role.companyLogo ? (
@@ -70,7 +74,7 @@ export default function RoleItem({
             </div>
           ) : (
             <FaBriefcase
-              className="text-base text-(--primary-color) sm:text-xl dark:text-(--primary-light)"
+              className="text-base text-brand sm:text-xl"
               aria-hidden="true"
             />
           )}
@@ -78,7 +82,7 @@ export default function RoleItem({
         {/* Vertical Line */}
         {!isLast && (
           <div
-            className="absolute top-11.5 -bottom-11.5 left-1/2 z-0 w-0.5 -translate-x-1/2 bg-linear-to-b from-(--primary-color)/45 via-slate-300 to-(--primary-color)/45 dark:from-(--primary-light)/50 dark:via-slate-700 dark:to-(--primary-light)/50"
+            className="absolute top-11.5 -bottom-11.5 left-1/2 z-0 w-0.5 -translate-x-1/2 bg-linear-to-b from-brand/45 via-border to-brand/45"
             aria-hidden="true"
           />
         )}
@@ -89,10 +93,8 @@ export default function RoleItem({
         {/* Horizontal connector from Circle to Card */}
         <div
           className={cn(
-            'absolute top-11.25 left-0 h-0.5 w-3 transition-colors duration-300 sm:w-5 md:w-6',
-            isExpanded
-              ? 'bg-(--primary-color)/50 dark:bg-(--primary-light)/50'
-              : 'bg-slate-200 group-hover/item:bg-(--primary-color)/35 dark:bg-slate-800 dark:group-hover/item:bg-(--primary-light)/35'
+            'absolute top-11.25 left-0 w-3 sm:w-5 md:w-6',
+            getConnectorLineClass(isExpanded)
           )}
           aria-hidden="true"
         />

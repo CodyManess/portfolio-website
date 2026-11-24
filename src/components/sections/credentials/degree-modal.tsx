@@ -4,14 +4,17 @@ import type { Course, Degree } from '@/types/education'
 import { CourseType } from '@/types/education'
 import {
   Dialog,
+  DialogBody,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import { Button, buttonVariants } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { FaAward, FaArrowUpRightFromSquare } from 'react-icons/fa6'
+import ExternalActionLink from '@/components/shared/external-action-link'
+import { Overline } from '@/components/shared/page-section'
+import { FaAward } from 'react-icons/fa6'
 import { cn, getSafeExternalUrl } from '@/lib/utils'
 
 interface Props {
@@ -20,11 +23,19 @@ interface Props {
   handleClose: () => void
 }
 
+const getTabButtonClass = (isActive: boolean) =>
+  cn(
+    'cursor-pointer rounded-md px-3 py-1 text-xs font-medium transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
+    isActive
+      ? 'bg-background font-semibold text-foreground shadow-xs'
+      : 'text-muted-foreground hover:text-foreground'
+  )
+
 const CourseItem = ({ course }: { course: Course }) => (
-  <div className="flex items-center gap-2.5 rounded-lg border border-border/70 bg-card p-2.5 transition-all duration-200 hover:border-(--primary-color)/50 hover:bg-muted/30">
+  <div className="flex items-center gap-2.5 rounded-lg border border-border/70 bg-card p-2.5 transition-all duration-200 hover:border-brand/50 hover:bg-muted/30">
     <Badge
-      variant="outline"
-      className="shrink-0 bg-muted/60 px-2 py-0.5 font-mono text-xs font-semibold text-foreground"
+      variant="subtle"
+      className="shrink-0 font-mono font-semibold text-foreground"
     >
       {course.courseNum}
     </Badge>
@@ -79,13 +90,9 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
               {date ? <span className="font-mono">{date}</span> : null}
             </div>
           ) : null}
-          <DialogTitle className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-            {title}
-          </DialogTitle>
+          <DialogTitle>{title}</DialogTitle>
           {subtitle ? (
-            <DialogDescription className="mt-0.5 text-sm text-muted-foreground">
-              {subtitle}
-            </DialogDescription>
+            <DialogDescription className="mt-0.5">{subtitle}</DialogDescription>
           ) : null}
         </DialogHeader>
 
@@ -93,20 +100,22 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pt-3 pb-4">
           {awards.length > 0 ? (
             <div className="flex flex-wrap items-center gap-2">
-              <span className="mr-1 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+              <Overline as="span" className="mr-1">
                 Honors:
-              </span>
+              </Overline>
               {awards.map((award) => (
-                <span
+                <Badge
                   key={award}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-800 dark:text-amber-300"
+                  variant="highlight"
+                  size="md"
+                  className="gap-1.5"
                 >
                   <FaAward
-                    className="size-3 shrink-0 text-amber-500"
+                    className="text-amber-600 dark:text-amber-400"
                     aria-hidden="true"
                   />
-                  {award}
-                </span>
+                  <span>{award}</span>
+                </Badge>
               ))}
             </div>
           ) : (
@@ -114,27 +123,14 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
           )}
 
           {safeSchoolLink ? (
-            <a
-              href={safeSchoolLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                buttonVariants({ variant: 'outline', size: 'sm' }),
-                'text-xs font-medium transition-colors hover:border-(--primary-color) hover:text-(--primary-color) focus-visible:outline-none dark:hover:border-(--primary-light) dark:hover:text-(--primary-light)'
-              )}
-            >
+            <ExternalActionLink href={safeSchoolLink}>
               Program Website
-              <span className="sr-only"> (opens in new tab)</span>{' '}
-              <FaArrowUpRightFromSquare
-                className="ml-1.5 size-3"
-                aria-hidden="true"
-              />
-            </a>
+            </ExternalActionLink>
           ) : null}
         </div>
 
         {/* Modal Body - Tabbed Curriculum Grid */}
-        <div className="flex-1 space-y-5 overflow-y-auto py-4 pr-1">
+        <DialogBody className="space-y-5">
           {courses.length > 0 ? (
             <>
               {/* Category Filter Tabs */}
@@ -149,12 +145,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                     type="button"
                     aria-pressed={activeTab === 'ALL'}
                     onClick={() => setActiveTab('ALL')}
-                    className={cn(
-                      'cursor-pointer rounded-md px-3 py-1 text-xs font-medium transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
-                      activeTab === 'ALL'
-                        ? 'bg-background font-semibold text-foreground shadow-xs'
-                        : 'text-muted-foreground hover:text-foreground'
-                    )}
+                    className={getTabButtonClass(activeTab === 'ALL')}
                   >
                     All ({courses.length})
                   </button>
@@ -166,12 +157,7 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                         type="button"
                         aria-pressed={activeTab === type}
                         onClick={() => setActiveTab(type)}
-                        className={cn(
-                          'cursor-pointer rounded-md px-3 py-1 text-xs font-medium transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
-                          activeTab === type
-                            ? 'bg-background font-semibold text-foreground shadow-xs'
-                            : 'text-muted-foreground hover:text-foreground'
-                        )}
+                        className={getTabButtonClass(activeTab === type)}
                       >
                         {type} ({count})
                       </button>
@@ -188,12 +174,12 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
                     if (filtered.length === 0) return null
                     return (
                       <div key={type} className="space-y-3">
-                        <h3 className="flex items-center gap-2 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+                        <Overline className="flex items-center gap-2">
                           <span>{type}</span>
-                          <span className="rounded-full border border-border/50 bg-muted px-2 py-0.5 text-[11px] font-normal text-muted-foreground">
+                          <Badge variant="subtle" className="font-normal">
                             {filtered.length}
-                          </span>
-                        </h3>
+                          </Badge>
+                        </Overline>
                         <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                           {filtered.map((course) => (
                             <CourseItem
@@ -222,22 +208,14 @@ const DegreeModal = ({ degree, open, handleClose }: Props) => {
               No coursework details available.
             </p>
           )}
-        </div>
+        </DialogBody>
 
         {/* Footer Section */}
-        <div className="mt-auto flex items-center justify-between border-t border-border pt-3">
+        <DialogFooter showCloseButton>
           <span className="text-xs text-muted-foreground">
             {courses.length} Total Course{courses.length === 1 ? '' : 's'}
           </span>
-          <Button
-            type="button"
-            variant="ghost"
-            onClick={handleModalClose}
-            className="text-xs font-semibold tracking-wider text-(--primary-color) uppercase hover:bg-transparent hover:text-(--primary-dark) dark:text-(--primary-light) dark:hover:text-white"
-          >
-            Close
-          </Button>
-        </div>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   )

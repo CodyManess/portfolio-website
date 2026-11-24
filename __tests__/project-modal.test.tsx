@@ -251,4 +251,44 @@ describe('ProjectModal', () => {
     fireEvent.keyDown(firstThumb, { key: 'ArrowLeft' })
     expect(screen.getByText('1 / 2')).toBeInTheDocument()
   })
+
+  it('resets gallery photo index when footer Close button is clicked', () => {
+    const handleClose = jest.fn()
+    const projectWithGallery: Project = {
+      ...mockProjectWithAchievements,
+      photos: [
+        {
+          src: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+          alt: 'Dashboard overview',
+          caption: 'Main dashboard view',
+        },
+        {
+          src: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+          alt: 'Job board screen',
+          caption: 'Internal job listings page',
+        },
+      ],
+    }
+
+    render(
+      <ProjectModal
+        project={projectWithGallery}
+        open={true}
+        handleClose={handleClose}
+      />
+    )
+
+    fireEvent.click(screen.getByRole('button', { name: /Next photo/i }))
+    expect(screen.getByText('2 / 2')).toBeInTheDocument()
+
+    const footerCloseButton = screen.getAllByRole('button', {
+      name: /close/i,
+    })[1]
+    expect(footerCloseButton).toBeInTheDocument()
+    if (!footerCloseButton) return
+    fireEvent.click(footerCloseButton)
+
+    expect(handleClose).toHaveBeenCalledTimes(1)
+    expect(screen.getByText('1 / 2')).toBeInTheDocument()
+  })
 })

@@ -1,10 +1,8 @@
 'use client'
-import type { CSSProperties } from 'react'
 import type { Tool } from '@/types/project'
 import { cn } from '@/lib/utils'
 import { toolIconMap } from '@/lib/tool-icons'
-
-type CssVariableStyle = CSSProperties & Record<`--${string}`, string>
+import { toolChipBaseClass, type CssVariableStyle } from './tool-chip'
 
 interface Props {
   tools: Tool[]
@@ -13,6 +11,19 @@ interface Props {
   toolCounts: Record<string, number>
   totalCount: number
 }
+
+const getCountBadgeClass = (
+  isSelected: boolean,
+  variant: 'primary' | 'tool' = 'tool'
+) =>
+  cn(
+    'ml-1.5 rounded-full px-1.5 py-0.5 text-2xs leading-none font-medium transition-colors',
+    isSelected
+      ? variant === 'primary'
+        ? 'bg-black/25 font-semibold text-white'
+        : 'bg-foreground font-semibold text-background'
+      : 'bg-muted text-muted-foreground'
+  )
 
 const TechnologyFilter = ({
   tools,
@@ -33,21 +44,15 @@ const TechnologyFilter = ({
         onClick={() => onSelectTool(null)}
         aria-pressed={selectedTool === null}
         className={cn(
-          'inline-flex cursor-pointer items-center rounded-full border px-3.5 py-1.5 text-xs font-semibold shadow-xs transition-all duration-300 ease-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
+          toolChipBaseClass,
+          'cursor-pointer px-3.5 py-1.5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
           selectedTool === null
-            ? '-translate-y-0.5 border-(--primary-color) bg-(--primary-color) text-white shadow-sm ring-2 ring-(--primary-color)/30'
-            : 'border-slate-200/80 bg-slate-50/60 text-slate-700 hover:-translate-y-0.5 hover:border-(--primary-color)/40 hover:text-(--primary-color) dark:border-slate-800/50 dark:bg-slate-900/40 dark:text-slate-200 dark:hover:border-(--primary-light)/40 dark:hover:text-(--primary-light)'
+            ? '-translate-y-0.5 border-primary bg-primary text-primary-foreground shadow-sm ring-2 ring-ring/30 hover:border-primary hover:text-primary-foreground motion-reduce:translate-y-0'
+            : 'hover:border-brand/40 hover:text-brand'
         )}
       >
         <span>All</span>
-        <span
-          className={cn(
-            'ml-1.5 rounded-full px-1.5 py-0.5 text-[10px] leading-none font-medium transition-colors',
-            selectedTool === null
-              ? 'bg-black/25 font-semibold text-white'
-              : 'bg-slate-200/80 text-slate-700 dark:bg-slate-800 dark:text-slate-300'
-          )}
-        >
+        <span className={getCountBadgeClass(selectedTool === null, 'primary')}>
           {totalCount}
         </span>
       </button>
@@ -70,30 +75,22 @@ const TechnologyFilter = ({
             onClick={() => onSelectTool(isSelected ? null : tool.title)}
             aria-pressed={isSelected}
             className={cn(
-              'inline-flex cursor-pointer items-center rounded-full border px-3 py-1.5 text-xs font-semibold shadow-xs transition-all duration-300 ease-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
+              toolChipBaseClass,
+              'cursor-pointer px-3 py-1.5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
               isSelected
-                ? '-translate-y-0.5 border-(--tool-color) bg-(--tool-bg) text-slate-900 shadow-sm ring-2 ring-(--tool-color)/30 dark:text-white'
-                : 'border-slate-200/80 bg-slate-50/60 text-slate-700 hover:-translate-y-0.5 hover:border-(--hover-border) hover:bg-(--hover-bg) hover:text-slate-900 dark:border-slate-800/50 dark:bg-slate-900/40 dark:text-slate-200 dark:hover:text-white'
+                ? '-translate-y-0.5 border-(--tool-color) bg-(--tool-bg) text-foreground shadow-sm ring-2 ring-(--tool-color)/30 motion-reduce:translate-y-0'
+                : 'hover:border-(--hover-border) hover:bg-(--hover-bg) hover:text-foreground'
             )}
             style={toolStyle}
           >
             <IconComponent
-              className="mr-1.5 shrink-0 transition-transform duration-300"
+              className="mr-1.5 shrink-0"
               size="0.875rem"
               color={tool.iconColor}
               aria-hidden="true"
             />
             <span>{tool.title}</span>
-            <span
-              className={cn(
-                'ml-1.5 rounded-full px-1.5 py-0.5 text-[10px] leading-none font-medium transition-colors',
-                isSelected
-                  ? 'bg-slate-900 font-semibold text-white dark:bg-white dark:text-slate-900'
-                  : 'bg-slate-200/80 text-slate-700 dark:bg-slate-800 dark:text-slate-300'
-              )}
-            >
-              {count}
-            </span>
+            <span className={getCountBadgeClass(isSelected)}>{count}</span>
           </button>
         )
       })}

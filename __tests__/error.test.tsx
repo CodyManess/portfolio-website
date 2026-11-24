@@ -14,9 +14,9 @@ describe('Route Error Boundary', () => {
       expect(
         screen.getByRole('heading', { level: 1, name: /something went wrong/i })
       ).toBeInTheDocument()
-      expect(
-        screen.getByRole('link', { name: /return home/i })
-      ).toHaveAttribute('href', '/')
+      const returnHomeLink = screen.getByRole('link', { name: /return home/i })
+      expect(returnHomeLink).toHaveAttribute('href', '/')
+      expect(returnHomeLink).toHaveClass('text-foreground')
       expect(consoleSpy).toHaveBeenCalledWith(
         'Unhandled route error:',
         testError

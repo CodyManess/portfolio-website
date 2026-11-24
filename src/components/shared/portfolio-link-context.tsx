@@ -13,7 +13,7 @@ import {
 type NavigatorHandler = (target: string) => void
 
 export const HIGHLIGHT_RING_CLASS =
-  'ring-2 ring-(--primary-color) ring-offset-2 ring-offset-background dark:ring-(--primary-light)'
+  'ring-2 ring-ring ring-offset-2 ring-offset-background'
 
 export function useTemporaryHighlight(
   durationMs = 2500
