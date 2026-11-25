@@ -17,7 +17,6 @@ export const siteConfig = {
   resumeTitle: 'Cody Maness | Resume',
   resumeDescription:
     'Printable full-stack software engineering resume for Cody Maness covering work experience, technical skills, education, certifications, and selected projects.',
-  lastModified: '2026-11-17',
   sameAs: [socialLinks.GitHub, socialLinks.LinkedIn],
   employer: 'The Cigna Group',
   alumniOf: [

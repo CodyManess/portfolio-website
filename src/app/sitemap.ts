@@ -1,25 +1,25 @@
 import type { MetadataRoute } from 'next'
 import { siteConfig } from '@/config/site'
 
-const SITE_LAST_MODIFIED = new Date(siteConfig.lastModified)
-
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date()
+
   return [
     {
       url: siteConfig.url,
-      lastModified: SITE_LAST_MODIFIED,
+      lastModified,
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
       url: `${siteConfig.url}/resume`,
-      lastModified: SITE_LAST_MODIFIED,
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${siteConfig.url}/extended`,
-      lastModified: SITE_LAST_MODIFIED,
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
     },

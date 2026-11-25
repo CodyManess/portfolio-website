@@ -66,14 +66,17 @@ describe('SEO Metadata Routes', () => {
     expect(entries).toHaveLength(3)
     expect(entries[0]).toMatchObject({
       url: 'https://codymaness.com',
+      lastModified: expect.any(Date),
       priority: 1,
     })
     expect(entries[1]).toMatchObject({
       url: 'https://codymaness.com/resume',
+      lastModified: expect.any(Date),
       priority: 0.9,
     })
     expect(entries[2]).toMatchObject({
       url: 'https://codymaness.com/extended',
+      lastModified: expect.any(Date),
       priority: 0.8,
     })
   })
@@ -166,7 +169,7 @@ describe('SEO Metadata Routes', () => {
     expect(ogResponse).toBeDefined()
     expect(mockedReadFile).toHaveBeenCalledTimes(1)
     expect(warnSpy).toHaveBeenCalledWith(
-      'Unable to load public/opengraph-image.jpg:',
+      'Unable to load src/app/_assets/opengraph-avatar.jpg:',
       expect.any(Error)
     )
   })

@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  schedule:
+    - cron: '0 12 * * 1'
 
 permissions:
   contents: read
@@ -33,17 +35,18 @@ jobs:
 
       - name: Audit production dependencies
         run: npm audit --omit=dev --audit-level=high
+        continue-on-error: ${{ github.event_name == 'pull_request' }}
 
       - name: Restore Next.js build cache
         uses: actions/cache@v6
         with:
           path: .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**/*', 'next.config.ts') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**/*', 'public/**/*', 'next.config.ts', 'postcss.config.mjs') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('package-lock.json') }}-
             ${{ runner.os }}-nextjs-
 
-      - name: Run quality checks (typegen, format, lint, typecheck, test)
+      - name: Run quality checks (format, typecheck, lint, test)
         run: npm run check
 
       - name: Build production bundle

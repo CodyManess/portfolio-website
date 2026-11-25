@@ -6,6 +6,8 @@ import { siteConfig } from '@/config/site'
 // Image metadata
 export const alt = `Profile of ${siteConfig.name}`
 
+const OG_AVATAR_PATH = 'src/app/_assets/opengraph-avatar.jpg'
+
 export const size = {
   width: 1200,
   height: 630,
@@ -32,12 +34,12 @@ export default async function Image() {
   let imageDataUrl: string | null = null
   try {
     const base64Image = await readFile(
-      join(process.cwd(), 'public/opengraph-image.jpg'),
+      join(process.cwd(), OG_AVATAR_PATH),
       'base64'
     )
     imageDataUrl = `data:image/jpeg;base64,${base64Image}`
   } catch (err) {
-    console.warn('Unable to load public/opengraph-image.jpg:', err)
+    console.warn(`Unable to load ${OG_AVATAR_PATH}:`, err)
   }
 
   return new ImageResponse(

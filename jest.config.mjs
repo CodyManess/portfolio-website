@@ -20,7 +20,16 @@ const config = {
     'src/**/*.{ts,tsx}',
     '!src/**/*.d.ts',
     '!src/components/ui/**',
+    '!src/types/**',
   ],
+  coverageThreshold: {
+    global: {
+      statements: 90,
+      branches: 80,
+      functions: 90,
+      lines: 90,
+    },
+  },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@public/(.*)$': '<rootDir>/public/$1',

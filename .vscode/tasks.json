@@ -36,7 +36,7 @@
       "script": "typecheck",
       "problemMatcher": ["$tsc"],
       "label": "npm: typecheck",
-      "detail": "next typegen && tsc --noEmit"
+      "detail": "next typegen && node node_modules/@typescript/native/bin/tsc --noEmit"
     },
     {
       "type": "npm",
@@ -65,7 +65,7 @@
       "script": "check",
       "problemMatcher": [],
       "label": "npm: check",
-      "detail": "typegen, format:check, lint, typecheck, and test"
+      "detail": "format:check, typecheck, lint, and test"
     }
   ]
 }

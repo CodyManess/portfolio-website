@@ -1,10 +1,12 @@
 {pkgs}: {
-  channel = "stable-24.11";
+  channel = "unstable";
   packages = [
     pkgs.nodejs_latest
   ];
   idx.extensions = [
-    
+    "oxc.oxc-vscode"
+    "bradlc.vscode-tailwindcss"
+    "editorconfig.editorconfig"
   ];
   idx.previews = {
     previews = {

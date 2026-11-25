@@ -11,7 +11,7 @@ This portfolio site is a static-first Next.js 16 App Router application with no 
 - **URL & Structured Data Hardening**:
   - External links pass through `getSafeExternalUrl()` (`src/lib/utils.ts`), permitting only `http:` and `https:` URLs.
   - Inline JSON-LD payloads escape `<` (`\u003c`).
-- **Automated Checks**: CI runs `npm audit --omit=dev --audit-level=high`, `npm run check` (`next typegen`, `oxfmt --check`, `oxlint` with `typeAware: true` and `denyWarnings: true`, TypeScript 7.1 native `--noEmit`, and Jest), and `npm run build` on pushes and pull requests to `main` with least-privilege `contents: read` workflow permissions.
+- **Automated Checks**: CI runs `npm audit --omit=dev --audit-level=high` (enforced on `main` pushes and weekly scheduled runs, advisory on PRs), `npm run check` (`oxfmt --check`, `next typegen` + TypeScript 7.1 native `--noEmit`, `oxlint` with `typeAware: true` and `denyWarnings: true`, and Jest), and `npm run build` on pushes and pull requests to `main` with least-privilege `contents: read` workflow permissions, paired with weekly Dependabot updates for `npm` and `github-actions`.
 
 ## Reporting a Vulnerability
 
